@@ -190,9 +190,10 @@ async def submit_answer(request):
         return web.json_response({"error": "Noto'g'ri savol indeksi"}, status=400)
 
     q = room["questions"][q_idx]
-    is_correct = (answer == q["correct_option"])
+    is_correct = (str(answer).strip().upper() == str(q.get("correct_option", "")).strip().upper())
     if is_correct:
         player["score"] += 1
+
 
     player["answers"].append({"q_idx": q_idx, "answer": answer, "correct": is_correct})
     player["current_q"] += 1

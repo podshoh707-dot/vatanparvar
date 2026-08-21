@@ -169,15 +169,23 @@ async def send_question(duel_id: str, player_key: str):
     
     keyboard = InlineKeyboardMarkup(inline_keyboard=[btns])
     
+    import html as py_html
+
+    safe_text = py_html.escape(q.text or "")
+    safe_a = py_html.escape(q.option_a or "")
+    safe_b = py_html.escape(q.option_b or "")
+    safe_c = py_html.escape(q.option_c or "")
+    safe_d = py_html.escape(q.option_d or "")
+
     caption = (
         f"🥊 <b>JANG | {idx+1}/10-savol</b>\n"
         f"━━━━━━━━━━━━━━━━━━━━\n\n"
-        f"❓ {q.text}\n\n"
-        f"1️⃣ A) {q.option_a}\n"
+        f"❓ {safe_text}\n\n"
+        f"1️⃣ A) {safe_a}\n"
     )
-    if q.option_b: caption += f"2️⃣ B) {q.option_b}\n"
-    if q.option_c: caption += f"3️⃣ C) {q.option_c}\n"
-    if q.option_d: caption += f"4️⃣ D) {q.option_d}\n"
+    if q.option_b: caption += f"2️⃣ B) {safe_b}\n"
+    if q.option_c: caption += f"3️⃣ C) {safe_c}\n"
+    if q.option_d: caption += f"4️⃣ D) {safe_d}\n"
     
     caption += f"\n📊 <b>Sizning hisobingiz:</b> {player['score']} to'g'ri"
     
@@ -192,7 +200,11 @@ async def send_question(duel_id: str, player_key: str):
                 photo_obj = q.image_url
                 
             if photo_obj:
-                await duel["bot"].send_photo(player['id'], photo=photo_obj, caption=caption, reply_markup=keyboard, protect_content=duel['protect'], parse_mode="HTML")
+                if len(caption) > 1020:
+                    await duel["bot"].send_photo(player['id'], photo=photo_obj, protect_content=duel['protect'])
+                    await duel["bot"].send_message(player['id'], caption, reply_markup=keyboard, protect_content=duel['protect'], parse_mode="HTML")
+                else:
+                    await duel["bot"].send_photo(player['id'], photo=photo_obj, caption=caption, reply_markup=keyboard, protect_content=duel['protect'], parse_mode="HTML")
                 return
         
         await duel["bot"].send_message(player['id'], caption, reply_markup=keyboard, protect_content=duel['protect'], parse_mode="HTML")
@@ -220,7 +232,9 @@ async def process_duel_answer(callback: types.CallbackQuery):
         return
         
     q = duel["questions"][q_idx]
-    is_correct = (ans == q.correct_option)
+    corr_option = str(q.correct_option or "").strip().upper()
+    is_correct = (str(ans).strip().upper() == corr_option)
+
     
     if is_correct:
         player["score"] += 1

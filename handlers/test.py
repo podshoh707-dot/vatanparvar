@@ -453,15 +453,23 @@ async def send_question(message_or_callback, state: FSMContext):
         msg = message_or_callback
         bot_obj = msg.bot
 
+    import html as py_html
+
     # Savol matni va variantlar caption sifatida
+    safe_text = py_html.escape(q.text or "")
+    safe_a = py_html.escape(q.option_a or "")
+    safe_b = py_html.escape(q.option_b or "")
+    safe_c = py_html.escape(q.option_c or "")
+    safe_d = py_html.escape(q.option_d or "")
+
     caption = (
         f"<b>Savol {current_idx + 1} / {len(q_ids)}</b>\n\n"
-        f"❓ {q.text}\n\n"
-        f"1️⃣ A) {q.option_a}\n"
+        f"❓ {safe_text}\n\n"
+        f"1️⃣ A) {safe_a}\n"
     )
-    if q.option_b: caption += f"2️⃣ B) {q.option_b}\n"
-    if q.option_c: caption += f"3️⃣ C) {q.option_c}\n"
-    if q.option_d: caption += f"4️⃣ D) {q.option_d}\n"
+    if q.option_b: caption += f"2️⃣ B) {safe_b}\n"
+    if q.option_c: caption += f"3️⃣ C) {safe_c}\n"
+    if q.option_d: caption += f"4️⃣ D) {safe_d}\n"
 
     bot_info = await bot_obj.get_me()
     caption += f"\n👉 @{bot_info.username}"
@@ -500,27 +508,35 @@ async def send_question(message_or_callback, state: FSMContext):
 
     try:
         if media_obj:
-            if is_vid:
-                await msg.answer_video(
-                    video=media_obj,
-                    caption=caption,
-                    reply_markup=keyboard,
-                    protect_content=protect,
-                    parse_mode="HTML"
-                )
+            if len(caption) > 1020:
+                if is_vid:
+                    await msg.answer_video(video=media_obj, protect_content=protect)
+                else:
+                    await msg.answer_photo(photo=media_obj, protect_content=protect)
+                await msg.answer(caption, reply_markup=keyboard, protect_content=protect, parse_mode="HTML")
             else:
-                await msg.answer_photo(
-                    photo=media_obj,
-                    caption=caption,
-                    reply_markup=keyboard,
-                    protect_content=protect,
-                    parse_mode="HTML"
-                )
+                if is_vid:
+                    await msg.answer_video(
+                        video=media_obj,
+                        caption=caption,
+                        reply_markup=keyboard,
+                        protect_content=protect,
+                        parse_mode="HTML"
+                    )
+                else:
+                    await msg.answer_photo(
+                        photo=media_obj,
+                        caption=caption,
+                        reply_markup=keyboard,
+                        protect_content=protect,
+                        parse_mode="HTML"
+                    )
         else:
             await msg.answer(caption, reply_markup=keyboard, protect_content=protect, parse_mode="HTML")
     except Exception as e:
         print(f"Error sending question media: {e}")
         await msg.answer(caption, reply_markup=keyboard, protect_content=protect, parse_mode="HTML")
+
 
 @test_router.callback_query(F.data.startswith("testcnt_") | F.data.startswith("testbilet_") | F.data.in_(["test_mistakes"]))
 async def start_test(callback: types.CallbackQuery, state: FSMContext):
@@ -689,13 +705,19 @@ async def process_answer(callback: types.CallbackQuery, state: FSMContext):
         await send_question(callback, state)
         return
     
+    import html as py_html
+
+    corr_option = str(q.correct_option or "").strip().upper()
+    user_ans = str(ans or "").strip().upper()
+    is_correct = (user_ans == corr_option)
+
     options_map = {
-        "A": q.option_a,
-        "B": q.option_b,
-        "C": q.option_c,
-        "D": q.option_d
+        "A": q.option_a or "",
+        "B": q.option_b or "",
+        "C": q.option_c or "",
+        "D": q.option_d or ""
     }
-    correct_text = options_map.get(q.correct_option, "")
+    correct_text = options_map.get(corr_option, "")
     explanation = (q.explanation or "").strip()
     
     emoji_map = {
@@ -705,15 +727,18 @@ async def process_answer(callback: types.CallbackQuery, state: FSMContext):
         "D": "4️⃣ D"
     }
     
-    is_correct = ans == q.correct_option
     bot_info = await callback.bot.get_me()
     bot_username = f"@{bot_info.username}"
     
-    result_msg = f"🚸 <b>DIQQAT, TEST SAVOLI!</b>\n\n{q.text} 🤔\n\n"
+    safe_q_text = py_html.escape(q.text or "")
+    safe_corr_text = py_html.escape(correct_text or "")
+    safe_explanation = py_html.escape(explanation or "")
+
+    result_msg = f"🚸 <b>DIQQAT, TEST SAVOLI!</b>\n\n{safe_q_text} 🤔\n\n"
     
     if is_correct:
         correct_count += 1
-        result_msg += f"✅ <b>Sizning javobingiz to'g'ri:</b> {emoji_map.get(q.correct_option, q.correct_option)} — {correct_text}"
+        result_msg += f"✅ <b>Sizning javobingiz to'g'ri:</b> {emoji_map.get(corr_option, corr_option)} — {safe_corr_text}"
         
         if data.get("is_marathon_mode"):
             user_id_tg = callback.from_user.id
@@ -739,10 +764,11 @@ async def process_answer(callback: types.CallbackQuery, state: FSMContext):
                     )
                     await session2.commit()
     else:
-        chosen_text = options_map.get(ans, "")
+        chosen_text = options_map.get(user_ans, "")
+        safe_chosen_text = py_html.escape(chosen_text or "")
         result_msg += (
-            f"❌ <b>Siz tanladingiz:</b> {emoji_map.get(ans, ans)} — {chosen_text}\n"
-            f"✅ <b>To'g'ri javob:</b> {emoji_map.get(q.correct_option, q.correct_option)} — {correct_text}"
+            f"❌ <b>Siz tanladingiz:</b> {emoji_map.get(user_ans, user_ans)} — {safe_chosen_text}\n"
+            f"✅ <b>To'g'ri javob:</b> {emoji_map.get(corr_option, corr_option)} — {safe_corr_text}"
         )
         
         user_id_tg = callback.from_user.id
@@ -763,7 +789,8 @@ async def process_answer(callback: types.CallbackQuery, state: FSMContext):
                 await session2.commit()
     
     if explanation:
-        result_msg += f"\n\n📖 <b>Izoh:</b>\n<i>{explanation}</i>"
+        result_msg += f"\n\n📖 <b>Izoh:</b>\n<i>{safe_explanation}</i>"
+
         
     result_msg += f"\n\n🚘 <b>Avtotest savollari va foydali ma'lumotlar:</b>\n👉 {bot_username}"
     

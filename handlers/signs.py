@@ -233,10 +233,15 @@ async def signs_test(callback: types.CallbackQuery, state: FSMContext):
     async with async_session() as session:
         result = await session.execute(
             select(Question).where(
-                Question.category == "Yo'l belgilari va chiziqlari"
+                (Question.category.like("%belgi%")) | (Question.text.like("%belgi%"))
             ).order_by(func.random()).limit(10)
         )
         questions = result.scalars().all()
+        if not questions or len(questions) < 10:
+            result_all = await session.execute(
+                select(Question).where(Question.image_url != None).order_by(func.random()).limit(10)
+            )
+            questions = result_all.scalars().all()
     
     if not questions:
         await callback.answer("Hozircha belgilar bo'yicha savollar yo'q.", show_alert=True)
@@ -248,4 +253,5 @@ async def signs_test(callback: types.CallbackQuery, state: FSMContext):
     await callback.message.delete()
     
     await send_question(callback, state)
+
 

@@ -36,6 +36,49 @@ async def init_db():
     async with engine.begin() as conn:
         await conn.run_sync(_sync_schema)
 
+    # Auto-seed questions if empty or missing
+    from .models import Question
+    from sqlalchemy import select, func, text
+    import json
+    async with async_session() as session:
+        res = await session.execute(select(func.count(Question.id)))
+        count = res.scalar() or 0
+        
+        # Check if corrupted (e.g. all 'A')
+        res_sample = await session.execute(select(Question.correct_option).limit(30))
+        sample_opts = res_sample.scalars().all()
+        is_corrupted = len(sample_opts) > 0 and all(o == 'A' for o in sample_opts)
+        
+        if count < 1200 or is_corrupted:
+            questions_file = os.path.join(os.path.dirname(__file__), "questions_data.json")
+            if os.path.exists(questions_file):
+                print(f"[init_db] Seeding questions from {questions_file}...")
+                with open(questions_file, "r", encoding="utf-8") as f:
+                    q_data = json.load(f)
+                
+                # Clear and insert fresh questions
+                await session.execute(text("DELETE FROM questions"))
+                for item in q_data:
+                    q_obj = Question(
+                        id=item.get("id"),
+                        text=item.get("text"),
+                        image_url=item.get("image_url"),
+                        media_type=item.get("media_type", "image"),
+                        media_urls=item.get("media_urls"),
+                        option_a=item.get("option_a"),
+                        option_b=item.get("option_b"),
+                        option_c=item.get("option_c"),
+                        option_d=item.get("option_d"),
+                        correct_option=item.get("correct_option", "A"),
+                        explanation=item.get("explanation"),
+                        difficulty=item.get("difficulty", "o'rta"),
+                        category=item.get("category", "Umumiy")
+                    )
+                    session.add(q_obj)
+                await session.commit()
+                print(f"[init_db] Successfully seeded {len(q_data)} questions!")
+
 async def get_session() -> AsyncSession:
     async with async_session() as session:
         yield session
+

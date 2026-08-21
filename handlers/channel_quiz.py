@@ -23,26 +23,31 @@ async def process_channel_answer(callback: types.CallbackQuery):
         await callback.answer("Bu savol bazadan topilmadi.", show_alert=True)
         return
         
+    corr_option = str(q.correct_option or "").strip().upper()
+    user_ans = str(ans or "").strip().upper()
+    
     options_map = {
-        "A": q.option_a,
-        "B": q.option_b,
-        "C": q.option_c,
-        "D": q.option_d
+        "A": q.option_a or "",
+        "B": q.option_b or "",
+        "C": q.option_c or "",
+        "D": q.option_d or ""
     }
     
-    correct_text = options_map.get(q.correct_option, "")
+    correct_text = options_map.get(corr_option, "")
     
-    if ans == q.correct_option:
-        msg = f"✅ To'g'ri javob!\nSizning javobingiz: {ans}) {correct_text}"
+    if user_ans == corr_option:
+        msg = f"✅ To'g'ri javob!\nSizning javobingiz: {user_ans}) {correct_text}"
         if q.explanation:
             msg += f"\n\n📖 Izoh: {q.explanation}"
+        if len(msg) > 195:
+            msg = msg[:195] + "..."
         await callback.answer(msg, show_alert=True)
     else:
-        chosen_text = options_map.get(ans, "")
+        chosen_text = options_map.get(user_ans, "")
         msg = (
             f"❌ Noto'g'ri!\n"
-            f"Siz tanladingiz: {ans}) {chosen_text}\n\n"
-            f"✅ To'g'ri javob: {q.correct_option}) {correct_text}"
+            f"Siz tanladingiz: {user_ans}) {chosen_text}\n\n"
+            f"✅ To'g'ri javob: {corr_option}) {correct_text}"
         )
         if q.explanation:
             msg += f"\n\n📖 Izoh: {q.explanation}"
@@ -52,3 +57,4 @@ async def process_channel_answer(callback: types.CallbackQuery):
             msg = msg[:195] + "..."
             
         await callback.answer(msg, show_alert=True)
+

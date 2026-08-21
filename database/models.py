@@ -32,6 +32,7 @@ class Question(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     text = Column(Text, nullable=False)
     image_url = Column(String, nullable=True)
+    option_images = Column(Text, nullable=True)  # JSON array of image URLs for each option (e.g., ["opt1.jpg","opt2.jpg","opt3.jpg","opt4.jpg"])
     media_type = Column(String, default="image") # image, video, multi_video
     media_urls = Column(Text, nullable=True) # JSON array for multiple videos
     option_a = Column(String, nullable=False)

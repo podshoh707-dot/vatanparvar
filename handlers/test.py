@@ -474,68 +474,62 @@ async def send_question(message_or_callback, state: FSMContext):
     bot_info = await bot_obj.get_me()
     caption += f"\n👉 @{bot_info.username}"
 
-    # Media fayllarni aniqlash
-    from aiogram.types import FSInputFile
+    # Media handling (including per‑option images)
+    from aiogram.types import FSInputFile, InputMediaPhoto, InputMediaVideo
     import os, json
     from config import BASE_DIR
-
-    media_obj = None
-    is_vid = False
-
-    # Agar savolda asosiy video bo'lsa
-    if q.media_urls:
+        
+    media_group = []
+    # Option‑specific images stored in `option_images`
+    if q.option_images:
         try:
-            m_dict = json.loads(q.media_urls) if isinstance(q.media_urls, str) else q.media_urls
-            if isinstance(m_dict, dict) and m_dict.get("main"):
-                main_vid_path = os.path.join(BASE_DIR, m_dict["main"].replace('\\', '/'))
-                if os.path.exists(main_vid_path):
-                    media_obj = FSInputFile(main_vid_path)
-                    is_vid = True
-        except Exception:
-            pass
-
-    # Agar video topilmagan bo'lsa, rasmni olamiz
-    if not media_obj and q.image_url:
-        if not str(q.image_url).startswith("http"):
-            cand1 = os.path.join(BASE_DIR, "webapp", str(q.image_url).replace('\\', '/'))
-            cand2 = os.path.join(BASE_DIR, str(q.image_url).replace('\\', '/'))
-            if os.path.exists(cand1):
-                media_obj = FSInputFile(cand1)
-            elif os.path.exists(cand2):
-                media_obj = FSInputFile(cand2)
-        else:
-            media_obj = q.image_url
-
-    try:
-        if media_obj:
-            if len(caption) > 1020:
-                if is_vid:
-                    await msg.answer_video(video=media_obj, protect_content=protect)
+            opt_imgs = json.loads(q.option_images) if isinstance(q.option_images, str) else q.option_images
+            # Expected list in order A, B, C, D
+            for img_path in opt_imgs:
+                if not img_path:
+                    continue
+                if not str(img_path).startswith("http"):
+                    cand1 = os.path.join(BASE_DIR, "webapp", str(img_path).replace('\\', '/'))
+                    cand2 = os.path.join(BASE_DIR, str(img_path).replace('\\', '/'))
+                    if os.path.exists(cand1):
+                        file_path = cand1
+                    elif os.path.exists(cand2):
+                        file_path = cand2
+                    else:
+                        continue
+                    media_group.append(InputMediaPhoto(media=FSInputFile(file_path)))
                 else:
-                    await msg.answer_photo(photo=media_obj, protect_content=protect)
-                await msg.answer(caption, reply_markup=keyboard, protect_content=protect, parse_mode="HTML")
+                    media_group.append(InputMediaPhoto(media=img_path))
+        except Exception as e:
+            print(f"Error processing option_images: {e}")
+        
+    # Fallback to single video or image if no option_images
+    if not media_group:
+        if q.media_urls:
+            try:
+                m_dict = json.loads(q.media_urls) if isinstance(q.media_urls, str) else q.media_urls
+                if isinstance(m_dict, dict) and m_dict.get("main"):
+                    main_vid_path = os.path.join(BASE_DIR, m_dict["main"].replace('\\', '/'))
+                    if os.path.exists(main_vid_path):
+                        media_group.append(InputMediaVideo(media=FSInputFile(main_vid_path), caption=None))
+            except Exception:
+                pass
+        if not media_group and q.image_url:
+            if not str(q.image_url).startswith("http"):
+                cand1 = os.path.join(BASE_DIR, "webapp", str(q.image_url).replace('\\', '/'))
+                cand2 = os.path.join(BASE_DIR, str(q.image_url).replace('\\', '/'))
+                if os.path.exists(cand1):
+                    media_group.append(InputMediaPhoto(media=FSInputFile(cand1)))
+                elif os.path.exists(cand2):
+                    media_group.append(InputMediaPhoto(media=FSInputFile(cand2)))
             else:
-                if is_vid:
-                    await msg.answer_video(
-                        video=media_obj,
-                        caption=caption,
-                        reply_markup=keyboard,
-                        protect_content=protect,
-                        parse_mode="HTML"
-                    )
-                else:
-                    await msg.answer_photo(
-                        photo=media_obj,
-                        caption=caption,
-                        reply_markup=keyboard,
-                        protect_content=protect,
-                        parse_mode="HTML"
-                    )
+                media_group.append(InputMediaPhoto(media=q.image_url))
         else:
-            await msg.answer(caption, reply_markup=keyboard, protect_content=protect, parse_mode="HTML")
-    except Exception as e:
-        print(f"Error sending question media: {e}")
-        await msg.answer(caption, reply_markup=keyboard, protect_content=protect, parse_mode="HTML")
+            try:
+                await bot_obj.send_media_group(chat_id=msg.chat.id, media=media_group, protect_content=protect)
+            except Exception as e:
+                print(f"Error sending question media: {e}")
+                await msg.answer(caption, reply_markup=keyboard, protect_content=protect, parse_mode="HTML")
 
 
 @test_router.callback_query(F.data.startswith("testcnt_") | F.data.startswith("testbilet_") | F.data.in_(["test_mistakes"]))

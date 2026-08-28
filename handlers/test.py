@@ -346,21 +346,13 @@ async def send_question(message_or_callback, state: FSMContext):
                     f"<i>Ushbu sertifikatni saqlab oling va do'stlaringiz bilan ulashing!</i>"
                 )
                 
-                if isinstance(message_or_callback, types.CallbackQuery):
-                    await message_or_callback.message.answer_photo(
-                        photo=FSInputFile(cert_path),
-                        caption=cert_caption,
-                        reply_markup=cert_kb,
-                        parse_mode="HTML"
-                    )
-                    await message_or_callback.answer()
-                else:
-                    await message_or_callback.answer_photo(
-                        photo=FSInputFile(cert_path),
-                        caption=cert_caption,
-                        reply_markup=cert_kb,
-                        parse_mode="HTML"
-                    )
+                await bot_obj.send_photo(
+                    chat_id=user_id_tg,
+                    photo=FSInputFile(cert_path),
+                    caption=cert_caption,
+                    reply_markup=cert_kb,
+                    parse_mode="HTML"
+                )
                 return
             except Exception as e:
                 print(f"Error generating certificate: {e}")
@@ -407,11 +399,7 @@ async def send_question(message_or_callback, state: FSMContext):
                 f"<i>Bilimingizni mustahkamlash uchun yana test ishlang yoki xatolaringiz ustida ishlang!</i>"
                 f"{streak_bonus_text}"
             )
-        if isinstance(message_or_callback, types.CallbackQuery):
-            await message_or_callback.message.answer(text, reply_markup=finish_kb, parse_mode="HTML")
-            await message_or_callback.answer()
-        else:
-            await message_or_callback.answer(text, reply_markup=finish_kb, parse_mode="HTML")
+        await bot_obj.send_message(chat_id=user_id_tg, text=text, reply_markup=finish_kb, parse_mode="HTML")
         return
 
     # Fetch question and setting
@@ -831,7 +819,14 @@ async def process_answer(callback: types.CallbackQuery, state: FSMContext):
         await callback.answer("🎉 Qoyil! Javobingiz to'g'ri!", show_alert=True)
     else:
         await callback.answer("❌ Noto'g'ri javob!", show_alert=True)
-    await callback.message.delete()
+    
+    try:
+        await callback.message.delete()
+    except Exception:
+        pass
+
+    bot_obj = callback.bot
+    chat_id = callback.from_user.id
 
     # GAI Imtihonida 3 ta xato bo'lsa darhol to'xtatish
     if data.get("is_gai_mode") and wrong_count >= 3:
@@ -851,7 +846,7 @@ async def process_answer(callback: types.CallbackQuery, state: FSMContext):
             f"<i>YHQ Davlat Standartiga ko'ra 20 ta savoldan maksimal 2 tagacha xatoga ruxsat beriladi. 3-xatoda imtihon to'xtatiladi.</i>\n\n"
             f"💡 <i>Mavzularni qayta takrorlab, yana bir bor sinab ko'ring!</i>"
         )
-        await callback.message.answer(result_msg + "\n\n" + fail_text, reply_markup=fail_kb, protect_content=protect, parse_mode="HTML")
+        await bot_obj.send_message(chat_id=chat_id, text=result_msg + "\n\n" + fail_text, reply_markup=fail_kb, protect_content=protect, parse_mode="HTML")
         return
     
     # Izohni alohida xabar sifatida yuborish — keyingi savol va AI Ustoz tugmasi bilan
@@ -877,21 +872,29 @@ async def process_answer(callback: types.CallbackQuery, state: FSMContext):
 
     if anim_vid_file:
         try:
-            await callback.message.answer_video(
-                video=anim_vid_file,
-                caption=result_msg,
-                reply_markup=keyboard,
-                protect_content=protect,
-                parse_mode="HTML"
-            )
+            if len(result_msg) <= 1024:
+                await bot_obj.send_video(
+                    chat_id=chat_id,
+                    video=anim_vid_file,
+                    caption=result_msg,
+                    reply_markup=keyboard,
+                    protect_content=protect,
+                    parse_mode="HTML"
+                )
+            else:
+                await bot_obj.send_video(chat_id=chat_id, video=anim_vid_file, protect_content=protect)
+                await bot_obj.send_message(chat_id=chat_id, text=result_msg, reply_markup=keyboard, protect_content=protect, parse_mode="HTML")
             return
         except Exception as e:
             print(f"Error sending anim video: {e}")
 
-    await callback.message.answer(result_msg, reply_markup=keyboard, protect_content=protect, parse_mode="HTML")
+    await bot_obj.send_message(chat_id=chat_id, text=result_msg, reply_markup=keyboard, protect_content=protect, parse_mode="HTML")
 
 @test_router.callback_query(TestStates.taking_test, F.data == "next_question")
 async def next_question(callback: types.CallbackQuery, state: FSMContext):
     await callback.answer()
-    await callback.message.delete()
+    try:
+        await callback.message.delete()
+    except Exception:
+        pass
     await send_question(callback, state)

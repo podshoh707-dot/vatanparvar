@@ -10599,7 +10599,7 @@
     "option_b": "Yo'l yaxmalak, sirpanchiq bo'lgan hollarda",
     "option_c": "Kunning qorong'i vaqtida va yetarli ko'rinmaslik sharoitida",
     "option_d": "Barcha sanab o'tilgan hollarda",
-    "correct_option": "C",
+    "correct_option": "D",
     "explanation": "**YHQ 24-bobi 145-bandi**: Shatakka olish quyidagi holatlarda taqiqlanadi: yo'l yaxmalak, sirpanchiq bo'lgan hollarda egiluvchan ulagichda.",
     "category": "72-Bilet",
     "difficulty": "o'rta"
@@ -11709,7 +11709,7 @@
     "option_b": "Faqat chiroqlarni yoqib-o'chirish bilan",
     "option_c": "Sanab o'tilgan barcha usul bilan va ularni birgalikda qo'llash bilan",
     "option_d": null,
-    "correct_option": "A",
+    "correct_option": "C",
     "explanation": "**YHQ 8-bobi 48-band:** Tovushli ishoralar faqat quyidagi hollarda qo'llanilishi mumkin:\n- Aholi punktlaridan tashqarida boshqa haydovchilarni quvib o'tish haqida ogohlantirish uchun\n- Zarur bo'lgan hollarda yo'l-transport hodisasining oldini olish uchun\n\n**YHQ 8-bobi 49-band:** Quvib o'tish haqida tovushli ishora o'rniga yoki u bilan birga fara chiroqlarini yoqib-o'chirib, ogohlantirish ishorasini ham berish mumkin.\n\nDemak, **barcha usullarni** va ularni birgalikda qo'llash mumkin.",
     "category": "80-Bilet",
     "difficulty": "o'rta"
@@ -12009,7 +12009,7 @@
     "option_b": "Ohista tezlanish va shiddat bilan sekinlashish bilan",
     "option_c": "Ohista tezlanish va ohista sekinlashish bilan",
     "option_d": null,
-    "correct_option": "B",
+    "correct_option": "C",
     "explanation": "Avtomobilning tezligini **ravon orttirish** va uni **ohista ravon tormozlash** yoqilg'i sarfini tejaydi.",
     "category": "82-Bilet",
     "difficulty": "o'rta"
@@ -12219,7 +12219,7 @@
     "option_b": "Tormoz tepkisini keskin bosish bilan tezlikni kamaytirish lozim",
     "option_c": "Dvigatel bilan tormozlash orqali tezlikni kamaytirishi lozim",
     "option_d": null,
-    "correct_option": "B",
+    "correct_option": "C",
     "explanation": "Suvda sirpanish kuchli yomg'ir, sel yoki suv toshgan yo'l qismlarida sodir bo'ladi. Bu holda harakat xavfsizligini ta'minlash maqsadida avtomobilni **dvigatel bilan tormozlash** yaxshi samara beradi.\n\nBahorgi, kuzgi yomg'irlar va suv toshgan yo'lning pastqam qismlarida harakatlanishda yuqoridagi usulda tormozlash tavsiya etiladi.",
     "category": "83-Bilet",
     "difficulty": "o'rta"
@@ -12639,7 +12639,7 @@
     "option_b": "Ohista (ravon) tezlanish va shiddat bilan sekinlashish bilan",
     "option_c": "Ohista (ravon) tezlanish va ohista sekinlashish bilan",
     "option_d": null,
-    "correct_option": "A",
+    "correct_option": "C",
     "explanation": "Avtomobilning tezligini **ravon orttirish** va uni **ohista ravon tormozlash** yoqilg'i sarfini tejaydi.",
     "category": "86-Bilet",
     "difficulty": "o'rta"
@@ -12744,7 +12744,7 @@
     "option_b": "Tormoz tepkisini keskin bosish bilan tezlikni kamaytirishi lozim",
     "option_c": "Dvigatel bilan tormozlash orqali tezlikni kamaytirishi lozim",
     "option_d": null,
-    "correct_option": "A",
+    "correct_option": "C",
     "explanation": "Suvda sirpanish kuchli yomg'ir, sel yoki suv toshgan yo'l qismlarida sodir bo'ladi. Bu holda harakat xavfsizligini ta'minlash maqsadida avtomobilni **dvigatel bilan tormozlash** yaxshi samara beradi.\n\nBahorgi, kuzgi yomg'irlar va suv toshgan yo'lning pastqam qismlarida harakatlanishda yuqoridagi usulda tormozlash tavsiya etiladi.",
     "category": "86-Bilet",
     "difficulty": "o'rta"
@@ -13569,7 +13569,7 @@
     "option_b": "Faqat sirpanchiqda",
     "option_c": "Kunning qorong'i vaqtida va etarlicha ko'rinmaslik sharoitida",
     "option_d": "Barcha sanab o'tilgan hollarda",
-    "correct_option": "C",
+    "correct_option": "D",
     "explanation": "**YHQ 24-bobi 145-bandi:** Shatakka olish quyidagi holatlarda taqiqlanadi: yo'l yaxmalak, sirpanchiq bo'lgan hollarda egiluvchan ulagichda.",
     "category": "92-Bilet",
     "difficulty": "o'rta"

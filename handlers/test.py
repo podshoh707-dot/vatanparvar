@@ -125,7 +125,7 @@ async def test_menu(message: types.Message, state: FSMContext):
         [InlineKeyboardButton(text="🎬 Video-Testlar (207 ta 3D Vaziyat)", callback_data="testcnt_videos")],
         [InlineKeyboardButton(text="⚡️ Ekspress Blits (10 ta tezkor)", callback_data="testcnt_10"),
          InlineKeyboardButton(text="🧠 Zaif tomonlarim (Xatolar)", callback_data="test_mistakes")],
-        [InlineKeyboardButton(text="📂 Barcha 70 ta Biletlar Katalogi", callback_data="biletpage_1")],
+        [InlineKeyboardButton(text="📂 Barcha 125 ta Biletlar Katalogi", callback_data="biletpage_1")],
         [InlineKeyboardButton(text="🔙 Bosh menyu", callback_data="back_to_main_menu")]
     ]
     
@@ -153,12 +153,12 @@ async def test_menu(message: types.Message, state: FSMContext):
     else:
         await message.answer(text, reply_markup=markup, parse_mode="HTML")
 
-# 70 ta bilet sahifalash (1-10, 11-20, ...)
+# 125 ta bilet sahifalash (1-10, 11-20, ...)
 @test_router.callback_query(F.data.startswith("biletpage_"))
 async def bilet_page_handler(callback: types.CallbackQuery):
     page = int(callback.data.split("_")[1])
     per_page = 10
-    total_bilets = 70
+    total_bilets = 125
     start_bilet = (page - 1) * per_page + 1
     end_bilet = min(start_bilet + per_page - 1, total_bilets)
     
@@ -183,7 +183,7 @@ async def bilet_page_handler(callback: types.CallbackQuery):
     keyboard.append([InlineKeyboardButton(text="🔙 Asosiy test menyusi", callback_data="test_back_to_cats")])
     
     text = (
-        f"📂 <b>YHQ BILETLAR KATALOGI ({start_bilet}-{end_bilet} / 70)</b>\n"
+        f"📂 <b>YHQ BILETLAR KATALOGI ({start_bilet}-{end_bilet} / {total_bilets})</b>\n"
         f"━━━━━━━━━━━━━━━━━━━━\n\n"
         f"Har bir biletda 10 tadan rasmiy YHQ savollari mavjud.\n"
         f"👇 <i>Ishlamoqchi bo'lgan biletingizni tanlang:</i>"
@@ -474,62 +474,92 @@ async def send_question(message_or_callback, state: FSMContext):
     bot_info = await bot_obj.get_me()
     caption += f"\n👉 @{bot_info.username}"
 
-    # Media handling (including per‑option images)
-    from aiogram.types import FSInputFile, InputMediaPhoto, InputMediaVideo
+    # Media handling
+    from aiogram.types import FSInputFile, InputMediaPhoto
     import os, json
     from config import BASE_DIR
-        
-    media_group = []
-    # Option‑specific images stored in `option_images`
+
+    chat_id = msg.chat.id
+
+    # 1. Option-specific images (multiple images)
+    option_media_group = []
     if q.option_images:
         try:
             opt_imgs = json.loads(q.option_images) if isinstance(q.option_images, str) else q.option_images
-            # Expected list in order A, B, C, D
-            for img_path in opt_imgs:
-                if not img_path:
-                    continue
-                if not str(img_path).startswith("http"):
-                    cand1 = os.path.join(BASE_DIR, "webapp", str(img_path).replace('\\', '/'))
-                    cand2 = os.path.join(BASE_DIR, str(img_path).replace('\\', '/'))
-                    if os.path.exists(cand1):
-                        file_path = cand1
-                    elif os.path.exists(cand2):
-                        file_path = cand2
-                    else:
+            if isinstance(opt_imgs, list):
+                for img_path in opt_imgs:
+                    if not img_path:
                         continue
-                    media_group.append(InputMediaPhoto(media=FSInputFile(file_path)))
-                else:
-                    media_group.append(InputMediaPhoto(media=img_path))
+                    if not str(img_path).startswith("http"):
+                        cand1 = os.path.join(BASE_DIR, "webapp", str(img_path).replace('\\', '/'))
+                        cand2 = os.path.join(BASE_DIR, str(img_path).replace('\\', '/'))
+                        if os.path.exists(cand1):
+                            option_media_group.append(InputMediaPhoto(media=FSInputFile(cand1)))
+                        elif os.path.exists(cand2):
+                            option_media_group.append(InputMediaPhoto(media=FSInputFile(cand2)))
+                    else:
+                        option_media_group.append(InputMediaPhoto(media=img_path))
         except Exception as e:
             print(f"Error processing option_images: {e}")
-        
-    # Fallback to single video or image if no option_images
-    if not media_group:
-        if q.media_urls:
-            try:
-                m_dict = json.loads(q.media_urls) if isinstance(q.media_urls, str) else q.media_urls
-                if isinstance(m_dict, dict) and m_dict.get("main"):
-                    main_vid_path = os.path.join(BASE_DIR, m_dict["main"].replace('\\', '/'))
-                    if os.path.exists(main_vid_path):
-                        media_group.append(InputMediaVideo(media=FSInputFile(main_vid_path), caption=None))
-            except Exception:
-                pass
-        if not media_group and q.image_url:
-            if not str(q.image_url).startswith("http"):
-                cand1 = os.path.join(BASE_DIR, "webapp", str(q.image_url).replace('\\', '/'))
-                cand2 = os.path.join(BASE_DIR, str(q.image_url).replace('\\', '/'))
-                if os.path.exists(cand1):
-                    media_group.append(InputMediaPhoto(media=FSInputFile(cand1)))
-                elif os.path.exists(cand2):
-                    media_group.append(InputMediaPhoto(media=FSInputFile(cand2)))
+
+    # Agar bir nechta rasm bo'lsa (option_images)
+    if option_media_group:
+        try:
+            await bot_obj.send_media_group(chat_id=chat_id, media=option_media_group, protect_content=protect)
+            await bot_obj.send_message(chat_id=chat_id, text=caption, reply_markup=keyboard, protect_content=protect, parse_mode="HTML")
+            return
+        except Exception as e:
+            print(f"Error sending option media group: {e}")
+
+    # 2. Asosiy Video mavjud bo'lsa
+    video_file = None
+    if q.media_urls:
+        try:
+            m_dict = json.loads(q.media_urls) if isinstance(q.media_urls, str) else q.media_urls
+            if isinstance(m_dict, dict) and m_dict.get("main"):
+                main_vid_path = os.path.join(BASE_DIR, m_dict["main"].replace('\\', '/'))
+                if os.path.exists(main_vid_path):
+                    video_file = FSInputFile(main_vid_path)
+        except Exception as e:
+            print(f"Error checking video: {e}")
+
+    if video_file:
+        try:
+            if len(caption) <= 1024:
+                await bot_obj.send_video(chat_id=chat_id, video=video_file, caption=caption, reply_markup=keyboard, protect_content=protect, parse_mode="HTML")
             else:
-                media_group.append(InputMediaPhoto(media=q.image_url))
+                await bot_obj.send_video(chat_id=chat_id, video=video_file, protect_content=protect)
+                await bot_obj.send_message(chat_id=chat_id, text=caption, reply_markup=keyboard, protect_content=protect, parse_mode="HTML")
+            return
+        except Exception as e:
+            print(f"Error sending video question: {e}")
+
+    # 3. Yagona Rasm mavjud bo'lsa
+    photo_file = None
+    if q.image_url:
+        if not str(q.image_url).startswith("http"):
+            cand1 = os.path.join(BASE_DIR, "webapp", str(q.image_url).replace('\\', '/'))
+            cand2 = os.path.join(BASE_DIR, str(q.image_url).replace('\\', '/'))
+            if os.path.exists(cand1):
+                photo_file = FSInputFile(cand1)
+            elif os.path.exists(cand2):
+                photo_file = FSInputFile(cand2)
         else:
-            try:
-                await bot_obj.send_media_group(chat_id=msg.chat.id, media=media_group, protect_content=protect)
-            except Exception as e:
-                print(f"Error sending question media: {e}")
-                await msg.answer(caption, reply_markup=keyboard, protect_content=protect, parse_mode="HTML")
+            photo_file = q.image_url
+
+    if photo_file:
+        try:
+            if len(caption) <= 1024:
+                await bot_obj.send_photo(chat_id=chat_id, photo=photo_file, caption=caption, reply_markup=keyboard, protect_content=protect, parse_mode="HTML")
+            else:
+                await bot_obj.send_photo(chat_id=chat_id, photo=photo_file, protect_content=protect)
+                await bot_obj.send_message(chat_id=chat_id, text=caption, reply_markup=keyboard, protect_content=protect, parse_mode="HTML")
+            return
+        except Exception as e:
+            print(f"Error sending photo question: {e}")
+
+    # 4. Oddiy matnli savol (yoki rasm/video yuklanmagan holatda)
+    await bot_obj.send_message(chat_id=chat_id, text=caption, reply_markup=keyboard, protect_content=protect, parse_mode="HTML")
 
 
 @test_router.callback_query(F.data.startswith("testcnt_") | F.data.startswith("testbilet_") | F.data.in_(["test_mistakes"]))

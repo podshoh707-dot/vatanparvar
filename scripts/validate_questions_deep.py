@@ -101,12 +101,13 @@ async def deep_audit_questions():
             if "\ufffd" in full_str or "â€™" in full_str or "â€œ" in full_str or "â€" in full_str:
                 errors["encoding_issues"].append(qid)
 
-            # 8. Takroriy savollar
-            norm_text = re.sub(r'\s+', ' ', text.lower())
-            if norm_text in seen_texts:
-                errors["duplicates"].append((qid, seen_texts[norm_text]))
+            # 8. Takroriy savollar (matn va rasm/video bir xil bo'lgan)
+            media_key = str(q.image_url or "") + str(q.media_urls or "")
+            norm_key = f"{re.sub(r'\s+', ' ', text.lower())}___{media_key}"
+            if norm_key in seen_texts:
+                errors["duplicates"].append((qid, seen_texts[norm_key]))
             else:
-                seen_texts[norm_text] = qid
+                seen_texts[norm_key] = qid
 
     print("📊 TEKSHIRUV NATIJALARI:")
     print("-" * 50)

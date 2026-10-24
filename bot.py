@@ -14,9 +14,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 from aiogram import Bot, Dispatcher
 from aiogram.types import BotCommand, BotCommandScopeAllPrivateChats, BotCommandScopeAllGroupChats, MenuButtonWebApp, WebAppInfo
 from handlers import router
-from config import BOT_TOKEN
-
-WEBAPP_URL = "https://avtomaktab-webapp.vercel.app/"
+from config import BOT_TOKEN, WEBAPP_URL
 
 LOCK_FILE = os.path.join(os.path.dirname(__file__), "bot.lock")
 
@@ -24,18 +22,26 @@ lock_file_handle = None
 
 def acquire_lock():
     global lock_file_handle
-    # Serverda (Linux) avvalgi crash qoldirib ketgan eski lock faylni tozalash
-    if os.path.exists(LOCK_FILE) and os.name != 'nt':
+    # Eski lock faylni tozalash (Windows va Linux)
+    if os.path.exists(LOCK_FILE):
         try:
             with open(LOCK_FILE, 'r') as f:
-                old_pid = int(f.read().strip())
-            # Agar eski process mavjud bo'lmasa, lock faylni o'chir
-            import signal
-            try:
-                os.kill(old_pid, 0)  # process tekshiruvi
-            except (ProcessLookupError, OSError):
-                os.remove(LOCK_FILE)
-                print(f"Eski lock fayl (PID {old_pid}) o'chirildi.")
+                content = f.read().strip()
+                old_pid = int(content) if content.isdigit() else 0
+            if old_pid > 0:
+                try:
+                    os.kill(old_pid, 0)  # process mavjudligini tekshirish
+                except (ProcessLookupError, OSError):
+                    try:
+                        os.remove(LOCK_FILE)
+                        print(f"Eski to'xtagan process (PID {old_pid}) lock fayli o'chirildi.")
+                    except Exception:
+                        pass
+            else:
+                try:
+                    os.remove(LOCK_FILE)
+                except Exception:
+                    pass
         except Exception:
             try:
                 os.remove(LOCK_FILE)

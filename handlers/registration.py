@@ -11,8 +11,8 @@ from sqlalchemy import select
 from locales import get_text
 import re
 from datetime import datetime, timedelta
+from config import WEBAPP_URL
 
-WEBAPP_URL = "https://avtomaktab-webapp.vercel.app/"
 
 registration_router = Router()
 

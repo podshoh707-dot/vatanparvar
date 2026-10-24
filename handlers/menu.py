@@ -8,6 +8,7 @@ from database import async_session, User, Setting, Rule, VideoLesson, News, QAIt
 from sqlalchemy import select, func
 from sqlalchemy.sql.expression import desc
 from aiogram.fsm.context import FSMContext
+from config import WEBAPP_URL
 
 menu_router = Router()
 

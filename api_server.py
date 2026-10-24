@@ -222,8 +222,13 @@ async def cleanup_old_rooms(request):
     return web.json_response({"removed": removed})
 
 
+async def health_check(request):
+    return web.Response(text="Avtovatanparvar Bot is running!", content_type="text/plain")
+
+
 def create_app():
     app = web.Application()
+    app.router.add_get("/", health_check)
     app.router.add_post("/duel/create", create_room)
     app.router.add_post("/duel/join", join_room)
     app.router.add_get("/duel/state/{room_id}/{user_id}", get_state)
@@ -234,6 +239,8 @@ def create_app():
 
 async def start_api_server(questions_list, host="0.0.0.0", port=3001):
     """Bot bilan parallel ishlaydigan API serverni ishga tushirish."""
+    import os
+    port = int(os.getenv("PORT", port))
     set_questions(questions_list)
     app = create_app()
     runner = web.AppRunner(app)
@@ -242,3 +249,4 @@ async def start_api_server(questions_list, host="0.0.0.0", port=3001):
     await site.start()
     print(f"Duel API server ishga tushdi: http://{host}:{port}")
     return runner
+

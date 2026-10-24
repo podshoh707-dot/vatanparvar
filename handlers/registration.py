@@ -119,7 +119,7 @@ async def cmd_start(message: types.Message, state: FSMContext, bot: Bot):
                             except:
                                 pass
     
-    # Til tanlash menyusi
+    # Til tanlash menyusi va Bot haqida to'liq ma'lumot
     kb = ReplyKeyboardMarkup(
         keyboard=[
             [KeyboardButton(text="🇺🇿 O'zbekcha"), KeyboardButton(text="🇺🇿 Ўзбекча")],
@@ -127,7 +127,46 @@ async def cmd_start(message: types.Message, state: FSMContext, bot: Bot):
         ],
         resize_keyboard=True
     )
-    await message.answer("Iltimos, tilni tanlang:\nИлтимос, тилни танланг:\nПожалуйста, выберите язык:", reply_markup=kb)
+
+    welcome_caption = (
+        "🏆 <b>AVTO VATANPARVAR — O'ZBEKISTONNING 1-RAQAMLI YHQ PLATFORMASI!</b> 🚘✨\n"
+        "⚡️ <i>Haydovchilik guvohnomasini birinchi urinishda olish uchun rasmiy tizim</i>\n"
+        "━━━━━━━━━━━━━━━━━━━━\n\n"
+        "🚀 <b>Botimizning barcha imkoniyatlari:</b>\n"
+        "🏎 <b>805 ta Rasmiy E-Avtomaktab Savollari</b> — barcha 81 ta biletlar to'liq tahlili\n"
+        "🎬 <b>207 ta 3D Harakatlanish Videolari</b> — murakkab chorrahalar jonli animatsiyalari\n"
+        "🎓 <b>GAI Davlat Imtihoni (20/20)</b> — haqiqiy test simulyatori va Oltin Sertifikat\n"
+        "🥊 <b>1vs1 Real-Time Duel</b> — do'stlaringiz bilan jonli bilim jangi\n"
+        "🚦 <b>130 ta Yo'l Belgilari & Jarimalar</b> — batafsil ma'lumotlar bilan\n"
+        "🏛 <b>Avtomaktab & Toifalar</b> — A, B, BC, C, D, E o'qish narxlari va hujjatlar\n"
+        "📱 <b>Telegram Mini Ilova (WebApp)</b> — qulay interaktiv mobil platforma\n\n"
+        "🎁 <b>Ro'yxatdan o'tganingiz uchun 5 KUNLIK VIP PREMIUM bepul beriladi!</b>\n"
+        "━━━━━━━━━━━━━━━━━━━━\n"
+        "🌐 <i>Iltimos, o'zingizga qulay tilni tanlang:</i>\n"
+        "🌐 <i>Илтимос, ўзингизга қулай тилни танланг:</i>\n"
+        "🌐 <i>Пожалуйста, выберите язык:</i>"
+    )
+
+    import os
+    from aiogram.types import FSInputFile
+    welcome_img = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "welcome.png")
+    if not os.path.exists(welcome_img):
+        welcome_img = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "logo.png")
+
+    if os.path.exists(welcome_img):
+        try:
+            await message.answer_photo(
+                photo=FSInputFile(welcome_img),
+                caption=welcome_caption,
+                reply_markup=kb,
+                parse_mode="HTML"
+            )
+            await state.set_state(RegistrationStates.language)
+            return
+        except Exception as e:
+            print(f"Error sending welcome photo: {e}")
+
+    await message.answer(welcome_caption, reply_markup=kb, parse_mode="HTML")
     await state.set_state(RegistrationStates.language)
 
 
@@ -294,6 +333,8 @@ async def send_main_menu(message: types.Message, lang: str, name: str):
 
     import os
     welcome_img = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "welcome.png")
+    if not os.path.exists(welcome_img):
+        welcome_img = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "logo.png")
 
     inline_kb = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="✨ Mini Ilovani Ochish 📱", web_app=WebAppInfo(url=WEBAPP_URL))]

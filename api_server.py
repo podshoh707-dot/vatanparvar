@@ -299,6 +299,19 @@ async def api_register_user(request):
         )
 
 
+async def health_check(request):
+    """Render.com Web Service Health Check & Status"""
+    return web.json_response(
+        {
+            "status": "ok",
+            "service": "Avtovatanparvar Bot & API",
+            "version": "2.0",
+            "uptime": "active"
+        },
+        headers={"Access-Control-Allow-Origin": "*"}
+    )
+
+
 def create_app():
     app = web.Application()
     app.router.add_get("/", health_check)

@@ -50,8 +50,13 @@ async def init_db():
         is_corrupted = len(sample_opts) > 0 and all(o == 'A' for o in sample_opts)
         
         if count == 0 or is_corrupted:
-            questions_file = os.path.join(os.path.dirname(__file__), "questions_data.json")
-            if os.path.exists(questions_file):
+            candidate_files = [
+                os.path.join(os.path.dirname(__file__), "questions_data.json"),
+                os.path.join(os.path.dirname(os.path.dirname(__file__)), "db", "questions.json"),
+                os.path.join(os.path.dirname(os.path.dirname(__file__)), "webapp", "questions.json"),
+            ]
+            questions_file = next((cf for cf in candidate_files if os.path.exists(cf)), None)
+            if questions_file:
                 print(f"[init_db] Seeding questions from {questions_file}...")
                 with open(questions_file, "r", encoding="utf-8") as f:
                     q_data = json.load(f)
@@ -59,17 +64,41 @@ async def init_db():
                 # Clear and insert fresh questions
                 await session.execute(text("DELETE FROM questions"))
                 for item in q_data:
+                    opt_a, opt_b, opt_c, opt_d = None, None, None, None
+                    opts = item.get("options", [])
+                    if isinstance(opts, list):
+                        for i, opt in enumerate(opts):
+                            if isinstance(opt, dict):
+                                letter = (opt.get("letter") or opt.get("label") or chr(65 + i)).strip().upper()
+                                txt = opt.get("text", "")
+                                if letter == "A": opt_a = txt
+                                elif letter == "B": opt_b = txt
+                                elif letter == "C": opt_c = txt
+                                elif letter == "D": opt_d = txt
+                            elif isinstance(opt, str):
+                                if i == 0: opt_a = opt
+                                elif i == 1: opt_b = opt
+                                elif i == 2: opt_c = opt
+                                elif i == 3: opt_d = opt
+                    
+                    # Direct key fallback
+                    opt_a = opt_a or item.get("option_a") or "-"
+                    opt_b = opt_b or item.get("option_b") or "-"
+                    opt_c = opt_c or item.get("option_c")
+                    opt_d = opt_d or item.get("option_d")
+                    correct_opt = (item.get("correct") or item.get("correct_option") or "A").strip().upper()
+
                     q_obj = Question(
                         id=item.get("id"),
-                        text=item.get("text"),
+                        text=item.get("text", ""),
                         image_url=item.get("image_url"),
                         media_type=item.get("media_type", "image"),
                         media_urls=item.get("media_urls"),
-                        option_a=item.get("option_a"),
-                        option_b=item.get("option_b"),
-                        option_c=item.get("option_c"),
-                        option_d=item.get("option_d"),
-                        correct_option=item.get("correct_option", "A"),
+                        option_a=opt_a,
+                        option_b=opt_b,
+                        option_c=opt_c,
+                        option_d=opt_d,
+                        correct_option=correct_opt,
                         explanation=item.get("explanation"),
                         difficulty=item.get("difficulty", "o'rta"),
                         category=item.get("category", "Umumiy")

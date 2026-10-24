@@ -35,8 +35,8 @@ class Question(Base):
     option_images = Column(Text, nullable=True)  # JSON array of image URLs for each option (e.g., ["opt1.jpg","opt2.jpg","opt3.jpg","opt4.jpg"])
     media_type = Column(String, default="image") # image, video, multi_video
     media_urls = Column(Text, nullable=True) # JSON array for multiple videos
-    option_a = Column(String, nullable=False)
-    option_b = Column(String, nullable=False)
+    option_a = Column(String, nullable=True, default="-")
+    option_b = Column(String, nullable=True, default="-")
     option_c = Column(String, nullable=True)
     option_d = Column(String, nullable=True)
     correct_option = Column(String, nullable=False) # 'A', 'B', 'C', or 'D'

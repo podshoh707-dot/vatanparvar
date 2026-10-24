@@ -244,9 +244,34 @@ async def resume_interrupted_quizzes(bot: Bot):
 async def main():
     acquire_lock()
     
-    # Initialize DB
+    # 1. Render.com port detection va Mini App uchun API serverni ZUDLIK BILAN ishga tushiramiz
+    from api_server import start_api_server, set_questions
+    api_runner = await start_api_server([], port=3001)
+
+    # 2. Initialize DB (Render va serverlarda 805 ta savolni avtomatik to'g'ri o'rnatadi)
     from database import init_db
     await init_db()
+
+    # 3. API server uchun savollarni bazadan olib keshga joylash
+    from database import async_session, Question
+    from sqlalchemy import select as sa_select
+    try:
+        async with async_session() as _sess:
+            _res = await _sess.execute(
+                sa_select(Question).where(Question.option_b != None, Question.option_b != "")
+            )
+            _questions = [
+                {
+                    "id": q.id, "text": q.text, "image_url": q.image_url or "",
+                    "option_a": q.option_a, "option_b": q.option_b or "",
+                    "option_c": q.option_c or "", "option_d": q.option_d or "",
+                    "correct_option": q.correct_option,
+                }
+                for q in _res.scalars().all()
+            ]
+        set_questions(_questions)
+    except Exception as e:
+        print(f"Savollarni keshga yuklashda ogohlantirish: {e}")
 
     # FSM Storage (Persistent JSON Storage - qayta ishga tushganda davom etishi uchun)
     from utils.json_storage import JSONStorage
@@ -264,25 +289,6 @@ async def main():
     # Start APScheduler
     from scheduler import setup_scheduler
     app_scheduler = await setup_scheduler(bot)
-
-    # PvP Duel API serverni ishga tushirish (Mini App uchun)
-    from api_server import start_api_server
-    from database import async_session, Question
-    from sqlalchemy import select as sa_select
-    async with async_session() as _sess:
-        _res = await _sess.execute(
-            sa_select(Question).where(Question.option_b != None, Question.option_b != "")
-        )
-        _questions = [
-            {
-                "id": q.id, "text": q.text, "image_url": q.image_url or "",
-                "option_a": q.option_a, "option_b": q.option_b or "",
-                "option_c": q.option_c or "", "option_d": q.option_d or "",
-                "correct_option": q.correct_option,
-            }
-            for q in _res.scalars().all()
-        ]
-    api_runner = await start_api_server(_questions, port=3001)
 
     print("Bot ishga tushdi...")
     # Bot qayta yonganda tugamagan guruh viktorinalarini tekshiramiz

@@ -2,8 +2,6 @@
 webapp/images/
 images/
 zip/
-welcome.png
-org_banner.png
 *.zip
 
 # Python

@@ -19,9 +19,11 @@ echo [*] Fayllar qo'shilmoqda...
 echo [*] Yangi o'zgarishlar commit qilinmoqda...
 %GIT% commit -m "Vatanparvar Avtotest: HD rasmlar, toza E-Avtomaktab bazasi va yangi zamonaviy interfeys"
 
-echo.
-echo [*] GitHub omboriga (vatanparvar) yuborilmoqda...
-%GIT% push vatanparvar main
+echo [*] GitHub omboriga (https://github.com/podshoh707-dot/Vatanparvar) yuborilmoqda...
+%GIT% push origin main
+if %ERRORLEVEL% NEQ 0 (
+    %GIT% push vatanparvar main
+)
 
 if %ERRORLEVEL% NEQ 0 (
     echo.

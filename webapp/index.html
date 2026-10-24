@@ -406,6 +406,27 @@
         <h2 id="user-name">Foydalanuvchi</h2>
         <div class="profile-streak">🔥 <span id="profile-streak">0</span> kunlik olov</div>
       </div>
+
+      <!-- Registered Student Info Card -->
+      <div class="user-info-card" id="profile-user-card">
+        <div class="uic-row">
+          <span class="uic-label"><i class="fas fa-id-card"></i> O'quvchi:</span>
+          <span class="uic-val" id="prof-fullname">Ro'yxatdan o'tilmagan</span>
+        </div>
+        <div class="uic-row">
+          <span class="uic-label"><i class="fas fa-phone"></i> Telefon:</span>
+          <span class="uic-val" id="prof-phone">-</span>
+        </div>
+        <div class="uic-row">
+          <span class="uic-label"><i class="fas fa-map-marker-alt"></i> Hudud:</span>
+          <span class="uic-val" id="prof-region">-</span>
+        </div>
+        <div class="uic-row">
+          <span class="uic-label"><i class="fas fa-gem" style="color: #38bdf8;"></i> Maqom:</span>
+          <span class="uic-val vip-badge">💎 5 Kunlik VIP</span>
+        </div>
+        <button class="uic-edit-btn" onclick="openRegisterModal()"><i class="fas fa-edit"></i> Ma'lumotlarni tahrirlash</button>
+      </div>
       <div class="profile-stats-grid">
         <div class="psg-item">
           <div class="psg-num" id="stat-tests">0</div>
@@ -733,8 +754,76 @@
       <button class="big-green-btn" onclick="shareCertificate()">
         <i class="fas fa-share-alt"></i> Sertifikatni Ulashish
       </button>
+  </div>
+
+  <!-- ════════ REGISTRATION MODAL / ONBOARDING ════════ -->
+  <div id="view-register" class="confirm-overlay hidden" style="z-index: 99999;">
+    <div class="reg-modal-card">
+      <div class="reg-badge"><i class="fas fa-car-side"></i> AVTOVATANPARVAR</div>
+      <h2 class="reg-title">Ro'yxatdan O'tish</h2>
+      <p class="reg-subtitle">Platformadan to'liq foydalanish va <b>5 kunlik bepul VIP Premium</b> olish uchun anketani to'ldiring:</p>
+
+      <!-- Step 1: Til -->
+      <div class="reg-field">
+        <label><i class="fas fa-globe"></i> Tilni tanlang / Выберите язык:</label>
+        <div class="reg-lang-row">
+          <button type="button" class="reg-lang-btn active" id="lang-uz" onclick="selectRegLang('uz')">🇺🇿 O'zbekcha</button>
+          <button type="button" class="reg-lang-btn" id="lang-uz_cyr" onclick="selectRegLang('uz_cyr')">🇺🇿 Ўзбекча</button>
+          <button type="button" class="reg-lang-btn" id="lang-ru" onclick="selectRegLang('ru')">🇷🇺 Русский</button>
+        </div>
+      </div>
+
+      <!-- Step 2: F.I.SH -->
+      <div class="reg-field">
+        <label for="reg-fullname"><i class="fas fa-user-graduate"></i> Ism va Familiyangiz (F.I.SH):</label>
+        <input type="text" id="reg-fullname" class="reg-input" placeholder="Masalan: Sardor Aliyev" autocomplete="name">
+      </div>
+
+      <!-- Step 3: Telefon raqam -->
+      <div class="reg-field">
+        <label for="reg-phone"><i class="fas fa-phone-alt"></i> Telefon raqamingiz:</label>
+        <div class="reg-phone-wrapper">
+          <span class="reg-phone-prefix">+998</span>
+          <input type="tel" id="reg-phone" class="reg-input reg-phone-input" placeholder="901234567" maxlength="9">
+        </div>
+      </div>
+
+      <!-- Step 4: Hudud / Viloyat -->
+      <div class="reg-field">
+        <label for="reg-region"><i class="fas fa-map-marker-alt"></i> Ta'lim hududingiz / Viloyat:</label>
+        <select id="reg-region" class="reg-select">
+          <option value="Toshkent shahri">Toshkent shahri</option>
+          <option value="Toshkent viloyati">Toshkent viloyati</option>
+          <option value="Andijon">Andijon</option>
+          <option value="Buxoro">Buxoro</option>
+          <option value="Farg'ona">Farg'ona</option>
+          <option value="Jizzax">Jizzax</option>
+          <option value="Xorazm">Xorazm</option>
+          <option value="Namangan">Namangan</option>
+          <option value="Navoiy">Navoiy</option>
+          <option value="Qashqadaryo">Qashqadaryo</option>
+          <option value="Samarqand">Samarqand</option>
+          <option value="Sirdaryo">Sirdaryo</option>
+          <option value="Surxondaryo">Surxondaryo</option>
+          <option value="Qoraqalpog'iston">Qoraqalpog'iston Respublikasi</option>
+        </select>
+      </div>
+
+      <!-- Bonus Banner -->
+      <div class="reg-bonus-box">
+        <div class="rbb-icon">🎁</div>
+        <div class="rbb-text">
+          <b>+5 Kunlik VIP Premium Sovg'a!</b>
+          <span>Ro'yxatdan o'tganingizdan so'ng 81 ta rasmiy bilet va testlar to'liq ochiladi.</span>
+        </div>
+      </div>
+
+      <button type="button" class="big-green-btn" id="reg-submit-btn" onclick="submitRegistration()">
+        <i class="fas fa-check-circle"></i> Ro'yxatdan O'tish
+      </button>
     </div>
   </div>
+
 
   <!-- ════════════════ BOTTOM NAV ════════════════ -->
   <nav class="bottom-nav">

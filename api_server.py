@@ -226,9 +226,86 @@ async def health_check(request):
     return web.Response(text="Avtovatanparvar Bot is running!", content_type="text/plain")
 
 
+async def api_register_user(request):
+    """POST /api/register va POST /register - Mini Ilovadan ro'yxatdan o'tish"""
+    # CORS options preflight
+    if request.method == "OPTIONS":
+        return web.Response(headers={
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type",
+        })
+
+    try:
+        data = await request.json()
+        telegram_id = int(data.get("telegram_id", 0))
+        full_name = str(data.get("full_name", "")).strip()
+        phone = str(data.get("phone", "")).strip()
+        language = str(data.get("language", "uz")).strip()
+        region = str(data.get("region", "Toshkent")).strip()
+
+        if not full_name or not phone:
+            return web.json_response(
+                {"ok": False, "error": "full_name va phone kiritilishi shart"},
+                status=400,
+                headers={"Access-Control-Allow-Origin": "*"}
+            )
+
+        from database import async_session, User, UserStat
+        from datetime import datetime, timedelta
+        from sqlalchemy import select
+
+        async with async_session() as session:
+            user = None
+            if telegram_id > 0:
+                result = await session.execute(select(User).where(User.telegram_id == telegram_id))
+                user = result.scalars().first()
+
+            if not user:
+                user = User(
+                    telegram_id=telegram_id if telegram_id > 0 else int(time.time()),
+                    full_name=full_name,
+                    phone=phone,
+                    language=language,
+                    region=region,
+                    is_premium=True,
+                    premium_expires_at=datetime.utcnow() + timedelta(days=5),
+                    points=50
+                )
+                session.add(user)
+                await session.flush()
+                user_stat = UserStat(user_id=user.id)
+                session.add(user_stat)
+            else:
+                user.full_name = full_name
+                user.phone = phone
+                user.language = language
+                user.region = region
+                if not user.is_premium or (user.premium_expires_at and user.premium_expires_at < datetime.utcnow()):
+                    user.is_premium = True
+                    user.premium_expires_at = datetime.utcnow() + timedelta(days=5)
+
+            await session.commit()
+
+        return web.json_response(
+            {"ok": True, "message": "Ro'yxatdan muvaffaqiyatli o'tildi!", "user": {"full_name": full_name, "phone": phone, "language": language, "region": region}},
+            headers={"Access-Control-Allow-Origin": "*"}
+        )
+    except Exception as e:
+        return web.json_response(
+            {"ok": False, "error": str(e)},
+            status=500,
+            headers={"Access-Control-Allow-Origin": "*"}
+        )
+
+
 def create_app():
     app = web.Application()
     app.router.add_get("/", health_check)
+    app.router.add_post("/api/register", api_register_user)
+    app.router.add_options("/api/register", api_register_user)
+    app.router.add_post("/register", api_register_user)
+    app.router.add_options("/register", api_register_user)
     app.router.add_post("/duel/create", create_room)
     app.router.add_post("/duel/join", join_room)
     app.router.add_get("/duel/state/{room_id}/{user_id}", get_state)

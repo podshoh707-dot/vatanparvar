@@ -14,22 +14,62 @@ async def web_app_data_handler(message: types.Message):
     data_str = message.web_app_data.data
     try:
         data = json.loads(data_str)
-        if data.get('action') == 'test_completed':
+        if data.get('action') == 'register':
+            full_name = str(data.get('full_name', '')).strip()
+            phone = str(data.get('phone', '')).strip()
+            language = str(data.get('language', 'uz')).strip()
+            region = str(data.get('region', 'Toshkent')).strip()
+
+            from database.models import User, UserStat
+            from datetime import datetime, timedelta
+            async with async_session() as session:
+                result = await session.execute(select(User).where(User.telegram_id == message.from_user.id))
+                user = result.scalars().first()
+                if not user:
+                    user = User(
+                        telegram_id=message.from_user.id,
+                        full_name=full_name,
+                        phone=phone,
+                        language=language,
+                        region=region,
+                        is_premium=True,
+                        premium_expires_at=datetime.utcnow() + timedelta(days=5),
+                        points=50
+                    )
+                    session.add(user)
+                    await session.flush()
+                    user_stat = UserStat(user_id=user.id)
+                    session.add(user_stat)
+                else:
+                    user.full_name = full_name
+                    user.phone = phone
+                    user.language = language
+                    user.region = region
+                    if not user.is_premium or (user.premium_expires_at and user.premium_expires_at < datetime.utcnow()):
+                        user.is_premium = True
+                        user.premium_expires_at = datetime.utcnow() + timedelta(days=5)
+                await session.commit()
+
+            await message.answer(
+                f"🎉 <b>XUSH KELIBSIZ, {full_name.upper()}!</b>\n\n"
+                f"✅ Mini Ilova orqali ro'yxatdan muvaffaqiyatli o'tdingiz!\n"
+                f"🎁 Sizga <b>5 kunlik VIP Premium</b> va <b>+50 ball</b> sovg'a qilindi!",
+                parse_mode="HTML"
+            )
+
+        elif data.get('action') == 'test_completed':
             correct = data.get('correct', 0)
             total = data.get('total', 10)
             
             async with async_session() as session:
-                # User topish
                 from database.models import User, UserStat
                 result = await session.execute(select(User).where(User.telegram_id == message.from_user.id))
                 user = result.scalars().first()
                 
                 if user:
-                    # Ballarni yangilash (har bir to'g'ri javob uchun 5 ball masalan)
                     added_points = correct * 5
                     user.points += added_points
                     
-                    # Statistikani yangilash
                     stat_result = await session.execute(select(UserStat).where(UserStat.user_id == user.id))
                     user_stat = stat_result.scalars().first()
                     

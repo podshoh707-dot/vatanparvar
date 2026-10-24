@@ -259,24 +259,175 @@ async function loadJSON(file) {
   }
 }
 
+// ══════════════════════════════════════════
+// ── MINI ILOVADA RO'YXATDAN O'TISH (REGISTRATION) ──
+// ══════════════════════════════════════════
+let selectedRegLang = 'uz';
+
+function selectRegLang(lang) {
+  selectedRegLang = lang;
+  document.querySelectorAll('.reg-lang-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(`lang-${lang}`)?.classList.add('active');
+  haptic('light');
+}
+
+function openRegisterModal() {
+  const regUser = getRegisteredUser();
+  if (regUser) {
+    const fn = document.getElementById('reg-fullname');
+    if (fn) fn.value = regUser.full_name || '';
+    const ph = document.getElementById('reg-phone');
+    if (ph) {
+      ph.value = (regUser.phone || '').replace('+998', '').replace(/\D/g, '');
+    }
+    const rg = document.getElementById('reg-region');
+    if (rg && regUser.region) rg.value = regUser.region;
+    if (regUser.language) selectRegLang(regUser.language);
+  } else if (tg?.initDataUnsafe?.user) {
+    const u = tg.initDataUnsafe.user;
+    const tgName = (u.first_name || '') + (u.last_name ? ' ' + u.last_name : '');
+    const fn = document.getElementById('reg-fullname');
+    if (fn && !fn.value) fn.value = tgName.trim();
+  }
+  document.getElementById('view-register')?.classList.remove('hidden');
+}
+
+function closeRegisterModal() {
+  document.getElementById('view-register')?.classList.add('hidden');
+}
+
+function getRegisteredUser() {
+  try {
+    const d = localStorage.getItem('avp_registered_user');
+    return d ? JSON.parse(d) : null;
+  } catch(e) {
+    return null;
+  }
+}
+
+function checkRegistrationOnStartup() {
+  const regUser = getRegisteredUser();
+  if (!regUser || !regUser.full_name || !regUser.phone) {
+    // Agar ro'yxatdan o'tmagan bo'lsa, modalni ochamiz
+    setTimeout(() => {
+      openRegisterModal();
+    }, 450);
+  } else {
+    applyRegisteredUserInfo(regUser);
+  }
+}
+
+function applyRegisteredUserInfo(user) {
+  if (!user) return;
+  // Ismni yangilash
+  ['user-name', 'home-username', 'prof-fullname'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = user.full_name;
+  });
+
+  const pEl = document.getElementById('prof-phone');
+  if (pEl) pEl.textContent = user.phone || '-';
+
+  const rEl = document.getElementById('prof-region');
+  if (rEl) rEl.textContent = user.region || '-';
+
+  const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(user.full_name)}&background=1e3a2f&color=58cc02&size=80`;
+  ['user-photo', 'header-avatar'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el && (!el.src || el.src.includes('ui-avatars'))) el.src = avatarUrl;
+  });
+}
+
+async function submitRegistration() {
+  const nameInput = document.getElementById('reg-fullname');
+  const phoneInput = document.getElementById('reg-phone');
+  const regionSelect = document.getElementById('reg-region');
+
+  const fullName = nameInput ? nameInput.value.trim() : '';
+  const rawPhone = phoneInput ? phoneInput.value.trim().replace(/\D/g, '') : '';
+  const region = regionSelect ? regionSelect.value : 'Toshkent shahri';
+
+  if (!fullName || fullName.length < 3) {
+    showToast("❌ Iltimos, ism va familiyangizni to'liq kiriting!");
+    nameInput?.focus();
+    haptic('error');
+    return;
+  }
+
+  if (!rawPhone || rawPhone.length !== 9) {
+    showToast("❌ Telefon raqamingizni to'liq kiriting (masalan: 901234567)!");
+    phoneInput?.focus();
+    haptic('error');
+    return;
+  }
+
+  const phone = '+998' + rawPhone;
+  const tgUser = tg?.initDataUnsafe?.user;
+  const telegramId = tgUser?.id || 0;
+
+  const userObj = {
+    telegram_id: telegramId,
+    full_name: fullName,
+    phone: phone,
+    language: selectedRegLang,
+    region: region,
+    registered_at: new Date().toISOString()
+  };
+
+  // 1. Brauzer xotirasiga saqlash
+  localStorage.setItem('avp_registered_user', JSON.stringify(userObj));
+
+  // 2. Interfeysni darhol yangilash
+  applyRegisteredUserInfo(userObj);
+  closeRegisterModal();
+  playSound('fanfare');
+  haptic('success');
+  showToast(`🎉 Xush kelibsiz, ${fullName}! 5 kunlik VIP Premium faollashdi!`);
+
+  // 3. Serverga yuborish (REST API)
+  try {
+    fetch('/api/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(userObj)
+    }).catch(() => {
+      fetch('/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userObj)
+      }).catch(() => {});
+    });
+  } catch(e) {}
+
+  // 4. Telegram WebApp ga ma'lumot uzatish
+  if (tg?.sendData) {
+    try {
+      tg.sendData(JSON.stringify({
+        action: 'register',
+        full_name: fullName,
+        phone: phone,
+        language: selectedRegLang,
+        region: region
+      }));
+    } catch(e) {}
+  }
+}
+
 async function initApp() {
   // Telegram user
   if (tg?.initDataUnsafe?.user) {
     const u = tg.initDataUnsafe.user;
     const fullName = u.first_name + (u.last_name ? ' ' + u.last_name : '');
-    // Set all name elements
     ['user-name', 'home-username'].forEach(id => {
       const el = document.getElementById(id);
       if (el) el.textContent = fullName;
     });
-    // Set all avatar elements
     if (u.photo_url) {
       ['user-photo', 'header-avatar'].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.src = u.photo_url;
       });
     } else {
-      // Generate avatar from name
       const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(fullName)}&background=1e3a2f&color=58cc02&size=80`;
       ['user-photo', 'header-avatar'].forEach(id => {
         const el = document.getElementById(id);
@@ -286,6 +437,7 @@ async function initApp() {
   }
 
   loadStats();
+  checkRegistrationOnStartup();
 
   try {
     const [q, s, r, v, n, o] = await Promise.all([
@@ -1535,4 +1687,8 @@ window.openSignModal = openSignModal;
 window.closeSignModal = closeSignModal;
 window.quizOnThisSign = quizOnThisSign;
 window.showToast = showToast;
+window.selectRegLang = selectRegLang;
+window.openRegisterModal = openRegisterModal;
+window.closeRegisterModal = closeRegisterModal;
+window.submitRegistration = submitRegistration;
 

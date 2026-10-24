@@ -1,0 +1,1538 @@
+/* ══════════════════════════════════════════
+   AVTOVATANPARVAR MINI ILOVA - app.js
+   Full Featured JavaScript
+══════════════════════════════════════════ */
+
+// ── Telegram WebApp init ──
+const tg = window.Telegram?.WebApp;
+if (tg) {
+  tg.expand();
+  tg.setHeaderColor('#131f24');
+  tg.setBackgroundColor('#131f24');
+  tg.ready();
+}
+
+// ── State ──
+let allQuestions = [], allSigns = [], allRules = [], allVideos = [], allNews = [], orgInfo = null;
+let testState = {
+  questions: [], current: 0, correct: 0, wrong: 0,
+  selectedCategory: 'Barchasi', count: 10, answered: false
+};
+let userStats = { 
+  tests: 0, 
+  correct: 0, 
+  wrong: 0, 
+  streak: 0, 
+  lastActiveDate: null, 
+  errors: [] // Store IDs of wrong questions
+};
+let signsFilter = 'Barchasi';
+
+// ── Local storage stats ──
+function loadStats() {
+  const s = localStorage.getItem('avp_stats');
+  if (s) {
+    const parsed = JSON.parse(s);
+    userStats = { ...userStats, ...parsed };
+  }
+  
+  // Streak calculation
+  const today = new Date().toISOString().split('T')[0];
+  if (userStats.lastActiveDate !== today) {
+    if (userStats.lastActiveDate) {
+      const lastDate = new Date(userStats.lastActiveDate);
+      const currentDate = new Date(today);
+      const diffTime = Math.abs(currentDate - lastDate);
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+      
+      if (diffDays === 1) {
+        userStats.streak += 1; // Increment streak
+      } else if (diffDays > 1) {
+        userStats.streak = 1; // Reset streak if missed a day
+      }
+    } else {
+      userStats.streak = 1; // First time
+    }
+    userStats.lastActiveDate = today;
+    saveStats(); // Save updated streak immediately
+  }
+  
+  updateStatDisplay();
+}
+
+function saveStats() {
+  localStorage.setItem('avp_stats', JSON.stringify(userStats));
+}
+// ── Sound and Haptics ──
+let soundEnabled = localStorage.getItem('avp_sound') !== 'false';
+
+function toggleSound() {
+  soundEnabled = !soundEnabled;
+  localStorage.setItem('avp_sound', soundEnabled);
+  const icon = document.getElementById('sound-icon');
+  const status = document.getElementById('sound-status');
+  if (icon) icon.className = soundEnabled ? 'fas fa-volume-up pm-icon' : 'fas fa-volume-mute pm-icon';
+  if (status) {
+    status.textContent = soundEnabled ? 'Yoqilgan' : "O'chirilgan";
+    status.style.color = soundEnabled ? '#58cc02' : '#ef4444';
+  }
+  haptic('light');
+  if (soundEnabled) playSound('click');
+}
+
+function haptic(type) {
+  try {
+    if (!tg?.HapticFeedback) return;
+    if (type === 'success' || type === 'error' || type === 'warning') {
+      tg.HapticFeedback.notificationOccurred(type);
+    } else if (type === 'light' || type === 'medium' || type === 'heavy') {
+      tg.HapticFeedback.impactOccurred(type);
+    }
+  } catch(e) {}
+}
+
+function playSound(type) {
+  if (!soundEnabled) return;
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    if (type === 'correct') {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5
+      osc.frequency.setValueAtTime(880, ctx.currentTime + 0.08); // A5
+      gain.gain.setValueAtTime(0.15, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.3);
+    } else if (type === 'wrong') {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(220, ctx.currentTime); // A3
+      osc.frequency.setValueAtTime(164.81, ctx.currentTime + 0.1); // E3
+      gain.gain.setValueAtTime(0.2, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.35);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.35);
+    } else if (type === 'click') {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(400, ctx.currentTime);
+      gain.gain.setValueAtTime(0.05, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.05);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.05);
+    } else if (type === 'fanfare') {
+      const notes = [523.25, 659.25, 783.99, 1046.50];
+      notes.forEach((freq, i) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, ctx.currentTime + (i * 0.1));
+        gain.gain.setValueAtTime(0.15, ctx.currentTime + (i * 0.1));
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + (i * 0.1) + 0.4);
+        osc.start(ctx.currentTime + (i * 0.1));
+        osc.stop(ctx.currentTime + (i * 0.1) + 0.4);
+      });
+    }
+  } catch(e) {}
+}
+
+function updateStatDisplay() {
+  const $ = id => document.getElementById(id);
+  const total = allQuestions.length || 805;
+  const pct = total > 0 ? Math.min(100, Math.round((userStats.correct / total) * 100)) : 0;
+  const dashOffset = 176 - (176 * pct / 100);
+
+  // Progress ring
+  if($('home-progress-ring')) $('home-progress-ring').style.strokeDashoffset = dashOffset;
+  if($('home-pct')) $('home-pct').textContent = pct + '%';
+
+  // Stats chips on home
+  if($('stat-correct-home')) $('stat-correct-home').textContent = userStats.correct;
+  if($('stat-wrong-home')) $('stat-wrong-home').textContent = userStats.wrong;
+  if($('stat-total-home')) $('stat-total-home').textContent = total;
+
+  // Streak badge
+  if($('streak-count')) $('streak-count').textContent = userStats.streak;
+  if($('profile-streak')) $('profile-streak').textContent = userStats.streak;
+
+  // Profile stats
+  if($('stat-tests')) $('stat-tests').textContent = userStats.tests;
+  if($('stat-correct')) $('stat-correct').textContent = userStats.correct;
+  if($('stat-wrong')) $('stat-wrong').textContent = userStats.wrong;
+
+  // AI Forecast Probability
+  const totalAnswered = userStats.correct + userStats.wrong;
+  let aiPct = 50;
+  let aiStatus = '🟡 O\'rtacha';
+  let aiDesc = 'Imtihonga tayyorgarlik davom etmoqda.';
+  
+  if (totalAnswered >= 10) {
+    const accuracy = Math.round((userStats.correct / totalAnswered) * 100);
+    aiPct = Math.min(98, Math.max(25, Math.round(accuracy * 0.7 + (Math.min(totalAnswered, 200) / 200) * 28)));
+    if (aiPct >= 85) {
+      aiStatus = '🟢 Yuqori Tayyorgarlik!';
+      aiDesc = 'Haqiqiy GAI imtihonidan o\'tish ehtimolingiz juda baland!';
+    } else if (aiPct >= 70) {
+      aiStatus = '🟡 Yaxshi';
+      aiDesc = 'Biroz ko\'proq test ishlab o\'zingizga bo\'lgan ishonchni oshiring.';
+    } else {
+      aiStatus = '🔴 Past';
+      aiDesc = 'Xatolar ustida ishlash va qoidalarni qayta takrorlash kerak.';
+    }
+  }
+  
+  if($('profile-ai-pct')) $('profile-ai-pct').textContent = aiPct + '%';
+  if($('profile-ai-status')) $('profile-ai-status').textContent = aiStatus;
+  if($('profile-ai-desc')) $('profile-ai-desc').textContent = aiDesc;
+
+  // Badges Activation
+  if (userStats.tests >= 1 && $('badge-starter')) $('badge-starter').classList.add('active');
+  if (userStats.streak >= 3 && $('badge-streak')) $('badge-streak').classList.add('active');
+  if (userStats.correct >= 30 && $('badge-signs')) $('badge-signs').classList.add('active');
+  if (userStats.gaiPassed && $('badge-gai')) $('badge-gai').classList.add('active');
+
+  // Skill Radar Bars
+  const baseAcc = totalAnswered > 0 ? Math.round((userStats.correct / totalAnswered) * 100) : 75;
+  const crossPct = Math.min(99, Math.max(20, baseAcc + 4));
+  const signPct = Math.min(100, Math.max(25, baseAcc + 8));
+  const speedPct = Math.min(95, Math.max(15, baseAcc - 5));
+  const medPct = Math.min(98, Math.max(20, baseAcc + 2));
+
+  if($('skill-cross-pct')) $('skill-cross-pct').textContent = crossPct + '%';
+  if($('skill-cross-fill')) $('skill-cross-fill').style.width = crossPct + '%';
+
+  if($('skill-sign-pct')) $('skill-sign-pct').textContent = signPct + '%';
+  if($('skill-sign-fill')) $('skill-sign-fill').style.width = signPct + '%';
+
+  if($('skill-speed-pct')) $('skill-speed-pct').textContent = speedPct + '%';
+  if($('skill-speed-fill')) $('skill-speed-fill').style.width = speedPct + '%';
+
+  if($('skill-med-pct')) $('skill-med-pct').textContent = medPct + '%';
+  if($('skill-med-fill')) $('skill-med-fill').style.width = medPct + '%';
+}
+
+// ── Duel Difficulty ──
+let duelDifficulty = 'medium';
+function setDuelDiff(level) {
+  duelDifficulty = level;
+  document.querySelectorAll('.diff-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(`diff-${level}`)?.classList.add('active');
+  haptic('light');
+}
+
+// Promo Timer Setup
+function startPromoTimer() {
+  const el = document.getElementById('promo-timer');
+  if (!el) return;
+  let time = 3 * 3600 + 12 * 60 + 21; // 3:12:21
+  setInterval(() => {
+    time--;
+    if(time < 0) time = 0;
+    const h = String(Math.floor(time / 3600)).padStart(2, '0');
+    const m = String(Math.floor((time % 3600) / 60)).padStart(2, '0');
+    const s = String(time % 60).padStart(2, '0');
+    el.textContent = `${h}:${m}:${s}`;
+  }, 1000);
+}
+
+// ── Data loading ──
+async function loadJSON(file) {
+  try {
+    const r = await fetch(file);
+    if (!r.ok) return [];
+    return await r.json();
+  } catch(e) {
+    console.warn("Failed to fetch " + file, e);
+    return [];
+  }
+}
+
+async function initApp() {
+  // Telegram user
+  if (tg?.initDataUnsafe?.user) {
+    const u = tg.initDataUnsafe.user;
+    const fullName = u.first_name + (u.last_name ? ' ' + u.last_name : '');
+    // Set all name elements
+    ['user-name', 'home-username'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = fullName;
+    });
+    // Set all avatar elements
+    if (u.photo_url) {
+      ['user-photo', 'header-avatar'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.src = u.photo_url;
+      });
+    } else {
+      // Generate avatar from name
+      const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(fullName)}&background=1e3a2f&color=58cc02&size=80`;
+      ['user-photo', 'header-avatar'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.src = avatarUrl;
+      });
+    }
+  }
+
+  loadStats();
+
+  try {
+    const [q, s, r, v, n, o] = await Promise.all([
+      loadJSON('questions.json'),
+      loadJSON('signs.json'),
+      loadJSON('rules.json'),
+      loadJSON('videos.json'),
+      loadJSON('news.json'),
+      loadJSON('org_info.json')
+    ]);
+
+    allQuestions = Array.isArray(q) && q.length ? q : [];
+    allSigns = Array.isArray(s) && s.length ? s : [];
+    allRules = Array.isArray(r) && r.length ? r : [];
+    allVideos = Array.isArray(v) && v.length ? v : [];
+    allNews = Array.isArray(n) && n.length ? n : [];
+    orgInfo = o || null;
+
+    if (document.getElementById('stat-total-home')) {
+      document.getElementById('stat-total-home').textContent = allQuestions.length || 805;
+    }
+
+    updateStatDisplay();
+    startPromoTimer();
+    renderCategories(); // Pre-render categories for tests tab
+    if (allQuestions.length) {
+      showToast(`✅ ${allQuestions.length} ta savol tayyor!`);
+    }
+    syncLeaderboard(); // initial sync
+  } catch(e) {
+    showToast('❌ Ma\'lumotlar yuklanmadi');
+    console.error(e);
+  }
+}
+
+// ── Tab Navigation ──
+let activeTab = 'tab-home';
+function switchTab(tabId) {
+  // Hide all tabs
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  // Show target tab
+  const tab = document.getElementById(tabId);
+  if (tab) tab.classList.add('active');
+  activeTab = tabId;
+
+  // Update nav buttons
+  const map = {
+    'tab-home': 'nav-home',
+    'tab-tests': 'nav-tests',
+    'tab-signs': 'nav-signs',
+    'tab-duel': 'nav-duel',
+    'tab-profile': 'nav-profile'
+  };
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  if (map[tabId]) {
+    const navBtn = document.getElementById(map[tabId]);
+    if (navBtn) navBtn.classList.add('active');
+  }
+
+  // Lazy load
+  if (tabId === 'tab-signs') renderSigns();
+  if (tabId === 'tab-tests') renderCategories();
+}
+
+// ── Overlay Navigation ──
+let overlayHistory = [];
+function navigate(viewId) {
+  if (viewId === 'back') {
+    // Go back to previous overlay or close all
+    const prev = overlayHistory.pop();
+    document.querySelectorAll('.overlay-view').forEach(v => v.classList.add('hidden'));
+    if (prev) {
+      document.getElementById(prev)?.classList.remove('hidden');
+    }
+    return;
+  }
+
+  // Hide all overlays first
+  document.querySelectorAll('.overlay-view').forEach(v => v.classList.add('hidden'));
+
+  const view = document.getElementById(viewId);
+  if (!view) return;
+  view.classList.remove('hidden');
+
+  // Push to history for back button support
+  overlayHistory.push(viewId);
+
+  // Lazy load
+  if (viewId === 'view-rules') renderRules();
+  if (viewId === 'view-videos') renderVideos();
+  if (viewId === 'view-news') renderNews();
+  if (viewId === 'view-org') renderOrg();
+  if (viewId === 'view-setup') renderCategories();
+  if (viewId === 'view-biletlar') renderBiletlar();
+  if (viewId === 'view-leaderboard') loadLeaderboard();
+
+  window.scrollTo(0, 0);
+}
+
+// ═══════════════════════════════════════
+// ── TEST MODULE ──
+// ═══════════════════════════════════════
+function renderCategories() {
+  const cats = ['Barchasi', ...new Set(allQuestions.map(q => q.category).filter(Boolean))];
+  const html = cats.map(c =>
+    `<button class="cat-btn ${c === testState.selectedCategory ? 'active' : ''}"
+      onclick="selectCategory(this,'${c}')">${c}</button>`
+  ).join('');
+  
+  // Render in both containers (tab and overlay)
+  const c1 = document.getElementById('category-list');
+  const c2 = document.getElementById('category-list-setup');
+  if (c1) c1.innerHTML = html;
+  if (c2) c2.innerHTML = html;
+}
+
+function selectCategory(btn, cat) {
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  testState.selectedCategory = cat;
+}
+
+function selectCount(btn, n) {
+  document.querySelectorAll('.count-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  testState.count = n;
+}
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length-1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i+1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function startSpecialTest(mode) {
+  let pool = [];
+  testState.count = 20; // default for most
+  
+  if (mode === 'numeric') {
+    pool = allQuestions.filter(q => /\d/.test(q.text));
+    if (!pool.length) { showToast('\u274C Raqamli savollar topilmadi!'); return; }
+  } else if (mode === 'tricky') {
+    // Arbitrary heuristic: questions with long text or randomly pick a subset
+    pool = allQuestions.filter(q => q.text.length > 80);
+    if (!pool.length) pool = allQuestions; // fallback
+  } else if (mode === 'marathon50') {
+    pool = allQuestions;
+    testState.count = 50;
+  } else if (mode === 'my_errors') {
+    const errorsSet = new Set(userStats.errors);
+    pool = allQuestions.filter(q => errorsSet.has(q.id));
+    if (!pool.length) { showToast('\u2705 Sizda xatolar yo\'q! Barakalla!'); return; }
+    testState.count = Math.min(20, pool.length);
+  }
+  
+  testState.questions = shuffle(pool).slice(0, testState.count);
+  testState.current = 0;
+  testState.correct = 0;
+  testState.wrong = 0;
+
+  navigate('view-test');
+  renderQuestion();
+}
+
+function beginTest() {
+  let pool = testState.selectedCategory === 'Barchasi'
+    ? allQuestions
+    : allQuestions.filter(q => q.category === testState.selectedCategory);
+
+  if (!pool.length) { showToast('❌ Bu bo\'limda savollar yo\'q!'); return; }
+
+  testState.questions = shuffle(pool).slice(0, testState.count);
+  testState.current = 0;
+  testState.correct = 0;
+  testState.wrong = 0;
+
+  navigate('view-test');
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = testState.questions[testState.current];
+  const total = testState.questions.length;
+  const idx = testState.current;
+
+  document.getElementById('question-counter').textContent = `${idx+1}/${total}`;
+  document.getElementById('progress-bar').style.width = `${((idx+1)/total)*100}%`;
+  document.getElementById('live-score').textContent = `${testState.correct}/${testState.correct + testState.wrong}`;
+  document.getElementById('question-text').textContent = q.text;
+
+  // Image
+  const imgDiv = document.getElementById('question-image');
+  const imgEl = document.getElementById('question-img-el');
+  if (q.image_url) {
+    imgEl.src = q.image_url;
+    imgDiv.classList.remove('hidden');
+    imgEl.onerror = () => imgDiv.classList.add('hidden');
+  } else {
+    imgDiv.classList.add('hidden');
+  }
+
+  // Options
+  const optA = q.option_a || (q.options?.find(o => o.letter === 'A')?.text) || (q.options && q.options[0]?.text) || '';
+  const optB = q.option_b || (q.options?.find(o => o.letter === 'B')?.text) || (q.options && q.options[1]?.text) || '';
+  const optC = q.option_c || (q.options?.find(o => o.letter === 'C')?.text) || (q.options && q.options[2]?.text) || '';
+  const optD = q.option_d || (q.options?.find(o => o.letter === 'D')?.text) || (q.options && q.options[3]?.text) || '';
+
+  const opts = [
+    { label: 'A', text: optA },
+    { label: 'B', text: optB },
+    { label: 'C', text: optC },
+    { label: 'D', text: optD }
+  ].filter(o => o.text);
+
+  const container = document.getElementById('options-container');
+  container.innerHTML = opts.map(opt => `
+    <button class="option-btn" id="opt-${opt.label}" onclick="answerQuestion('${opt.label}')">
+      <span class="opt-label">${opt.label}</span>
+      <span>${opt.text}</span>
+    </button>
+  `).join('');
+
+  document.getElementById('explanation-box').classList.add('hidden');
+  document.getElementById('next-btn').classList.add('hidden');
+  testState.answered = false;
+}
+
+function answerQuestion(selected) {
+  if (testState.answered) return;
+  testState.answered = true;
+
+  const q = testState.questions[testState.current];
+  const correctOpt = q.correct_option || q.correct || 'A';
+  const isCorrect = selected === correctOpt;
+
+  if (isCorrect) {
+    testState.correct++;
+    if (userStats.errors && userStats.errors.includes(q.id)) {
+      userStats.errors = userStats.errors.filter(id => id !== q.id);
+      showToast("✨ Xato muvaffaqiyatli tuzatildi!");
+    }
+  } else {
+    testState.wrong++;
+    if (!userStats.errors) userStats.errors = [];
+    if (!userStats.errors.includes(q.id)) {
+      userStats.errors.push(q.id);
+      if (userStats.errors.length > 100) userStats.errors.shift();
+    }
+  }
+
+  // Visual feedback
+  document.querySelectorAll('.option-btn').forEach(btn => btn.classList.add('disabled'));
+
+  const selBtn = document.getElementById(`opt-${selected}`);
+  const corrBtn = document.getElementById(`opt-${correctOpt}`);
+
+  if (isCorrect) {
+    if (selBtn) selBtn.classList.add('correct');
+    haptic('success');
+    playSound('correct');
+  } else {
+    if (selBtn) selBtn.classList.add('wrong');
+    if (corrBtn) corrBtn.classList.add('correct');
+    haptic('error');
+    playSound('wrong');
+  }
+
+  // Explanation
+  if (q.explanation) {
+    document.getElementById('explanation-text').textContent = q.explanation;
+    document.getElementById('explanation-box').classList.remove('hidden');
+  }
+
+  document.getElementById('live-score').textContent = `${testState.correct}/${testState.correct + testState.wrong}`;
+
+  // GAI Imtihonida 3-xatoda to'xtatish
+  if (testState.isGaiMode && testState.wrong >= 3) {
+    showToast("⚠️ GAI Imtihonida 3 ta xato bo'ldi. Imtihon to'xtatildi!");
+    setTimeout(() => { showResult(); }, 1200);
+    return;
+  }
+
+  document.getElementById('next-btn').classList.remove('hidden');
+}
+
+function nextQuestion() {
+  testState.current++;
+  if (testState.current >= testState.questions.length) {
+    showResult();
+  } else {
+    renderQuestion();
+    window.scrollTo(0,0);
+  }
+}
+
+function showResult() {
+  userStats.tests++;
+  userStats.correct += testState.correct;
+  userStats.wrong += testState.wrong;
+  
+  if (testState.biletNum) {
+    const biletKey = `bilet_${testState.biletNum}`;
+    const biletScore = { correct: testState.correct, total: testState.questions.length };
+    localStorage.setItem(biletKey, JSON.stringify(biletScore));
+  }
+
+  const total = testState.questions.length;
+  const pct = Math.round(testState.correct / total * 100);
+
+  if (testState.isGaiMode && testState.correct >= 18) {
+    userStats.gaiPassed = true;
+    playSound('fanfare');
+  }
+
+  saveStats();
+  updateStatDisplay();
+  syncLeaderboard();
+
+  document.getElementById('result-pct').textContent = pct + '%';
+  document.getElementById('result-correct').textContent = testState.correct + ' ta';
+  document.getElementById('result-wrong').textContent = testState.wrong + ' ta';
+  document.getElementById('result-total').textContent = total + ' ta';
+
+  let emoji, msg;
+  if (pct >= 90) { emoji='🏆'; msg='A\'lo! Siz haqiqiy haydovchisiz!'; }
+  else if (pct >= 70) { emoji='⭐'; msg='Yaxshi! Imtihonga tayyor!'; }
+  else if (pct >= 50) { emoji='📚'; msg='Qoniqarli. Ko\'proq o\'qing!'; }
+  else { emoji='🔁'; msg='Qayta o\'rganish kerak!'; }
+
+  document.getElementById('result-emoji').textContent = emoji;
+  document.getElementById('result-msg').textContent = msg;
+
+  navigate('view-result');
+
+  // Agar GAI topshirgan bo'lsa va 18+ to'g'ri bo'lsa -> Sertifikat ochiladi
+  if (testState.isGaiMode && testState.correct >= 18) {
+    setTimeout(() => { openCertModal(); }, 600);
+  }
+}
+
+// ═══════════════════════════════════════
+// ── GAI IMTIHONI (20/20) ──
+// ═══════════════════════════════════════
+function startGaiExam() {
+  if (!allQuestions.length) { showToast('❌ Savollar yuklanmadi!'); return; }
+  testState.questions = shuffle(allQuestions).slice(0, 20);
+  testState.current = 0;
+  testState.correct = 0;
+  testState.wrong = 0;
+  testState.isGaiMode = true;
+  testState.biletNum = null;
+
+  showToast('🎓 GAI Imtihoni boshlandi! 20 ta savol, 2 tagacha xato ruxsati.');
+  navigate('view-test');
+  renderQuestion();
+}
+
+// ═══════════════════════════════════════
+// ── 81 TA RASMIY BILETLAR ──
+// ═══════════════════════════════════════
+function renderBiletlar() {
+  const container = document.getElementById('biletlar-grid');
+  if (!container) return;
+
+  const totalBiletlar = allQuestions.length ? Math.ceil(allQuestions.length / 10) : 81;
+  let tilesHtml = '';
+  for (let i = 1; i <= totalBiletlar; i++) {
+    const saved = localStorage.getItem(`bilet_${i}`);
+    let statusClass = '';
+    let statusText = '10 savol';
+    if (saved) {
+      try {
+        const data = JSON.parse(saved);
+        const total = data.total || 10;
+        if (data.correct >= Math.round(total * 0.9)) {
+          statusClass = 'passed';
+          statusText = `✅ ${data.correct}/${total}`;
+        } else {
+          statusClass = 'failed';
+          statusText = `❌ ${data.correct}/${total}`;
+        }
+      } catch(e) {}
+    }
+    tilesHtml += `
+      <div class="bilet-tile ${statusClass}" onclick="startBilet(${i})">
+        <div class="bilet-num">#${i}</div>
+        <div class="bilet-status">${statusText}</div>
+      </div>
+    `;
+  }
+  container.innerHTML = tilesHtml;
+}
+
+function startBilet(num) {
+  let biletQuestions = allQuestions.filter(q => q.category === `${num}-Bilet`);
+  if (!biletQuestions.length) {
+    const startIdx = (num - 1) * 10;
+    biletQuestions = allQuestions.slice(startIdx, startIdx + 10);
+  }
+  if (!biletQuestions.length) {
+    showToast('❌ Bilet savollari topilmadi!');
+    return;
+  }
+  testState.questions = biletQuestions;
+  testState.current = 0;
+  testState.correct = 0;
+  testState.wrong = 0;
+  testState.isGaiMode = false;
+  testState.biletNum = num;
+
+  showToast(`📑 ${num}-Bilet boshlandi!`);
+  navigate('view-test');
+  renderQuestion();
+}
+
+// ═══════════════════════════════════════
+// ── YO'L BELGISI MODAL DARCHASI ──
+// ═══════════════════════════════════════
+let currentSelectedSign = null;
+
+function showSignDetail(id) {
+  const s = allSigns.find(sign => sign.id === id);
+  if (!s) return;
+  currentSelectedSign = s;
+
+  document.getElementById('sm-img').src = s.image_url || 'images/placeholder.png';
+  document.getElementById('sm-cat').textContent = s.category || 'Belgi';
+  document.getElementById('sm-name').textContent = s.name || 'Belgi';
+  document.getElementById('sm-desc').textContent = s.description || 'Ushbu belgi yo\'l harakati xavfsizligini ta\'minlash uchun o\'rnatiladi.';
+
+  const fineBox = document.getElementById('sm-fine-box');
+  const fineText = document.getElementById('sm-fine-text');
+  if (s.example) {
+    fineText.textContent = s.example;
+    fineBox.classList.remove('hidden');
+  } else {
+    fineText.textContent = 'Yo\'l harakati qoidalariga rioya qiling!';
+    fineBox.classList.remove('hidden');
+  }
+
+  document.getElementById('sign-modal').classList.remove('hidden');
+  playSound('click');
+  haptic('light');
+}
+
+function closeSignModal() {
+  document.getElementById('sign-modal').classList.add('hidden');
+  currentSelectedSign = null;
+}
+
+function quizOnThisSign() {
+  if (!currentSelectedSign) return;
+  const query = (currentSelectedSign.name || '').toLowerCase().split(' ')[0];
+  const matching = allQuestions.filter(q => (q.text || '').toLowerCase().includes(query) || (q.category || '').toLowerCase().includes('belgi'));
+  closeSignModal();
+  if (matching.length) {
+    testState.questions = shuffle(matching).slice(0, 10);
+  } else {
+    testState.questions = shuffle(allQuestions.filter(q => (q.category || '').toLowerCase().includes('belgi'))).slice(0, 10);
+  }
+  testState.current = 0;
+  testState.correct = 0;
+  testState.wrong = 0;
+  testState.isGaiMode = false;
+  testState.biletNum = null;
+  navigate('view-test');
+  renderQuestion();
+}
+
+// ═══════════════════════════════════════
+// ── SERTIFIKAT MODAL ──
+// ═══════════════════════════════════════
+function openCertModal() {
+  const modal = document.getElementById('cert-modal');
+  if (!modal) return;
+  const uName = document.getElementById('user-name')?.textContent || 'O\'quvchi';
+  document.getElementById('cert-name').textContent = uName;
+  document.getElementById('cert-score').textContent = `${testState.correct} / ${testState.questions.length}`;
+  document.getElementById('cert-date').textContent = new Date().toLocaleDateString('uz-UZ');
+  modal.classList.remove('hidden');
+}
+
+function closeCertModal() {
+  document.getElementById('cert-modal')?.classList.add('hidden');
+}
+
+function shareCertificate() {
+  const text = `🏆 Men Avtomaktab GAI Imtihonidan ${testState.correct}/20 natija bilan o'tdim va Sertifikat oldim! Siz ham sinab ko'ring:`;
+  const url = `https://t.me/share/url?url=https://t.me/avtovatanparvar_bot&text=${encodeURIComponent(text)}`;
+  if (tg?.openTelegramLink) {
+    tg.openTelegramLink(url);
+  } else {
+    window.open(url, '_blank');
+  }
+}
+
+async function syncLeaderboard() {
+  if (!tg?.initDataUnsafe?.user) return;
+  const user = tg.initDataUnsafe.user;
+  try {
+    await fetch('/api/leaderboard/update', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        userId: user.id,
+        name: user.first_name + (user.last_name ? ' ' + user.last_name : ''),
+        score: userStats.correct,
+        streak: userStats.streak
+      })
+    });
+  } catch(e) {
+    console.error('Failed to sync leaderboard', e);
+  }
+}
+
+function retryTest() { beginTest(); }
+
+function confirmQuit() {
+  document.getElementById('confirm-overlay').classList.remove('hidden');
+}
+function closeConfirm() {
+  document.getElementById('confirm-overlay').classList.add('hidden');
+}
+function quitTest() {
+  closeConfirm();
+  // Close all overlays and go back to home tab
+  document.querySelectorAll('.overlay-view').forEach(v => v.classList.add('hidden'));
+  overlayHistory = [];
+  switchTab('tab-home');
+}
+
+// ═══════════════════════════════════════
+// ── LEADERBOARD MODULE ──
+// ═══════════════════════════════════════
+async function loadLeaderboard() {
+  const container = document.getElementById('leaderboard-list');
+  container.innerHTML = '<div class="spinner-center"><i class="fas fa-spinner fa-spin"></i></div>';
+  
+  try {
+    const res = await fetch('/api/leaderboard/top');
+    const data = await res.json();
+    
+    if (data.leaderboard && data.leaderboard.length > 0) {
+      container.innerHTML = data.leaderboard.map(u => {
+        const rankClass = u.rank === 1 ? 'gold' : u.rank === 2 ? 'silver' : u.rank === 3 ? 'bronze' : '';
+        return `
+          <div class="lb-item">
+            <div class="lb-rank ${rankClass}">${u.rank === 1 ? '🥇' : u.rank === 2 ? '🥈' : u.rank === 3 ? '🥉' : u.rank}</div>
+            <div class="lb-name">
+              <div class="lb-name-text">${u.name}</div>
+              <div class="lb-streak">🔥 ${u.streak} kun olov</div>
+            </div>
+            <div class="lb-score">${u.score}</div>
+          </div>`;
+      }).join('');
+    } else {
+      container.innerHTML = '<div style="text-align:center; padding: 2rem; color: var(--text2);">Hozircha reyting bo\'sh. Birinchi bo\'ling!</div>';
+    }
+  } catch (e) {
+    console.error('Error loading leaderboard:', e);
+    container.innerHTML = '<div style="text-align:center; padding: 2rem; color: var(--red);">Xatolik yuz berdi.</div>';
+  }
+}
+
+// ═══════════════════════════════════════
+// ── RULES MODULE ──
+// ═══════════════════════════════════════
+function renderRules() {
+  const container = document.getElementById('rules-container');
+  if (!container) return;
+  if (!allRules.length) { container.innerHTML = '<p style="text-align:center;color:var(--text2);padding:40px">Qoidalar yo\'q</p>'; return; }
+  container.innerHTML = allRules.map((r, i) => `
+    <div class="rule-item" onclick="showRule(${r.id})">
+      <h3>${i+1}. ${r.title}</h3>
+      <p>${(r.text || '').substring(0, 80)}${r.text && r.text.length > 80 ? '...' : ''}</p>
+    </div>
+  `).join('');
+}
+
+function showRule(id) {
+  const rule = allRules.find(r => r.id === id);
+  if (!rule) return;
+  document.getElementById('rule-detail-title').textContent = rule.title;
+  document.getElementById('rule-detail-content').textContent = rule.text || 'Matn kiritilmagan.';
+  navigate('view-rule-detail');
+}
+
+// ═══════════════════════════════════════
+// ── SIGNS MODULE ──
+// ═══════════════════════════════════════
+function renderSigns() {
+  const cats = ['Barchasi', ...new Set(allSigns.map(s => s.category).filter(Boolean))];
+  const catList = document.getElementById('signs-category-list');
+  catList.innerHTML = cats.map(c =>
+    `<button class="cat-btn ${c === signsFilter ? 'active' : ''}" onclick="filterSignsCat(this,'${c}')">${c}</button>`
+  ).join('');
+  renderSignsGrid();
+}
+
+function filterSignsCat(btn, cat) {
+  document.querySelectorAll('#signs-category-list .cat-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  signsFilter = cat;
+  renderSignsGrid();
+}
+
+function filterSigns() {
+  renderSignsGrid();
+}
+
+function renderSignsGrid() {
+  const query = document.getElementById('signs-search')?.value?.toLowerCase() || '';
+  let filtered = allSigns;
+  if (signsFilter !== 'Barchasi') filtered = filtered.filter(s => s.category === signsFilter);
+  if (query) filtered = filtered.filter(s => (s.name || '').toLowerCase().includes(query));
+
+  const container = document.getElementById('signs-container');
+  if (!container) return;
+  if (!filtered.length) { container.innerHTML = '<p style="text-align:center;color:var(--text2);padding:40px">Topilmadi</p>'; return; }
+
+  container.innerHTML = filtered.map(s => `
+    <div class="sign-card" onclick="showSignDetail(${s.id})">
+      <img src="${s.image_url || 'images/placeholder.png'}" alt="${s.name}" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.png';">
+      <span>${s.name}</span>
+    </div>
+  `).join('');
+}
+
+
+
+// ═══════════════════════════════════════
+// ── VIDEOS MODULE ──
+// ═══════════════════════════════════════
+function renderVideos() {
+  const sections = ['Barchasi', ...new Set(allVideos.map(v => v.section).filter(Boolean))];
+  const secList = document.getElementById('video-section-list');
+  if (secList) {
+    secList.innerHTML = sections.map((s, i) =>
+      `<button class="cat-btn ${i === 0 ? 'active' : ''}" onclick="filterVideos(this,'${s}')">${s || 'Umumiy'}</button>`
+    ).join('');
+  }
+  renderVideosList('Barchasi');
+}
+
+function filterVideos(btn, section) {
+  document.querySelectorAll('#video-section-list .cat-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderVideosList(section);
+}
+
+function renderVideosList(section) {
+  const container = document.getElementById('videos-container');
+  if (!container) return;
+  const videos = section === 'Barchasi' ? allVideos : allVideos.filter(v => v.section === section);
+
+  if (!videos.length) { container.innerHTML = '<p style="text-align:center;color:var(--text2);padding:40px">Video yo\'q</p>'; return; }
+
+  container.innerHTML = videos.map((v, i) => `
+    <div class="video-item" onclick="openVideo('${(v.youtube_url || v.video_url || '')}', '${(v.topic || '').replace(/'/g, "\\'")}')">
+      <div class="video-thumb">
+        ${v.youtube_url
+          ? `<img src="https://img.youtube.com/vi/${extractYoutubeId(v.youtube_url)}/mqdefault.jpg" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML='<span style=font-size:32px>▶️</span>'">`
+          : '<span style="font-size:32px">▶️</span>'}
+      </div>
+      <div class="video-meta">
+        <div class="video-title">${v.topic}</div>
+        <div class="video-sub">${v.section || 'Umumiy'} • ${i + 1}-dars</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function extractYoutubeId(url) {
+  const m = (url || '').match(/(?:v=|youtu\.be\/)([\w-]{11})/);
+  return m ? m[1] : '';
+}
+
+function openVideo(url, topic) {
+  if (!url) { showToast('⏳ Video hali yuklanmagan'); return; }
+  if (tg?.openLink) tg.openLink(url);
+  else window.open(url, '_blank');
+}
+
+
+
+// ═══════════════════════════════════════
+// ── NEWS MODULE ──
+// ═══════════════════════════════════════
+function renderNews() {
+  const container = document.getElementById('news-container');
+  if (!allNews.length) { container.innerHTML = '<p style="text-align:center;color:#64748b;padding:40px">Yangiliklar yo\'q</p>'; return; }
+  container.innerHTML = allNews.map(n => `
+    <div class="news-card glass-panel">
+      ${n.image_url ? `<img class="news-image" src="${n.image_url}" alt="${n.title}" loading="lazy">` : ''}
+      <div class="news-title">${n.title}</div>
+      <div class="news-content">${n.content}</div>
+      ${n.button_url ? `<button class="news-btn" onclick="openLink('${n.button_url}')"><i class="fas fa-external-link-alt"></i> ${n.button_text || 'Ko\'proq'}</button>` : ''}
+    </div>
+  `).join('');
+}
+
+// ═══════════════════════════════════════
+// ── ORG MODULE ──
+// ═══════════════════════════════════════
+function renderOrg() {
+  const container = document.getElementById('org-container');
+  const text = orgInfo?.text || 'Ma\'lumot kiritilmagan.';
+
+  // Parse categories from text
+  const prices = [
+    {toifa:'A', price:'2 200 000', desc:'Mototsikl'},
+    {toifa:'B', price:'6 100 000', desc:'Yengil avtomobil'},
+    {toifa:'BC', price:'8 100 000', desc:'Yengil + Yuk'},
+    {toifa:'C', price:'3 200 000', desc:'Yuk avtomobil'},
+    {toifa:'E', price:'3 200 000', desc:'Tirkama'},
+    {toifa:'D', price:'5 200 000', desc:'Avtobus'},
+  ];
+
+  const docs = [
+    'Pasport yoki ID karta nusxasi',
+    '083/h shakldagi tibbiy ma\'lumotnoma',
+    '3x4 o\'lchamdagi 4 dona rasm'
+  ];
+
+  container.innerHTML = `
+    <div class="org-content glass-panel">
+      <div style="text-align:center;margin-bottom:16px">
+        <div style="font-size:40px;margin-bottom:8px">🏢</div>
+        <h2 style="font-size:18px;font-weight:800">AVTOVATANPARVAR</h2>
+        <p style="color:#94a3b8;font-size:13px">Innovatsion avtomaktab</p>
+      </div>
+
+      <div style="margin-bottom:20px">
+        <h3 style="font-size:14px;font-weight:700;color:#94a3b8;text-transform:uppercase;margin-bottom:12px">📋 O'qitiladigan toifalar</h3>
+        <table class="org-table">
+          <tr><th>Toifa</th><th>Turi</th><th>Narx (so'm)</th></tr>
+          ${prices.map(p=>`<tr><td><strong>${p.toifa}</strong></td><td style="color:#94a3b8">${p.desc}</td><td style="color:#4ade80;font-weight:700">${p.price}</td></tr>`).join('')}
+        </table>
+      </div>
+
+      <div style="margin-bottom:20px">
+        <h3 style="font-size:14px;font-weight:700;color:#94a3b8;text-transform:uppercase;margin-bottom:12px">📑 Kerakli hujjatlar</h3>
+        ${docs.map((d,i)=>`<div style="display:flex;gap:10px;margin-bottom:8px"><span style="color:#1a56db;font-weight:800">${i+1}.</span><span style="color:#cbd5e1">${d}</span></div>`).join('')}
+      </div>
+
+      <button class="contact-btn" onclick="openLink('https://t.me/avtovatanparvar')">
+        <i class="fas fa-paper-plane"></i> Adminga murojaat
+      </button>
+    </div>
+  `;
+}
+
+// ── Utilities ──
+function openLink(url) {
+  if (tg?.openLink) tg.openLink(url);
+  else window.open(url, '_blank');
+}
+
+function showToast(msg, duration = 2500) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), duration);
+}
+
+function haptic(type) {
+  if (tg?.HapticFeedback) {
+    if (type === 'success') tg.HapticFeedback.notificationOccurred('success');
+    else if (type === 'error') tg.HapticFeedback.notificationOccurred('error');
+    else tg.HapticFeedback.impactOccurred('light');
+  }
+}
+
+// ── Init ──
+document.addEventListener('DOMContentLoaded', initApp);
+
+// ══════════════════════════════════════════
+//   ⚔️ DUEL JANG MODULI (Bot + PvP)
+// ══════════════════════════════════════════
+
+const API_BASE = ''; // Vercel: nisbiy yo'l (/api/duel/...)
+
+let duelMode = null; // 'bot' | 'pvp'
+let duelState = {
+  questions: [], current: 0,
+  userScore: 0, botScore: 0,
+  answered: false,
+  timer: null,
+  timeLeft: 15, totalTime: 15,
+  // PvP
+  roomId: null, userId: null, userName: null,
+  oppName: 'Raqib', pollTimer: null,
+};
+
+// ── Navigation ──
+function duelBack() {
+  clearInterval(duelState.timer);
+  clearInterval(duelState.pollTimer);
+  const inGame = !document.getElementById('duel-game').classList.contains('hidden');
+  if (inGame) {
+    duelShowModeSelect();
+  } else {
+    switchTab('tab-home');
+  }
+}
+
+function duelShowModeSelect() {
+  document.getElementById('duel-mode-select').classList.remove('hidden');
+  document.getElementById('pvp-countdown').classList.add('hidden');
+  document.getElementById('duel-game').classList.add('hidden');
+  document.getElementById('duel-result').classList.add('hidden');
+  document.getElementById('bot-lobby').classList.add('hidden');
+  document.getElementById('pvp-lobby').classList.add('hidden');
+  document.getElementById('pvp-waiting-card').classList.add('hidden');
+  document.getElementById('pvp-find-btn').classList.remove('hidden');
+  document.querySelectorAll('.duel-mode-card').forEach(c => c.classList.remove('selected'));
+  duelMode = null;
+}
+
+function selectDuelMode(mode) {
+  duelMode = mode;
+  document.querySelectorAll('.duel-mode-card').forEach(c => c.classList.remove('selected'));
+  document.getElementById(`mode-${mode}-card`).classList.add('selected');
+
+  if (mode === 'bot') {
+    document.getElementById('bot-lobby').classList.remove('hidden');
+    document.getElementById('pvp-lobby').classList.add('hidden');
+    // set user name
+    const userName = tg?.initDataUnsafe?.user?.first_name || 'Siz';
+    document.getElementById('duel-user-name').textContent = userName;
+    document.getElementById('duel-user-score').textContent = '0';
+    document.getElementById('duel-bot-score').textContent = '0';
+  } else {
+    document.getElementById('pvp-lobby').classList.remove('hidden');
+    document.getElementById('bot-lobby').classList.add('hidden');
+  }
+}
+
+function pvpTab(tab) {
+  document.getElementById('pvp-find-section').classList.toggle('hidden', tab !== 'find');
+  document.getElementById('pvp-code-section').classList.toggle('hidden', tab !== 'code');
+  document.getElementById('pvp-tab-find').classList.toggle('active', tab === 'find');
+  document.getElementById('pvp-tab-code').classList.toggle('active', tab === 'code');
+}
+
+// ══ BOT DUEL ══
+function startDuel() {
+  if (allQuestions.length < 10) {
+    showToast('❌ Savollar yuklanmagan. Iltimos kuting.'); return;
+  }
+  const shuffled = [...allQuestions].sort(() => Math.random() - 0.5);
+  duelState.questions = shuffled.slice(0, 10);
+  duelState.current = 0;
+  duelState.userScore = 0;
+  duelState.botScore = 0;
+  duelState.answered = false;
+  document.getElementById('hud-opp-icon').textContent = '🤖';
+  document.getElementById('duel-opp-label').textContent = '🤖 Avtobot';
+  _duelStartGame();
+}
+
+// ══ PvP DUEL ══
+function _pvpUserId() {
+  return String(tg?.initDataUnsafe?.user?.id || ('guest_' + Math.random().toString(36).slice(2)));
+}
+function _pvpUserName() {
+  return tg?.initDataUnsafe?.user?.first_name || 'O\'yinchi';
+}
+
+async function pvpFindMatch() {
+  const userId = _pvpUserId();
+  const userName = _pvpUserName();
+  duelState.userId = userId;
+  duelState.userName = userName;
+
+  document.getElementById('pvp-find-btn').classList.add('hidden');
+  document.getElementById('pvp-waiting-card').classList.remove('hidden');
+  document.getElementById('pvp-room-code-display').textContent = '...';
+
+  try {
+    const res = await fetch(`/api/duel/create`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ user_id: userId, user_name: userName })
+    });
+    const data = await res.json();
+
+    if (data.status === 'active') {
+      // Immediately matched
+      duelState.roomId = data.room_id;
+      duelState.questions = data.questions;
+      duelState.oppName = data.opponent_name || 'Raqib';
+      _pvpStartFromRoom(data);
+    } else {
+      // Waiting for opponent
+      duelState.roomId = data.room_id;
+      duelState.questions = data.questions;
+      document.getElementById('pvp-room-code-display').textContent = data.room_id;
+      _pvpPollForOpponent();
+    }
+  } catch (e) {
+    showToast('\u274C Server bilan aloqa yo\'q. Keyinroq urinib ko\'ring.');
+    pvpCancelWait();
+  }
+}
+
+function pvpShareCode() {
+  const code = duelState.roomId;
+  if (!code) return;
+  const text = `⚔️ Meni Avtotest Duelida yengib ko'r!\nXona kodi: ${code}\nMini Ilovadan "⚔️ Duel → Do'st bilan → Kod bilan" bo'limiga kiring!`;
+  if (tg?.shareUrl) {
+    tg.shareUrl(text);
+  } else if (navigator.share) {
+    navigator.share({ text });
+  } else {
+    navigator.clipboard.writeText(code).then(() => showToast('✅ Kod nusxalandi!'));
+  }
+}
+
+function pvpCancelWait() {
+  clearInterval(duelState.pollTimer);
+  duelState.roomId = null;
+  document.getElementById('pvp-waiting-card').classList.add('hidden');
+  document.getElementById('pvp-find-btn').classList.remove('hidden');
+}
+
+async function pvpJoinByCode() {
+  const code = document.getElementById('pvp-code-input').value.trim().toUpperCase();
+  if (code.length < 6) { showToast('❌ Kodni to\'liq kiriting!'); return; }
+
+  const userId = _pvpUserId();
+  const userName = _pvpUserName();
+  duelState.userId = userId;
+  duelState.userName = userName;
+
+  try {
+    const res = await fetch(`/api/duel/join`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ room_id: code, user_id: userId, user_name: userName })
+    });
+    const data = await res.json();
+    if (data.error) { showToast(`\u274C ${data.uz || data.error}`); return; }
+
+    duelState.roomId = data.room_id || code;
+    duelState.questions = data.questions;
+    duelState.oppName = data.opponent_name || 'Raqib';
+    _pvpStartFromRoom(data);
+  } catch (e) {
+    showToast('\u274C Server bilan aloqa yo\'q.');
+  }
+}
+
+function _pvpPollForOpponent() {
+  clearInterval(duelState.pollTimer);
+  duelState.pollTimer = setInterval(async () => {
+    if (!duelState.roomId) return;
+    try {
+      const res = await fetch(`/api/duel/state?room_id=${duelState.roomId}&user_id=${duelState.userId}`);
+      const data = await res.json();
+      if (data.status === 'active') {
+        clearInterval(duelState.pollTimer);
+        duelState.oppName = data.opp_name || 'Raqib';
+        duelState.questions = data.questions && data.questions.length ? data.questions : duelState.questions;
+        _pvpStartFromRoom(data);
+      }
+    } catch (e) {}
+  }, 2000);
+}
+
+function _pvpStartFromRoom(data) {
+  clearInterval(duelState.pollTimer);
+  document.getElementById('pvp-waiting-card').classList.add('hidden');
+
+  // Get opponent name (new API returns opp_name directly)
+  duelState.oppName = data.opp_name || data.opponent_name || duelState.oppName || 'Raqib';
+
+  if (!duelState.questions || !duelState.questions.length) {
+    showToast('❌ Savollar yuklanmadi'); return;
+  }
+  duelState.current = 0;
+  duelState.userScore = 0;
+  duelState.botScore = 0;
+  duelState.answered = false;
+  document.getElementById('hud-opp-icon').textContent = '🧑';
+  document.getElementById('duel-opp-label').textContent = `🧑 ${duelState.oppName}`;
+
+  // Show countdown
+  _pvpShowCountdown(() => _duelStartGame());
+}
+
+function _pvpShowCountdown(callback) {
+  document.getElementById('duel-mode-select').classList.add('hidden');
+  document.getElementById('pvp-countdown').classList.remove('hidden');
+  document.getElementById('pvp-your-name').textContent = duelState.userName || 'Siz';
+  document.getElementById('pvp-opp-name').textContent = duelState.oppName;
+
+  let n = 3;
+  const el = document.getElementById('pvp-countdown-num');
+  el.textContent = n;
+  const t = setInterval(() => {
+    n--;
+    if (n <= 0) {
+      clearInterval(t);
+      document.getElementById('pvp-countdown').classList.add('hidden');
+      callback();
+    } else {
+      el.textContent = n;
+      haptic('light');
+    }
+  }, 1000);
+}
+
+// ══ SHARED GAME ENGINE ══
+function _duelStartGame() {
+  document.getElementById('duel-mode-select').classList.add('hidden');
+  document.getElementById('duel-game').classList.remove('hidden');
+  document.getElementById('duel-result').classList.add('hidden');
+  updateDuelHUD();
+  duelShowQuestion();
+}
+
+function updateDuelHUD() {
+  document.getElementById('hud-you-score').textContent = duelState.userScore;
+  document.getElementById('hud-bot-score').textContent = duelState.botScore;
+  document.getElementById('duel-user-score') && (document.getElementById('duel-user-score').textContent = duelState.userScore);
+  document.getElementById('duel-bot-score') && (document.getElementById('duel-bot-score').textContent = duelState.botScore);
+  const qnum = duelState.current + 1;
+  document.getElementById('duel-qnum').textContent = `Savol ${qnum} / ${duelState.questions.length}`;
+}
+
+function duelShowQuestion() {
+  if (duelState.current >= duelState.questions.length) { duelFinish(); return; }
+
+  const q = duelState.questions[duelState.current];
+  const correctOpt = q.correct_option || q.correct || 'A';
+  duelState.answered = false;
+  document.getElementById('duel-question-text').textContent = q.text;
+
+  const imgBox = document.getElementById('duel-question-image');
+  const imgEl = document.getElementById('duel-question-img-el');
+  if (q.image_url) {
+    imgEl.src = q.image_url; imgBox.classList.remove('hidden');
+    imgEl.onerror = () => imgBox.classList.add('hidden');
+  } else { imgBox.classList.add('hidden'); }
+
+  const optA = q.option_a || (q.options?.find(o => o.letter === 'A')?.text) || (q.options && q.options[0]?.text) || '';
+  const optB = q.option_b || (q.options?.find(o => o.letter === 'B')?.text) || (q.options && q.options[1]?.text) || '';
+  const optC = q.option_c || (q.options?.find(o => o.letter === 'C')?.text) || (q.options && q.options[2]?.text) || '';
+  const optD = q.option_d || (q.options?.find(o => o.letter === 'D')?.text) || (q.options && q.options[3]?.text) || '';
+
+  const opts = [
+    { label:'A', text:optA, key:'A' },
+    { label:'B', text:optB, key:'B' },
+    { label:'C', text:optC, key:'C' },
+    { label:'D', text:optD, key:'D' },
+  ].filter(o => o.text);
+
+  const container = document.getElementById('duel-options');
+  container.innerHTML = '';
+  opts.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn';
+    btn.id = `duel-opt-${opt.key}`;
+    btn.innerHTML = `<span class="opt-label">${opt.label}</span>${opt.text}`;
+    btn.onclick = () => duelAnswer(opt.key, correctOpt);
+    container.appendChild(btn);
+  });
+
+  duelStartTimer(correctOpt);
+
+  // Bot AI (qiyinchilik darajasiga qarab)
+  if (duelMode === 'bot') {
+    let botDelay = 3500;
+    let botAccuracy = 0.75;
+    if (duelDifficulty === 'easy') {
+      botDelay = 4500 + Math.random() * 4000;
+      botAccuracy = 0.45;
+    } else if (duelDifficulty === 'hard') {
+      botDelay = 1500 + Math.random() * 2500;
+      botAccuracy = 0.92;
+    } else {
+      botDelay = 2500 + Math.random() * 3500;
+      botAccuracy = 0.75;
+    }
+    const botCorrect = Math.random() < botAccuracy;
+    setTimeout(() => {
+      if (!duelState.answered) {
+        if (botCorrect) { duelState.botScore++; updateDuelHUD(); showToast('🤖 Avtobot to\'g\'ri topdi!'); }
+      }
+    }, botDelay);
+  }
+
+  // PvP: poll opponent score every 3s
+  if (duelMode === 'pvp' && duelState.roomId) {
+    clearInterval(duelState.pollTimer);
+    duelState.pollTimer = setInterval(async () => {
+      try {
+        const res = await fetch(`/api/duel/state?room_id=${duelState.roomId}&user_id=${duelState.userId}`);
+        const data = await res.json();
+        const oppScore = data.opp_score || 0;
+        if (oppScore !== duelState.botScore) {
+          duelState.botScore = oppScore;
+          updateDuelHUD();
+        }
+        if (data.status === 'finished' && duelState.current >= duelState.questions.length) {
+          clearInterval(duelState.pollTimer);
+          duelFinish();
+        }
+      } catch(e) {}
+    }, 3000);
+  }
+}
+
+function duelStartTimer(correctOption) {
+  clearInterval(duelState.timer);
+  duelState.timeLeft = duelState.totalTime;
+  const timerEl = document.getElementById('duel-timer');
+  const barEl = document.getElementById('duel-timer-bar');
+  barEl.style.width = '100%';
+  barEl.style.background = 'linear-gradient(90deg,#22c55e,#16a34a)';
+  timerEl.classList.remove('danger');
+
+  duelState.timer = setInterval(() => {
+    duelState.timeLeft--;
+    timerEl.textContent = duelState.timeLeft;
+    barEl.style.width = (duelState.timeLeft / duelState.totalTime * 100) + '%';
+    if (duelState.timeLeft <= 5) {
+      timerEl.classList.add('danger');
+      barEl.style.background = 'linear-gradient(90deg,#dc2626,#ef4444)';
+      haptic('light');
+    }
+    if (duelState.timeLeft <= 0) {
+      clearInterval(duelState.timer);
+      if (!duelState.answered) duelRevealAnswer(null, correctOption);
+    }
+  }, 1000);
+}
+
+function duelAnswer(selected, correct) {
+  if (duelState.answered) return;
+  clearInterval(duelState.timer);
+  duelState.answered = true;
+
+  // PvP: submit to server
+  if (duelMode === 'pvp' && duelState.roomId) {
+    const isCorrect = (selected === correct);
+    fetch(`/api/duel/answer`, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        room_id: duelState.roomId,
+        user_id: duelState.userId,
+        question_idx: duelState.current,
+        answer: selected,
+        is_correct: isCorrect
+      })
+    }).catch(() => {});
+  }
+
+  duelRevealAnswer(selected, correct);
+}
+
+function duelRevealAnswer(selected, correct) {
+  ['A','B','C','D'].forEach(k => {
+    const btn = document.getElementById(`duel-opt-${k}`);
+    if (!btn) return;
+    btn.classList.add('disabled');
+    if (k === correct) btn.classList.add('correct');
+    else if (k === selected && selected !== correct) btn.classList.add('wrong');
+  });
+
+  if (selected === correct) {
+    duelState.userScore++; haptic('success'); showToast('✅ To\'g\'ri!');
+  } else if (selected) {
+    haptic('error'); showToast('❌ Xato!');
+  } else {
+    showToast('⏱ Vaqt tugadi!');
+  }
+
+  updateDuelHUD();
+  setTimeout(() => { duelState.current++; updateDuelHUD(); duelShowQuestion(); }, 1500);
+}
+
+function duelFinish() {
+  clearInterval(duelState.timer);
+  clearInterval(duelState.pollTimer);
+  document.getElementById('duel-game').classList.add('hidden');
+  document.getElementById('duel-result').classList.remove('hidden');
+
+  const you = duelState.userScore;
+  const bot = duelState.botScore;
+  const total = duelState.questions.length;
+  const banner = document.getElementById('duel-result-banner');
+  const emoji = document.getElementById('duel-result-emoji');
+  const title = document.getElementById('duel-result-title');
+  const sub = document.getElementById('duel-result-sub');
+
+  banner.classList.remove('win','lose','draw');
+  if (you > bot) {
+    banner.classList.add('win'); emoji.textContent = '🏆'; title.textContent = 'G\'ALABA!';
+    sub.textContent = `${duelMode === 'pvp' ? duelState.oppName : 'Avtobot'} ustidan ${you}-${bot} hisobida g'olib bo'ldingiz!`;
+    haptic('success');
+    if (tg?.HapticFeedback) tg.HapticFeedback.notificationOccurred('success');
+  } else if (you < bot) {
+    banner.classList.add('lose'); emoji.textContent = '😤'; title.textContent = 'MAG\'LUBIYAT';
+    sub.textContent = `Raqib ${bot}-${you} hisobida yutdi. Qayta urining!`;
+    haptic('error');
+  } else {
+    banner.classList.add('draw'); emoji.textContent = '🤝'; title.textContent = 'DURRANG!';
+    sub.textContent = `${you}-${bot} — teng natija. Rematch?`;
+  }
+  document.getElementById('duel-final-you').textContent = `${you} / ${total}`;
+  document.getElementById('duel-final-bot').textContent = `${bot} / ${total}`;
+}
+
+function duelPlayAgain() {
+  if (duelMode === 'bot') startDuel();
+  else duelShowModeSelect();
+}
+
+// ── Global Window Exports for HTML onclick handlers ──
+window.switchTab = switchTab;
+window.navigate = navigate;
+window.startGaiExam = startGaiExam;
+window.startSpecialTest = startSpecialTest;
+window.beginTest = beginTest;
+window.renderCategories = renderCategories;
+window.selectCategory = selectCategory;
+window.selectCount = selectCount;
+window.renderBiletlar = renderBiletlar;
+window.startBilet = startBilet;
+window.answerQuestion = answerQuestion;
+window.nextQuestion = nextQuestion;
+window.finishTest = finishTest;
+window.toggleSound = toggleSound;
+window.setDuelDiff = setDuelDiff;
+window.startDuel = startDuel;
+window.duelShowModeSelect = duelShowModeSelect;
+window.duelPlayAgain = duelPlayAgain;
+window.openCertModal = openCertModal;
+window.closeCertModal = closeCertModal;
+window.openSignModal = openSignModal;
+window.closeSignModal = closeSignModal;
+window.quizOnThisSign = quizOnThisSign;
+window.showToast = showToast;
+

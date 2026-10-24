@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Avtovatanparvar</title>
+    <meta name="description" content="YHQ testlari, yo'l belgilari, video darslar va ko'p narsa!">
+    <!-- Prevent FOUC -->
+    <script>document.documentElement.classList.add('dark');</script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ══════════════════════════ APP SHELL ══════════════════════════ -->
+<div id="app">
+
+  <!-- ════════════════ HOME TAB ════════════════ -->
+  <div id="tab-home" class="tab-content active">
+    <!-- Top Header -->
+    <header class="top-header">
+      <div class="header-left">
+        <div class="streak-badge">
+          <span class="streak-fire">🔥</span>
+          <span id="streak-count">0</span>
+        </div>
+      </div>
+      <div class="header-logo">Avtovatanparvar</div>
+      <div class="header-right">
+        <button class="icon-btn" onclick="switchTab('tab-profile')">
+          <img id="header-avatar" src="https://ui-avatars.com/api/?name=A&background=1e3a2f&color=58cc02&size=40" class="avatar-sm" alt="">
+        </button>
+      </div>
+    </header>
+
+    <div class="scroll-content">
+      <!-- Welcome Card -->
+      <div class="welcome-card">
+        <div class="welcome-text">
+          <div class="welcome-greeting">Assalomu alaykum, 👋</div>
+          <h2 id="home-username">Foydalanuvchi</h2>
+          <p>Bugun ham imtihonga tayyorlanayapmizmi?</p>
+        </div>
+        <div class="welcome-progress">
+          <div class="progress-ring-container">
+            <svg width="64" height="64" viewBox="0 0 64 64">
+              <circle cx="32" cy="32" r="28" fill="none" stroke="#1e3a2f" stroke-width="6"/>
+              <circle id="home-progress-ring" cx="32" cy="32" r="28" fill="none" stroke="#58cc02"
+                stroke-width="6" stroke-linecap="round" stroke-dasharray="176" stroke-dashoffset="176"
+                transform="rotate(-90 32 32)"/>
+            </svg>
+            <div class="ring-label" id="home-pct">0%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Stats Row -->
+      <div class="stats-row">
+        <div class="stat-chip stat-green" onclick="switchTab('tab-tests')">
+          <i class="fas fa-check-circle"></i>
+          <div>
+            <div class="stat-num" id="stat-correct-home">0</div>
+            <div class="stat-label">To'g'ri</div>
+          </div>
+        </div>
+        <div class="stat-chip stat-red" onclick="startSpecialTest('my_errors')">
+          <i class="fas fa-times-circle"></i>
+          <div>
+            <div class="stat-num" id="stat-wrong-home">0</div>
+            <div class="stat-label">Xato</div>
+          </div>
+        </div>
+        <div class="stat-chip stat-blue">
+          <i class="fas fa-database"></i>
+          <div>
+            <div class="stat-num" id="stat-total-home">805</div>
+            <div class="stat-label">Savol</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section Title -->
+      <div class="section-title">
+        <span>🚀 Tez Boshlash</span>
+      </div>
+
+      <!-- Quick Action Cards -->
+      <div class="quick-grid">
+        <div class="quick-card card-green" onclick="startGaiExam()">
+          <div class="qcard-icon"><i class="fas fa-graduation-cap"></i></div>
+          <div class="qcard-text">
+            <div class="qcard-title">GAI Imtihoni</div>
+            <div class="qcard-sub">20 ta savol / 20 daq</div>
+          </div>
+          <i class="fas fa-chevron-right qcard-arrow"></i>
+        </div>
+        <div class="quick-card card-blue" onclick="navigate('view-biletlar')">
+          <div class="qcard-icon"><i class="fas fa-book"></i></div>
+          <div class="qcard-text">
+            <div class="qcard-title">81 ta Biletlar</div>
+            <div class="qcard-sub">Biletlar bo'yicha</div>
+          </div>
+          <i class="fas fa-chevron-right qcard-arrow"></i>
+        </div>
+        <div class="quick-card card-orange" onclick="startSpecialTest('my_errors')">
+          <div class="qcard-icon"><i class="fas fa-heart-broken"></i></div>
+          <div class="qcard-text">
+            <div class="qcard-title">Xatolarim</div>
+            <div class="qcard-sub">Qayta mashq qiling</div>
+          </div>
+          <i class="fas fa-chevron-right qcard-arrow"></i>
+        </div>
+        <div class="quick-card card-purple" onclick="switchTab('tab-signs')">
+          <div class="qcard-icon"><i class="fas fa-traffic-light"></i></div>
+          <div class="qcard-text">
+            <div class="qcard-title">Yo'l Belgilari</div>
+            <div class="qcard-sub">130 ta HD belgi</div>
+          </div>
+          <i class="fas fa-chevron-right qcard-arrow"></i>
+        </div>
+      </div>
+
+      <!-- Test Modes Section -->
+      <div class="section-title">
+        <span>📚 Test Rejimlari</span>
+      </div>
+      <div class="modes-list">
+        <div class="mode-item" onclick="navigate('view-setup')">
+          <div class="mode-icon bg-green"><i class="fas fa-list-ul"></i></div>
+          <div class="mode-info">
+            <div class="mode-title">Barcha Testlar</div>
+            <div class="mode-desc">Aralash 10–100 ta savol</div>
+          </div>
+          <div class="mode-badge badge-green">Bepul</div>
+        </div>
+        <div class="mode-item" onclick="startSpecialTest('numeric')">
+          <div class="mode-icon bg-yellow"><i class="fas fa-calculator"></i></div>
+          <div class="mode-info">
+            <div class="mode-title">Raqamli Savollar</div>
+            <div class="mode-desc">Tezlik, jarima, kunlar</div>
+          </div>
+          <div class="mode-badge badge-yellow">70 ta</div>
+        </div>
+        <div class="mode-item" onclick="startSpecialTest('tricky')">
+          <div class="mode-icon bg-red"><i class="fas fa-brain"></i></div>
+          <div class="mode-info">
+            <div class="mode-title">Chalg'ituvchi Savollar</div>
+            <div class="mode-desc">Eng qiyin, diqqat talab</div>
+          </div>
+          <div class="mode-badge badge-red">Qiyin</div>
+        </div>
+        <div class="mode-item" onclick="startSpecialTest('marathon50')">
+          <div class="mode-icon bg-purple"><i class="fas fa-running"></i></div>
+          <div class="mode-info">
+            <div class="mode-title">50-lik Marafon</div>
+            <div class="mode-desc">Chidamlilik sinovı</div>
+          </div>
+          <div class="mode-badge badge-purple">50 ta</div>
+        </div>
+      </div>
+
+      <!-- Promo Banner -->
+      <div class="promo-banner" id="promo-banner">
+        <div class="promo-left">
+          <div class="promo-emoji">⚡</div>
+          <div class="promo-info">
+            <div class="promo-title">Premium Taklif</div>
+            <div class="promo-sub">Chegirma tugashiga qoldi:</div>
+          </div>
+        </div>
+        <div class="promo-timer-box">
+          <div id="promo-timer">03:12:21</div>
+        </div>
+      </div>
+
+      <!-- Videos Section -->
+      <div class="section-title">
+        <span>🎬 Video Darslar</span>
+        <button class="see-all-btn" onclick="switchTab('tab-videos')">Barchasi →</button>
+      </div>
+      <div class="video-promo-card" onclick="switchTab('tab-videos')">
+        <div class="vpc-icon"><i class="fas fa-play-circle"></i></div>
+        <div class="vpc-info">
+          <div class="vpc-title">YHQ Video Darslar</div>
+          <div class="vpc-sub">Noldan imtihonga — to'liq kurs</div>
+        </div>
+        <div class="vpc-badge">YANGI</div>
+      </div>
+
+      <div style="height: 80px;"></div>
+    </div>
+  </div>
+
+  <!-- ════════════════ TESTS TAB ════════════════ -->
+  <div id="tab-tests" class="tab-content">
+    <header class="top-header">
+      <div class="header-logo">Test Yechish</div>
+      <button class="icon-btn" onclick="switchTab('tab-home')"><i class="fas fa-home"></i></button>
+    </header>
+    <div class="scroll-content">
+      <!-- Category Setup -->
+      <div class="section-title"><span>📂 Bo'lim tanlang</span></div>
+      <div id="category-list" class="category-chips"></div>
+
+      <div class="section-title"><span>🔢 Savollar soni</span></div>
+      <div class="count-row">
+        <button class="count-btn active" onclick="selectCount(this,10)">10</button>
+        <button class="count-btn" onclick="selectCount(this,20)">20</button>
+        <button class="count-btn" onclick="selectCount(this,50)">50</button>
+        <button class="count-btn" onclick="selectCount(this,100)">100</button>
+      </div>
+
+      <button class="big-green-btn" onclick="beginTest()">
+        <i class="fas fa-play"></i> Testni Boshlash
+      </button>
+      <div style="height: 80px;"></div>
+    </div>
+  </div>
+
+  <!-- ════════════════ SIGNS TAB ════════════════ -->
+  <div id="tab-signs" class="tab-content">
+    <header class="top-header">
+      <div class="header-logo">Yo'l Belgilari</div>
+    </header>
+    <div class="scroll-content">
+      <div class="search-bar">
+        <i class="fas fa-search"></i>
+        <input type="text" id="signs-search" placeholder="Belgi nomini qidiring..." oninput="filterSigns()">
+      </div>
+      <div id="signs-category-list" class="category-chips"></div>
+      <div id="signs-container" class="signs-grid"></div>
+      <div style="height: 80px;"></div>
+    </div>
+  </div>
+
+  <!-- ════════════════ DUEL TAB ════════════════ -->
+  <div id="tab-duel" class="tab-content">
+    <header class="top-header">
+      <div class="header-logo">⚔️ Duel Jang</div>
+    </header>
+    <div class="scroll-content">
+      <!-- Mode Cards -->
+      <div id="duel-mode-select">
+        <div class="duel-hero-card">
+          <div class="dhc-emoji">⚔️</div>
+          <div class="dhc-title">Duel Jang</div>
+          <div class="dhc-sub">Bilimingizni raqibga qarshi sinang!</div>
+        </div>
+        <div class="duel-mode-row">
+          <div class="duel-mode-card" id="mode-bot-card" onclick="selectDuelMode('bot')">
+            <div class="dmc-icon">🤖</div>
+            <div class="dmc-label">Bot bilan</div>
+            <div class="dmc-sub">AI ga qarshi</div>
+          </div>
+          <div class="duel-mode-card" id="mode-pvp-card" onclick="selectDuelMode('pvp')">
+            <div class="dmc-icon">👥</div>
+            <div class="dmc-label">Do'st bilan</div>
+            <div class="dmc-sub">Onlayn PvP</div>
+          </div>
+        </div>
+
+        <!-- Bot lobby -->
+        <div id="bot-lobby" class="hidden">
+          <div class="vs-banner">
+            <div class="vs-player">
+              <div class="vs-avatar you-avatar">🧑</div>
+              <div class="vs-name" id="duel-user-name">Siz</div>
+              <div class="vs-score" id="duel-user-score">0</div>
+            </div>
+            <div class="vs-middle">⚔️<div class="vs-text">VS</div></div>
+            <div class="vs-player">
+              <div class="vs-avatar bot-avatar">🤖</div>
+              <div class="vs-name">Avtobot</div>
+              <div class="vs-score" id="duel-bot-score">0</div>
+            </div>
+          <div class="duel-diff-selector">
+            <span class="diff-label">AI Qiyinlik darajasi:</span>
+            <div class="diff-buttons">
+              <button class="diff-btn" id="diff-easy" onclick="setDuelDiff('easy')">🟢 Oson</button>
+              <button class="diff-btn active" id="diff-medium" onclick="setDuelDiff('medium')">🟡 O'rta</button>
+              <button class="diff-btn" id="diff-hard" onclick="setDuelDiff('hard')">🔴 Master</button>
+            </div>
+          </div>
+          <button class="big-green-btn" onclick="startDuel()">
+            <i class="fas fa-bolt"></i> Jangni Boshlash!
+          </button>
+        </div>
+
+        <!-- PvP lobby -->
+        <div id="pvp-lobby" class="hidden">
+          <div class="pvp-tabs">
+            <button class="pvp-tab active" id="pvp-tab-find" onclick="pvpTab('find')">🔍 Raqib Topish</button>
+            <button class="pvp-tab" id="pvp-tab-code" onclick="pvpTab('code')">🔑 Kod Bilan</button>
+          </div>
+          <div id="pvp-find-section">
+            <div class="pvp-waiting-card hidden" id="pvp-waiting-card">
+              <div class="pvp-spinner"><i class="fas fa-circle-notch fa-spin"></i></div>
+              <div class="pvp-code-label">Xona kodi</div>
+              <div class="pvp-code" id="pvp-room-code-display">——</div>
+              <p>Raqib kutilmoqda...<br><small>Do'stingizga kodni bering</small></p>
+              <button class="outline-btn" onclick="pvpShareCode()"><i class="fas fa-share-alt"></i> Kodni Ulashish</button>
+              <button class="outline-btn danger" style="margin-top:8px;" onclick="pvpCancelWait()">Bekor qilish</button>
+            </div>
+            <button class="big-green-btn" id="pvp-find-btn" onclick="pvpFindMatch()">
+              <i class="fas fa-users"></i> Onlayn Raqib Topish
+            </button>
+          </div>
+          <div id="pvp-code-section" class="hidden">
+            <div class="code-join-card">
+              <h3><i class="fas fa-key"></i> Xona kodini kiriting</h3>
+              <input type="text" id="pvp-code-input" class="code-input"
+                     placeholder="XXXXXXXX" maxlength="8"
+                     oninput="this.value=this.value.toUpperCase()">
+              <button class="big-green-btn" onclick="pvpJoinByCode()">
+                <i class="fas fa-sign-in-alt"></i> Xonaga Kirish
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PvP Countdown -->
+      <div id="pvp-countdown" class="hidden">
+        <div class="found-banner">
+          <div class="found-vs">
+            <div class="vs-player">
+              <div class="vs-avatar you-avatar">🧑</div>
+              <div class="vs-name" id="pvp-your-name">Siz</div>
+            </div>
+            <div class="found-vs-icon">⚔️</div>
+            <div class="vs-player">
+              <div class="vs-avatar" style="background:linear-gradient(135deg,#1a56db,#7c3aed)">🧑</div>
+              <div class="vs-name" id="pvp-opp-name">Raqib</div>
+            </div>
+          </div>
+          <div class="countdown-num" id="pvp-countdown-num">3</div>
+          <p>Jang boshlanmoqda...</p>
+        </div>
+      </div>
+
+      <!-- Duel Game -->
+      <div id="duel-game" class="hidden">
+        <div class="duel-hud">
+          <div class="hud-scores">
+            <span class="hud-you">👤 <b id="hud-you-score">0</b></span>
+            <div class="hud-timer-wrap">
+              <div class="hud-timer-num" id="duel-timer">15</div>
+              <div class="hud-timer-bar-bg"><div class="hud-timer-bar" id="duel-timer-bar"></div></div>
+            </div>
+            <span class="hud-opp"><span id="hud-opp-icon">🤖</span> <b id="hud-bot-score">0</b></span>
+          </div>
+          <div class="duel-qnum" id="duel-qnum">Savol 1 / 10</div>
+        </div>
+        <div class="question-card" id="duel-question-box">
+          <div class="question-image hidden" id="duel-question-image">
+            <img src="" alt="" id="duel-question-img-el">
+          </div>
+          <h2 id="duel-question-text">Savol yuklanmoqda...</h2>
+        </div>
+        <div class="options-list" id="duel-options"></div>
+        <div class="emoji-tray" id="duel-emoji-tray">
+          <div class="emoji-btn" onclick="sendDuelEmoji('👏')">👏</div>
+          <div class="emoji-btn" onclick="sendDuelEmoji('😂')">😂</div>
+          <div class="emoji-btn" onclick="sendDuelEmoji('🤯')">🤯</div>
+          <div class="emoji-btn" onclick="sendDuelEmoji('😡')">😡</div>
+        </div>
+      </div>
+
+      <!-- Duel Result -->
+      <div id="duel-result" class="hidden">
+        <div class="result-hero" id="duel-result-banner">
+          <div class="result-hero-emoji" id="duel-result-emoji">🏆</div>
+          <h2 id="duel-result-title">G'ALABA!</h2>
+          <p id="duel-result-sub">Tabriklaymiz!</p>
+        </div>
+        <div class="score-card">
+          <div class="score-row">
+            <span>👤 Siz</span>
+            <strong id="duel-final-you">0 / 10</strong>
+          </div>
+          <div class="score-row">
+            <span id="duel-opp-label">🤖 Avtobot</span>
+            <strong id="duel-final-bot">0 / 10</strong>
+          </div>
+        </div>
+        <div class="action-row">
+          <button class="big-green-btn" id="btn-duel-play-again" onclick="duelPlayAgain()"><i class="fas fa-redo"></i> Qayta o'ynash</button>
+          <button class="rematch-btn hidden" id="btn-duel-rematch" onclick="requestRematch()"><i class="fas fa-fire"></i> Revansh so'rash</button>
+          <button class="outline-btn" onclick="quitDuel()"><i class="fas fa-home"></i> Chiqish</button>
+        </div>
+      </div>
+      <div style="height: 80px;"></div>
+    </div>
+  </div>
+
+  <!-- ════════════════ PROFILE TAB ════════════════ -->
+  <div id="tab-profile" class="tab-content">
+    <header class="top-header">
+      <div class="header-logo">Profil</div>
+    </header>
+    <div class="scroll-content">
+      <div class="profile-hero">
+        <img id="user-photo" src="https://ui-avatars.com/api/?name=A&background=1e3a2f&color=58cc02&size=80" class="profile-avatar" alt="">
+        <h2 id="user-name">Foydalanuvchi</h2>
+        <div class="profile-streak">🔥 <span id="profile-streak">0</span> kunlik olov</div>
+      </div>
+      <div class="profile-stats-grid">
+        <div class="psg-item">
+          <div class="psg-num" id="stat-tests">0</div>
+          <div class="psg-label">Test</div>
+        </div>
+        <div class="psg-item">
+          <div class="psg-num green" id="stat-correct">0</div>
+          <div class="psg-label">To'g'ri</div>
+        </div>
+        <div class="psg-item">
+          <div class="psg-num red" id="stat-wrong">0</div>
+          <div class="psg-label">Xato</div>
+        </div>
+      </div>
+
+      <!-- AI Pass Probability Card -->
+      <div class="ai-forecast-card">
+        <div class="aif-header">
+          <i class="fas fa-brain" style="color:#a855f7;"></i>
+          <span>AI Imtihondan O'tish Ehtimoli</span>
+        </div>
+        <div class="aif-body">
+          <div class="aif-pct-badge" id="profile-ai-pct">85%</div>
+          <div class="aif-text">
+            <div class="aif-status" id="profile-ai-status">🟢 Yuqori Tayyorgarlik!</div>
+            <div class="aif-desc" id="profile-ai-desc">Imtihondan o'tish imkoniyatingiz juda yuqori.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Badges (Nishonlar) -->
+      <div class="section-title"><span>🎖 Yutuqlar & Nishonlar</span></div>
+      <div class="badges-grid">
+        <div class="badge-item active" id="badge-starter">
+          <div class="badge-icon">🔰</div>
+          <div class="badge-title">Boshlang'ich</div>
+        </div>
+        <div class="badge-item" id="badge-streak">
+          <div class="badge-icon">🔥</div>
+          <div class="badge-title">3 Kunlik Olov</div>
+        </div>
+        <div class="badge-item" id="badge-signs">
+          <div class="badge-icon">🚦</div>
+          <div class="badge-title">Belgi Ustasi</div>
+        </div>
+        <div class="badge-item" id="badge-gai">
+          <div class="badge-icon">🏆</div>
+          <div class="badge-title">GAI Chempioni</div>
+        </div>
+      <!-- Skill Radar Breakdown -->
+      <div class="section-title"><span>📊 Shaxsiy Bilim Diagrammasi</span></div>
+      <div class="skill-radar-card">
+        <div class="skill-bar-row">
+          <div class="skill-info">
+            <span>🚥 Chorrahalar & Harakat</span>
+            <b id="skill-cross-pct">88%</b>
+          </div>
+          <div class="skill-track"><div class="skill-fill" id="skill-cross-fill" style="width: 88%; background: #38bdf8;"></div></div>
+        </div>
+        <div class="skill-bar-row">
+          <div class="skill-info">
+            <span>🚦 Yo'l Belgilari</span>
+            <b id="skill-sign-pct">92%</b>
+          </div>
+          <div class="skill-track"><div class="skill-fill" id="skill-sign-fill" style="width: 92%; background: #58cc02;"></div></div>
+        </div>
+        <div class="skill-bar-row">
+          <div class="skill-info">
+            <span>⚡️ Tezlik & Qoidalar</span>
+            <b id="skill-speed-pct">76%</b>
+          </div>
+          <div class="skill-track"><div class="skill-fill" id="skill-speed-fill" style="width: 76%; background: #f59e0b;"></div></div>
+        </div>
+        <div class="skill-bar-row">
+          <div class="skill-info">
+            <span>🩺 Tibbiy Yordam & Texnika</span>
+            <b id="skill-med-pct">84%</b>
+          </div>
+          <div class="skill-track"><div class="skill-fill" id="skill-med-fill" style="width: 84%; background: #a855f7;"></div></div>
+        </div>
+      </div>
+
+      <div class="section-title"><span>📖 Bo'limlar</span></div>
+      <div class="profile-menu">
+        <div class="pm-item" onclick="toggleSound()">
+          <i class="fas fa-volume-up pm-icon" id="sound-icon" style="color:#38bdf8"></i>
+          <span>Ovozli Effektlar</span>
+          <span id="sound-status" style="margin-left:auto;font-size:13px;color:#58cc02;font-weight:bold;">Yoqilgan</span>
+        </div>
+        <div class="pm-item" onclick="navigate('view-biletlar')">
+          <i class="fas fa-book pm-icon" style="color:#38bdf8"></i>
+          <span>81 ta Rasmiy Biletlar</span>
+          <i class="fas fa-chevron-right pm-arrow"></i>
+        </div>
+        <div class="pm-item" onclick="navigate('view-rules')">
+          <i class="fas fa-book-open pm-icon" style="color:#a78bfa"></i>
+          <span>YHQ Qoidalari</span>
+          <i class="fas fa-chevron-right pm-arrow"></i>
+        </div>
+        <div class="pm-item" onclick="switchTab('tab-signs')">
+          <i class="fas fa-traffic-light pm-icon" style="color:#fb923c"></i>
+          <span>Yo'l Belgilari</span>
+          <i class="fas fa-chevron-right pm-arrow"></i>
+        </div>
+        <div class="pm-item" onclick="navigate('view-videos')">
+          <i class="fas fa-play-circle pm-icon" style="color:#60a5fa"></i>
+          <span>Video Darslar</span>
+          <i class="fas fa-chevron-right pm-arrow"></i>
+        </div>
+        <div class="pm-item" onclick="navigate('view-news')">
+          <i class="fas fa-newspaper pm-icon" style="color:#34d399"></i>
+          <span>Yangiliklar</span>
+          <i class="fas fa-chevron-right pm-arrow"></i>
+        </div>
+        <div class="pm-item" onclick="navigate('view-org')">
+          <i class="fas fa-building pm-icon" style="color:#38bdf8"></i>
+          <span>Tashkilot Haqida</span>
+          <i class="fas fa-chevron-right pm-arrow"></i>
+        </div>
+        <div class="pm-item" onclick="navigate('view-leaderboard')">
+          <i class="fas fa-trophy pm-icon" style="color:gold"></i>
+          <span>Top-100 Reyting</span>
+          <i class="fas fa-chevron-right pm-arrow"></i>
+        </div>
+      </div>
+      <div style="height: 80px;"></div>
+    </div>
+  </div>
+
+  <!-- ════════ OVERLAY VIEWS (fullscreen, returned with back button) ════════ -->
+
+  <!-- TEST VIEW -->
+  <div id="view-test" class="overlay-view hidden">
+    <div class="ov-header">
+      <button class="icon-btn" onclick="confirmQuit()"><i class="fas fa-times"></i></button>
+      <div class="ov-progress">
+        <span id="question-counter">1/10</span>
+        <div class="ov-bar-bg"><div class="ov-bar-fill" id="progress-bar" style="width:10%"></div></div>
+      </div>
+      <div class="ov-score"><i class="fas fa-star" style="color:gold"></i> <span id="live-score">0/0</span></div>
+    </div>
+    <div class="scroll-content">
+      <div class="question-card">
+        <div class="question-image hidden" id="question-image">
+          <img src="" alt="Savol rasmi" id="question-img-el">
+        </div>
+        <h2 id="question-text">Savol yuklanmoqda...</h2>
+      </div>
+      <div class="options-list" id="options-container"></div>
+      <div class="explanation-card hidden" id="explanation-box">
+        <div class="exp-header"><i class="fas fa-lightbulb" style="color:gold"></i> Izoh:</div>
+        <p class="exp-text" id="explanation-text"></p>
+      </div>
+      <button id="next-btn" class="big-green-btn hidden" onclick="nextQuestion()" style="margin-top:16px;">
+        Keyingi <i class="fas fa-arrow-right"></i>
+      </button>
+      <div style="height: 80px;"></div>
+    </div>
+  </div>
+
+  <!-- RESULT VIEW -->
+  <div id="view-result" class="overlay-view hidden">
+    <div class="scroll-content" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100%;">
+      <div class="result-emoji-big" id="result-emoji">🏆</div>
+      <div class="result-circle">
+        <div class="result-pct" id="result-pct">0%</div>
+        <div class="result-label">Natija</div>
+      </div>
+      <div class="score-card" style="width:100%;max-width:360px;">
+        <div class="score-row"><span>✅ To'g'ri:</span><strong id="result-correct">0</strong></div>
+        <div class="score-row"><span>❌ Xato:</span><strong id="result-wrong">0</strong></div>
+        <div class="score-row"><span>📊 Jami:</span><strong id="result-total">0</strong></div>
+      </div>
+      <p id="result-msg" class="result-msg-text">Natijangiz</p>
+      <div class="action-row" style="width:100%;max-width:360px;">
+        <button class="big-green-btn" onclick="retryTest()"><i class="fas fa-redo"></i> Qayta</button>
+        <button class="outline-btn" onclick="navigate('back')"><i class="fas fa-home"></i> Asosiy</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULES VIEW -->
+  <div id="view-rules" class="overlay-view hidden">
+    <div class="ov-header">
+      <button class="icon-btn" onclick="navigate('back')"><i class="fas fa-arrow-left"></i></button>
+      <h2>📚 YHQ Qoidalari</h2>
+    </div>
+    <div class="scroll-content" id="rules-container">
+      <div class="spinner-center"><i class="fas fa-spinner fa-spin"></i></div>
+    </div>
+  </div>
+
+  <!-- RULE DETAIL VIEW -->
+  <div id="view-rule-detail" class="overlay-view hidden">
+    <div class="ov-header">
+      <button class="icon-btn" onclick="navigate('view-rules')"><i class="fas fa-arrow-left"></i></button>
+      <h2 id="rule-detail-title">Qoida</h2>
+    </div>
+    <div class="scroll-content">
+      <div class="detail-content" id="rule-detail-content"></div>
+    </div>
+  </div>
+
+  <!-- VIDEOS VIEW -->
+  <div id="view-videos" class="overlay-view hidden">
+    <div class="ov-header">
+      <button class="icon-btn" onclick="navigate('back')"><i class="fas fa-arrow-left"></i></button>
+      <h2>🎥 Video Darslar</h2>
+    </div>
+    <div class="scroll-content">
+      <div id="video-section-list" class="category-chips"></div>
+      <div id="videos-container"></div>
+      <div style="height:80px;"></div>
+    </div>
+  </div>
+
+  <!-- NEWS VIEW -->
+  <div id="view-news" class="overlay-view hidden">
+    <div class="ov-header">
+      <button class="icon-btn" onclick="navigate('back')"><i class="fas fa-arrow-left"></i></button>
+      <h2>📰 Yangiliklar</h2>
+    </div>
+    <div class="scroll-content" id="news-container">
+      <div class="spinner-center"><i class="fas fa-spinner fa-spin"></i></div>
+    </div>
+  </div>
+
+  <!-- ORG VIEW -->
+  <div id="view-org" class="overlay-view hidden">
+    <div class="ov-header">
+      <button class="icon-btn" onclick="navigate('back')"><i class="fas fa-arrow-left"></i></button>
+      <h2>🏢 Tashkilot Haqida</h2>
+    </div>
+    <div class="scroll-content" id="org-container">
+      <div class="spinner-center"><i class="fas fa-spinner fa-spin"></i></div>
+    </div>
+  </div>
+
+  <!-- LEADERBOARD VIEW -->
+  <div id="view-leaderboard" class="overlay-view hidden">
+    <div class="ov-header">
+      <button class="icon-btn" onclick="navigate('back')"><i class="fas fa-arrow-left"></i></button>
+      <h2>🏆 Top-100 Reyting</h2>
+    </div>
+    <div class="scroll-content">
+      <div class="lb-header-card">
+        <p>Eng ko'p to'g'ri javob topgan bilimdonlar</p>
+        <button class="outline-btn" onclick="loadLeaderboard()"><i class="fas fa-sync-alt"></i> Yangilash</button>
+      </div>
+      <div id="leaderboard-list">
+        <div class="spinner-center"><i class="fas fa-spinner fa-spin"></i></div>
+      </div>
+      <div style="height:80px;"></div>
+    </div>
+  </div>
+
+  <!-- SETUP VIEW -->
+  <div id="view-setup" class="overlay-view hidden">
+    <div class="ov-header">
+      <button class="icon-btn" onclick="navigate('back')"><i class="fas fa-arrow-left"></i></button>
+      <h2>⚙️ Test Sozlamasi</h2>
+    </div>
+    <div class="scroll-content">
+      <div class="section-title"><span>📂 Bo'lim</span></div>
+      <div id="category-list-setup" class="category-chips"></div>
+      <div class="section-title"><span>🔢 Savollar soni</span></div>
+      <div class="count-row">
+        <button class="count-btn active" onclick="selectCount(this,10)">10</button>
+        <button class="count-btn" onclick="selectCount(this,20)">20</button>
+        <button class="count-btn" onclick="selectCount(this,50)">50</button>
+        <button class="count-btn" onclick="selectCount(this,100)">100</button>
+      </div>
+      <button class="big-green-btn" onclick="beginTest()">
+        <i class="fas fa-play"></i> Testni Boshlash
+      </button>
+      <div style="height:80px;"></div>
+    </div>
+  </div>
+
+  <!-- BILETLAR VIEW -->
+  <div id="view-biletlar" class="overlay-view hidden">
+    <div class="ov-header">
+      <button class="icon-btn" onclick="navigate('back')"><i class="fas fa-arrow-left"></i></button>
+      <h2>📑 81 ta Rasmiy Biletlar</h2>
+    </div>
+    <div class="scroll-content">
+      <div class="bilet-info-card">
+        <p>Har bir bilet 10 ta rasmiy YHQ savolidan iborat. Biletni tanlang va bilmingizni sinang:</p>
+      </div>
+      <div id="biletlar-grid" class="biletlar-grid"></div>
+      <div style="height:80px;"></div>
+    </div>
+  </div>
+
+  <!-- SIGN DETAIL MODAL -->
+  <div id="sign-modal" class="confirm-overlay hidden">
+    <div class="sign-modal-card">
+      <button class="close-modal-btn" onclick="closeSignModal()"><i class="fas fa-times"></i></button>
+      <div class="sign-modal-img-wrap">
+        <img id="sm-img" src="" alt="Belgi rasmi">
+      </div>
+      <div class="sign-modal-badge" id="sm-cat">Taqiqlovchi</div>
+      <h3 id="sm-name">Belgi nomi</h3>
+      <p id="sm-desc">Belgi tavsifi...</p>
+      <div class="sm-fine-box" id="sm-fine-box">
+        <i class="fas fa-exclamation-triangle" style="color:#f59e0b;"></i>
+        <span id="sm-fine-text">Qoidabuzarlik uchun jarima mavjud</span>
+      </div>
+      <button class="big-green-btn" id="sm-quiz-btn" onclick="quizOnThisSign()">
+        <i class="fas fa-play"></i> Ushbu belgi bo'yicha test
+      </button>
+    </div>
+  </div>
+
+  <!-- CERTIFICATE MODAL -->
+  <div id="cert-modal" class="confirm-overlay hidden">
+    <div class="cert-modal-card">
+      <button class="close-modal-btn" onclick="closeCertModal()"><i class="fas fa-times"></i></button>
+      <div class="cert-gold-badge">🏆 SERTIFIKAT</div>
+      <h2>YHQ DAVLAT IMTIHONI G'OLIBI</h2>
+      <p class="cert-user-name" id="cert-name">Foydalanuvchi</p>
+      <p class="cert-score-text">Natija: <b id="cert-score">20 / 20</b> (100%)</p>
+      <p class="cert-date-text" id="cert-date">18.08.2026</p>
+      <div class="cert-stamp">✅ TASDIQLANDI</div>
+      <button class="big-green-btn" onclick="shareCertificate()">
+        <i class="fas fa-share-alt"></i> Sertifikatni Ulashish
+      </button>
+    </div>
+  </div>
+
+  <!-- ════════════════ BOTTOM NAV ════════════════ -->
+  <nav class="bottom-nav">
+    <button class="nav-btn active" id="nav-home" onclick="switchTab('tab-home')">
+      <i class="fas fa-home"></i>
+      <span>Bosh sahifa</span>
+    </button>
+    <button class="nav-btn" id="nav-tests" onclick="switchTab('tab-tests')">
+      <i class="fas fa-tasks"></i>
+      <span>Testlar</span>
+    </button>
+    <button class="nav-btn" id="nav-signs" onclick="switchTab('tab-signs')">
+      <i class="fas fa-traffic-light"></i>
+      <span>Belgilar</span>
+    </button>
+    <button class="nav-btn" id="nav-duel" onclick="switchTab('tab-duel')">
+      <i class="fas fa-khanda"></i>
+      <span>Duel</span>
+    </button>
+    <button class="nav-btn" id="nav-profile" onclick="switchTab('tab-profile')">
+      <i class="fas fa-user"></i>
+      <span>Profil</span>
+    </button>
+  </nav>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+  <!-- Confirm overlay -->
+  <div id="confirm-overlay" class="confirm-overlay hidden">
+    <div class="confirm-box">
+      <h3>Testni tugatmoqchimisiz?</h3>
+      <p>Joriy progress yo'qoladi.</p>
+      <div class="confirm-btns">
+        <button class="outline-btn" onclick="closeConfirm()">Davom etish</button>
+        <button class="danger-btn" onclick="quitTest()">Ha, tugatish</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

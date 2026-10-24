@@ -50,20 +50,29 @@ async def get_pro_admin_keyboard(user_id: int):
             InlineKeyboardButton(text="👮 Adminlar Boshqaruvi", callback_data="adm_mgmt"),
             InlineKeyboardButton(text="⚙️ Tizim Sozlamalari", callback_data="admin_system")
         ])
+    # 7. Menyuga qaytish
+    keyboard.append([
+        InlineKeyboardButton(text="❌ Admin paneldan chiqish", callback_data="back_to_main_menu")
+    ])
         
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
 
 @main_menu_router.message(Command("admin"))
 async def admin_panel(message: types.Message):
     if not await is_any_admin(message.from_user.id):
-        await message.answer("Siz admin emassiz.")
+        await message.answer("❌ Kechirasiz, sizda administratorlik huquqi mavjud emas.")
         return
         
     kb = await get_pro_admin_keyboard(message.from_user.id)
+    status_role = "👑 Bosh Administrator" if is_superadmin(message.from_user.id) else "👮 Moderator"
     text = (
-        "👨‍💼 <b>BOSHQARUV PANELI (ADMIN PANEL)</b>\n"
-        "━━━━━━━━━━━━━━━━━━━━\n\n"
-        "Kerakli bo'limni tanlang:"
+        "👑 <b>VATANPARVAR AVTOTEST — BOSHQARUV MARKAZI</b>\n"
+        "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
+        f"👤 <b>Administrator:</b> {message.from_user.full_name}\n"
+        f"🎖 <b>Mansab:</b> <i>{status_role}</i>\n"
+        "🟢 <b>Tizim holati:</b> Faol (805 ta rasmiy test)\n"
+        "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+        "👇 <i>Quyidagi bo'limlardan birini tanlang:</i>"
     )
     await message.answer(text, reply_markup=kb, parse_mode="HTML")
 
@@ -73,10 +82,15 @@ async def admin_back_main(callback: types.CallbackQuery):
         return
         
     kb = await get_pro_admin_keyboard(callback.from_user.id)
+    status_role = "👑 Bosh Administrator" if is_superadmin(callback.from_user.id) else "👮 Moderator"
     text = (
-        "👨‍💼 <b>BOSHQARUV PANELI (ADMIN PANEL)</b>\n"
-        "━━━━━━━━━━━━━━━━━━━━\n\n"
-        "Kerakli bo'limni tanlang:"
+        "👑 <b>VATANPARVAR AVTOTEST — BOSHQARUV MARKAZI</b>\n"
+        "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
+        f"👤 <b>Administrator:</b> {callback.from_user.full_name}\n"
+        f"🎖 <b>Mansab:</b> <i>{status_role}</i>\n"
+        "🟢 <b>Tizim holati:</b> Faol (805 ta rasmiy test)\n"
+        "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+        "👇 <i>Quyidagi bo'limlardan birini tanlang:</i>"
     )
     await callback.message.edit_text(text, reply_markup=kb, parse_mode="HTML")
     await callback.answer()

@@ -914,7 +914,7 @@ class OrgStates(StatesGroup):
 
 @content_router.callback_query(F.data == "admin_org_edit")
 async def org_edit_menu(callback: types.CallbackQuery, state: FSMContext):
-    if not await check_permission(callback.fromuser.id if hasattr(callback, 'fromuser') else callback.from_user.id, "can_manage_content"):
+    if not await check_permission(callback.from_user.id, "can_manage_content"):
         await callback.answer("Ruxsat yo'q!", show_alert=True)
         return
         

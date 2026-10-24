@@ -186,11 +186,10 @@ async def broadcast_auto_ad(bot: Bot):
         failed = 0
         for cid in set(target_chat_ids):
             try:
-                await bot.copy_to(
+                await bot.copy_message(
                     chat_id=cid,
                     from_chat_id=from_chat_id,
-                    message_id=message_id,
-                    allow_sending_without_reply=True
+                    message_id=message_id
                 )
                 sent += 1
             except Exception as e:

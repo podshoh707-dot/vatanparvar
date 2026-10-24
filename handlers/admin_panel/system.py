@@ -132,7 +132,7 @@ async def toggle_auto_test(callback: types.CallbackQuery):
             
         await session.commit()
         
-    await admin_system_menu(callback.message)
+    await admin_system_menu(callback)
     await callback.answer("Avto-test holati o'zgartirildi!")
 
 @system_router.callback_query(F.data == "toggle_auto_test_users")

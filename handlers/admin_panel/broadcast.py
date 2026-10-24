@@ -339,7 +339,7 @@ async def test_autoad_post(callback: types.CallbackQuery, bot: Bot):
         return
 
     try:
-        await bot.copy_to(
+        await bot.copy_message(
             chat_id=callback.from_user.id,
             from_chat_id=int(st_c.value),
             message_id=int(st_m.value)

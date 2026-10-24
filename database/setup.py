@@ -49,7 +49,7 @@ async def init_db():
         sample_opts = res_sample.scalars().all()
         is_corrupted = len(sample_opts) > 0 and all(o == 'A' for o in sample_opts)
         
-        if count < 1200 or is_corrupted:
+        if count == 0 or is_corrupted:
             questions_file = os.path.join(os.path.dirname(__file__), "questions_data.json")
             if os.path.exists(questions_file):
                 print(f"[init_db] Seeding questions from {questions_file}...")

@@ -87,7 +87,7 @@ async def start_gai_exam_from_message(message: types.Message, state: FSMContext)
 
 @test_router.message(Command("test"), F.chat.type == "private")
 @test_router.message(F.text.in_([
-    "🎯 Test Ishlash (1242 ta YHQ)", "🎯 Test Ishlash", "🎓 GAI Imtihoni (Sertifikatli)", "🎓 GAI Imtihoni",
+    "🚗 Test Ishlash (805 ta YHQ)", "🎯 Test Ishlash (805 ta YHQ)", "🎯 Test Ishlash (1242 ta YHQ)", "🎯 Test Ishlash", "🎓 GAI Imtihoni (Sertifikatli)", "🎓 GAI Imtihoni",
     "🚗 Ishlash testi", "🚀 Test Boshlash (Pro)", "🚀 Test Boshlash", "🚗 Test ishlash",
     "🚗 Ишлаш тести", "🚗 Тестирование"
 ]), F.chat.type == "private")
@@ -153,12 +153,13 @@ async def test_menu(message: types.Message, state: FSMContext):
     else:
         await message.answer(text, reply_markup=markup, parse_mode="HTML")
 
-# 81 ta bilet sahifalash (1-10, 11-20, ...)
+# 81 ta bilet sahifalash (3x4 zamonaviy grid)
 @test_router.callback_query(F.data.startswith("biletpage_"))
 async def bilet_page_handler(callback: types.CallbackQuery):
     page = int(callback.data.split("_")[1])
-    per_page = 10
+    per_page = 12
     total_bilets = 81
+    total_pages = (total_bilets + per_page - 1) // per_page
     start_bilet = (page - 1) * per_page + 1
     end_bilet = min(start_bilet + per_page - 1, total_bilets)
     
@@ -166,7 +167,7 @@ async def bilet_page_handler(callback: types.CallbackQuery):
     row = []
     for b in range(start_bilet, end_bilet + 1):
         row.append(InlineKeyboardButton(text=f"📄 {b}-bilet", callback_data=f"testbilet_{b}"))
-        if len(row) == 2:
+        if len(row) == 3:
             keyboard.append(row)
             row = []
     if row:
@@ -175,7 +176,8 @@ async def bilet_page_handler(callback: types.CallbackQuery):
     nav_row = []
     if page > 1:
         nav_row.append(InlineKeyboardButton(text="⬅️ Oldingi", callback_data=f"biletpage_{page-1}"))
-    if end_bilet < total_bilets:
+    nav_row.append(InlineKeyboardButton(text=f"📑 {page}/{total_pages}", callback_data="noop_page"))
+    if page < total_pages:
         nav_row.append(InlineKeyboardButton(text="Keyingi ➡️", callback_data=f"biletpage_{page+1}"))
     if nav_row:
         keyboard.append(nav_row)
@@ -365,12 +367,12 @@ async def send_question(message_or_callback, state: FSMContext):
 
         if is_marathon:
             marathon_prog = user.marathon_progress if user else correct_count
-            m_pct = round(min(1242, marathon_prog) / 1242 * 100)
+            m_pct = round(min(805, marathon_prog) / 805 * 100)
             text = (
-                f"🎯 <b>1242 MARAFON BOSQICHI YAKUNLANDI!</b>\n"
+                f"🎯 <b>805 MARAFON BOSQICHI YAKUNLANDI!</b>\n"
                 f"━━━━━━━━━━━━━━━━━━━━\n\n"
                 f"{streak_info}"
-                f"📊 <b>Umumiy Marafon Natijangiz:</b> {marathon_prog} / 1242 ta ({m_pct}%)\n"
+                f"📊 <b>Umumiy Marafon Natijangiz:</b> {marathon_prog} / 805 ta ({m_pct}%)\n"
                 f"✅ <b>Ushbu bosqichda to'g'ri:</b> {correct_count} ta\n\n"
                 f"<i>Sizning ko'rsatkichingiz bazada saqlandi. Xohlagan vaqtingizda to'xtagan joyingizdan davom ettirishingiz mumkin!</i>"
                 f"{streak_bonus_text}"
@@ -419,16 +421,16 @@ async def send_question(message_or_callback, state: FSMContext):
         await send_question(message_or_callback, state)
         return
         
-    # Tugmalar qatori
+    # Zamonaviy keng tugmalar
     btns = []
-    btns.append(InlineKeyboardButton(text="A", callback_data="ans_A"))
-    if q.option_b: btns.append(InlineKeyboardButton(text="B", callback_data="ans_B"))
-    if q.option_c: btns.append(InlineKeyboardButton(text="C", callback_data="ans_C"))
-    if q.option_d: btns.append(InlineKeyboardButton(text="D", callback_data="ans_D"))
+    btns.append(InlineKeyboardButton(text="1️⃣ A", callback_data="ans_A"))
+    if q.option_b: btns.append(InlineKeyboardButton(text="2️⃣ B", callback_data="ans_B"))
+    if q.option_c: btns.append(InlineKeyboardButton(text="3️⃣ C", callback_data="ans_C"))
+    if q.option_d: btns.append(InlineKeyboardButton(text="4️⃣ D", callback_data="ans_D"))
     
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
         btns,
-        [InlineKeyboardButton(text="Tugatish", callback_data="ans_quit")]
+        [InlineKeyboardButton(text="❌ Testni to'xtatish", callback_data="ans_quit")]
     ])
     
     # Filter empty rows
@@ -450,20 +452,31 @@ async def send_question(message_or_callback, state: FSMContext):
     safe_c = py_html.escape(q.option_c or "")
     safe_d = py_html.escape(q.option_d or "")
 
+    # Progress bar yasash
+    total_q = max(len(q_ids), 1)
+    curr_num = current_idx + 1
+    filled = int((curr_num / total_q) * 10)
+    prog_bar = "🟩" * filled + "⬜️" * (10 - filled)
+    prog_pct = int((curr_num / total_q) * 100)
+    category_label = q.category or "Umumiy"
+
     caption = (
-        f"<b>Savol {current_idx + 1} / {len(q_ids)}</b>\n\n"
-        f"❓ {safe_text}\n\n"
-        f"1️⃣ A) {safe_a}\n"
+        f"🚘 <b>{category_label} • Savol {curr_num}/{total_q}</b>\n"
+        f"📊 <code>[{prog_bar}] {prog_pct}%</code>\n"
+        f"━━━━━━━━━━━━━━━━━━━━\n\n"
+        f"❓ <b>{safe_text}</b>\n\n"
+        f"1️⃣ <b>A)</b> {safe_a}\n"
     )
-    if q.option_b: caption += f"2️⃣ B) {safe_b}\n"
-    if q.option_c: caption += f"3️⃣ C) {safe_c}\n"
-    if q.option_d: caption += f"4️⃣ D) {safe_d}\n"
+    if q.option_b: caption += f"2️⃣ <b>B)</b> {safe_b}\n"
+    if q.option_c: caption += f"3️⃣ <b>C)</b> {safe_c}\n"
+    if q.option_d: caption += f"4️⃣ <b>D)</b> {safe_d}\n"
 
     bot_info = await bot_obj.get_me()
     caption += f"\n👉 @{bot_info.username}"
 
     # Media handling
     from aiogram.types import FSInputFile, InputMediaPhoto
+    from utils.image_enhancer import get_enhanced_image_path
     import os, json
     from config import BASE_DIR
 
@@ -481,10 +494,10 @@ async def send_question(message_or_callback, state: FSMContext):
                     if not str(img_path).startswith("http"):
                         cand1 = os.path.join(BASE_DIR, "webapp", str(img_path).replace('\\', '/'))
                         cand2 = os.path.join(BASE_DIR, str(img_path).replace('\\', '/'))
-                        if os.path.exists(cand1):
-                            option_media_group.append(InputMediaPhoto(media=FSInputFile(cand1)))
-                        elif os.path.exists(cand2):
-                            option_media_group.append(InputMediaPhoto(media=FSInputFile(cand2)))
+                        target_cand = cand1 if os.path.exists(cand1) else (cand2 if os.path.exists(cand2) else None)
+                        if target_cand:
+                            hd_p = get_enhanced_image_path(target_cand)
+                            option_media_group.append(InputMediaPhoto(media=FSInputFile(hd_p)))
                     else:
                         option_media_group.append(InputMediaPhoto(media=img_path))
         except Exception as e:
@@ -522,16 +535,16 @@ async def send_question(message_or_callback, state: FSMContext):
         except Exception as e:
             print(f"Error sending video question: {e}")
 
-    # 3. Yagona Rasm mavjud bo'lsa
+    # 3. Yagona Rasm mavjud bo'lsa (HD Tiniqlashtirish bilan)
     photo_file = None
     if q.image_url:
         if not str(q.image_url).startswith("http"):
             cand1 = os.path.join(BASE_DIR, "webapp", str(q.image_url).replace('\\', '/'))
             cand2 = os.path.join(BASE_DIR, str(q.image_url).replace('\\', '/'))
-            if os.path.exists(cand1):
-                photo_file = FSInputFile(cand1)
-            elif os.path.exists(cand2):
-                photo_file = FSInputFile(cand2)
+            raw_path = cand1 if os.path.exists(cand1) else (cand2 if os.path.exists(cand2) else None)
+            if raw_path:
+                hd_path = get_enhanced_image_path(raw_path)
+                photo_file = FSInputFile(hd_path)
         else:
             photo_file = q.image_url
 
@@ -629,10 +642,10 @@ async def start_test(callback: types.CallbackQuery, state: FSMContext):
                 )
                 return
                 
-        # 1. Marafon Rejimi (1242 savol)
+        # 1. Marafon Rejimi (805 savol)
         if is_marathon:
             marathon_prog = user.marathon_progress if user and user.marathon_progress else 0
-            if marathon_prog >= 1242:
+            if marathon_prog >= 805:
                 marathon_prog = 0 # Qayta boshlash
             stmt = select(Question.id).order_by(Question.id).offset(marathon_prog).limit(50)
             result_q = await session.execute(stmt)
@@ -849,10 +862,9 @@ async def process_answer(callback: types.CallbackQuery, state: FSMContext):
         await bot_obj.send_message(chat_id=chat_id, text=result_msg + "\n\n" + fail_text, reply_markup=fail_kb, protect_content=protect, parse_mode="HTML")
         return
     
-    # Izohni alohida xabar sifatida yuborish — keyingi savol va AI Ustoz tugmasi bilan
+    # Izohni alohida xabar sifatida yuborish — keyingi savol tugmasi bilan
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="➡️ Keyingi savol", callback_data="next_question")],
-        [InlineKeyboardButton(text="🤖 AI Ustoz tushuntirishi", callback_data=f"ai_explain_{q_id}")]
+        [InlineKeyboardButton(text="➡️ Keyingi savol", callback_data="next_question")]
     ])
 
     # Variant videosini (3D animatsiyani) tekshirish

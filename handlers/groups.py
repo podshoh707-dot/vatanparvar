@@ -561,7 +561,7 @@ async def group_start_handler(message: types.Message):
         "👑 <b>AVTOVATANPARVAR GURUH BOTI</b>\n"
         "━━━━━━━━━━━━━━━━━━━━\n"
         "🤖 Ushbu guruhda bot quyidagi vazifalarni bajaradi:\n\n"
-        "🎯 <b>YHQ Viktorinalari:</b> 1242 ta rasmiy savol va 3D video-testlar.\n"
+        "🎯 <b>YHQ Viktorinalari:</b> 805 ta rasmiy savol va 3D video-testlar.\n"
         "🛡 <b>Obuna nazorati:</b> Faqat kanal a'zolari yozishini ta'minlaydi.\n\n"
         "📌 <b>Guruh buyruqlari:</b>\n"
         "• <code>/test</code> yoki <code>/viktorina</code> — Viktorina boshlash\n"

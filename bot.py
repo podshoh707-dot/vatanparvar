@@ -102,7 +102,7 @@ async def set_bot_profile_and_description(bot: Bot):
     desc_uz = (
         "🏆 AVTOVATANPARVAR — O'zbekistonning 1-raqamli YHQ va GAI Imtihon platformasi! 🚘✨\n\n"
         "Bot nima qila oladi? 👇\n"
-        "🏎 1 242 ta Rasmiy YHQ Imtihon Savollari\n"
+        "🏎 805 ta Rasmiy E-Avtomaktab Imtihon Savollari\n"
         "🎬 207 ta 3D Harakatlanish Videolari\n"
         "🎓 GAI Davlat Imtihoni Simulyatori (20/20) & Oltin Sertifikat\n"
         "🤖 AI Ustoz — Aqlli Avto-Instruktor (Tushuntirish va sirlar)\n"
@@ -116,7 +116,7 @@ async def set_bot_profile_and_description(bot: Bot):
     desc_ru = (
         "🏆 АВТОВАТАНПАРВАР — №1 Платформа ПДД и экзаменов ГАИ в Узбекистане! 🚘✨\n\n"
         "Возможности бота: 👇\n"
-        "🏎 1 242 официальных вопроса ПДД\n"
+        "🏎 805 официальных вопросов E-Avtomaktab\n"
         "🎬 207 3D видео-анимаций перекрестков\n"
         "🎓 Симулятор госэкзамена ГАИ и Золотой Сертификат\n"
         "🤖 ИИ Авто-Инструктор (разбор правил)\n"
@@ -128,8 +128,8 @@ async def set_bot_profile_and_description(bot: Bot):
     )
 
     # 2. Qisqa tavsif (Bio / About) — max 120 belgi
-    short_uz = "🚘 1242 ta YHQ testi, 3D videolar, GAI imtihoni simulyatori, AI Ustoz va 1vs1 Duel! 🏆 Bepul sinab ko'ring!"
-    short_ru = "🚘 1242 вопроса ПДД, 3D видео, симулятор ГАИ, ИИ-инструктор и дуэли 1 на 1! 🏆 Попробуйте бесплатно!"
+    short_uz = "🚘 805 ta E-Avtomaktab testi, 3D videolar, GAI simulyatori, AI Ustoz va 1vs1 Duel! 🏆 Bepul sinab ko'ring!"
+    short_ru = "🚘 805 вопросов E-Avtomaktab, 3D видео, симулятор ГАИ, ИИ-инструктор и дуэли! 🏆 Попробуйте бесплатно!"
 
     try:
         await bot.set_my_description(description=desc_uz)

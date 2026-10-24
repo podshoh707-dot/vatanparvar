@@ -19,7 +19,7 @@ async def get_pro_admin_keyboard(user_id: int):
     # 2. Savollar va Belgilar
     row2 = []
     if await check_permission(user_id, "can_manage_content"):
-        row2.append(InlineKeyboardButton(text="📝 Savollar (1242 ta)", callback_data="admin_tests"))
+        row2.append(InlineKeyboardButton(text="📝 Savollar (805 ta)", callback_data="admin_tests"))
         row2.append(InlineKeyboardButton(text="🚦 Yo'l Belgilari", callback_data="admin_signs"))
     if row2: keyboard.append(row2)
     

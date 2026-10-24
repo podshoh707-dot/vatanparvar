@@ -264,11 +264,11 @@ async def send_main_menu(message: types.Message, lang: str, name: str):
     """Asosiy menyuni yuborish uchun yordamchi funksiya"""
     kb = ReplyKeyboardMarkup(
         keyboard=[
-            [KeyboardButton(text="🎯 Test Ishlash (1242 ta YHQ)")],
-            [KeyboardButton(text="🎓 GAI Imtihoni (Sertifikatli)"), KeyboardButton(text="🤖 AI Ustoz (Savol berish)")],
-            [KeyboardButton(text="🚦 Yo'l Belgilari"), KeyboardButton(text="📚 YHQ Qoidalari")],
-            [KeyboardButton(text="🎁 Taklif Qilish & VIP"), KeyboardButton(text="📊 Statistika & Reyting")],
-            [KeyboardButton(text="📱 Avtomaktab (Mini App)", web_app=WebAppInfo(url=WEBAPP_URL)), KeyboardButton(text="💎 VIP (Premium)")]
+            [KeyboardButton(text="🚗 Test Ishlash (805 ta YHQ)")],
+            [KeyboardButton(text="🎓 GAI Imtihoni (Sertifikatli)"), KeyboardButton(text="🚦 Yo'l Belgilari")],
+            [KeyboardButton(text="📊 Mening Natijam"), KeyboardButton(text="📚 YHQ Qoidalari")],
+            [KeyboardButton(text="🎁 Taklif Qilish & VIP"), KeyboardButton(text="💎 VIP (Premium)")],
+            [KeyboardButton(text="📱 Avtomaktab (Mini App)", web_app=WebAppInfo(url=WEBAPP_URL))]
         ],
         resize_keyboard=True
     )
@@ -279,11 +279,10 @@ async def send_main_menu(message: types.Message, lang: str, name: str):
         f"⚡️ <i>O'zbekistonning 1-raqamli innovatsion YHQ va GAI tizimi</i>\n"
         f"━━━━━━━━━━━━━━━━━━━━\n\n"
         f"🚀 <b>Bu bot nima qila oladi?</b>\n"
-        f"🏎 <b>1 242 ta Rasmiy YHQ Savollari:</b> Barcha testlar va 62 ta rasmiy biletlar\n"
+        f"🏎 <b>805 ta Rasmiy E-Avtomaktab Savollari:</b> Barcha testlar va 81 ta rasmiy biletlar\n"
         f"🎬 <b>207 ta 3D Harakatlanish Videolari:</b> Murakkab chorrahalar animatsiyasi\n"
         f"🎓 <b>GAI Davlat Imtihoni (20/20):</b> Jonli taymer va Oltin Sertifikat\n"
-        f"🤖 <b>AI Aqlli Ustoz:</b> Har bir savolga tushuntirish va esda saqlash sirlari\n"
-        f"🥊 <b>1vs1 Duel Janglari:</b> Do'stlar yoki AI botga qarshi onlayn bellashuv\n"
+        f"🥊 <b>1vs1 Duel Janglari:</b> Do'stlar bilan onlayn bilim bellashuvi\n"
         f"🚦 <b>130 ta HD Yo'l Belgilari:</b> Barcha rasmiy belgilar va jarimalar\n"
         f"🎥 <b>133 ta Rasmiy Video Darslar:</b> e-avtomaktab to'liq video kursi\n"
         f"🧠 <b>Spaced Repetition:</b> Xatolaringiz ustida aqlli ishlash tizimi\n\n"

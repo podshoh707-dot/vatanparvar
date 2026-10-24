@@ -600,7 +600,7 @@ async def referral_menu(message: types.Message, state: FSMContext):
 
 # ──────────────── STATISTIKA VA TOP 10 REYTING ────────────────
 @menu_router.message(F.text.in_([
-    "📊 Statistika", "📊 Статистика", "📊 Reyting", "📊 Mening Natijalarim", "📊 Natijalarim"
+    "📊 Mening Natijam", "📊 Statistika & Reyting", "📊 Statistika", "📊 Статистика", "📊 Reyting", "📊 Mening Natijalarim", "📊 Natijalarim"
 ]))
 async def stats_menu(message: types.Message, state: FSMContext):
     if state:
@@ -630,7 +630,7 @@ async def stats_menu(message: types.Message, state: FSMContext):
     total_answered = correct_ans + wrong_ans
     accuracy = round((correct_ans / max(1, total_answered)) * 100)
     marathon_prog = user.marathon_progress if user and user.marathon_progress else 0
-    marathon_pct = round(min(1242, marathon_prog) / 1242 * 100)
+    marathon_pct = round(min(805, marathon_prog) / 805 * 100)
     points = user.points if user and user.points else 0
     streak = user.streak_count if user and user.streak_count else 0
     rem_time = user.reminder_time if user and user.reminder_time else "20:00"
@@ -640,7 +640,7 @@ async def stats_menu(message: types.Message, state: FSMContext):
         ai_forecast_pct = 50
         ai_status = "⏳ <i>Aniqlash uchun kamida 15 ta test yeching</i>"
     else:
-        ai_forecast_pct = int(min(98, max(25, (accuracy * 0.65) + (min(100, marathon_prog / 12.42) * 0.35))))
+        ai_forecast_pct = int(min(98, max(25, (accuracy * 0.65) + (min(100, marathon_prog / 8.05) * 0.35))))
         if ai_forecast_pct >= 85:
             ai_status = f"🟢 <b>{ai_forecast_pct}% — Yuqori tayyorgarlik!</b> (Imtihondan o'tish ehtimoli juda katta)"
         elif ai_forecast_pct >= 70:
@@ -653,7 +653,7 @@ async def stats_menu(message: types.Message, state: FSMContext):
     leaderboard_text = ""
     for idx, (u_name, u_pts, u_mar) in enumerate(top_users):
         name_clean = u_name or "O'quvchi"
-        leaderboard_text += f"{medals[idx]} <b>{name_clean[:20]}</b> — <code>{u_pts or 0} ball</code> (Marafon: {u_mar or 0}/1242)\n"
+        leaderboard_text += f"{medals[idx]} <b>{name_clean[:20]}</b> — <code>{u_pts or 0} ball</code> (Marafon: {u_mar or 0}/805)\n"
 
     if not leaderboard_text:
         leaderboard_text = "<i>Hozircha reyting shakllanmoqda...</i>\n"
@@ -670,7 +670,7 @@ async def stats_menu(message: types.Message, state: FSMContext):
         f"👤 <b>Foydalanuvchi:</b> {message.from_user.full_name}\n"
         f"🔥 <b>Kunlik Seriya (Streak):</b> <b>{streak} kun ketma-ket</b> 🔥\n"
         f"⭐️ <b>Umumiy ballar:</b> <code>{points} ball</code>\n"
-        f"🎯 <b>1242 Marafon:</b> <b>{marathon_prog} / 1242 ta</b> ({marathon_pct}%)\n"
+        f"🎯 <b>805 Marafon:</b> <b>{marathon_prog} / 805 ta</b> ({marathon_pct}%)\n"
         f"📝 <b>Yechilgan testlar:</b> {tests_taken} ta\n"
         f"✅ <b>To'g'ri javoblar:</b> {correct_ans} ta | ❌ <b>Xatolar:</b> {wrong_ans} ta\n"
         f"📈 <b>Aniqlik darajasi:</b> <b>{accuracy}%</b>\n\n"

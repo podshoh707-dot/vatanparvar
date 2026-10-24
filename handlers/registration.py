@@ -306,9 +306,9 @@ async def send_main_menu(message: types.Message, lang: str, name: str):
         keyboard=[
             [KeyboardButton(text="🚗 Test Ishlash (805 ta YHQ)")],
             [KeyboardButton(text="🎓 GAI Imtihoni (Sertifikatli)"), KeyboardButton(text="🚦 Yo'l Belgilari")],
-            [KeyboardButton(text="📊 Mening Natijam"), KeyboardButton(text="📚 YHQ Qoidalari")],
-            [KeyboardButton(text="🏛 Tashkilot & O'qish"), KeyboardButton(text="💎 VIP (Premium)")],
-            [KeyboardButton(text="📱 Avtomaktab (Mini App)", web_app=WebAppInfo(url=WEBAPP_URL))]
+            [KeyboardButton(text="⚔️ Duel Jang (1vs1)"), KeyboardButton(text="📊 Mening Natijam")],
+            [KeyboardButton(text="📚 YHQ Qoidalari"), KeyboardButton(text="🏛 Tashkilot & O'qish")],
+            [KeyboardButton(text="💎 VIP (Premium)"), KeyboardButton(text="📱 Avtomaktab (Mini App)", web_app=WebAppInfo(url=WEBAPP_URL))]
         ],
         resize_keyboard=True
     )

@@ -8,7 +8,10 @@ echo   🚀 VATANPARVAR LOYIHASINI GITHUB'GA YUKLASH
 echo ========================================================
 echo.
 
-set GIT="C:\Users\user\AppData\Local\GitHubDesktop\app-3.6.7\resources\app\git\cmd\git.exe"
+set GIT="C:\Users\user\AppData\Local\GitHubDesktop\app-3.6.5\resources\app\git\cmd\git.exe"
+if not exist %GIT% (
+    set GIT="C:\Users\user\AppData\Local\GitHubDesktop\app-3.6.7\resources\app\git\cmd\git.exe"
+)
 if not exist %GIT% (
     set GIT=git
 )

@@ -8,18 +8,17 @@ echo    🚘 AVTOTEST / AVTOVATANPARVAR TELEGRAM BOT
 echo ========================================================
 echo.
 
-if not exist ".venv\Scripts\python.exe" (
-    echo [XATO] .venv muhiti topilmadi!
-    pause
-    exit /b 1
+set PY=.venv\Scripts\python.exe
+if not exist %PY% (
+    set PY=py
 )
 
-echo [*] Bot ishga tushirilmoqda...
+echo [*] Bot ishga tushirilmoqda (%PY%)...
 echo [*] To'xtatish uchun: Ctrl + C bosing
 echo ========================================================
 echo.
 
-.venv\Scripts\python.exe bot.py
+%PY% bot.py
 
 if %ERRORLEVEL% NEQ 0 (
     echo.

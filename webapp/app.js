@@ -869,7 +869,15 @@ function showSignDetail(id) {
   const signImg = document.getElementById('sm-img');
   signImg.src = s.image_url || s.remote_url || 'images/placeholder.png';
   signImg.onerror = () => { if (s.remote_url && signImg.src !== s.remote_url) signImg.src = s.remote_url; };
-  document.getElementById('sm-cat').textContent = s.category || 'Belgi';
+  const catNames = {
+    'ogohlantiruvchi': '⚠️ Ogohlantiruvchi belgilar',
+    'imtiyozli': '🛑 Imtiyozli belgilar',
+    'taqiqlovchi': '🚫 Taqiqlovchi belgilar',
+    'buyuruvchi': '⬆️ Buyuruvchi belgilar',
+    'axborot': 'ℹ️ Axborot-ko\'rsatkich belgilari',
+    'servis': '🛠 Servis xizmati belgilari'
+  };
+  document.getElementById('sm-cat').textContent = catNames[s.category] || s.category || 'Belgi';
   document.getElementById('sm-name').textContent = s.name || 'Belgi';
   document.getElementById('sm-desc').textContent = s.description || 'Ushbu belgi yo\'l harakati xavfsizligini ta\'minlash uchun o\'rnatiladi.';
 
@@ -918,7 +926,10 @@ function quizOnThisSign() {
 function openCertModal() {
   const modal = document.getElementById('cert-modal');
   if (!modal) return;
-  const uName = document.getElementById('user-name')?.textContent || 'O\'quvchi';
+  let uName = document.getElementById('prof-fullname')?.textContent;
+  if (!uName || uName.includes('Ro\'yxatdan')) {
+    uName = document.getElementById('user-name')?.textContent || 'O\'quvchi';
+  }
   document.getElementById('cert-name').textContent = uName;
   document.getElementById('cert-score').textContent = `${testState.correct} / ${testState.questions.length}`;
   document.getElementById('cert-date').textContent = new Date().toLocaleDateString('uz-UZ');
@@ -1034,11 +1045,22 @@ function showRule(id) {
 // ── SIGNS MODULE ──
 // ═══════════════════════════════════════
 function renderSigns() {
-  const cats = ['Barchasi', ...new Set(allSigns.map(s => s.category).filter(Boolean))];
+  const catNames = {
+    'Barchasi': 'Barchasi',
+    'ogohlantiruvchi': '⚠️ Ogohlantiruvchi',
+    'imtiyozli': '🛑 Imtiyozli',
+    'taqiqlovchi': '🚫 Taqiqlovchi',
+    'buyuruvchi': '⬆️ Buyuruvchi',
+    'axborot': 'ℹ️ Axborot',
+    'servis': '🛠 Servis'
+  };
+  const cats = ['Barchasi', 'ogohlantiruvchi', 'imtiyozli', 'taqiqlovchi', 'buyuruvchi', 'axborot', 'servis'];
   const catList = document.getElementById('signs-category-list');
-  catList.innerHTML = cats.map(c =>
-    `<button class="cat-btn ${c === signsFilter ? 'active' : ''}" onclick="filterSignsCat(this,'${c}')">${c}</button>`
-  ).join('');
+  if (catList) {
+    catList.innerHTML = cats.map(c =>
+      `<button class="cat-btn ${c === signsFilter ? 'active' : ''}" onclick="filterSignsCat(this,'${c}')">${catNames[c] || c}</button>`
+    ).join('');
+  }
   renderSignsGrid();
 }
 

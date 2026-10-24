@@ -1,148 +1,227 @@
 from aiogram import Router, types, F
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, FSInputFile
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from database import async_session, Sign
 from sqlalchemy import select
+import os
+from config import BASE_DIR
 
 signs_router = Router()
 
 class SignStates(StatesGroup):
     searching = State()
 
+SIGNS_PER_PAGE = 8
+
+CAT_LABELS = {
+    "ogohlantiruvchi": "⚠️ 1. Ogohlantiruvchi belgilar",
+    "imtiyozli": "🛑 2. Imtiyozli belgilar",
+    "taqiqlovchi": "🚫 3. Taqiqlovchi belgilar",
+    "buyuruvchi": "⬆️ 4. Buyuruvchi belgilar",
+    "axborot": "ℹ️ 5. Axborot-ko'rsatkich belgilari",
+    "servis": "🛠 6. Servis belgilari",
+}
+
 # ─── ASOSIY MENYU ──────────────────────────────────────────────────
-@signs_router.message(F.text.in_([
-    "🚦 Yo'l belgilari", "⚠️ Yo'l Belgilari", "🚦 Yo'l Belgilari", "⚠️ Yo'l belgilari",
-    "🚦 Йўл белгилари", "🚦 Дорожные знаки"
-]))
-async def signs_menu(message: types.Message, state: FSMContext):
-    if state:
-        await state.clear()
-    keyboard = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="🛑 Taqiqlovchi", callback_data="signs_cat_taqiqlovchi"),
-         InlineKeyboardButton(text="⚠️ Ogohlantiruvchi", callback_data="signs_cat_ogohlantiruvchi")],
-        [InlineKeyboardButton(text="ℹ️ Axborot", callback_data="signs_cat_axborot"),
-         InlineKeyboardButton(text="➡️ Buyuruvchi", callback_data="signs_cat_buyuruvchi")],
-        [InlineKeyboardButton(text="🔑 Imtiyoz", callback_data="signs_cat_imtiyoz"),
-         InlineKeyboardButton(text="🛠 Servis", callback_data="signs_cat_servis")],
-        [InlineKeyboardButton(text="🔍 Belgini qidirish", callback_data="signs_search")],
-        [InlineKeyboardButton(text="📝 Belgilar bo'yicha test", callback_data="signs_test")],
+def get_signs_hub_keyboard():
+    return InlineKeyboardMarkup(inline_keyboard=[
+        [
+            InlineKeyboardButton(text="⚠️ 1. Ogohlantiruvchi", callback_data="signs_cat_ogohlantiruvchi"),
+            InlineKeyboardButton(text="🛑 2. Imtiyozli", callback_data="signs_cat_imtiyozli")
+        ],
+        [
+            InlineKeyboardButton(text="🚫 3. Taqiqlovchi", callback_data="signs_cat_taqiqlovchi"),
+            InlineKeyboardButton(text="⬆️ 4. Buyuruvchi", callback_data="signs_cat_buyuruvchi")
+        ],
+        [
+            InlineKeyboardButton(text="ℹ️ 5. Axborot", callback_data="signs_cat_axborot"),
+            InlineKeyboardButton(text="🛠 6. Servis", callback_data="signs_cat_servis")
+        ],
+        [
+            InlineKeyboardButton(text="🔍 Belgini qidirish", callback_data="signs_search"),
+            InlineKeyboardButton(text="📝 Belgilar bo'yicha test", callback_data="signs_test")
+        ],
         [InlineKeyboardButton(text="🔙 Bosh menyu", callback_data="back_to_main_menu")]
     ])
-    await message.answer("🚦 YO'L BELGILARI\n\nKatalogdan bo'lim tanlang yoki belgini qidiring:", reply_markup=keyboard)
 
-# ─── KATEGORIYA ──────────────────────────────────────────────────
-@signs_router.callback_query(F.data.startswith("signs_cat_"))
+@signs_router.message(F.text.in_([
+    "🚦 Yo'l belgilari", "⚠️ Yo'l Belgilari", "🚦 Yo'l Belgilari", "⚠️ Yo'l belgilari",
+    "🚦 Йўл белгилари", "🚦 Дорожные знаки", "🚦 Belgilar"
+]))
+async def signs_menu(message: types.Message, state: FSMContext = None):
+    if state:
+        await state.clear()
+    text = (
+        "🚦 <b>O'ZBEKISTON RESPUBLIKASI YO'L BELGILARI</b>\n"
+        "━━━━━━━━━━━━━━━━━━━━\n\n"
+        "Yo'l harakati qoidalarida belgilangan rasmiy 6 ta asosiy guruhdagi barcha 130 ta belgi:\n\n"
+        "⚠️ <b>1. Ogohlantiruvchi:</b> Xavfli yo'l qismlari haqida ogohlantiradi\n"
+        "🛑 <b>2. Imtiyozli:</b> Chorrahalarda o'tish navbatini belgilaydi\n"
+        "🚫 <b>3. Taqiqlovchi:</b> Harakatlanishga muayyan cheklovlar kiritadi\n"
+        "⬆️ <b>4. Buyuruvchi:</b> Belgilangan yo'nalishda harakatlanishni buyuradi\n"
+        "ℹ️ <b>5. Axborot-ko'rsatkich:</b> Hududlar va maxsus harakat tartiblari\n"
+        "🛠 <b>6. Servis:</b> Yo'ldagi xizmat ko'rsatish maskanlari\n\n"
+        "👇 <i>O'rganmoqchi bo'lgan guruhni tanlang:</i>"
+    )
+    await message.answer(text, reply_markup=get_signs_hub_keyboard(), parse_mode="HTML")
+
+
+# ─── KATEGORIYA BELGILARI (SAHIFALANGAN) ───────────────────────────
+@signs_router.callback_query(F.data.startswith("signs_cat_") | F.data.startswith("signs_page_"))
 async def show_signs_category(callback: types.CallbackQuery):
-    category = callback.data.replace("signs_cat_", "")
-    
-    cat_labels = {
-        "taqiqlovchi": "🛑 Taqiqlovchi belgilar",
-        "ogohlantiruvchi": "⚠️ Ogohlantiruvchi belgilar",
-        "axborot": "ℹ️ Axborot belgilari",
-        "buyuruvchi": "➡️ Buyuruvchi belgilar",
-        "imtiyoz": "🔑 Imtiyoz belgilari",
-        "servis": "🛠 Servis belgilari",
-    }
-    
+    parts = callback.data.split("_")
+    # signs_cat_taqiqlovchi or signs_page_taqiqlovchi_2
+    if parts[1] == "cat":
+        category = parts[2]
+        page = 1
+    else:
+        category = parts[2]
+        page = int(parts[3]) if len(parts) > 3 else 1
+
+    # Alias imtiyoz -> imtiyozli
+    db_category = "imtiyozli" if category in ["imtiyoz", "imtiyozli"] else category
+
     async with async_session() as session:
-        result = await session.execute(select(Sign).where(Sign.category == category))
+        result = await session.execute(
+            select(Sign).where(Sign.category == db_category).order_by(Sign.id)
+        )
         signs = result.scalars().all()
-    
+
+    cat_title = CAT_LABELS.get(db_category, db_category.capitalize())
+
     if not signs:
-        keyboard = InlineKeyboardMarkup(inline_keyboard=[
-            [InlineKeyboardButton(text="🔙 Orqaga", callback_data="signs_back")]
+        kb = InlineKeyboardMarkup(inline_keyboard=[
+            [InlineKeyboardButton(text="🔙 Bo'limlarga qaytish", callback_data="signs_back")]
         ])
-        text_content = f"{cat_labels.get(category, category)}\n\nHozircha bu kategoriyada belgilar yo'q."
+        msg_text = f"<b>{cat_title}</b>\n\nHozircha bu guruhda belgilar kiritilmagan."
         if callback.message.photo:
             await callback.message.delete()
-            await callback.message.answer(text_content, reply_markup=keyboard)
+            await callback.message.answer(msg_text, reply_markup=kb, parse_mode="HTML")
         else:
-            await callback.message.edit_text(text_content, reply_markup=keyboard)
+            await callback.message.edit_text(msg_text, reply_markup=kb, parse_mode="HTML")
         await callback.answer()
         return
-    
+
+    total_signs = len(signs)
+    total_pages = (total_signs + SIGNS_PER_PAGE - 1) // SIGNS_PER_PAGE
+    page = max(1, min(page, total_pages))
+
+    start_idx = (page - 1) * SIGNS_PER_PAGE
+    end_idx = start_idx + SIGNS_PER_PAGE
+    page_signs = signs[start_idx:end_idx]
+
     buttons = []
-    for sign in signs:
+    for s in page_signs:
         buttons.append([InlineKeyboardButton(
-            text=sign.name[:55],
-            callback_data=f"sign_{sign.id}"
+            text=f"🚸 {s.name[:55]}",
+            callback_data=f"sign_{s.id}_{page}"
         )])
-    buttons.append([InlineKeyboardButton(text="🔙 Orqaga", callback_data="signs_back")])
-    
+
+    # Sahifalash (Navigatsiya)
+    nav_row = []
+    if page > 1:
+        nav_row.append(InlineKeyboardButton(text="⬅️ Oldingi", callback_data=f"signs_page_{category}_{page - 1}"))
+    nav_row.append(InlineKeyboardButton(text=f"📄 {page}/{total_pages}", callback_data="signs_nop"))
+    if page < total_pages:
+        nav_row.append(InlineKeyboardButton(text="Keyingi ➡️", callback_data=f"signs_page_{category}_{page + 1}"))
+
+    if nav_row:
+        buttons.append(nav_row)
+
+    buttons.append([
+        InlineKeyboardButton(text="🔙 Bo'limlar katalogi", callback_data="signs_back"),
+        InlineKeyboardButton(text="🏠 Bosh menyu", callback_data="back_to_main_menu")
+    ])
+
     keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
-    await callback.answer()
-    
-    text_content = f"<b>{cat_labels.get(category, category)}</b>\n\nJami: {len(signs)} ta belgi\n\nBelgini tanlang:"
+    text = (
+        f"<b>{cat_title}</b>\n"
+        f"━━━━━━━━━━━━━━━━━━━━\n\n"
+        f"📋 Ushbu guruhda jami: <b>{total_signs} ta belgi</b> (Sahifa {page}/{total_pages})\n\n"
+        f"👇 <i>Tafsilotini ko'rish uchun belgini tanlang:</i>"
+    )
+
     if callback.message.photo:
         await callback.message.delete()
-        await callback.message.answer(text_content, reply_markup=keyboard, parse_mode="HTML")
+        await callback.message.answer(text, reply_markup=keyboard, parse_mode="HTML")
     else:
-        await callback.message.edit_text(text_content, reply_markup=keyboard, parse_mode="HTML")
+        await callback.message.edit_text(text, reply_markup=keyboard, parse_mode="HTML")
+    await callback.answer()
+
+
+@signs_router.callback_query(F.data == "signs_nop")
+async def signs_nop(callback: types.CallbackQuery):
+    await callback.answer()
+
 
 # ─── BELGI TAFSILOTI ───────────────────────────────────────────────
-@signs_router.callback_query(F.data.regexp(r'^sign_\d+$'))
+@signs_router.callback_query(F.data.startswith("sign_"))
 async def show_sign_detail(callback: types.CallbackQuery):
-    sign_id = int(callback.data.split("_")[1])
-    
+    parts = callback.data.split("_")
+    sign_id = int(parts[1])
+    back_page = int(parts[2]) if len(parts) > 2 else 1
+
     async with async_session() as session:
         result = await session.execute(select(Sign).where(Sign.id == sign_id))
         sign = result.scalars().first()
-    
+
     if not sign:
-        await callback.answer("Belgi topilmadi.", show_alert=True)
+        await callback.answer("❌ Belgi topilmadi.", show_alert=True)
         return
-    
+
+    cat_title = CAT_LABELS.get(sign.category, sign.category.capitalize())
+
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="🔙 Kategoriyaga qaytish", callback_data=f"signs_cat_{sign.category}")]
+        [InlineKeyboardButton(text="🔙 Ro'yxatga qaytish", callback_data=f"signs_page_{sign.category}_{back_page}")],
+        [
+            InlineKeyboardButton(text="📝 Belgilar testi", callback_data="signs_test"),
+            InlineKeyboardButton(text="🏠 Bosh menyu", callback_data="back_to_main_menu")
+        ]
     ])
-    
-    no_desc = "Ta'rif kiritilmagan."
+
     text = (
-        f"🚦 <b>{sign.name}</b>\n\n"
-        f"📂 Kategoriya: {sign.category.capitalize()}\n\n"
-        f"📖 Ta'rifi:\n{sign.description or no_desc}"
+        f"🚦 <b>{sign.name.upper()}</b>\n"
+        f"━━━━━━━━━━━━━━━━━━━━\n\n"
+        f"📂 <b>Guruh:</b> {cat_title}\n\n"
+        f"📖 <b>Qoidasi va ta'rifi:</b>\n{sign.description or 'Yo\'l harakati xavfsizligini ta\'minlash uchun o\'rnatiladi.'}\n\n"
+        f"💡 <b>Misol / Amal qilish tartibi:</b>\n{sign.example or 'Yo\'l harakati qoidalariga qat\'iy rioya qiling.'}"
     )
-    if sign.example:
-        text += f"\n\n💡 Misol:\n{sign.example}"
-    
-    await callback.answer()
-    
+
+    photo_to_send = None
     if sign.image_url:
-        sent = False
-        # Local file
         if not sign.image_url.startswith("http"):
-            import os
-            from aiogram.types import FSInputFile
-            from config import BASE_DIR
-            
-            # Check if it's in webapp/ or root
-            path1 = os.path.join(BASE_DIR, 'webapp', sign.image_url)
-            path2 = os.path.join(BASE_DIR, sign.image_url)
-            
-            local_path = path1 if os.path.exists(path1) else path2
-            
-            if os.path.exists(local_path):
-                try:
-                    photo = FSInputFile(local_path)
-                    await callback.message.answer_photo(photo=photo, caption=text, reply_markup=keyboard, parse_mode="HTML")
-                    await callback.message.delete()
-                    sent = True
-                except Exception as e:
-                    print(f"Local photo send error: {e}")
-        # Remote URL
-        elif sign.image_url.startswith("http"):
-            try:
-                await callback.message.answer_photo(photo=sign.image_url, caption=text, reply_markup=keyboard, parse_mode="HTML")
+            path1 = os.path.join(BASE_DIR, 'webapp', sign.image_url.replace('\\', '/'))
+            path2 = os.path.join(BASE_DIR, sign.image_url.replace('\\', '/'))
+            target_path = path1 if os.path.exists(path1) else (path2 if os.path.exists(path2) else None)
+            if target_path:
+                photo_to_send = FSInputFile(target_path)
+        else:
+            photo_to_send = sign.image_url
+
+    await callback.answer()
+
+    if photo_to_send:
+        try:
+            if callback.message.photo:
                 await callback.message.delete()
-                sent = True
-            except Exception as e:
-                print(f"Remote photo send error: {e}")
-        
-        if not sent:
-            await callback.message.edit_text(text, reply_markup=keyboard, parse_mode="HTML")
+            await callback.message.answer_photo(
+                photo=photo_to_send,
+                caption=text,
+                reply_markup=keyboard,
+                parse_mode="HTML"
+            )
+            return
+        except Exception as e:
+            print(f"Error sending sign photo: {e}")
+
+    # Fallback to text
+    if callback.message.photo:
+        await callback.message.delete()
+        await callback.message.answer(text, reply_markup=keyboard, parse_mode="HTML")
     else:
         await callback.message.edit_text(text, reply_markup=keyboard, parse_mode="HTML")
+
 
 # ─── QIDIRISH (FSM) ────────────────────────────────────────────────
 @signs_router.callback_query(F.data == "signs_search")
@@ -151,77 +230,85 @@ async def signs_search_prompt(callback: types.CallbackQuery, state: FSMContext):
         [InlineKeyboardButton(text="❌ Bekor qilish", callback_data="signs_back")]
     ])
     text_content = (
-        "🔍 BELGI QIDIRISH\n\n"
-        "Qidirmoqchi bo'lgan belgining nomi yoki raqamini yozing:\n\n"
-        "Misol: «3.24» yoki «taqiqlangan» yoki «chorraha»"
+        "🔍 <b>YO'L BELGISINI QIDIRISH</b>\n"
+        "━━━━━━━━━━━━━━━━━━━━\n\n"
+        "Qidirmoqchi bo'lgan belgining <b>raqami</b> yoki <b>nomini</b> yozib yuboring:\n\n"
+        "Masalan: <code>3.24</code>, <code>to'xtash</code>, <code>asosiy yo'l</code> yoki <code>piyodalar</code>"
     )
     if callback.message.photo:
         await callback.message.delete()
-        await callback.message.answer(text_content, reply_markup=keyboard)
+        await callback.message.answer(text_content, reply_markup=keyboard, parse_mode="HTML")
     else:
-        await callback.message.edit_text(text_content, reply_markup=keyboard)
+        await callback.message.edit_text(text_content, reply_markup=keyboard, parse_mode="HTML")
     await state.set_state(SignStates.searching)
     await callback.answer()
+
 
 @signs_router.message(SignStates.searching)
 async def signs_search_result(message: types.Message, state: FSMContext):
     query = message.text.strip().lower()
     await state.clear()
-    
+
     async with async_session() as session:
-        result = await session.execute(select(Sign))
+        result = await session.execute(select(Sign).order_by(Sign.id))
         all_signs = result.scalars().all()
-    
-    # Qidiruv: nom yoki ta'rifda topamiz
-    found = [s for s in all_signs if query in s.name.lower() or (s.description and query in s.description.lower())]
-    
+
+    found = [
+        s for s in all_signs
+        if query in s.name.lower() or (s.description and query in s.description.lower())
+    ]
+
     if not found:
         keyboard = InlineKeyboardMarkup(inline_keyboard=[
-            [InlineKeyboardButton(text="🔙 Belgilar bo'limiga qaytish", callback_data="signs_back")]
+            [InlineKeyboardButton(text="🔍 Qayta qidirish", callback_data="signs_search")],
+            [InlineKeyboardButton(text="🔙 Belgilar katalogiga", callback_data="signs_back")]
         ])
         await message.answer(
-            f"❌ «{message.text}» bo'yicha hech narsa topilmadi.\n\n"
-            f"Belgining raqami yoki nomi bilan qayta qidirib ko'ring.",
-            reply_markup=keyboard
+            f"❌ «<b>{message.text}</b>» bo'yicha hech qanday yo'l belgisi topilmadi.\n\n"
+            f"Belgining raqami (masalan <code>1.1</code>) yoki nomi bilan qayta urinib ko'ring.",
+            reply_markup=keyboard,
+            parse_mode="HTML"
         )
         return
-    
+
     buttons = []
-    for sign in found[:20]:
+    for s in found[:15]:
         buttons.append([InlineKeyboardButton(
-            text=f"[{sign.category}] {sign.name[:45]}",
-            callback_data=f"sign_{sign.id}"
+            text=f"🚸 {s.name[:50]}",
+            callback_data=f"sign_{s.id}_1"
         )])
-    buttons.append([InlineKeyboardButton(text="🔙 Orqaga", callback_data="signs_back")])
-    
+    buttons.append([
+        InlineKeyboardButton(text="🔍 Boshqa qidirish", callback_data="signs_search"),
+        InlineKeyboardButton(text="🔙 Katalogga qaytish", callback_data="signs_back")
+    ])
+
     keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
     await message.answer(
-        f"🔍 «{message.text}» bo'yicha qidiruv natijalari:\n"
-        f"Topildi: {len(found)} ta belgi",
-        reply_markup=keyboard
+        f"🔍 «<b>{message.text}</b>» bo'yicha qidiruv natijalari:\n"
+        f"Topildi: <b>{len(found)} ta</b> belgi\n\n"
+        f"👇 <i>Kerakli belgini tanlang:</i>",
+        reply_markup=keyboard,
+        parse_mode="HTML"
     )
+
 
 # ─── ORQAGA ──────────────────────────────────────────────────────
 @signs_router.callback_query(F.data == "signs_back")
 async def signs_back(callback: types.CallbackQuery, state: FSMContext):
     await state.clear()
-    keyboard = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="🛑 Taqiqlovchi", callback_data="signs_cat_taqiqlovchi"),
-         InlineKeyboardButton(text="⚠️ Ogohlantiruvchi", callback_data="signs_cat_ogohlantiruvchi")],
-        [InlineKeyboardButton(text="ℹ️ Axborot", callback_data="signs_cat_axborot"),
-         InlineKeyboardButton(text="➡️ Buyuruvchi", callback_data="signs_cat_buyuruvchi")],
-        [InlineKeyboardButton(text="🔑 Imtiyoz", callback_data="signs_cat_imtiyoz"),
-         InlineKeyboardButton(text="🛠 Servis", callback_data="signs_cat_servis")],
-        [InlineKeyboardButton(text="🔍 Belgini qidirish", callback_data="signs_search")],
-        [InlineKeyboardButton(text="📝 Belgilar bo'yicha test", callback_data="signs_test")]
-    ])
-    text_content = "🚦 YO'L BELGILARI\n\nKatalogdan bo'lim tanlang yoki belgini qidiring:"
+    text = (
+        "🚦 <b>O'ZBEKISTON RESPUBLIKASI YO'L BELGILARI</b>\n"
+        "━━━━━━━━━━━━━━━━━━━━\n\n"
+        "Yo'l harakati qoidalarida belgilangan rasmiy 6 ta asosiy guruhdagi barcha 130 ta belgi.\n\n"
+        "👇 <i>O'rganmoqchi bo'lgan guruhni tanlang:</i>"
+    )
     if callback.message.photo:
         await callback.message.delete()
-        await callback.message.answer(text_content, reply_markup=keyboard)
+        await callback.message.answer(text, reply_markup=get_signs_hub_keyboard(), parse_mode="HTML")
     else:
-        await callback.message.edit_text(text_content, reply_markup=keyboard)
+        await callback.message.edit_text(text, reply_markup=get_signs_hub_keyboard(), parse_mode="HTML")
     await callback.answer()
+
 
 # ─── BELGILAR BO'YICHA TEST ─────────────────────────────────────
 @signs_router.callback_query(F.data == "signs_test")
@@ -229,7 +316,7 @@ async def signs_test(callback: types.CallbackQuery, state: FSMContext):
     from database import Question
     from sqlalchemy.sql.expression import func
     from handlers.test import TestStates, send_question
-    
+
     async with async_session() as session:
         result = await session.execute(
             select(Question).where(
@@ -242,16 +329,20 @@ async def signs_test(callback: types.CallbackQuery, state: FSMContext):
                 select(Question).where(Question.image_url != None).order_by(func.random()).limit(10)
             )
             questions = result_all.scalars().all()
-    
+
     if not questions:
-        await callback.answer("Hozircha belgilar bo'yicha savollar yo'q.", show_alert=True)
+        await callback.answer("Hozircha belgilar bo'yicha savollar topilmadi.", show_alert=True)
         return
-    
+
     q_ids = [q.id for q in questions]
     await state.set_state(TestStates.taking_test)
-    await state.update_data(questions=q_ids, current_idx=0, correct_answers=0, selected_category="Yo'l belgilari va chiziqlari")
-    await callback.message.delete()
-    
+    await state.update_data(
+        questions=q_ids, current_idx=0, correct_answers=0, wrong_count=0,
+        selected_category="Yo'l belgilari", is_gai_mode=False, is_marathon_mode=False, is_video_mode=False
+    )
+    try:
+        await callback.message.delete()
+    except Exception:
+        pass
+
     await send_question(callback, state)
-
-

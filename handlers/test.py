@@ -301,11 +301,20 @@ async def send_question(message_or_callback, state: FSMContext):
         percent = round(correct_count / max(total_count, 1) * 100)
         is_gai = data.get("is_gai_mode", False)
         
-        # Foydalanuvchi ma'lumotlarini olish
-        user_name = "Hurmatli Haydovchi"
+        # Foydalanuvchi F.I.SH (to'liq ism-familiyasi)ni aniqlash
+        user_name = None
         if user and user.full_name:
-            user_name = user.full_name
-            
+            clean_fn = user.full_name.strip()
+            if clean_fn and clean_fn.lower() not in ["foydalanuvchi", "noma'lum", "none", "hurmatli haydovchi"]:
+                user_name = clean_fn
+        if not user_name and hasattr(message_or_callback, 'from_user') and message_or_callback.from_user:
+            fu = message_or_callback.from_user
+            tg_full = ((fu.first_name or "") + " " + (fu.last_name or "")).strip()
+            if tg_full:
+                user_name = tg_full
+        if not user_name:
+            user_name = "Hurmatli O'quvchi"
+
         bot_obj = message_or_callback.bot if hasattr(message_or_callback, 'bot') else message_or_callback.message.bot if hasattr(message_or_callback, 'message') else None
         bot_uname = "Avtomaktab_bot"
         if bot_obj:
@@ -313,13 +322,13 @@ async def send_question(message_or_callback, state: FSMContext):
             bot_uname = binfo.username
             
         import urllib.parse
-        share_msg = f"🏆 Men Avtomaktab botida YHQ testini {percent}% natija bilan ishladim! Siz ham bilimingizni sinab ko'ring:"
+        share_msg = f"🏆 Men Avtomaktab botida YHQ Davlat testidan o'tdim ({percent}%)! Siz ham bilimingizni sinab ko'ring:"
         share_url = f"https://t.me/share/url?url=https://t.me/{bot_uname}?start=ref_{message_or_callback.from_user.id}&text={urllib.parse.quote(share_msg)}"
 
         cert_kb = InlineKeyboardMarkup(inline_keyboard=[
-            [InlineKeyboardButton(text="📲 Sertifikatni Ulashish (Do'stlarga)", url=share_url)],
-            [InlineKeyboardButton(text="🔄 Yangi test boshlash", callback_data="test_back_to_cats")],
-            [InlineKeyboardButton(text="👑 Xatolar tahlili", callback_data="test_mistakes")],
+            [InlineKeyboardButton(text="📲 Sertifikatni Do'stlarga Ulashish", url=share_url)],
+            [InlineKeyboardButton(text="🔄 Qayta topshirish", callback_data="testcnt_gai")],
+            [InlineKeyboardButton(text="👑 Xatolar ustida ishlash", callback_data="test_mistakes")],
             [InlineKeyboardButton(text="🏠 Bosh menyu", callback_data="back_to_main_menu")]
         ])
 
@@ -331,33 +340,69 @@ async def send_question(message_or_callback, state: FSMContext):
             [InlineKeyboardButton(text="🏠 Bosh menyu", callback_data="back_to_main_menu")]
         ])
 
-        if is_gai and correct_count >= 18:
-            # GAI IMTIHONIDAN O'TDI - SERTIFIKAT GENERATSIYA QILISH
-            try:
-                from utils.certificate_generator import generate_certificate
-                from aiogram.types import FSInputFile
-                cert_path = generate_certificate(user_name, correct_count, total_count)
-                
-                cert_caption = (
+        if is_gai:
+            if correct_count >= 18:
+                # GAI IMTIHONIDAN O'TDI - NOMIDAGI RASMIY SERTIFIKAT
+                try:
+                    from utils.certificate_generator import generate_certificate
+                    from aiogram.types import FSInputFile
+                    cert_path = generate_certificate(user_name, correct_count, total_count)
+                    
+                    cert_caption = (
+                        f"🎉 <b>TABRIKLAYMIZ, {user_name.upper()}!</b>\n\n"
+                        f"🏆 <b>SIZ YHQ DAVLAT IMTIHONIDAN MUVAFFAQIYATLI O'TDINGIZ!</b>\n"
+                        f"━━━━━━━━━━━━━━━━━━━━\n\n"
+                        f"👤 <b>Bitiruvchi (F.I.SH):</b> <b>{user_name}</b>\n"
+                        f"📊 <b>Natija:</b> <b>{correct_count}/{total_count} ta to'g'ri ({percent}%)</b>\n"
+                        f"❌ <b>Xatolar soni:</b> {total_count - correct_count} ta (Ruxsat: 2 ta)\n"
+                        f"⭐️ <b>Holati:</b> ✅ <i>HAYDOVCHILIK GUVOHNOMASIGA TAYYOR</i>\n\n"
+                        f"📄 Sizning nomingizga rasmiy <b>Oltin Sertifikat</b> tasdiqlandi!\n"
+                        f"<i>Ushbu sertifikatni yuklab oling va do'stlaringiz bilan ulashing!</i>"
+                    )
+                    
+                    if os.path.exists(cert_path):
+                        await bot_obj.send_photo(
+                            chat_id=user_id_tg,
+                            photo=FSInputFile(cert_path),
+                            caption=cert_caption,
+                            reply_markup=cert_kb,
+                            parse_mode="HTML"
+                        )
+                        return
+                except Exception as e:
+                    print(f"Error generating certificate: {e}")
+
+                # Agar rasm yuborishda xatolik bo'lsa, xabar ko'rinishida yuboramiz
+                fallback_cert_text = (
                     f"🎉 <b>TABRIKLAYMIZ, {user_name.upper()}!</b>\n\n"
                     f"🏆 <b>SIZ YHQ DAVLAT IMTIHONIDAN MUVAFFAQIYATLI O'TDINGIZ!</b>\n"
                     f"━━━━━━━━━━━━━━━━━━━━\n\n"
-                    f"📊 <b>Natija:</b> {correct_count}/{total_count} ta to'g'ri ({percent}%)\n"
-                    f"❌ <b>Xatolar soni:</b> {total_count - correct_count} ta (Ruxsat: 2 ta)\n\n"
-                    f"📄 Sizning nomingizga rasmiy <b>Sertifikat</b> rasmiylashtirildi!\n"
-                    f"<i>Ushbu sertifikatni saqlab oling va do'stlaringiz bilan ulashing!</i>"
+                    f"👤 <b>Bitiruvchi (F.I.SH):</b> <b>{user_name}</b>\n"
+                    f"📊 <b>Natija:</b> <b>{correct_count}/{total_count} ta to'g'ri ({percent}%)</b>\n"
+                    f"❌ <b>Xatolar soni:</b> {total_count - correct_count} ta (Ruxsat: 2 ta)\n"
+                    f"⭐️ <b>Holati:</b> ✅ <i>HAYDOVCHILIK GUVOHNOMASIGA TAYYOR</i>\n\n"
+                    f"📄 Siz rasmiy ravishda Sertifikatga loyiq deb topildingiz!"
                 )
-                
-                await bot_obj.send_photo(
-                    chat_id=user_id_tg,
-                    photo=FSInputFile(cert_path),
-                    caption=cert_caption,
-                    reply_markup=cert_kb,
-                    parse_mode="HTML"
-                )
+                await bot_obj.send_message(chat_id=user_id_tg, text=fallback_cert_text, reply_markup=cert_kb, parse_mode="HTML")
                 return
-            except Exception as e:
-                print(f"Error generating certificate: {e}")
+            else:
+                # GAI topshirilmadi (< 18 to'g'ri)
+                gai_fail_kb = InlineKeyboardMarkup(inline_keyboard=[
+                    [InlineKeyboardButton(text="🔄 Qayta topshirish (GAI)", callback_data="testcnt_gai")],
+                    [InlineKeyboardButton(text="👑 Xatolar ustida ishlash", callback_data="test_mistakes")],
+                    [InlineKeyboardButton(text="🏠 Bosh menyu", callback_data="back_to_main_menu")]
+                ])
+                gai_fail_text = (
+                    f"⚠️ <b>GAI IMTIHONI NATIJASI: TOPSHIRILMADI</b>\n"
+                    f"━━━━━━━━━━━━━━━━━━━━\n\n"
+                    f"👤 <b>O'quvchi:</b> {user_name}\n"
+                    f"📊 <b>To'plangan ball:</b> {correct_count}/{total_count} ta to'g'ri ({percent}%)\n"
+                    f"❌ <b>Xatolar soni:</b> {total_count - correct_count} ta (Ruxsat: maksimal 2 ta)\n\n"
+                    f"<i>GAI Davlat Imtihonidan o'tish va Sertifikat olish uchun kamida 18 ta to'g'ri javob talab etiladi.</i>\n\n"
+                    f"💡 <i>Xatolaringiz ustida ishlab, qayta topshirishingiz mumkin!</i>"
+                )
+                await bot_obj.send_message(chat_id=user_id_tg, text=gai_fail_text, reply_markup=gai_fail_kb, parse_mode="HTML")
+                return
 
         status_emoji = "🏆" if percent >= 90 else "👍" if percent >= 70 else "⚠️"
         is_marathon = data.get("is_marathon_mode", False)
@@ -847,8 +892,9 @@ async def process_answer(callback: types.CallbackQuery, state: FSMContext):
         await delete_test_session(callback.from_user.id)
         
         fail_kb = InlineKeyboardMarkup(inline_keyboard=[
-            [InlineKeyboardButton(text="🔄 Qayta topshirish", callback_data="testcnt_gai")],
-            [InlineKeyboardButton(text="🔙 Bo'limlar menyusi", callback_data="test_back_to_cats")]
+            [InlineKeyboardButton(text="🔄 Qayta topshirish (GAI)", callback_data="testcnt_gai")],
+            [InlineKeyboardButton(text="🔙 Bo'limlar menyusi", callback_data="test_back_to_cats")],
+            [InlineKeyboardButton(text="🏠 Bosh menyu", callback_data="back_to_main_menu")]
         ])
         
         fail_text = (

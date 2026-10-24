@@ -2,7 +2,7 @@ from aiogram import Router, types, F
 from aiogram.filters import Command
 from aiogram.types import (
     InlineKeyboardMarkup, InlineKeyboardButton,
-    ReplyKeyboardMarkup, KeyboardButton
+    ReplyKeyboardMarkup, KeyboardButton, WebAppInfo
 )
 from database import async_session, User, Setting, Rule, VideoLesson, News, QAItem, UserStat
 from sqlalchemy import select, func
@@ -708,7 +708,7 @@ async def reminders_menu_callback(callback: types.CallbackQuery):
             InlineKeyboardButton(text="🌃 21:30", callback_data="setrem_21:30")
         ],
         [InlineKeyboardButton(text="🔕 Eslatmani o'chirish", callback_data="setrem_off")],
-        [InlineKeyboardButton(text="🔙 Natijalarga qaytish", callback_data="close_profile")]
+        [InlineKeyboardButton(text="🔙 Natijalarga qaytish", callback_data="back_to_stats")]
     ])
 
     status_str = "🔕 O'chirilgan" if current_rem == "off" else f"🔔 Har kuni <b>{current_rem}</b> da"
@@ -740,3 +740,14 @@ async def set_reminder_time_callback(callback: types.CallbackQuery):
         await callback.answer(f"✅ Eslatma soat {chosen_time} ga muvaffaqiyatli o'rnatildi!", show_alert=True)
 
     await reminders_menu_callback(callback)
+
+
+@menu_router.callback_query(F.data == "back_to_stats")
+async def cb_back_to_stats(callback: types.CallbackQuery, state: FSMContext = None):
+    try:
+        await callback.message.delete()
+    except Exception:
+        pass
+    await stats_menu(callback.message, state)
+    await callback.answer()
+

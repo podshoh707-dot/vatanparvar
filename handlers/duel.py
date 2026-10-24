@@ -15,7 +15,9 @@ duel_router = Router()
 WAITING_PLAYER = None
 ACTIVE_DUELS = {}
 
-@duel_router.message(F.text == "⚔️ Battle (Duel Rejimi)")
+@duel_router.message(F.text.in_([
+    "⚔️ Duel Jang (1vs1)", "⚔️ Duel Jang", "⚔️ Battle (Duel Rejimi)", "⚔️ Duel", "⚔️ Battle"
+]))
 async def duel_menu(message: types.Message):
     global WAITING_PLAYER
     user_id = message.from_user.id

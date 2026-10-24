@@ -866,7 +866,9 @@ function showSignDetail(id) {
   if (!s) return;
   currentSelectedSign = s;
 
-  document.getElementById('sm-img').src = s.image_url || 'images/placeholder.png';
+  const signImg = document.getElementById('sm-img');
+  signImg.src = s.image_url || s.remote_url || 'images/placeholder.png';
+  signImg.onerror = () => { if (s.remote_url && signImg.src !== s.remote_url) signImg.src = s.remote_url; };
   document.getElementById('sm-cat').textContent = s.category || 'Belgi';
   document.getElementById('sm-name').textContent = s.name || 'Belgi';
   document.getElementById('sm-desc').textContent = s.description || 'Ushbu belgi yo\'l harakati xavfsizligini ta\'minlash uchun o\'rnatiladi.';
@@ -1063,7 +1065,7 @@ function renderSignsGrid() {
 
   container.innerHTML = filtered.map(s => `
     <div class="sign-card" onclick="showSignDetail(${s.id})">
-      <img src="${s.image_url || 'images/placeholder.png'}" alt="${s.name}" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.png';">
+      <img src="${s.image_url || s.remote_url}" alt="${s.name}" loading="lazy" onerror="if(this.src!=='${s.remote_url}'){this.src='${s.remote_url}';}">
       <span>${s.name}</span>
     </div>
   `).join('');

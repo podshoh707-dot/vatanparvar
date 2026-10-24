@@ -107,6 +107,29 @@ async def init_db():
                 await session.commit()
                 print(f"[init_db] Successfully seeded {len(q_data)} questions!")
 
+        # Auto-seed road signs if empty
+        from .models import Sign
+        res_signs = await session.execute(select(func.count(Sign.id)))
+        count_signs = res_signs.scalar() or 0
+        if count_signs == 0:
+            signs_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), "webapp", "signs.json")
+            if os.path.exists(signs_file):
+                print(f"[init_db] Seeding signs from {signs_file}...")
+                with open(signs_file, "r", encoding="utf-8") as f:
+                    signs_data = json.load(f)
+                for s in signs_data:
+                    sign_obj = Sign(
+                        id=s.get("id"),
+                        category=s.get("category", "axborot"),
+                        name=s.get("name", "Belgi"),
+                        image_url=s.get("image_url"),
+                        description=s.get("description"),
+                        example=s.get("example")
+                    )
+                    session.add(sign_obj)
+                await session.commit()
+                print(f"[init_db] Successfully seeded {len(signs_data)} road signs!")
+
 async def get_session() -> AsyncSession:
     async with async_session() as session:
         yield session

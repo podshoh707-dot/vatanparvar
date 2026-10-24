@@ -1,8 +1,10 @@
-# Katta papkalar (minglab rasmlar va zip fayllar - serverga kerak emas)
-webapp/images/
-images/
-zip/
+# Katta papkalar (minglab test rasmlari - serverga kerak emas)
+/images/
+/zip/
 *.zip
+/webapp/images/*
+!/webapp/images/signs/
+!/webapp/images/signs/**
 
 # Python
 __pycache__/

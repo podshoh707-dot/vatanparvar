@@ -499,59 +499,62 @@ async def contact_admin(message: types.Message, state: FSMContext):
     await message.answer(text, reply_markup=keyboard, parse_mode="HTML")
 
 
-@menu_router.message(F.text.in_(["🏛 Biz Haqimizda", "🏛 Tashkilot haqida"]))
-async def org_info_handler(message: types.Message, state: FSMContext):
+@menu_router.message(F.text.in_([
+    "🏛 Biz Haqimizda", "🏛 Tashkilot haqida", "🏛 Tashkilot & O'qish", "🏛 Tashkilot & O'qish haqida",
+    "🎓 O'qish Haqida", "🎓 O'qish haqida", "🏫 Avtomaktab haqida", "🏫 Avtomaktab",
+    "🏛 О нас", "🎓 Об обучении"
+]))
+async def org_info_handler(message: types.Message, state: FSMContext = None):
     if state:
         await state.clear()
-    async with async_session() as session:
-        result = await session.execute(select(Setting).where(Setting.key == "org_info"))
-        setting = result.scalars().first()
-    
-    if not setting:
-        default_text = (
-            "🏛 <b>AVTOVATANPARVAR INNOVATSION AVTOMAKTABI</b>\n"
-            "───────────────────────────\n\n"
-            "<b>\"AVTOVATANPARVAR\"</b> – O'zbekistonda yoshlarni va barcha qiziquvchilarni "
-            "haydovchilik sirlariga o'rgatish, yo'l harakati xavfsizligini oshirish maqsadida tashkil etilgan zamonaviy o'quv maskani.\n\n"
-            "🎯 <b>Bizning maqsadimiz:</b> Yo'llarda xavfsizlikni ta'minlaydigan, yuqori malakali, "
-            "qoidalarni puxta biladigan madaniyatli haydovchilarni yetishtirib chiqarish.\n\n"
-            "🌟 <b>Afzalliklarimiz:</b>\n"
-            "• Zamonaviy interaktiv o'quv texnologiyalari va onlayn tayyorgarlik\n"
-            "• Katta tajribaga ega professional instruktor va ustozlar\n"
-            "• Qulay jadval va individual yondashuv\n"
-            "• Innovatsion test bot va Mini App platformasi\n\n"
-            "📍 <b>Manzil:</b> Toshkent shahri\n"
-            "📞 <b>Aloqa:</b> +998 97 069 70 77\n\n"
-            "<i>Biz bilan professionallar safiga qo'shiling!</i>"
-        )
-        keyboard = InlineKeyboardMarkup(inline_keyboard=[
-            [InlineKeyboardButton(text="💬 Adminga murojaat", url="https://t.me/Avto_admin")]
-        ])
-        await message.answer(default_text, reply_markup=keyboard, parse_mode="HTML")
-        return
-        
-    import json
-    try:
-        data = json.loads(setting.value)
-        text = data.get("text", "")
-        photo_id = data.get("photo_id")
-        
-        if photo_id:
-            if photo_id.endswith('.png') or photo_id.endswith('.jpg'):
-                from aiogram.types import FSInputFile
-                import os
-                from config import BASE_DIR
-                full_photo_id = os.path.join(BASE_DIR, photo_id)
-                if os.path.exists(full_photo_id):
-                    await message.answer_photo(photo=FSInputFile(full_photo_id), caption=text, parse_mode="HTML")
-                else:
-                    await message.answer(text, parse_mode="HTML")
-            else:
-                await message.answer_photo(photo=photo_id, caption=text, parse_mode="HTML")
+
+    from handlers.admin_panel.organization import get_org_data
+    data = await get_org_data()
+
+    text = (
+        f"🏛 <b>{data.get('title', 'AVTOVATANPARVAR INNOVATSION AVTOMAKTABI')}</b>\n"
+        "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
+        f"{data.get('about', '')}\n\n"
+        "📋 <b>O'QISH TOIFALARI VA NARXLAR:</b>\n"
+        f"{data.get('categories', '')}\n\n"
+        "📑 <b>KERAKLI HUJJATLAR:</b>\n"
+        f"{data.get('documents', '')}\n\n"
+        f"📍 <b>Manzil:</b> {data.get('address', 'Toshkent shahri')}\n"
+        f"📞 <b>Aloqa telefoni:</b> {data.get('phone', '+998 97 069 70 77')}\n\n"
+        "<i>Biz bilan professionallar safiga qo'shiling!</i>"
+    )
+
+    admin_u = data.get('admin_username', '@Avto_admin')
+    if not admin_u.startswith('@'): admin_u = '@' + admin_u
+    admin_clean = admin_u.replace('@', '')
+
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="💬 Adminga murojaat", url=f"https://t.me/{admin_clean}")],
+        [InlineKeyboardButton(text="📱 Mini Ilovada ko'rish", web_app=WebAppInfo(url=WEBAPP_URL))]
+    ])
+
+    photo_id = data.get("photo_id")
+    photo_obj = None
+    if photo_id:
+        if photo_id.endswith('.png') or photo_id.endswith('.jpg'):
+            import os
+            from config import BASE_DIR
+            from aiogram.types import FSInputFile
+            local_p = os.path.join(BASE_DIR, photo_id)
+            if not os.path.exists(local_p):
+                local_p = os.path.join(BASE_DIR, "webapp", photo_id)
+            if os.path.exists(local_p):
+                photo_obj = FSInputFile(local_p)
         else:
-            await message.answer(text, parse_mode="HTML")
-    except:
-        await message.answer(setting.value, parse_mode="HTML")
+            photo_obj = photo_id
+
+    try:
+        if photo_obj:
+            await message.answer_photo(photo=photo_obj, caption=text, reply_markup=keyboard, parse_mode="HTML")
+        else:
+            await message.answer(text, reply_markup=keyboard, parse_mode="HTML")
+    except Exception:
+        await message.answer(text, reply_markup=keyboard, parse_mode="HTML")
 
 
 # ──────────────── REFERRAL (DO'STLARNI TAKLIF QILISH) ────────────────

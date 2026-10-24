@@ -38,10 +38,11 @@ async def get_pro_admin_keyboard(user_id: int):
         row4.append(InlineKeyboardButton(text="👥 Guruhlar & Kanallar", callback_data="admin_groups"))
     if row4: keyboard.append(row4)
 
-    # 5. Avtomaktab O'quvchilari
+    # 5. Avtomaktab O'quvchilari va Tashkilot/O'qish
     if await check_permission(user_id, "can_manage_content"):
         keyboard.append([
-            InlineKeyboardButton(text="🎓 Avtomaktab O'quvchilari", callback_data="admin_school")
+            InlineKeyboardButton(text="🎓 O'quvchilar Bazasi", callback_data="admin_school"),
+            InlineKeyboardButton(text="🏢 Tashkilot & O'qish", callback_data="admin_org_hub")
         ])
     
     # 6. Tizim va Adminlar boshqaruvi (faqat superadmin uchun)

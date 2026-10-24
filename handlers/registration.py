@@ -205,10 +205,11 @@ async def process_phone(message: types.Message, state: FSMContext):
     if message.contact:
         phone = message.contact.phone_number
     elif message.text:
-        # Oddiy text bo'lsa, telefon formatini tekshiramiz
-        text_phone = message.text.strip().replace(" ", "")
-        if re.match(r'^\+?998\d{9}$', text_phone):
-            phone = text_phone
+        raw_digits = re.sub(r'\D', '', message.text)
+        if len(raw_digits) == 9:
+            phone = "+998" + raw_digits
+        elif len(raw_digits) == 12 and raw_digits.startswith("998"):
+            phone = "+" + raw_digits
             
     if not phone:
         await message.answer(get_text(lang, "invalid_phone"))
@@ -267,7 +268,7 @@ async def send_main_menu(message: types.Message, lang: str, name: str):
             [KeyboardButton(text="🚗 Test Ishlash (805 ta YHQ)")],
             [KeyboardButton(text="🎓 GAI Imtihoni (Sertifikatli)"), KeyboardButton(text="🚦 Yo'l Belgilari")],
             [KeyboardButton(text="📊 Mening Natijam"), KeyboardButton(text="📚 YHQ Qoidalari")],
-            [KeyboardButton(text="🎁 Taklif Qilish & VIP"), KeyboardButton(text="💎 VIP (Premium)")],
+            [KeyboardButton(text="🏛 Tashkilot & O'qish"), KeyboardButton(text="💎 VIP (Premium)")],
             [KeyboardButton(text="📱 Avtomaktab (Mini App)", web_app=WebAppInfo(url=WEBAPP_URL))]
         ],
         resize_keyboard=True

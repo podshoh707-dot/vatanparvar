@@ -11,6 +11,7 @@ from .school import school_router
 from .questions import questions_router
 from .signs import signs_router
 from .admins import admins_router
+from .organization import organization_router
 
 admin_router = Router()
 
@@ -19,6 +20,7 @@ admin_router.include_router(admins_router)
 admin_router.include_router(statistics_router)
 admin_router.include_router(settings_router)
 admin_router.include_router(content_router)
+admin_router.include_router(organization_router)
 admin_router.include_router(broadcast_router)
 admin_router.include_router(rating_router)
 admin_router.include_router(groups_admin_router)

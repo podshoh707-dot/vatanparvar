@@ -250,6 +250,11 @@ async def process_phone(message: types.Message, state: FSMContext):
             user.language = lang
             user.full_name = full_name
             user.phone = phone
+            # Ro'yxatdan o'tgan har bir foydalanuvchiga va'da qilingan 5 kunlik VIP berish
+            from datetime import timedelta
+            if not user.is_premium or not user.premium_expires_at or user.premium_expires_at < datetime.utcnow():
+                user.is_premium = True
+                user.premium_expires_at = datetime.utcnow() + timedelta(days=5)
             await session.commit()
             
     unmute_chat_id = data.get("unmute_chat_id")

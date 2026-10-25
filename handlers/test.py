@@ -81,7 +81,10 @@ async def start_gai_exam_from_message(message: types.Message, state: FSMContext)
         mode_setting = result_mode.scalars().first()
         is_premium_mode_on = mode_setting.value == "1" if mode_setting else False
         
-        if is_premium_mode_on and (not user or not user.is_premium or is_expired):
+        from utils.permissions import is_any_admin
+        is_admin = await is_any_admin(message.from_user.id)
+
+        if not is_admin and is_premium_mode_on and (not user or not user.is_premium or is_expired):
             from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
             kb = InlineKeyboardMarkup(inline_keyboard=[
                 [InlineKeyboardButton(text="💎 VIP Obunani Olish", callback_data="premium_buy")],
@@ -522,12 +525,11 @@ async def send_question(message_or_callback, state: FSMContext):
     # Filter empty rows
     keyboard.inline_keyboard = [row for row in keyboard.inline_keyboard if row]
 
+    bot_obj = message_or_callback.bot
     if isinstance(message_or_callback, types.CallbackQuery):
-        msg = message_or_callback.message
-        bot_obj = msg.bot
+        chat_id = message_or_callback.from_user.id
     else:
-        msg = message_or_callback
-        bot_obj = msg.bot
+        chat_id = message_or_callback.chat.id
 
     import html as py_html
 
@@ -584,8 +586,6 @@ async def send_question(message_or_callback, state: FSMContext):
     from utils.image_enhancer import get_enhanced_image_path
     import os, json
     from config import BASE_DIR
-
-    chat_id = msg.chat.id
 
     # 1. Option-specific images (multiple images)
     option_media_group = []
@@ -662,6 +662,13 @@ async def send_question(message_or_callback, state: FSMContext):
         photo_file = FSInputFile(hd_path)
     elif q.image_url and str(q.image_url).startswith("http"):
         photo_file = q.image_url
+    else:
+        # 188 ta nazariy/matnli savollar uchun maxsus rasmiy YHQ Nazariya Karta rasmi
+        theory_banner = os.path.join(BASE_DIR, "images", "theory_question.jpg")
+        if not os.path.exists(theory_banner):
+            theory_banner = os.path.join(BASE_DIR, "welcome.png")
+        if os.path.exists(theory_banner):
+            photo_file = FSInputFile(theory_banner)
 
     if photo_file:
         try:
@@ -693,8 +700,11 @@ async def start_test(callback: types.CallbackQuery, state: FSMContext):
     else:
         mode = "mistakes"
     
+    from utils.permissions import is_any_admin
+    is_admin = await is_any_admin(callback.from_user.id)
+
     # Premium check for locked modes
-    if mode in ["70", "mistakes"]:
+    if not is_admin and mode in ["70", "mistakes"]:
         async with async_session() as session:
             result_user = await session.execute(select(User).where(User.telegram_id == callback.from_user.id))
             user = result_user.scalars().first()
@@ -757,7 +767,7 @@ async def start_test(callback: types.CallbackQuery, state: FSMContext):
         result_user = await session.execute(select(User).where(User.telegram_id == callback.from_user.id))
         user = result_user.scalars().first()
 
-        if is_premium_mode_on:
+        if not is_admin and is_premium_mode_on:
             is_expired = True
             if user and user.is_premium:
                 if user.premium_expires_at and user.premium_expires_at > datetime.utcnow():
@@ -832,7 +842,10 @@ async def start_test(callback: types.CallbackQuery, state: FSMContext):
         'is_gai_mode': is_gai, 'is_marathon_mode': is_marathon, 'bilet_num': bilet_num,
         'selected_category': category
     })
-    await callback.message.delete()
+    try:
+        await callback.message.delete()
+    except Exception:
+        pass
     await send_question(callback, state)
 
 @test_router.callback_query(F.data.startswith("ans_"))

@@ -8,6 +8,7 @@ images/hd_cache/
 /images/*
 !/images/q_*.webp
 !/images/q_*.jpg
+!/images/theory_question.jpg
 !/images/signs/
 !/images/signs/**
 

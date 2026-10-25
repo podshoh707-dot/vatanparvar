@@ -112,7 +112,7 @@ async def set_bot_profile_and_description(bot: Bot):
         "🎬 207 ta 3D Harakatlanish Videolari\n"
         "🎓 GAI Davlat Imtihoni Simulyatori (20/20) & Oltin Sertifikat\n"
         "🤖 AI Ustoz — Aqlli Avto-Instruktor (Tushuntirish va sirlar)\n"
-        "🚦 130 ta Yo'l Belgilari & Jarimalar Jadvali\n"
+        "🚦 279 ta Rasmiy Yo'l Belgilari & Jarimalar Jadvali\n"
         "🎥 133 ta Rasmiy Video Darsliklar\n\n"
         "🎁 /start bosing va 5 kunlik VIP Premium obunaga ega bo'ling! 🚀"
     )
@@ -124,7 +124,7 @@ async def set_bot_profile_and_description(bot: Bot):
         "🎬 207 3D видео-анимаций перекрестков\n"
         "🎓 Симулятор госэкзамена ГАИ и Золотой Сертификат\n"
         "🤖 ИИ Авто-Инструктор (разбор правил)\n"
-        "🚦 130 дорожных знаков и штрафы\n"
+        "🚦 279 официальных дорожных знаков и штрафы\n"
         "🎥 133 видеоурока\n\n"
         "🎁 Нажмите /start и получите 5 дней VIP бесплатно! 🚀"
     )

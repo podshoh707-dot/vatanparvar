@@ -21,22 +21,26 @@ CAT_LABELS = {
     "buyuruvchi": "⬆️ 4. Buyuruvchi belgilar",
     "axborot": "ℹ️ 5. Axborot-ko'rsatkich belgilari",
     "servis": "🛠 6. Servis belgilari",
+    "qushimcha": "🪧 7. Qo'shimcha axborot belgilari",
 }
 
 # ─── ASOSIY MENYU ──────────────────────────────────────────────────
 def get_signs_hub_keyboard():
     return InlineKeyboardMarkup(inline_keyboard=[
         [
-            InlineKeyboardButton(text="⚠️ 1. Ogohlantiruvchi", callback_data="signs_cat_ogohlantiruvchi"),
-            InlineKeyboardButton(text="🛑 2. Imtiyozli", callback_data="signs_cat_imtiyozli")
+            InlineKeyboardButton(text="⚠️ 1. Ogohlantiruvchi (49)", callback_data="signs_cat_ogohlantiruvchi"),
+            InlineKeyboardButton(text="🛑 2. Imtiyozli (11)", callback_data="signs_cat_imtiyozli")
         ],
         [
-            InlineKeyboardButton(text="🚫 3. Taqiqlovchi", callback_data="signs_cat_taqiqlovchi"),
-            InlineKeyboardButton(text="⬆️ 4. Buyuruvchi", callback_data="signs_cat_buyuruvchi")
+            InlineKeyboardButton(text="🚫 3. Taqiqlovchi (37)", callback_data="signs_cat_taqiqlovchi"),
+            InlineKeyboardButton(text="⬆️ 4. Buyuruvchi (25)", callback_data="signs_cat_buyuruvchi")
         ],
         [
-            InlineKeyboardButton(text="ℹ️ 5. Axborot", callback_data="signs_cat_axborot"),
-            InlineKeyboardButton(text="🛠 6. Servis", callback_data="signs_cat_servis")
+            InlineKeyboardButton(text="ℹ️ 5. Axborot (86)", callback_data="signs_cat_axborot"),
+            InlineKeyboardButton(text="🛠 6. Servis (17)", callback_data="signs_cat_servis")
+        ],
+        [
+            InlineKeyboardButton(text="🪧 7. Qo'shimcha axborot (Tablichkalar - 54)", callback_data="signs_cat_qushimcha")
         ],
         [
             InlineKeyboardButton(text="🔍 Belgini qidirish", callback_data="signs_search"),
@@ -55,13 +59,14 @@ async def signs_menu(message: types.Message, state: FSMContext = None):
     text = (
         "🚦 <b>O'ZBEKISTON RESPUBLIKASI YO'L BELGILARI</b>\n"
         "━━━━━━━━━━━━━━━━━━━━\n\n"
-        "Yo'l harakati qoidalarida belgilangan rasmiy 6 ta asosiy guruhdagi barcha 130 ta belgi:\n\n"
+        "Yo'l harakati qoidalarida belgilangan rasmiy 7 ta asosiy guruhdagi barcha <b>279 ta belgi</b>:\n\n"
         "⚠️ <b>1. Ogohlantiruvchi:</b> Xavfli yo'l qismlari haqida ogohlantiradi\n"
         "🛑 <b>2. Imtiyozli:</b> Chorrahalarda o'tish navbatini belgilaydi\n"
         "🚫 <b>3. Taqiqlovchi:</b> Harakatlanishga muayyan cheklovlar kiritadi\n"
         "⬆️ <b>4. Buyuruvchi:</b> Belgilangan yo'nalishda harakatlanishni buyuradi\n"
         "ℹ️ <b>5. Axborot-ko'rsatkich:</b> Hududlar va maxsus harakat tartiblari\n"
-        "🛠 <b>6. Servis:</b> Yo'ldagi xizmat ko'rsatish maskanlari\n\n"
+        "🛠 <b>6. Servis:</b> Yo'ldagi xizmat ko'rsatish maskanlari\n"
+        "🪧 <b>7. Qo'shimcha axborot:</b> Belgilar ta'sirini aniqlashtiruvchi lavhalar\n\n"
         "👇 <i>O'rganmoqchi bo'lgan guruhni tanlang:</i>"
     )
     await message.answer(text, reply_markup=get_signs_hub_keyboard(), parse_mode="HTML")
@@ -305,7 +310,7 @@ async def signs_back(callback: types.CallbackQuery, state: FSMContext):
     text = (
         "🚦 <b>O'ZBEKISTON RESPUBLIKASI YO'L BELGILARI</b>\n"
         "━━━━━━━━━━━━━━━━━━━━\n\n"
-        "Yo'l harakati qoidalarida belgilangan rasmiy 6 ta asosiy guruhdagi barcha 130 ta belgi.\n\n"
+        "Yo'l harakati qoidalarida belgilangan rasmiy 7 ta asosiy guruhdagi barcha <b>279 ta belgi</b>.\n\n"
         "👇 <i>O'rganmoqchi bo'lgan guruhni tanlang:</i>"
     )
     if callback.message.photo:

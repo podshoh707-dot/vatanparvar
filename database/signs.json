@@ -10,132 +10,6 @@
   },
   {
     "id": 2,
-    "name": "1.2 Shlagbaumsiz temir yo'l kesishmasi",
-    "category": "ogohlantiruvchi",
-    "image_url": "images/signs/sign_1.2.png",
-    "description": "Shlagbaum bilan jihozlanmagan temir yo'l kesishmasiga yaqinlashayotganlik haqida ogohlantiradi.",
-    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/RU_road_sign_1.2.svg/120px-RU_road_sign_1.2.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
-  },
-  {
-    "id": 3,
-    "name": "1.3.1 Bir izli temir yo'l",
-    "category": "ogohlantiruvchi",
-    "image_url": "images/signs/sign_1.3.1.png",
-    "description": "Shlagbaumsiz bir izli temir yo'l kesishmasi.",
-    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/RU_road_sign_1.3.1.svg/120px-RU_road_sign_1.3.1.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
-  },
-  {
-    "id": 4,
-    "name": "1.3.2 Ko'p izli temir yo'l",
-    "category": "ogohlantiruvchi",
-    "image_url": "images/signs/sign_1.3.2.png",
-    "description": "Shlagbaumsiz ikki va undan ortiq izli temir yo'l kesishmasi.",
-    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/RU_road_sign_1.3.2.svg/120px-RU_road_sign_1.3.2.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
-  },
-  {
-    "id": 5,
-    "name": "1.4.1 Temir yo'l kesishmasiga yaqinlashish (o'ng tomon)",
-    "category": "ogohlantiruvchi",
-    "image_url": "images/signs/sign_1.4.1.png",
-    "description": "Aholi punktlaridan tashqarida temir yo'l kesishmasiga yaqinlashish haqida qo'shimcha ogohlantirish.",
-    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/RU_road_sign_1.4.1.svg/60px-RU_road_sign_1.4.1.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
-  },
-  {
-    "id": 6,
-    "name": "1.4.2 Temir yo'l kesishmasiga yaqinlashish (o'ng tomon)",
-    "category": "ogohlantiruvchi",
-    "image_url": "images/signs/sign_1.4.2.png",
-    "description": "Aholi punktlaridan tashqarida temir yo'l kesishmasiga yaqinlashish haqida qo'shimcha ogohlantirish.",
-    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/RU_road_sign_1.4.2.svg/60px-RU_road_sign_1.4.2.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
-  },
-  {
-    "id": 7,
-    "name": "1.4.3 Temir yo'l kesishmasiga yaqinlashish (o'ng tomon)",
-    "category": "ogohlantiruvchi",
-    "image_url": "images/signs/sign_1.4.3.png",
-    "description": "Aholi punktlaridan tashqarida temir yo'l kesishmasiga yaqinlashish haqida qo'shimcha ogohlantirish.",
-    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/RU_road_sign_1.4.3.svg/60px-RU_road_sign_1.4.3.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
-  },
-  {
-    "id": 8,
-    "name": "1.4.4 Temir yo'l kesishmasiga yaqinlashish (chap tomon)",
-    "category": "ogohlantiruvchi",
-    "image_url": "images/signs/sign_1.4.4.png",
-    "description": "Aholi punktlaridan tashqarida temir yo'l kesishmasiga yaqinlashish haqida qo'shimcha ogohlantirish.",
-    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/RU_road_sign_1.4.4.svg/60px-RU_road_sign_1.4.4.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
-  },
-  {
-    "id": 9,
-    "name": "1.4.5 Temir yo'l kesishmasiga yaqinlashish (chap tomon)",
-    "category": "ogohlantiruvchi",
-    "image_url": "images/signs/sign_1.4.5.png",
-    "description": "Aholi punktlaridan tashqarida temir yo'l kesishmasiga yaqinlashish haqida qo'shimcha ogohlantirish.",
-    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/RU_road_sign_1.4.5.svg/60px-RU_road_sign_1.4.5.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
-  },
-  {
-    "id": 10,
-    "name": "1.4.6 Temir yo'l kesishmasiga yaqinlashish (chap tomon)",
-    "category": "ogohlantiruvchi",
-    "image_url": "images/signs/sign_1.4.6.png",
-    "description": "Aholi punktlaridan tashqarida temir yo'l kesishmasiga yaqinlashish haqida qo'shimcha ogohlantirish.",
-    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/RU_road_sign_1.4.6.svg/60px-RU_road_sign_1.4.6.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
-  },
-  {
-    "id": 11,
-    "name": "1.5 Tramvay yo'li bilan kesishuv",
-    "category": "ogohlantiruvchi",
-    "image_url": "images/signs/sign_1.5.png",
-    "description": "Chorrahadan tashqarida tramvay yo'li bilan kesishuv.",
-    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/RU_road_sign_1.5.svg/120px-RU_road_sign_1.5.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
-  },
-  {
-    "id": 12,
-    "name": "1.6 Teng ahamiyatli yo'llar kesishuvi",
-    "category": "ogohlantiruvchi",
-    "image_url": "images/signs/sign_1.6.png",
-    "description": "O'ngdan kelayotgan transport vositasiga yo'l berish qoidasi amal qiladigan chorraha.",
-    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/RU_road_sign_1.6.svg/120px-RU_road_sign_1.6.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
-  },
-  {
-    "id": 13,
-    "name": "1.7 Aylanma harakatlanish bilan kesishuv",
-    "category": "ogohlantiruvchi",
-    "image_url": "images/signs/sign_1.7.png",
-    "description": "Aylanma harakat tashkil etilgan chorrahaga yaqinlashayotganlik haqida ogohlantiradi.",
-    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/RU_road_sign_1.7.svg/120px-RU_road_sign_1.7.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
-  },
-  {
-    "id": 14,
-    "name": "1.8 Svetofor bilan tartibga solish",
-    "category": "ogohlantiruvchi",
-    "image_url": "images/signs/sign_1.8.png",
-    "description": "Harakat svetofor bilan tartibga solinadigan chorraha yoki yo'l qismi.",
-    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/RU_road_sign_1.8.svg/120px-RU_road_sign_1.8.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
-  },
-  {
-    "id": 15,
-    "name": "1.9 Ko'tarma ko'prik",
-    "category": "ogohlantiruvchi",
-    "image_url": "images/signs/sign_1.9.png",
-    "description": "Ko'tarma ko'prik yoki parom kechuviga yaqinlashayotganlik haqida ogohlantiradi.",
-    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/RU_road_sign_1.9.svg/120px-RU_road_sign_1.9.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
-  },
-  {
-    "id": 16,
     "name": "1.10 Sohilga chiqish",
     "category": "ogohlantiruvchi",
     "image_url": "images/signs/sign_1.10.png",
@@ -144,7 +18,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/RU_road_sign_1.10.svg/120px-RU_road_sign_1.10.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 17,
+    "id": 3,
     "name": "1.11.1 Xavfli burilish (o'ngga)",
     "category": "ogohlantiruvchi",
     "image_url": "images/signs/sign_1.11.1.png",
@@ -153,7 +27,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/RU_road_sign_1.11.1.svg/120px-RU_road_sign_1.11.1.svg.png"
   },
   {
-    "id": 18,
+    "id": 4,
     "name": "1.11.2 Xavfli burilish (chapga)",
     "category": "ogohlantiruvchi",
     "image_url": "images/signs/sign_1.11.2.png",
@@ -162,7 +36,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/RU_road_sign_1.11.2.svg/120px-RU_road_sign_1.11.2.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 19,
+    "id": 5,
     "name": "1.12.1 Xavfli burilishlar (birinchisi o'ngga)",
     "category": "ogohlantiruvchi",
     "image_url": "images/signs/sign_1.12.1.png",
@@ -171,7 +45,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/RU_road_sign_1.12.1.svg/120px-RU_road_sign_1.12.1.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 20,
+    "id": 6,
     "name": "1.12.2 Xavfli burilishlar (birinchisi chapga)",
     "category": "ogohlantiruvchi",
     "image_url": "images/signs/sign_1.12.2.png",
@@ -180,7 +54,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/RU_road_sign_1.12.2.svg/120px-RU_road_sign_1.12.2.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 21,
+    "id": 7,
     "name": "1.13 Tik nishablik",
     "category": "ogohlantiruvchi",
     "image_url": "images/signs/sign_1.13.png",
@@ -189,7 +63,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/RU_road_sign_1.13.svg/120px-RU_road_sign_1.13.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 22,
+    "id": 8,
     "name": "1.14 Tik balandlik",
     "category": "ogohlantiruvchi",
     "image_url": "images/signs/sign_1.14.png",
@@ -198,7 +72,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/RU_road_sign_1.14.svg/120px-RU_road_sign_1.14.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 23,
+    "id": 9,
     "name": "1.15 Sirpanchiq yo'l",
     "category": "ogohlantiruvchi",
     "image_url": "images/signs/sign_1.15.png",
@@ -207,7 +81,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/BY_road_sign_1.15.svg/120px-BY_road_sign_1.15.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 24,
+    "id": 10,
     "name": "1.16 Notekis yo'l",
     "category": "ogohlantiruvchi",
     "image_url": "images/signs/sign_1.16.png",
@@ -216,7 +90,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/RU_road_sign_1.16.svg/120px-RU_road_sign_1.16.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 25,
+    "id": 11,
     "name": "1.17 Tosh otilishi",
     "category": "ogohlantiruvchi",
     "image_url": "images/signs/sign_1.17.png",
@@ -225,7 +99,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/81/BY_road_sign_1.17.svg/120px-BY_road_sign_1.17.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 26,
+    "id": 12,
     "name": "1.18.1 Yo'lning torayishi (har ikki tomondan)",
     "category": "ogohlantiruvchi",
     "image_url": "images/signs/sign_1.18.1.png",
@@ -234,7 +108,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/BY_road_sign_1.18.4.svg/120px-BY_road_sign_1.18.4.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 27,
+    "id": 13,
     "name": "1.18.2 Yo'lning torayishi (o'ngdan)",
     "category": "ogohlantiruvchi",
     "image_url": "images/signs/sign_1.18.2.png",
@@ -243,7 +117,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/BY_road_sign_1.18.5.svg/120px-BY_road_sign_1.18.5.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 28,
+    "id": 14,
     "name": "1.18.3 Yo'lning torayishi (chapdan)",
     "category": "ogohlantiruvchi",
     "image_url": "images/signs/sign_1.18.3.png",
@@ -252,7 +126,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/BY_road_sign_1.18.6.svg/120px-BY_road_sign_1.18.6.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 29,
+    "id": 15,
     "name": "1.19 Ikki tomonlama harakat",
     "category": "ogohlantiruvchi",
     "image_url": "images/signs/sign_1.19.png",
@@ -261,7 +135,16 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/RU_road_sign_1.21.svg/120px-RU_road_sign_1.21.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 30,
+    "id": 16,
+    "name": "1.2 Shlagbaumsiz temir yo'l kesishmasi",
+    "category": "ogohlantiruvchi",
+    "image_url": "images/signs/sign_1.2.png",
+    "description": "Shlagbaum bilan jihozlanmagan temir yo'l kesishmasiga yaqinlashayotganlik haqida ogohlantiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/RU_road_sign_1.2.svg/120px-RU_road_sign_1.2.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 17,
     "name": "1.20 Piyodalar o'tish joyi",
     "category": "ogohlantiruvchi",
     "image_url": "images/signs/sign_1.20.png",
@@ -270,7 +153,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/RU_road_sign_1.22.svg/120px-RU_road_sign_1.22.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 31,
+    "id": 18,
     "name": "1.21 Bolalar",
     "category": "ogohlantiruvchi",
     "image_url": "images/signs/sign_1.21.png",
@@ -279,7 +162,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/RU_road_sign_1.23.svg/120px-RU_road_sign_1.23.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 32,
+    "id": 19,
     "name": "1.22 Velosiped yo'lkasi bilan kesishuv",
     "category": "ogohlantiruvchi",
     "image_url": "images/signs/sign_1.22.png",
@@ -288,7 +171,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/RU_road_sign_1.24.svg/120px-RU_road_sign_1.24.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 33,
+    "id": 20,
     "name": "1.23 Ta'mirlash ishlari",
     "category": "ogohlantiruvchi",
     "image_url": "images/signs/sign_1.23.png",
@@ -297,7 +180,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/RU_road_sign_1.25.svg/120px-RU_road_sign_1.25.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 34,
+    "id": 21,
     "name": "1.24 Mol haydab o'tish",
     "category": "ogohlantiruvchi",
     "image_url": "images/signs/sign_1.24.png",
@@ -306,7 +189,34 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/RU_road_sign_1.26.svg/120px-RU_road_sign_1.26.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 35,
+    "id": 22,
+    "name": "1.25.1 Yovvoyi hayvonlar chiqishi mumkin bo'lgan hudud",
+    "category": "ogohlantiruvchi",
+    "image_url": "images/signs/sign_1.25.1.png",
+    "description": "Yovvoyi hayvonlar (kiyik, tulki va hk) yo'lga chiqib qolish xavfi mavjud bo'lgan o'rmon va qo'riqxonalar yaqinidagi yo'l qismi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 23,
+    "name": "1.25.2 Yovvoyi hayvonlar chiqishi mumkin bo'lgan hudud",
+    "category": "ogohlantiruvchi",
+    "image_url": "images/signs/sign_1.25.2.png",
+    "description": "Yovvoyi hayvonlar yo'lga chiqib qolish xavfi mavjud bo'lgan hudud.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 24,
+    "name": "1.25.3 Yovvoyi hayvonlar chiqishi mumkin bo'lgan hudud",
+    "category": "ogohlantiruvchi",
+    "image_url": "images/signs/sign_1.25.3.png",
+    "description": "Yovvoyi hayvonlar yo'lga chiqib qolish xavfi mavjud bo'lgan hudud.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 25,
     "name": "1.25 Yovvoyi hayvonlar",
     "category": "ogohlantiruvchi",
     "image_url": "images/signs/sign_1.25.png",
@@ -315,7 +225,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/UZ_road_sign_1.25.3.svg/120px-UZ_road_sign_1.25.3.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 36,
+    "id": 26,
     "name": "1.26 Toshlar qulashi",
     "category": "ogohlantiruvchi",
     "image_url": "images/signs/sign_1.26.png",
@@ -324,7 +234,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/RU_road_sign_1.28.svg/120px-RU_road_sign_1.28.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 37,
+    "id": 27,
     "name": "1.27 Yonlama shamol",
     "category": "ogohlantiruvchi",
     "image_url": "images/signs/sign_1.27.png",
@@ -333,7 +243,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/RU_road_sign_1.29.svg/120px-RU_road_sign_1.29.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 38,
+    "id": 28,
     "name": "1.28 Pastlab uchuvchi samolyotlar",
     "category": "ogohlantiruvchi",
     "image_url": "images/signs/sign_1.28.png",
@@ -342,7 +252,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/RU_road_sign_1.30.svg/120px-RU_road_sign_1.30.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 39,
+    "id": 29,
     "name": "1.29 Tunel",
     "category": "ogohlantiruvchi",
     "image_url": "images/signs/sign_1.29.png",
@@ -351,7 +261,25 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/BY_road_sign_1.29.svg/120px-BY_road_sign_1.29.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 40,
+    "id": 30,
+    "name": "1.3.1 Bir izli temir yo'l",
+    "category": "ogohlantiruvchi",
+    "image_url": "images/signs/sign_1.3.1.png",
+    "description": "Shlagbaumsiz bir izli temir yo'l kesishmasi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/RU_road_sign_1.3.1.svg/120px-RU_road_sign_1.3.1.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 31,
+    "name": "1.3.2 Ko'p izli temir yo'l",
+    "category": "ogohlantiruvchi",
+    "image_url": "images/signs/sign_1.3.2.png",
+    "description": "Shlagbaumsiz ikki va undan ortiq izli temir yo'l kesishmasi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/RU_road_sign_1.3.2.svg/120px-RU_road_sign_1.3.2.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 32,
     "name": "1.30 Boshqa xavf-xatarlar",
     "category": "ogohlantiruvchi",
     "image_url": "images/signs/sign_1.30.png",
@@ -360,7 +288,169 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/RU_road_sign_1.33.svg/120px-RU_road_sign_1.33.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
+    "id": 33,
+    "name": "1.31.1 Burilish yo'nalishi (Xavfli burilish)",
+    "category": "ogohlantiruvchi",
+    "image_url": "images/signs/sign_1.31.1.png",
+    "description": "Kichik radiusli ko'rinishi cheklangan xavfli burilish yo'nalishini ko'rsatadi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 34,
+    "name": "1.31.2 Burilish yo'nalishi (Chapga xavfli burilish)",
+    "category": "ogohlantiruvchi",
+    "image_url": "images/signs/sign_1.31.2.png",
+    "description": "Kichik radiusli ko'rinishi cheklangan chapga xavfli burilish yo'nalishini ko'rsatadi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 35,
+    "name": "1.31.3 T-simon chorraha va yo'l ajralish yo'nalishi",
+    "category": "ogohlantiruvchi",
+    "image_url": "images/signs/sign_1.31.3.png",
+    "description": "T-simon chorrahada yoki yo'llar ajralishida harakatlanish yo'nalishini ko'rsatadi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 36,
+    "name": "1.31 Yo'l belgisi",
+    "category": "ogohlantiruvchi",
+    "image_url": "images/signs/sign_1.31.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 1.31-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 37,
+    "name": "1.32 Tirbandlik (Probka)",
+    "category": "ogohlantiruvchi",
+    "image_url": "images/signs/sign_1.32.png",
+    "description": "Yo'lda transport vositalarining tirbandligi hosil bo'lganligi haqida ogohlantiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 38,
+    "name": "1.34 Pastlab uchuvchi samolyotlar",
+    "category": "ogohlantiruvchi",
+    "image_url": "images/signs/sign_1.34.png",
+    "description": "Aerodromlar yaqinida samolyotlar yoki vertolyotlarning pastlab uchishi haqida ogohlantiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 39,
+    "name": "1.4.1 Temir yo'l kesishmasiga yaqinlashish (o'ng tomon)",
+    "category": "ogohlantiruvchi",
+    "image_url": "images/signs/sign_1.4.1.png",
+    "description": "Aholi punktlaridan tashqarida temir yo'l kesishmasiga yaqinlashish haqida qo'shimcha ogohlantirish.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/RU_road_sign_1.4.1.svg/60px-RU_road_sign_1.4.1.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 40,
+    "name": "1.4.2 Temir yo'l kesishmasiga yaqinlashish (o'ng tomon)",
+    "category": "ogohlantiruvchi",
+    "image_url": "images/signs/sign_1.4.2.png",
+    "description": "Aholi punktlaridan tashqarida temir yo'l kesishmasiga yaqinlashish haqida qo'shimcha ogohlantirish.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/RU_road_sign_1.4.2.svg/60px-RU_road_sign_1.4.2.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
     "id": 41,
+    "name": "1.4.3 Temir yo'l kesishmasiga yaqinlashish (o'ng tomon)",
+    "category": "ogohlantiruvchi",
+    "image_url": "images/signs/sign_1.4.3.png",
+    "description": "Aholi punktlaridan tashqarida temir yo'l kesishmasiga yaqinlashish haqida qo'shimcha ogohlantirish.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/RU_road_sign_1.4.3.svg/60px-RU_road_sign_1.4.3.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 42,
+    "name": "1.4.4 Temir yo'l kesishmasiga yaqinlashish (chap tomon)",
+    "category": "ogohlantiruvchi",
+    "image_url": "images/signs/sign_1.4.4.png",
+    "description": "Aholi punktlaridan tashqarida temir yo'l kesishmasiga yaqinlashish haqida qo'shimcha ogohlantirish.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/RU_road_sign_1.4.4.svg/60px-RU_road_sign_1.4.4.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 43,
+    "name": "1.4.5 Temir yo'l kesishmasiga yaqinlashish (chap tomon)",
+    "category": "ogohlantiruvchi",
+    "image_url": "images/signs/sign_1.4.5.png",
+    "description": "Aholi punktlaridan tashqarida temir yo'l kesishmasiga yaqinlashish haqida qo'shimcha ogohlantirish.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/RU_road_sign_1.4.5.svg/60px-RU_road_sign_1.4.5.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 44,
+    "name": "1.4.6 Temir yo'l kesishmasiga yaqinlashish (chap tomon)",
+    "category": "ogohlantiruvchi",
+    "image_url": "images/signs/sign_1.4.6.png",
+    "description": "Aholi punktlaridan tashqarida temir yo'l kesishmasiga yaqinlashish haqida qo'shimcha ogohlantirish.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/RU_road_sign_1.4.6.svg/60px-RU_road_sign_1.4.6.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 45,
+    "name": "1.5 Tramvay yo'li bilan kesishuv",
+    "category": "ogohlantiruvchi",
+    "image_url": "images/signs/sign_1.5.png",
+    "description": "Chorrahadan tashqarida tramvay yo'li bilan kesishuv.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/RU_road_sign_1.5.svg/120px-RU_road_sign_1.5.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 46,
+    "name": "1.6 Teng ahamiyatli yo'llar kesishuvi",
+    "category": "ogohlantiruvchi",
+    "image_url": "images/signs/sign_1.6.png",
+    "description": "O'ngdan kelayotgan transport vositasiga yo'l berish qoidasi amal qiladigan chorraha.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/RU_road_sign_1.6.svg/120px-RU_road_sign_1.6.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 47,
+    "name": "1.7 Aylanma harakatlanish bilan kesishuv",
+    "category": "ogohlantiruvchi",
+    "image_url": "images/signs/sign_1.7.png",
+    "description": "Aylanma harakat tashkil etilgan chorrahaga yaqinlashayotganlik haqida ogohlantiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/RU_road_sign_1.7.svg/120px-RU_road_sign_1.7.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 48,
+    "name": "1.8 Svetofor bilan tartibga solish",
+    "category": "ogohlantiruvchi",
+    "image_url": "images/signs/sign_1.8.png",
+    "description": "Harakat svetofor bilan tartibga solinadigan chorraha yoki yo'l qismi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/RU_road_sign_1.8.svg/120px-RU_road_sign_1.8.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 49,
+    "name": "1.9 Ko'tarma ko'prik",
+    "category": "ogohlantiruvchi",
+    "image_url": "images/signs/sign_1.9.png",
+    "description": "Ko'tarma ko'prik yoki parom kechuviga yaqinlashayotganlik haqida ogohlantiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/RU_road_sign_1.9.svg/120px-RU_road_sign_1.9.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 50,
+    "name": "180 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_180.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 180-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 51,
     "name": "2.1 Asosiy yo'l",
     "category": "imtiyozli",
     "image_url": "images/signs/sign_2.1.png",
@@ -369,7 +459,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/RU_road_sign_2.1.svg/120px-RU_road_sign_2.1.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 42,
+    "id": 52,
     "name": "2.2 Asosiy yo'lning oxiri",
     "category": "imtiyozli",
     "image_url": "images/signs/sign_2.2.png",
@@ -378,7 +468,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/RU_road_sign_2.2.svg/120px-RU_road_sign_2.2.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 43,
+    "id": 53,
     "name": "2.3.1 Ikkilamchi yo'l bilan kesishuv",
     "category": "imtiyozli",
     "image_url": "images/signs/sign_2.3.1.png",
@@ -387,7 +477,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/RU_road_sign_2.3.1.svg/120px-RU_road_sign_2.3.1.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 44,
+    "id": 54,
     "name": "2.3.2 Ikkilamchi yo'l tutashuvi (o'ngdan)",
     "category": "imtiyozli",
     "image_url": "images/signs/sign_2.3.2.png",
@@ -396,7 +486,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/RU_road_sign_2.3.2.svg/120px-RU_road_sign_2.3.2.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 45,
+    "id": 55,
     "name": "2.3.3 Ikkilamchi yo'l tutashuvi (chapdan)",
     "category": "imtiyozli",
     "image_url": "images/signs/sign_2.3.3.png",
@@ -405,7 +495,25 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/RU_road_sign_2.3.3.svg/120px-RU_road_sign_2.3.3.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 46,
+    "id": 56,
+    "name": "2.3.4 Ikkilamchi yo'l bilan tutashuv (O'ngdan)",
+    "category": "imtiyozli",
+    "image_url": "images/signs/sign_2.3.4.png",
+    "description": "Asosiy yo'lga o'ng tomondan ikkilamchi yo'l tutashganligini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 57,
+    "name": "2.3.7 Ikkilamchi yo'l bilan tutashuv (Chapdan)",
+    "category": "imtiyozli",
+    "image_url": "images/signs/sign_2.3.7.png",
+    "description": "Asosiy yo'lga chap tomondan ikkilamchi yo'l tutashganligini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 58,
     "name": "2.4 Yo'l bering",
     "category": "imtiyozli",
     "image_url": "images/signs/sign_2.4.png",
@@ -414,7 +522,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/RU_road_sign_2.4.svg/120px-RU_road_sign_2.4.svg.png"
   },
   {
-    "id": 47,
+    "id": 59,
     "name": "2.5 To'xtamasdan harakatlanish taqiqlangan (STOP)",
     "category": "imtiyozli",
     "image_url": "images/signs/sign_2.5.png",
@@ -423,7 +531,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/RU_road_sign_2.5.svg/120px-RU_road_sign_2.5.svg.png"
   },
   {
-    "id": 48,
+    "id": 60,
     "name": "2.6 Ro'paradagi harakatlanishning ustunligi",
     "category": "imtiyozli",
     "image_url": "images/signs/sign_2.6.png",
@@ -432,7 +540,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/RU_road_sign_2.6.svg/120px-RU_road_sign_2.6.svg.png"
   },
   {
-    "id": 49,
+    "id": 61,
     "name": "2.7 Ro'paradagi harakatlanishga nisbatan ustunlik",
     "category": "imtiyozli",
     "image_url": "images/signs/sign_2.7.png",
@@ -441,7 +549,25 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/RU_road_sign_2.7.svg/120px-RU_road_sign_2.7.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 50,
+    "id": 62,
+    "name": "269 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_269.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 269-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 63,
+    "name": "29 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_29.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 29-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 64,
     "name": "3.1 Kirish taqiqlangan (G'isht)",
     "category": "taqiqlovchi",
     "image_url": "images/signs/sign_3.1.png",
@@ -450,79 +576,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/RU_road_sign_3.1.svg/120px-RU_road_sign_3.1.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 51,
-    "name": "3.2 Harakatlanish taqiqlangan",
-    "category": "taqiqlovchi",
-    "image_url": "images/signs/sign_3.2.png",
-    "description": "Barcha transport vositalarining harakatlanishi taqiqlanadi.",
-    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/RU_road_sign_3.2.svg/120px-RU_road_sign_3.2.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
-  },
-  {
-    "id": 52,
-    "name": "3.3 Mexanik transport vositalari harakati taqiqlangan",
-    "category": "taqiqlovchi",
-    "image_url": "images/signs/sign_3.3.png",
-    "description": "Mexanik transport vositalari harakati man etiladi.",
-    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/RU_road_sign_3.3.svg/120px-RU_road_sign_3.3.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
-  },
-  {
-    "id": 53,
-    "name": "3.4 Yuk avtomobillari harakati taqiqlangan",
-    "category": "taqiqlovchi",
-    "image_url": "images/signs/sign_3.4.png",
-    "description": "Ruxsat etilgan to'la vazni 3.5 tonnadan ortiq yuk mashinalari harakati man etiladi.",
-    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/RU_road_sign_3.4.svg/120px-RU_road_sign_3.4.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
-  },
-  {
-    "id": 54,
-    "name": "3.5 Mototsikllar harakati taqiqlangan",
-    "category": "taqiqlovchi",
-    "image_url": "images/signs/sign_3.5.png",
-    "description": "Mototsikllar harakati taqiqlanadi.",
-    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/RU_road_sign_3.5.svg/120px-RU_road_sign_3.5.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
-  },
-  {
-    "id": 55,
-    "name": "3.6 Traktorlar harakati taqiqlangan",
-    "category": "taqiqlovchi",
-    "image_url": "images/signs/sign_3.6.png",
-    "description": "Traktor va o'ziyurar moslamalar harakati taqiqlanadi.",
-    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/RU_road_sign_3.6.svg/120px-RU_road_sign_3.6.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
-  },
-  {
-    "id": 56,
-    "name": "3.7 Tirkama bilan harakatlanish taqiqlangan",
-    "category": "taqiqlovchi",
-    "image_url": "images/signs/sign_3.7.png",
-    "description": "Tirkamali yuk avtomobillari va tirkama ulovchilar harakati man etiladi.",
-    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/SU_road_sign_3.7.svg/120px-SU_road_sign_3.7.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
-  },
-  {
-    "id": 57,
-    "name": "3.8 Ot-arava harakati taqiqlangan",
-    "category": "taqiqlovchi",
-    "image_url": "images/signs/sign_3.8.png",
-    "description": "Ot-arava va minib yuruvchilar harakati taqiqlanadi.",
-    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/RU_road_sign_3.8.svg/120px-RU_road_sign_3.8.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
-  },
-  {
-    "id": 58,
-    "name": "3.9 Velosipedlar harakati taqiqlangan",
-    "category": "taqiqlovchi",
-    "image_url": "images/signs/sign_3.9.png",
-    "description": "Velosiped va mopedlar harakati taqiqlanadi.",
-    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/RU_road_sign_3.9.svg/120px-RU_road_sign_3.9.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
-  },
-  {
-    "id": 59,
+    "id": 65,
     "name": "3.10 Piyodalar harakati taqiqlangan",
     "category": "taqiqlovchi",
     "image_url": "images/signs/sign_3.10.png",
@@ -531,7 +585,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/RU_road_sign_3.10.svg/120px-RU_road_sign_3.10.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 60,
+    "id": 66,
     "name": "3.11 Vazn cheklangan",
     "category": "taqiqlovchi",
     "image_url": "images/signs/sign_3.11.png",
@@ -540,7 +594,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/AZ_road_sign_3.11.svg/120px-AZ_road_sign_3.11.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 61,
+    "id": 67,
     "name": "3.12 O'qqa tushadigan og'irlik cheklangan",
     "category": "taqiqlovchi",
     "image_url": "images/signs/sign_3.12.png",
@@ -549,7 +603,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/BY_road_sign_3.12.2.svg/120px-BY_road_sign_3.12.2.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 62,
+    "id": 68,
     "name": "3.13 Balandlik cheklangan",
     "category": "taqiqlovchi",
     "image_url": "images/signs/sign_3.13.png",
@@ -558,7 +612,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/AZ_road_sign_3.13.svg/120px-AZ_road_sign_3.13.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 63,
+    "id": 69,
     "name": "3.14 Kenglik cheklangan",
     "category": "taqiqlovchi",
     "image_url": "images/signs/sign_3.14.png",
@@ -567,7 +621,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/AZ_road_sign_3.14.svg/120px-AZ_road_sign_3.14.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 64,
+    "id": 70,
     "name": "3.15 Uzunlik cheklangan",
     "category": "taqiqlovchi",
     "image_url": "images/signs/sign_3.15.png",
@@ -576,7 +630,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/AZ_road_sign_3.15.svg/120px-AZ_road_sign_3.15.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 65,
+    "id": 71,
     "name": "3.16 Minimal oraliq",
     "category": "taqiqlovchi",
     "image_url": "images/signs/sign_3.16.png",
@@ -585,7 +639,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/UZ_road_sign_3.16.svg/120px-UZ_road_sign_3.16.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 66,
+    "id": 72,
     "name": "3.17.1 Bojxona",
     "category": "taqiqlovchi",
     "image_url": "images/signs/sign_3.17.1.png",
@@ -594,7 +648,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/UZ_road_sign_3.17.1_%282022%29.svg/120px-UZ_road_sign_3.17.1_%282022%29.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 67,
+    "id": 73,
     "name": "3.17.2 Xavf-xatar",
     "category": "taqiqlovchi",
     "image_url": "images/signs/sign_3.17.2.png",
@@ -603,7 +657,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/UZ_road_sign_3.17.2.svg/120px-UZ_road_sign_3.17.2.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 68,
+    "id": 74,
     "name": "3.17.3 Nazorat punkti",
     "category": "taqiqlovchi",
     "image_url": "images/signs/sign_3.17.3.png",
@@ -612,7 +666,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/UZ_road_sign_3.17.3.svg/120px-UZ_road_sign_3.17.3.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 69,
+    "id": 75,
     "name": "3.18.1 O'ngga burilish taqiqlangan",
     "category": "taqiqlovchi",
     "image_url": "images/signs/sign_3.18.1.png",
@@ -621,7 +675,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/RU_road_sign_3.18.1.svg/120px-RU_road_sign_3.18.1.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 70,
+    "id": 76,
     "name": "3.18.2 Chapga burilish taqiqlangan",
     "category": "taqiqlovchi",
     "image_url": "images/signs/sign_3.18.2.png",
@@ -630,7 +684,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/RU_road_sign_3.18.2.svg/120px-RU_road_sign_3.18.2.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 71,
+    "id": 77,
     "name": "3.19 Qayrilib olish taqiqlangan",
     "category": "taqiqlovchi",
     "image_url": "images/signs/sign_3.19.png",
@@ -639,7 +693,16 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/RU_road_sign_3.19.svg/120px-RU_road_sign_3.19.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 72,
+    "id": 78,
+    "name": "3.2 Harakatlanish taqiqlangan",
+    "category": "taqiqlovchi",
+    "image_url": "images/signs/sign_3.2.png",
+    "description": "Barcha transport vositalarining harakatlanishi taqiqlanadi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/RU_road_sign_3.2.svg/120px-RU_road_sign_3.2.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 79,
     "name": "3.20 Quvib o'tish taqiqlangan",
     "category": "taqiqlovchi",
     "image_url": "images/signs/sign_3.20.png",
@@ -648,7 +711,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/BY_road_sign_3.20.2.svg/120px-BY_road_sign_3.20.2.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 73,
+    "id": 80,
     "name": "3.21 Quvib o'tish taqiqlangan zonaning oxiri",
     "category": "taqiqlovchi",
     "image_url": "images/signs/sign_3.21.png",
@@ -657,7 +720,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/RU_road_sign_3.21.svg/120px-RU_road_sign_3.21.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 74,
+    "id": 81,
     "name": "3.22 Yuk avtomobillarida quvib o'tish taqiqlangan",
     "category": "taqiqlovchi",
     "image_url": "images/signs/sign_3.22.png",
@@ -666,7 +729,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/RU_road_sign_3.22.svg/120px-RU_road_sign_3.22.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 75,
+    "id": 82,
     "name": "3.23 Yuk avtomobillarida quvib o'tish taqiqlangan zonaning oxiri",
     "category": "taqiqlovchi",
     "image_url": "images/signs/sign_3.23.png",
@@ -675,7 +738,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/RU_road_sign_3.23.svg/120px-RU_road_sign_3.23.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 76,
+    "id": 83,
     "name": "3.24 Yuqori tezlik cheklangan",
     "category": "taqiqlovchi",
     "image_url": "images/signs/sign_3.24.png",
@@ -684,7 +747,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/BY_road_sign_3.24.2.svg/120px-BY_road_sign_3.24.2.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 77,
+    "id": 84,
     "name": "3.25 Yuqori tezlik cheklangan zonaning oxiri",
     "category": "taqiqlovchi",
     "image_url": "images/signs/sign_3.25.png",
@@ -693,7 +756,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/RU_road_sign_3.25-50.svg/120px-RU_road_sign_3.25-50.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 78,
+    "id": 85,
     "name": "3.26 Tovush signali berish taqiqlangan",
     "category": "taqiqlovchi",
     "image_url": "images/signs/sign_3.26.png",
@@ -702,7 +765,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/RU_road_sign_3.26.svg/120px-RU_road_sign_3.26.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 79,
+    "id": 86,
     "name": "3.27 To'xtash taqiqlangan",
     "category": "taqiqlovchi",
     "image_url": "images/signs/sign_3.27.png",
@@ -711,7 +774,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/RU_road_sign_3.27.svg/120px-RU_road_sign_3.27.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 80,
+    "id": 87,
     "name": "3.28 To'xtab turish taqiqlangan",
     "category": "taqiqlovchi",
     "image_url": "images/signs/sign_3.28.png",
@@ -720,7 +783,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/RU_road_sign_3.28.svg/120px-RU_road_sign_3.28.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 81,
+    "id": 88,
     "name": "3.29 Oyning toq kunlarida to'xtab turish taqiqlangan",
     "category": "taqiqlovchi",
     "image_url": "images/signs/sign_3.29.png",
@@ -729,7 +792,16 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/RU_road_sign_3.29.svg/120px-RU_road_sign_3.29.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 82,
+    "id": 89,
+    "name": "3.3 Mexanik transport vositalari harakati taqiqlangan",
+    "category": "taqiqlovchi",
+    "image_url": "images/signs/sign_3.3.png",
+    "description": "Mexanik transport vositalari harakati man etiladi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/RU_road_sign_3.3.svg/120px-RU_road_sign_3.3.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 90,
     "name": "3.30 Oyning juft kunlarida to'xtab turish taqiqlangan",
     "category": "taqiqlovchi",
     "image_url": "images/signs/sign_3.30.png",
@@ -738,7 +810,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/RU_road_sign_3.30.svg/120px-RU_road_sign_3.30.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 83,
+    "id": 91,
     "name": "3.31 Barcha cheklovlarning oxiri",
     "category": "taqiqlovchi",
     "image_url": "images/signs/sign_3.31.png",
@@ -747,7 +819,88 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/RU_road_sign_3.31.svg/120px-RU_road_sign_3.31.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 84,
+    "id": 92,
+    "name": "3.32 Xavfli yuk tashiyotgan transport vositalari harakati taqiqlangan",
+    "category": "taqiqlovchi",
+    "image_url": "images/signs/sign_3.32.png",
+    "description": "Xavfli, tez alangalanuvchi yoki zaharli yuklarni tashiyotgan transport vositalarining harakatlanishini taqiqlaydi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 93,
+    "name": "3.33 Portlovchi va tez alangalanuvchi yuklarni tashiyotgan transport vositalari harakati taqiqlangan",
+    "category": "taqiqlovchi",
+    "image_url": "images/signs/sign_3.33.png",
+    "description": "Portlovchi va oson alangalanuvchi moddalarni tashiyotgan transport vositalarining harakatlanishini taqiqlaydi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 94,
+    "name": "3.4 Yuk avtomobillari harakati taqiqlangan",
+    "category": "taqiqlovchi",
+    "image_url": "images/signs/sign_3.4.png",
+    "description": "Ruxsat etilgan to'la vazni 3.5 tonnadan ortiq yuk mashinalari harakati man etiladi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/RU_road_sign_3.4.svg/120px-RU_road_sign_3.4.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 95,
+    "name": "3.5 Mototsikllar harakati taqiqlangan",
+    "category": "taqiqlovchi",
+    "image_url": "images/signs/sign_3.5.png",
+    "description": "Mototsikllar harakati taqiqlanadi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/RU_road_sign_3.5.svg/120px-RU_road_sign_3.5.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 96,
+    "name": "3.6 Traktorlar harakati taqiqlangan",
+    "category": "taqiqlovchi",
+    "image_url": "images/signs/sign_3.6.png",
+    "description": "Traktor va o'ziyurar moslamalar harakati taqiqlanadi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/RU_road_sign_3.6.svg/120px-RU_road_sign_3.6.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 97,
+    "name": "3.7 Tirkama bilan harakatlanish taqiqlangan",
+    "category": "taqiqlovchi",
+    "image_url": "images/signs/sign_3.7.png",
+    "description": "Tirkamali yuk avtomobillari va tirkama ulovchilar harakati man etiladi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/SU_road_sign_3.7.svg/120px-SU_road_sign_3.7.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 98,
+    "name": "3.8 Ot-arava harakati taqiqlangan",
+    "category": "taqiqlovchi",
+    "image_url": "images/signs/sign_3.8.png",
+    "description": "Ot-arava va minib yuruvchilar harakati taqiqlanadi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/RU_road_sign_3.8.svg/120px-RU_road_sign_3.8.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 99,
+    "name": "3.9 Velosipedlar harakati taqiqlangan",
+    "category": "taqiqlovchi",
+    "image_url": "images/signs/sign_3.9.png",
+    "description": "Velosiped va mopedlar harakati taqiqlanadi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/RU_road_sign_3.9.svg/120px-RU_road_sign_3.9.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 100,
+    "name": "3 Yo'l belgisi",
+    "category": "taqiqlovchi",
+    "image_url": "images/signs/sign_3.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 3-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 101,
     "name": "4.1.1 Harakatlanish to'g'riga",
     "category": "buyuruvchi",
     "image_url": "images/signs/sign_4.1.1.png",
@@ -756,7 +909,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/RU_road_sign_4.1.1.svg/120px-RU_road_sign_4.1.1.svg.png"
   },
   {
-    "id": 85,
+    "id": 102,
     "name": "4.1.2 Harakatlanish o'ngga",
     "category": "buyuruvchi",
     "image_url": "images/signs/sign_4.1.2.png",
@@ -765,7 +918,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/SU_road_sign_4.1.2.svg/120px-SU_road_sign_4.1.2.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 86,
+    "id": 103,
     "name": "4.1.3 Harakatlanish chapga",
     "category": "buyuruvchi",
     "image_url": "images/signs/sign_4.1.3.png",
@@ -774,7 +927,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/SU_road_sign_4.1.3.svg/120px-SU_road_sign_4.1.3.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 87,
+    "id": 104,
     "name": "4.1.4 Harakatlanish to'g'riga yoki o'ngga",
     "category": "buyuruvchi",
     "image_url": "images/signs/sign_4.1.4.png",
@@ -783,7 +936,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/RU_road_sign_4.1.4.svg/120px-RU_road_sign_4.1.4.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 88,
+    "id": 105,
     "name": "4.1.5 Harakatlanish to'g'riga yoki chapga",
     "category": "buyuruvchi",
     "image_url": "images/signs/sign_4.1.5.png",
@@ -792,7 +945,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/RU_road_sign_4.1.5.svg/120px-RU_road_sign_4.1.5.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 89,
+    "id": 106,
     "name": "4.1.6 Harakatlanish o'ngga yoki chapga",
     "category": "buyuruvchi",
     "image_url": "images/signs/sign_4.1.6.png",
@@ -801,7 +954,16 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/RU_road_sign_4.1.6.svg/120px-RU_road_sign_4.1.6.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 90,
+    "id": 107,
+    "name": "4.10 Yengil avtomobillar harakati",
+    "category": "buyuruvchi",
+    "image_url": "images/signs/sign_4.10.png",
+    "description": "Faqat yengil avtomobillar, mototsikllar va avtobuslarning harakatlanishiga ruxsat beriladi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 108,
     "name": "4.2.1 To'siqni o'ngdan chetlab o'tish",
     "category": "buyuruvchi",
     "image_url": "images/signs/sign_4.2.1.png",
@@ -810,7 +972,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/RU_road_sign_4.2.1.svg/120px-RU_road_sign_4.2.1.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 91,
+    "id": 109,
     "name": "4.2.2 To'siqni chapdan chetlab o'tish",
     "category": "buyuruvchi",
     "image_url": "images/signs/sign_4.2.2.png",
@@ -819,7 +981,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/RU_road_sign_4.2.2.svg/120px-RU_road_sign_4.2.2.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 92,
+    "id": 110,
     "name": "4.2.3 To'siqni o'ngdan yoki chapdan chetlab o'tish",
     "category": "buyuruvchi",
     "image_url": "images/signs/sign_4.2.3.png",
@@ -828,7 +990,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/RU_road_sign_4.2.3.svg/120px-RU_road_sign_4.2.3.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 93,
+    "id": 111,
     "name": "4.3 Aylanma harakat",
     "category": "buyuruvchi",
     "image_url": "images/signs/sign_4.3.png",
@@ -837,7 +999,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/RU_road_sign_4.3.svg/120px-RU_road_sign_4.3.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 94,
+    "id": 112,
     "name": "4.4 Yengil avtomobillar harakati",
     "category": "buyuruvchi",
     "image_url": "images/signs/sign_4.4.png",
@@ -846,7 +1008,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/SU_road_sign_4.4.svg/120px-SU_road_sign_4.4.svg.png"
   },
   {
-    "id": 95,
+    "id": 113,
     "name": "4.5 Velosiped yo'lkasi",
     "category": "buyuruvchi",
     "image_url": "images/signs/sign_4.5.png",
@@ -855,7 +1017,61 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/RU_road_sign_4.4.1.svg/120px-RU_road_sign_4.4.1.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 96,
+    "id": 114,
+    "name": "4.6.1 Xavfli yuk tashiydigan transport vositalarining harakat yo'nalishi (To'g'riga)",
+    "category": "buyuruvchi",
+    "image_url": "images/signs/sign_4.6.1.png",
+    "description": "Xavfli yuk tashiydigan transport vositalariga faqat to'g'riga harakatlanishni buyuradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 115,
+    "name": "4.6.2 Xavfli yuk tashiydigan transport vositalarining harakat yo'nalishi (O'ngga)",
+    "category": "buyuruvchi",
+    "image_url": "images/signs/sign_4.6.2.png",
+    "description": "Xavfli yuk tashiydigan transport vositalariga faqat o'ngga burilishni buyuradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 116,
+    "name": "4.6.3 Xavfli yuk tashiydigan transport vositalarining harakat yo'nalishi (Chapga)",
+    "category": "buyuruvchi",
+    "image_url": "images/signs/sign_4.6.3.png",
+    "description": "Xavfli yuk tashiydigan transport vositalariga faqat chapga burilishni buyuradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 117,
+    "name": "4.6.4 Yo'l belgisi",
+    "category": "buyuruvchi",
+    "image_url": "images/signs/sign_4.6.4.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 4.6.4-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 118,
+    "name": "4.6.5 Yo'l belgisi",
+    "category": "buyuruvchi",
+    "image_url": "images/signs/sign_4.6.5.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 4.6.5-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 119,
+    "name": "4.6.6 Yo'l belgisi",
+    "category": "buyuruvchi",
+    "image_url": "images/signs/sign_4.6.6.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 4.6.6-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 120,
     "name": "4.6 Piyodalar yo'lkasi",
     "category": "buyuruvchi",
     "image_url": "images/signs/sign_4.6.png",
@@ -864,7 +1080,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/RU_road_sign_4.5.7.svg/120px-RU_road_sign_4.5.7.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 97,
+    "id": 121,
     "name": "4.7 Eng kam tezlik belgilangan",
     "category": "buyuruvchi",
     "image_url": "images/signs/sign_4.7.png",
@@ -873,7 +1089,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/RU_road_sign_4.6-50.svg/120px-RU_road_sign_4.6-50.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 98,
+    "id": 122,
     "name": "4.8 Eng kam tezlik belgilangan zonaning oxiri",
     "category": "buyuruvchi",
     "image_url": "images/signs/sign_4.8.png",
@@ -882,7 +1098,61 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/RU_road_sign_4.7-50.svg/120px-RU_road_sign_4.7-50.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 99,
+    "id": 123,
+    "name": "4.9.1 To'siqni aylanib o'tish (O'ngdan)",
+    "category": "buyuruvchi",
+    "image_url": "images/signs/sign_4.9.1.png",
+    "description": "Yo'ldagi to'siqni faqat o'ng tomondan aylanib o'tishni buyuradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 124,
+    "name": "4.9.2 To'siqni aylanib o'tish (Chapdan)",
+    "category": "buyuruvchi",
+    "image_url": "images/signs/sign_4.9.2.png",
+    "description": "Yo'ldagi to'siqni faqat chap tomondan aylanib o'tishni buyuradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 125,
+    "name": "4.9.3 To'siqni aylanib o'tish (O'ngdan yoki chapdan)",
+    "category": "buyuruvchi",
+    "image_url": "images/signs/sign_4.9.3.png",
+    "description": "Yo'ldagi to'siqni o'ng yoki chap tomondan aylanib o'tishga ruxsat beradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 126,
+    "name": "47 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_47.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 47-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 127,
+    "name": "48 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_48.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 48-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 128,
+    "name": "49 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_49.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 49-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 129,
     "name": "5.1 Avtomagistral",
     "category": "axborot",
     "image_url": "images/signs/sign_5.1.png",
@@ -891,70 +1161,106 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/RU_road_sign_5.1.svg/120px-RU_road_sign_5.1.svg.png"
   },
   {
-    "id": 100,
-    "name": "5.2 Avtomagistralning oxiri",
+    "id": 130,
+    "name": "5.10.1 Reversiv harakat yo'nalishi",
     "category": "axborot",
-    "image_url": "images/signs/sign_5.2.png",
-    "description": "Avtomagistral qoidalari tugaganini bildiradi.",
+    "image_url": "images/signs/sign_5.10.1.png",
+    "description": "Yo'nalishi maxsus svetofor bilan o'zgaruvchan bo'lgan reversiv harakatlanish boshlanishini bildiradi.",
     "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/RU_road_sign_5.2.svg/120px-RU_road_sign_5.2.svg.png"
+    "remote_url": null
   },
   {
-    "id": 101,
-    "name": "5.3 Avtomobillar uchun mo'ljallangan yo'l",
+    "id": 131,
+    "name": "5.10.2 Reversiv harakatning oxiri",
     "category": "axborot",
-    "image_url": "images/signs/sign_5.3.png",
-    "description": "Faqat avtomobillar va mototsikllar harakati uchun yo'l.",
+    "image_url": "images/signs/sign_5.10.2.png",
+    "description": "Reversiv harakatlanish bo'lagining tugaganligini bildiradi.",
     "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/RU_road_sign_5.3.svg/120px-RU_road_sign_5.3.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+    "remote_url": null
   },
   {
-    "id": 102,
-    "name": "5.4 Avtomobillar uchun mo'ljallangan yo'lning oxiri",
+    "id": 132,
+    "name": "5.10.3 Yo'l belgisi",
     "category": "axborot",
-    "image_url": "images/signs/sign_5.4.png",
-    "description": "5.3 belgisi tugaganini bildiradi.",
+    "image_url": "images/signs/sign_5.10.3.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.10.3-sonli rasmiy yo'l belgisi.",
     "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/RU_road_sign_5.4.svg/120px-RU_road_sign_5.4.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+    "remote_url": null
   },
   {
-    "id": 103,
-    "name": "5.5 Bir tomonlama harakatli yo'l",
+    "id": 133,
+    "name": "5.10.4 Yo'l belgisi",
     "category": "axborot",
-    "image_url": "images/signs/sign_5.5.png",
-    "description": "Transport vositalari butun kenglik bo'yicha bir yo'nalishda harakatlanadi.",
+    "image_url": "images/signs/sign_5.10.4.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.10.4-sonli rasmiy yo'l belgisi.",
     "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/RU_road_sign_5.5.svg/120px-RU_road_sign_5.5.svg.png"
+    "remote_url": null
   },
   {
-    "id": 104,
-    "name": "5.6 Bir tomonlama harakatli yo'lning oxiri",
+    "id": 134,
+    "name": "5.11.1 Yo'nalishli transport vositalari uchun mo'ljallangan bo'lak",
     "category": "axborot",
-    "image_url": "images/signs/sign_5.6.png",
-    "description": "5.5 belgisi tugaganini bildiradi.",
+    "image_url": "images/signs/sign_5.11.1.png",
+    "description": "Yo'nalishli transport vositalari (avtobus, marshrutka) umumiy oqim bo'ylab harakatlanishi uchun ajratilgan bo'lak.",
     "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/RU_road_sign_5.6.svg/120px-RU_road_sign_5.6.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+    "remote_url": null
   },
   {
-    "id": 105,
-    "name": "5.8.1 Tasmalar bo'yicha harakatlanish yo'nalishlari",
+    "id": 135,
+    "name": "5.11.2 Yo'nalishli transport vositalari uchun mo'ljallangan bo'lakning oxiri",
     "category": "axborot",
-    "image_url": "images/signs/sign_5.8.1.png",
-    "description": "Chorrahada tasmalar bo'yicha ruxsat etilgan yo'nalishlar.",
+    "image_url": "images/signs/sign_5.11.2.png",
+    "description": "Yo'nalishli transport vositalari bo'lagining tugaganligini bildiradi.",
     "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/RU_road_sign_5.15.1.svg/120px-RU_road_sign_5.15.1.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+    "remote_url": null
   },
   {
-    "id": 106,
-    "name": "5.8.2 Tasma bo'yicha harakatlanish yo'nalishi",
+    "id": 136,
+    "name": "5.12 Yo'nalishli transport vositalari uchun mo'ljallangan yo'l",
     "category": "axborot",
-    "image_url": "images/signs/sign_5.8.2.png",
-    "description": "Alohida tasma bo'yicha harakatlanish yo'nalishi.",
+    "image_url": "images/signs/sign_5.12.png",
+    "description": "Yo'nalishli transport vositalari umumiy oqimga qarama-qarshi harakatlanadigan yo'l.",
     "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/RU_road_sign_5.15.2_E.svg/120px-RU_road_sign_5.15.2_E.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+    "remote_url": null
   },
   {
-    "id": 107,
+    "id": 137,
+    "name": "5.13 Yo'nalishli transport vositalari uchun mo'ljallangan yo'ldan chiqish",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.13.png",
+    "description": "Yo'nalishli transport vositalari harakatlanadigan yo'lga chiqish joyi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 138,
+    "name": "5.14 Velosipedchilar uchun bo'lak",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.14.png",
+    "description": "Velosiped va mopedlarning umumiy oqim bo'ylab harakatlanishi uchun ajratilgan maxsus bo'lak.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 139,
+    "name": "5.15.1 Bo'laklar bo'yicha harakatlanish yo'nalishlari",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.15.1.png",
+    "description": "Chorrahada har bir bo'lak bo'yicha ruxsat etilgan harakatlanish yo'nalishlarini ko'rsatadi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 140,
+    "name": "5.15.2 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.15.2.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.15.2-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 141,
     "name": "5.15 Aholi punkti boshlanishi (oq fon)",
     "category": "axborot",
     "image_url": "images/signs/sign_5.15.png",
@@ -963,7 +1269,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/UZ_road_sign_5.15.4.svg/120px-UZ_road_sign_5.15.4.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 108,
+    "id": 142,
     "name": "5.16.1 Piyodalar o'tish joyi (o'ng tomon)",
     "category": "axborot",
     "image_url": "images/signs/sign_5.16.1.png",
@@ -972,7 +1278,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/RU_road_sign_5.19.2.svg/120px-RU_road_sign_5.19.2.svg.png"
   },
   {
-    "id": 109,
+    "id": 143,
     "name": "5.16.2 Piyodalar o'tish joyi (chap tomon)",
     "category": "axborot",
     "image_url": "images/signs/sign_5.16.2.png",
@@ -981,7 +1287,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/RU_road_sign_5.19.1.svg/120px-RU_road_sign_5.19.1.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 110,
+    "id": 144,
     "name": "5.17.1 Yer osti piyodalar o'tish joyi",
     "category": "axborot",
     "image_url": "images/signs/sign_5.17.1.png",
@@ -990,7 +1296,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/SU_road_sign_5.17.1.svg/120px-SU_road_sign_5.17.1.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 111,
+    "id": 145,
     "name": "5.17.2 Yer usti piyodalar o'tish joyi",
     "category": "axborot",
     "image_url": "images/signs/sign_5.17.2.png",
@@ -999,7 +1305,34 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/RU_road_sign_6.6.svg/120px-RU_road_sign_6.6.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 112,
+    "id": 146,
+    "name": "5.17.3 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.17.3.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.17.3-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 147,
+    "name": "5.17.4 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.17.4.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.17.4-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 148,
+    "name": "5.18 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.18.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.18-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 149,
     "name": "5.19.1 Bir izli temir yo'l to'xtash joyi",
     "category": "axborot",
     "image_url": "images/signs/sign_5.19.1.png",
@@ -1008,7 +1341,34 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/RU_road_sign_6.8.1.svg/120px-RU_road_sign_6.8.1.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 113,
+    "id": 150,
+    "name": "5.19.2 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.19.2.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.19.2-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 151,
+    "name": "5.19.3 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.19.3.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.19.3-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 152,
+    "name": "5.2 Avtomagistralning oxiri",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.2.png",
+    "description": "Avtomagistral qoidalari tugaganini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/RU_road_sign_5.2.svg/120px-RU_road_sign_5.2.svg.png"
+  },
+  {
+    "id": 153,
     "name": "5.20.1 Avtobus yoki trolleybus to'xtash joyi",
     "category": "axborot",
     "image_url": "images/signs/sign_5.20.1.png",
@@ -1017,7 +1377,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/UZ_road_sign_5.20.1_C.svg/120px-UZ_road_sign_5.20.1_C.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 114,
+    "id": 154,
     "name": "5.20.2 Tramvay to'xtash joyi",
     "category": "axborot",
     "image_url": "images/signs/sign_5.20.2.png",
@@ -1026,7 +1386,34 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/UZ_road_sign_5.20.1_D.svg/120px-UZ_road_sign_5.20.1_D.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 115,
+    "id": 155,
+    "name": "5.20.3 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.20.3.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.20.3-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 156,
+    "name": "5.21.1 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.21.1.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.21.1-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 157,
+    "name": "5.21.2 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.21.2.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.21.2-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 158,
     "name": "5.21 Taksi to'xtab turish joyi",
     "category": "axborot",
     "image_url": "images/signs/sign_5.21.png",
@@ -1035,7 +1422,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dc/UZ_road_sign_5.14.svg/120px-UZ_road_sign_5.14.svg.png"
   },
   {
-    "id": 116,
+    "id": 159,
     "name": "5.22 Turar joy dahasi (Yashash zonasi)",
     "category": "axborot",
     "image_url": "images/signs/sign_5.22.png",
@@ -1044,7 +1431,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/RU_road_sign_5.21.svg/250px-RU_road_sign_5.21.svg.png"
   },
   {
-    "id": 117,
+    "id": 160,
     "name": "5.23 Turar joy dahasining oxiri",
     "category": "axborot",
     "image_url": "images/signs/sign_5.23.png",
@@ -1053,7 +1440,421 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/RU_road_sign_5.22.svg/250px-RU_road_sign_5.22.svg.png"
   },
   {
-    "id": 118,
+    "id": 161,
+    "name": "5.24 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.24.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.24-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 162,
+    "name": "5.25 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.25.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.25-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 163,
+    "name": "5.26 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.26.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.26-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 164,
+    "name": "5.27 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.27.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.27-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 165,
+    "name": "5.28 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.28.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.28-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 166,
+    "name": "5.29.1 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.29.1.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.29.1-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 167,
+    "name": "5.29.2 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.29.2.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.29.2-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 168,
+    "name": "5.3 Avtomobillar uchun mo'ljallangan yo'l",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.3.png",
+    "description": "Faqat avtomobillar va mototsikllar harakati uchun yo'l.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/RU_road_sign_5.3.svg/120px-RU_road_sign_5.3.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 169,
+    "name": "5.30.1 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.30.1.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.30.1-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 170,
+    "name": "5.30.2 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.30.2.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.30.2-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 171,
+    "name": "5.30.3 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.30.3.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.30.3-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 172,
+    "name": "5.32.1 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.32.1.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.32.1-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 173,
+    "name": "5.32.2 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.32.2.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.32.2-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 174,
+    "name": "5.32.3 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.32.3.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.32.3-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 175,
+    "name": "5.33 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.33.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.33-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 176,
+    "name": "5.34.1 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.34.1.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.34.1-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 177,
+    "name": "5.34.2 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.34.2.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.34.2-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 178,
+    "name": "5.35 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.35.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.35-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 179,
+    "name": "5.36 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.36.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.36-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 180,
+    "name": "5.37 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.37.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.37-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 181,
+    "name": "5.38 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.38.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.38-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 182,
+    "name": "5.39 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.39.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.39-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 183,
+    "name": "5.4 Avtomobillar uchun mo'ljallangan yo'lning oxiri",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.4.png",
+    "description": "5.3 belgisi tugaganini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/RU_road_sign_5.4.svg/120px-RU_road_sign_5.4.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 184,
+    "name": "5.40 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.40.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.40-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 185,
+    "name": "5.41 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.41.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.41-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 186,
+    "name": "5.42 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.42.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.42-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 187,
+    "name": "5.43 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.43.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.43-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 188,
+    "name": "5.44 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.44.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.44-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 189,
+    "name": "5.45 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.45.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.45-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 190,
+    "name": "5.5 Bir tomonlama harakatli yo'l",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.5.png",
+    "description": "Transport vositalari butun kenglik bo'yicha bir yo'nalishda harakatlanadi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/RU_road_sign_5.5.svg/120px-RU_road_sign_5.5.svg.png"
+  },
+  {
+    "id": 191,
+    "name": "5.6 Bir tomonlama harakatli yo'lning oxiri",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.6.png",
+    "description": "5.5 belgisi tugaganini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/RU_road_sign_5.6.svg/120px-RU_road_sign_5.6.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 192,
+    "name": "5.7.1 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.7.1.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.7.1-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 193,
+    "name": "5.7.2 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.7.2.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.7.2-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 194,
+    "name": "5.8.1 Tasmalar bo'yicha harakatlanish yo'nalishlari",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.8.1.png",
+    "description": "Chorrahada tasmalar bo'yicha ruxsat etilgan yo'nalishlar.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/RU_road_sign_5.15.1.svg/120px-RU_road_sign_5.15.1.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 195,
+    "name": "5.8.2 Tasma bo'yicha harakatlanish yo'nalishi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.8.2.png",
+    "description": "Alohida tasma bo'yicha harakatlanish yo'nalishi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/RU_road_sign_5.15.2_E.svg/120px-RU_road_sign_5.15.2_E.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 196,
+    "name": "5.8.3 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.8.3.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.8.3-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 197,
+    "name": "5.8.4 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.8.4.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.8.4-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 198,
+    "name": "5.8.5 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.8.5.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.8.5-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 199,
+    "name": "5.8.6 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.8.6.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.8.6-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 200,
+    "name": "5.8.7 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.8.7.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.8.7-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 201,
+    "name": "5.8.8 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.8.8.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.8.8-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 202,
+    "name": "5.8.9 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.8.9.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.8.9-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 203,
+    "name": "5.9 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_5.9.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 5.9-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 204,
+    "name": "57 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_57.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 57-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 205,
+    "name": "58 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_58.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 58-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 206,
+    "name": "59 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_59.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 59-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 207,
     "name": "6.1 Tibbiy yordam punkti",
     "category": "servis",
     "image_url": "images/signs/sign_6.1.png",
@@ -1062,79 +1863,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/RU_road_sign_7.1.svg/120px-RU_road_sign_7.1.svg.png"
   },
   {
-    "id": 119,
-    "name": "6.2 Shifoxona",
-    "category": "servis",
-    "image_url": "images/signs/sign_6.2.png",
-    "description": "Kasalxona yoki tibbiyot markazi.",
-    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/RU_road_sign_7.2.svg/120px-RU_road_sign_7.2.svg.png"
-  },
-  {
-    "id": 120,
-    "name": "6.3 Avtomobillarga yoqilg'i quyish shoxobchasi (AYOQSH)",
-    "category": "servis",
-    "image_url": "images/signs/sign_6.3.png",
-    "description": "Benzin, gaz yoki elektr quvvatlash stansiyasi.",
-    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/RU_road_sign_7.3.svg/120px-RU_road_sign_7.3.svg.png"
-  },
-  {
-    "id": 121,
-    "name": "6.4 Avtomobillarga texnik xizmat ko'rsatish ustaxonasi",
-    "category": "servis",
-    "image_url": "images/signs/sign_6.4.png",
-    "description": "Avtoservis va ta'mirlash ustaxonasi.",
-    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/RU_road_sign_7.4.svg/120px-RU_road_sign_7.4.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
-  },
-  {
-    "id": 122,
-    "name": "6.5 Avtomobillarni yuvish joyi (Moyka)",
-    "category": "servis",
-    "image_url": "images/signs/sign_6.5.png",
-    "description": "Avtomobillarni yuvish shoxobchasi.",
-    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/RU_road_sign_7.5.svg/120px-RU_road_sign_7.5.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
-  },
-  {
-    "id": 123,
-    "name": "6.6 Telefon",
-    "category": "servis",
-    "image_url": "images/signs/sign_6.6.png",
-    "description": "Aloqa telefoni o'rnatilgan joy.",
-    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/RU_road_sign_7.6.svg/120px-RU_road_sign_7.6.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
-  },
-  {
-    "id": 124,
-    "name": "6.7 Oshxona / Kafe",
-    "category": "servis",
-    "image_url": "images/signs/sign_6.7.png",
-    "description": "Ovqatlanish joyi.",
-    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/RU_road_sign_7.7.svg/120px-RU_road_sign_7.7.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
-  },
-  {
-    "id": 125,
-    "name": "6.8 Ichimlik suvi",
-    "category": "servis",
-    "image_url": "images/signs/sign_6.8.png",
-    "description": "Toza ichimlik suvi manbai.",
-    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/RU_road_sign_7.8.svg/120px-RU_road_sign_7.8.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
-  },
-  {
-    "id": 126,
-    "name": "6.9 Mehmonxona yoki motel",
-    "category": "servis",
-    "image_url": "images/signs/sign_6.9.png",
-    "description": "Mehmonxona yoki dam olish maskani.",
-    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
-    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/RU_road_sign_7.9.svg/120px-RU_road_sign_7.9.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
-  },
-  {
-    "id": 127,
+    "id": 208,
     "name": "6.10 Kemping",
     "category": "servis",
     "image_url": "images/signs/sign_6.10.png",
@@ -1143,7 +1872,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/RU_road_sign_7.10.svg/120px-RU_road_sign_7.10.svg.png"
   },
   {
-    "id": 128,
+    "id": 209,
     "name": "6.11 Dam olish joyi",
     "category": "servis",
     "image_url": "images/signs/sign_6.11.png",
@@ -1152,7 +1881,7 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/RU_road_sign_7.11.svg/120px-RU_road_sign_7.11.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 129,
+    "id": 210,
     "name": "6.12 Yo'l-patrul xizmati (YPX) maskani",
     "category": "servis",
     "image_url": "images/signs/sign_6.12.png",
@@ -1161,12 +1890,624 @@
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/UZ_road_sign_6.12.svg/120px-UZ_road_sign_6.12.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
   },
   {
-    "id": 130,
+    "id": 211,
     "name": "6.13 Hojatxona",
     "category": "servis",
     "image_url": "images/signs/sign_6.13.png",
     "description": "Jamoat hojatxonasi.",
     "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
     "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/6.13_Uzbekistan_road_sign.svg/120px-6.13_Uzbekistan_road_sign.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 212,
+    "name": "6.14 Yo'l belgisi",
+    "category": "servis",
+    "image_url": "images/signs/sign_6.14.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 6.14-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 213,
+    "name": "6.15 Yo'l belgisi",
+    "category": "servis",
+    "image_url": "images/signs/sign_6.15.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 6.15-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 214,
+    "name": "6.16 Yo'l belgisi",
+    "category": "servis",
+    "image_url": "images/signs/sign_6.16.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 6.16-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 215,
+    "name": "6.17 Yo'l belgisi",
+    "category": "servis",
+    "image_url": "images/signs/sign_6.17.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 6.17-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 216,
+    "name": "6.2 Shifoxona",
+    "category": "servis",
+    "image_url": "images/signs/sign_6.2.png",
+    "description": "Kasalxona yoki tibbiyot markazi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/RU_road_sign_7.2.svg/120px-RU_road_sign_7.2.svg.png"
+  },
+  {
+    "id": 217,
+    "name": "6.3 Avtomobillarga yoqilg'i quyish shoxobchasi (AYOQSH)",
+    "category": "servis",
+    "image_url": "images/signs/sign_6.3.png",
+    "description": "Benzin, gaz yoki elektr quvvatlash stansiyasi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/RU_road_sign_7.3.svg/120px-RU_road_sign_7.3.svg.png"
+  },
+  {
+    "id": 218,
+    "name": "6.4 Avtomobillarga texnik xizmat ko'rsatish ustaxonasi",
+    "category": "servis",
+    "image_url": "images/signs/sign_6.4.png",
+    "description": "Avtoservis va ta'mirlash ustaxonasi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/RU_road_sign_7.4.svg/120px-RU_road_sign_7.4.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 219,
+    "name": "6.5 Avtomobillarni yuvish joyi (Moyka)",
+    "category": "servis",
+    "image_url": "images/signs/sign_6.5.png",
+    "description": "Avtomobillarni yuvish shoxobchasi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/RU_road_sign_7.5.svg/120px-RU_road_sign_7.5.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 220,
+    "name": "6.6 Telefon",
+    "category": "servis",
+    "image_url": "images/signs/sign_6.6.png",
+    "description": "Aloqa telefoni o'rnatilgan joy.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/RU_road_sign_7.6.svg/120px-RU_road_sign_7.6.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 221,
+    "name": "6.7 Oshxona / Kafe",
+    "category": "servis",
+    "image_url": "images/signs/sign_6.7.png",
+    "description": "Ovqatlanish joyi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/RU_road_sign_7.7.svg/120px-RU_road_sign_7.7.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 222,
+    "name": "6.8 Ichimlik suvi",
+    "category": "servis",
+    "image_url": "images/signs/sign_6.8.png",
+    "description": "Toza ichimlik suvi manbai.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/RU_road_sign_7.8.svg/120px-RU_road_sign_7.8.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 223,
+    "name": "6.9 Mehmonxona yoki motel",
+    "category": "servis",
+    "image_url": "images/signs/sign_6.9.png",
+    "description": "Mehmonxona yoki dam olish maskani.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/RU_road_sign_7.9.svg/120px-RU_road_sign_7.9.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "id": 224,
+    "name": "60 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_60.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 60-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 225,
+    "name": "7.1.1 Ob'yektgacha bo'lgan masofa",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.1.1.png",
+    "description": "Belgidan xavfli joygacha yoki tegishli cheklov kiritiladigan joygacha bo'lgan masofani ko'rsatadi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 226,
+    "name": "7.1.2 Ob'yektgacha bo'lgan masofa (Chorrahadan oldin)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.1.2.png",
+    "description": "Chorrahadan oldin 'To'xtamasdan harakatlanish taqiqlangan' belgisigacha bo'lgan masofani ko'rsatadi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 227,
+    "name": "7.1.3 Ob'yektgacha bo'lgan masofa (Yon tomonda)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.1.3.png",
+    "description": "Yo'ldan chetdagi ob'yektgacha bo'lgan masofani ko'rsatadi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 228,
+    "name": "7.1.4 Ob'yektgacha bo'lgan masofa (Yon tomonda)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.1.4.png",
+    "description": "Yo'ldan chetdagi ob'yektgacha bo'lgan masofani ko'rsatadi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 229,
+    "name": "7.10 Avtomobillarni ko'rikdan o'tkazish joyi (Estakada)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.10.png",
+    "description": "Ushbu joyda estakada yoki ko'rik chuqurchasi mavjudligini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 230,
+    "name": "7.11 Ruxsat etilgan to'la vazn cheklangan",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.11.png",
+    "description": "Belgining faqat ruxsat etilgan to'la vazni ko'rsatilganidan ortiq transportlarga ta'sirini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 231,
+    "name": "7.12 Xavfli yo'l yoqasi",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.12.png",
+    "description": "Yo'l yoqasida ta'mirlash ishlari ketayotganligi sababli unga chiqish xavfli ekanligini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 232,
+    "name": "7.13 Asosiy yo'lning yo'nalishi",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.13.png",
+    "description": "Chorrahada asosiy yo'lning qaysi tomonga burilib ketayotganini aniq ko'rsatadi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 233,
+    "name": "7.14 Harakatlanish bo'lagi",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.14.png",
+    "description": "Belgining faqat ko'rsatilgan bo'lakka taalluqli ekanligini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 234,
+    "name": "7.15 Ko'zi ojiz piyodalar",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.15.png",
+    "description": "Piyodalar o'tish joyidan ko'zi ojiz fuqarolar foydalanishi mumkinligi haqida ogohlantiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 235,
+    "name": "7.16 Nam qoplama",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.16.png",
+    "description": "Belgining faqat qatnov qismi qoplamasi nam (ho'l) bo'lgan vaqtda amal qilishini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 236,
+    "name": "7.17 Nogironlar",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.17.png",
+    "description": "Belgining faqat 'Nogiron' tanish belgisi o'rnatilgan transport vositalariga tegishli ekanligini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 237,
+    "name": "7.18 Nogironlardan mustasno",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.18.png",
+    "description": "Belgining 'Nogiron' tanish belgisi bo'lgan transportlarga taalluqli emasligini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 238,
+    "name": "7.19 Foto va video qayd etish",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.19.png",
+    "description": "Yo'l harakati qoidalari buzilishi maxsus avtomatlashtirilgan fotoradar yoki kameralar orqali qayd etilayotganini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 239,
+    "name": "7.2.1 Amal qilish sohasi (Masofa bo'yicha)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.2.1.png",
+    "description": "Belgining ta'sir doirasi uzunligini (metr yoki kilometrlarda) ko'rsatadi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 240,
+    "name": "7.2.2 Amal qilish sohasi (Taqiqlangan oraliq)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.2.2.png",
+    "description": "Taqiqlovchi belgilarning amal qilish zonasini ko'rsatadi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 241,
+    "name": "7.2.3 Amal qilish sohasining oxiri",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.2.3.png",
+    "description": "Belgilarning ta'sir doirasi tugagan joyni bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 242,
+    "name": "7.2.4 Amal qilish zonasida ekanlik",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.2.4.png",
+    "description": "Haydovchiga u taqiqlovchi belgining ta'sir doirasi ichida ekanligini eslatadi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 243,
+    "name": "7.2.5 Amal qilish sohasi (O'ng va chap tomonga)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.2.5.png",
+    "description": "Belgining ikkala tomonga qarab amal qilishini ko'rsatadi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 244,
+    "name": "7.2.6 Amal qilish sohasi (Bir tomonga)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.2.6.png",
+    "description": "Belgining ko'rsatilgan tomonga amal qilishini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 245,
+    "name": "7.20 To'siqdan aylanib o'tish",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.20.png",
+    "description": "Yo'ldagi to'siqni aylanib o'tish chizmasini ko'rsatadi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 246,
+    "name": "7.21.1 Favqulodda to'xtash joyi",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.21.1.png",
+    "description": "Yo'lning o'ng tomonida avariya holatida to'xtash joyi mavjudligini ko'rsatadi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 247,
+    "name": "7.21.2 Favqulodda to'xtash joyi",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.21.2.png",
+    "description": "Yo'lning chap tomonida avariya holatida to'xtash joyi mavjudligini ko'rsatadi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 248,
+    "name": "7.21.3 Favqulodda to'xtash joyi",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.21.3.png",
+    "description": "Favqulodda to'xtash joyigacha bo'lgan masofani bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 249,
+    "name": "7.21 Yo'l belgisi",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.21.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 7.21-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 250,
+    "name": "7.3.1 Amal qilish yo'nalishi (O'ng va chapga)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.3.1.png",
+    "description": "Belgining chorrahada o'ng va chap tomonga ta'sirini ko'rsatadi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 251,
+    "name": "7.3.2 Amal qilish yo'nalishi (O'ngga)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.3.2.png",
+    "description": "Belgining o'ng tomonga bo'lgan yo'nalishga ta'sirini ko'rsatadi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 252,
+    "name": "7.3.3 Amal qilish yo'nalishi (Chapga)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.3.3.png",
+    "description": "Belgining chap tomonga bo'lgan yo'nalishga ta'sirini ko'rsatadi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 253,
+    "name": "7.4.1 Transport vositasining turi (Yuk avtomobillari)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.4.1.png",
+    "description": "Belgining ruxsat etilgan to'la vazni 3.5 tonnadan ortiq yuk avtomobillariga tegishli ekanligini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 254,
+    "name": "7.4.2 Transport vositasining turi (Tirkamali transportlar)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.4.2.png",
+    "description": "Belgining tirkamali transport vositalariga tegishli ekanligini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 255,
+    "name": "7.4.3 Transport vositasining turi (Yengil avtomobillar)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.4.3.png",
+    "description": "Belgining yengil avtomobillar va ruxsat etilgan vazni 3.5 tonnagacha bo'lgan kichik yuk mashinalariga tegishli ekanligini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 256,
+    "name": "7.4.4 Transport vositasining turi (Yo'nalishli transportlar)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.4.4.png",
+    "description": "Belgining avtobus va yo'nalishli taksilarga tegishli ekanligini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 257,
+    "name": "7.4.5 Transport vositasining turi (Traktorlar)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.4.5.png",
+    "description": "Belgining traktorlar va o'ziyurar mashinalarga tegishli ekanligini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 258,
+    "name": "7.4.6 Transport vositasining turi (Mototsikllar)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.4.6.png",
+    "description": "Belgining mototsikllar va motorollerlarga tegishli ekanligini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 259,
+    "name": "7.4.7 Transport vositasining turi (Velosipedlar)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.4.7.png",
+    "description": "Belgining velosiped va mopedlarga tegishli ekanligini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 260,
+    "name": "7.4.8 Transport vositasining turi (Xavfli yuk tashuvchilar)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.4.8.png",
+    "description": "Belgining 'Xavfli yuk' belgisi bilan jihozlangan transportlarga tegishli ekanligini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 261,
+    "name": "7.5.1 Shanba, yakshanba va bayram kunlari",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.5.1.png",
+    "description": "Belgining faqat dam olish va bayram kunlarida amal qilishini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 262,
+    "name": "7.5.2 Ish kunlari",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.5.2.png",
+    "description": "Belgining faqat haftaning ish kunlarida amal qilishini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 263,
+    "name": "7.5.3 Haftaning ma'lum kunlari",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.5.3.png",
+    "description": "Belgining faqat ko'rsatilgan kunlarda amal qilishini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 264,
+    "name": "7.5.4 Amal qilish vaqti (Soat oralig'i)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.5.4.png",
+    "description": "Belgining sutkaning belgilangan soatlarida amal qilishini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 265,
+    "name": "7.5.5 Amal qilish vaqti (Dam olish kunlari soatlari)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.5.5.png",
+    "description": "Belgining faqat dam olish kunlarining belgilangan soatlarida amal qilishini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 266,
+    "name": "7.5.6 Amal qilish vaqti (Ish kunlari soatlari)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.5.6.png",
+    "description": "Belgining faqat ish kunlarining belgilangan soatlarida amal qilishini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 267,
+    "name": "7.5.7 Amal qilish vaqti (Hafta kuni va soati)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.5.7.png",
+    "description": "Belgining haftaning ko'rsatilgan kunlari va soatlarida amal qilishini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 268,
+    "name": "7.6.1 To'xtab turish usuli (Yo'l yoqasiga parallel)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.6.1.png",
+    "description": "Barcha transport vositalari qatnov qismi chetiga parallel to'xtashini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 269,
+    "name": "7.6.2 To'xtab turish usuli (Trotuarga chiqib)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.6.2.png",
+    "description": "Yengil avtomobil va mototsikllar trotuar chetiga chiqib to'xtash usuli.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 270,
+    "name": "7.6.3 To'xtab turish usuli (Old g'ildiraklar trotuarda)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.6.3.png",
+    "description": "Old g'ildiraklar bilan trotuarga chiqib to'xtash usuli.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 271,
+    "name": "7.6.4 To'xtab turish usuli (To'liq trotuarda)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.6.4.png",
+    "description": "Faqat yengil avtomobil va mototsikllarni trotuarda to'xtab turish usuli.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 272,
+    "name": "7.6.5 To'xtab turish usuli (Orqa g'ildiraklar trotuarda)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.6.5.png",
+    "description": "Orqa g'ildiraklar bilan trotuarga chiqib to'xtash usuli.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 273,
+    "name": "7.6.6 To'xtab turish usuli (Burchak ostida)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.6.6.png",
+    "description": "Qatnov qismi chetiga burchak ostida to'xtash usuli.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 274,
+    "name": "7.6.7 To'xtab turish usuli (Orqa tomon bilan burchak ostida)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.6.7.png",
+    "description": "Orqa tomon bilan qatnov qismi chetiga burchak ostida to'xtash usuli.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 275,
+    "name": "7.6.8 To'xtab turish usuli (Trotuar chetida perpendikulyar)",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.6.8.png",
+    "description": "Trotuar chetiga perpendikulyar to'xtash usuli.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 276,
+    "name": "7.7 Dvigateli ishlamayotgan holda to'xtab turish joyi",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.7.png",
+    "description": "To'xtab turish joyida avtomobil dvigatelini o'chirib qo'yish shartligini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 277,
+    "name": "7.8 Pullik xizmatlar",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.8.png",
+    "description": "Xizmatlar (masalan avtoturargoh) haq to'lash asosida ko'rsatilishini bildiradi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 278,
+    "name": "7.9 To'xtab turish muddatini cheklash",
+    "category": "qushimcha",
+    "image_url": "images/signs/sign_7.9.png",
+    "description": "Avtoturargohda transport vositasining turish maksimal vaqtini cheklaydi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
+  },
+  {
+    "id": 279,
+    "name": "76 Yo'l belgisi",
+    "category": "axborot",
+    "image_url": "images/signs/sign_76.png",
+    "description": "O'zbekiston Respublikasi Yo'l harakati qoidalarining 76-sonli rasmiy yo'l belgisi.",
+    "example": "Yo'l harakati qoidalariga qat'iy amal qiling.",
+    "remote_url": null
   }
 ]

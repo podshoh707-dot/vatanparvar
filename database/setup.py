@@ -110,24 +110,93 @@ async def init_db():
         from .models import Sign
         res_signs = await session.execute(select(func.count(Sign.id)))
         count_signs = res_signs.scalar() or 0
-        if count_signs == 0:
-            signs_file = os.path.join(os.path.dirname(__file__), "signs.json")
-            if os.path.exists(signs_file):
-                print(f"[init_db] Seeding signs from {signs_file}...")
-                with open(signs_file, "r", encoding="utf-8") as f:
-                    signs_data = json.load(f)
-                for s in signs_data:
-                    sign_obj = Sign(
-                        id=s.get("id"),
-                        category=s.get("category", "axborot"),
-                        name=s.get("name", "Belgi"),
-                        image_url=s.get("image_url"),
-                        description=s.get("description"),
-                        example=s.get("example")
+        signs_file = os.path.join(os.path.dirname(__file__), "signs.json")
+        if (count_signs < 279 or count_signs == 0) and os.path.exists(signs_file):
+            print(f"[init_db] Seeding all 279 signs from {signs_file}...")
+            with open(signs_file, "r", encoding="utf-8") as f:
+                signs_data = json.load(f)
+            await session.execute(text("DELETE FROM signs"))
+            for s in signs_data:
+                sign_obj = Sign(
+                    id=s.get("id"),
+                    category=s.get("category", "axborot"),
+                    name=s.get("name", "Belgi"),
+                    image_url=s.get("image_url"),
+                    description=s.get("description"),
+                    example=s.get("example")
+                )
+                session.add(sign_obj)
+            await session.commit()
+            print(f"[init_db] Successfully seeded {len(signs_data)} road signs!")
+
+        # Auto-seed YHQ rules if empty
+        from .models import Rule
+        res_rules = await session.execute(select(func.count(Rule.id)))
+        count_rules = res_rules.scalar() or 0
+        if count_rules == 0:
+            rules_file = os.path.join(os.path.dirname(__file__), "rules.json")
+            if os.path.exists(rules_file):
+                print(f"[init_db] Seeding rules from {rules_file}...")
+                with open(rules_file, "r", encoding="utf-8") as f:
+                    rules_data = json.load(f)
+                for r in rules_data:
+                    rule_obj = Rule(
+                        id=r.get("id"),
+                        title=r.get("title", ""),
+                        text=r.get("text", ""),
+                        image_url=r.get("image_url"),
+                        video_url=r.get("video_url"),
+                        pdf_url=r.get("pdf_url")
                     )
-                    session.add(sign_obj)
+                    session.add(rule_obj)
                 await session.commit()
-                print(f"[init_db] Successfully seeded {len(signs_data)} road signs!")
+                print(f"[init_db] Successfully seeded {len(rules_data)} YHQ rules!")
+
+        # Auto-seed video lessons if empty
+        from .models import VideoLesson
+        res_videos = await session.execute(select(func.count(VideoLesson.id)))
+        count_videos = res_videos.scalar() or 0
+        if count_videos == 0:
+            videos_file = os.path.join(os.path.dirname(__file__), "videos.json")
+            if os.path.exists(videos_file):
+                print(f"[init_db] Seeding video lessons from {videos_file}...")
+                with open(videos_file, "r", encoding="utf-8") as f:
+                    videos_data = json.load(f)
+                for v in videos_data:
+                    vid_obj = VideoLesson(
+                        id=v.get("id"),
+                        topic=v.get("topic", ""),
+                        section=v.get("section", "Umumiy ta'lim"),
+                        video_url=v.get("video_url"),
+                        youtube_url=v.get("youtube_url") or v.get("video_url"),
+                        telegram_video_id=v.get("telegram_video_id")
+                    )
+                    session.add(vid_obj)
+                await session.commit()
+                print(f"[init_db] Successfully seeded {len(videos_data)} video lessons!")
+
+        # Auto-seed news if empty
+        from .models import News
+        res_news = await session.execute(select(func.count(News.id)))
+        count_news = res_news.scalar() or 0
+        news_file = os.path.join(os.path.dirname(__file__), "news.json")
+        if (count_news < 3 or count_news == 0) and os.path.exists(news_file):
+            print(f"[init_db] Seeding news from {news_file}...")
+            with open(news_file, "r", encoding="utf-8") as f:
+                news_data = json.load(f)
+            await session.execute(text("DELETE FROM news"))
+            for n in news_data:
+                news_obj = News(
+                    id=n.get("id"),
+                    title=n.get("title", ""),
+                    content=n.get("content", ""),
+                    image_url=n.get("image_url"),
+                    button_text=n.get("button_text"),
+                    button_url=n.get("button_url")
+                )
+                session.add(news_obj)
+            await session.commit()
+            print(f"[init_db] Successfully seeded {len(news_data)} news items!")
 
 async def get_session() -> AsyncSession:
     async with async_session() as session:

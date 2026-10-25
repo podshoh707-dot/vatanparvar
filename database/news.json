@@ -1,10 +1,26 @@
 [
   {
     "id": 1,
-    "title": "🚀 Botimiz rasman ishga tushdi!",
-    "content": "Assalomu alaykum! Endilikda siz Avtomaktab botimiz orqali yo'l harakati qoidalari testlarini yechishingiz, darsliklarni kuzatishingiz va onlayn tayyorgarlik ko'rishingiz mumkin.",
+    "title": "🚀 2026-YILGI YANGI YHQ VA GAI IMTIHON BAZASI ISHGA TUSHIRILDI!",
+    "content": "Assalomu alaykum, aziz o'quvchilar va haydovchilar!\n\nAvtomaktab platformamizda O'zbekiston Respublikasi Yo'l harakati qoidalarining eng so'nggi tahriri bo'yicha 805 ta rasmiy test savollari, 3D animatsiyali chorraha videolari va 279 ta yo'l belgilari to'liq yangilandi.",
     "image_url": null,
-    "button_text": "Batafsil ma'lumot",
+    "button_text": "🚗 Testni boshlash",
+    "button_url": "https://t.me/"
+  },
+  {
+    "id": 2,
+    "title": "🎓 GAI DAVLAT IMTIHONI VA SHAXSIY OLTIN SERTIFIKAT!",
+    "content": "Endilikda har bir o'quvchi 20 talik GAI Davlat Imtihoni simulyatoridan muvaffaqiyatli o'tib (kamida 18 ball), o'z nomiga rasmiy tasdiqlangan Oltin Sertifikatga ega bo'lishi mumkin!\n\nSertifikatingiz avtomatik generatsiya qilinadi va rasmiy ID raqami bilan tasdiqlanadi.",
+    "image_url": null,
+    "button_text": "🎓 Imtihon topshirish",
+    "button_url": "https://t.me/"
+  },
+  {
+    "id": 3,
+    "title": "🎁 BARCHA YANGI O'QUVCHILAR UCHUN 5 KUNLIK VIP PREMIUM BEPUL!",
+    "content": "Botimizda ro'yxatdan o'tgan har bir foydalanuvchiga 5 kunlik VIP Premium obunasi sovg'a tariqasida avtomatik faollashtiriladi!\n\nVIP obuna orqali 3D videolar, xatolar tahlili va cheksiz marafon testlaridan bepul foydalanishingiz mumkin.",
+    "image_url": null,
+    "button_text": "💎 VIP imkoniyatlar",
     "button_url": "https://t.me/"
   }
 ]

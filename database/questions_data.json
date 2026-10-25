@@ -24,7 +24,13 @@
     "correct": "B",
     "explanation": "**YHQ 1-ilovasi 3.27 - \"To'xtash taqiqlangan\" belgisi:**\n\nUshbu Qoidalarning **176-bandiga** binoan «Nogiron» tanish belgisi bilan belgilangan avtomobillar va kajavali mototsikllarni boshqarayotgan nogiron haydovchilar quyidagi belgilar talablaridan chetga chiqishlari mumkin:\n- 3.2 - \"Harakatlanish taqiqlangan\"\n- 3.3 - \"Mexanik transport vositalarining harakatlanishi taqiqlangan\"\n- 3.28 - \"To'xtab turish taqiqlangan\"\n\n7.18 - \"Nogironlar mustasno\" belgisi bo'lganda 3.27 - \"To'xtash taqiqlangan\" b",
     "category": "1-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/1.1.1.mp4",
+      "B": "zip/videos/1.1.2.mp4",
+      "C": "zip/videos/1.1.3.mp4",
+      "D": "zip/videos/1.1.4.mp4"
+    }
   },
   {
     "id": 2,
@@ -105,7 +111,13 @@
     "correct": "B",
     "explanation": "**YHQ 16-bobi 105-bandiga asosan**: Teng ahamiyatga ega bo'lgan yo'llar kesishgan chorrahada relssiz transport vositasining haydovchisi o'ngdan kelayotgan transport vositalariga yo'l berishi shart",
     "category": "1-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/1.4.1.mp4",
+      "B": "zip/videos/1.4.2.mp4",
+      "C": "zip/videos/1.4.3.mp4",
+      "D": "zip/videos/1.4.4.mp4"
+    }
   },
   {
     "id": 5,
@@ -128,7 +140,12 @@
     "correct": "B",
     "explanation": "**YHQ 7-bobi 38-bandiga asosan**: Tartibga soluvchining ishoralari quyidagi ma'noni bildiradi:\nQo'llari yon tomonga uzatilganda yoki tushirilganda:\nchap va o'ng yon tomonidan tramvayga to'g'riga, relssiz transport vositalariga to'g'riga va o'ngga harakatlanishga, piyodalarga qatnov qismini kesib o'tishga ruxsat beriladi;\nold va orqa tomonidan barcha transport vositalari va piyodalarning harakatlanishi taqiqlanadi.\no'ng qo'li oldinga uzatilganda:\nchap yonidan tramvayga chapga, relssiz transport v",
     "category": "1-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/1.5.1.mp4",
+      "B": "zip/videos/1.5.2.mp4",
+      "C": "zip/videos/1.5.3.mp4"
+    }
   },
   {
     "id": 6,
@@ -166,7 +183,11 @@
     "correct": "B",
     "explanation": "**YHQ 13-bobi 91-bandiga asosan**: qatnov qismi kesishmalarida va kesishayotgan qatnov qismi chetiga 30 metrdan kam masofada (uch tomonlama kesishadigan chorrahalarda yondan tutashgan yo'lning sidirg'a chiziq yoki ajratuvchi mintaqa bilan ajratilgan qarama-qarshi tomoni bundan mustasno).",
     "category": "1-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/1.7.1.mp4",
+      "B": "zip/videos/1.7.2.mp4"
+    }
   },
   {
     "id": 8,
@@ -358,7 +379,12 @@
     "correct": "B",
     "explanation": "**YHQ 7-bobi 38-bandiga asosan**, tartibga soluvchining o'ng qo'li oldinga uzatilganda:\nchap yonidan tramvayga chapga, relssiz transport vositalariga barcha yo'nalishlarda;\noldi tomonidan barcha transport vositalariga faqat o'ngga harakatlanishga ruxsat beriladi;\norqa tomonidan va o'ng yonidan barcha transport vositalarining harakatlanishi taqiqlanadi;\npiyodalarga tartibga soluvchining orqa tomonida qatnov qismini kesib o'tishga ruxsat etiladi.",
     "category": "2-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/2.5.1.mp4",
+      "B": "zip/videos/2.5.2.mp4",
+      "C": "zip/videos/2.5.3.mp4"
+    }
   },
   {
     "id": 16,
@@ -377,7 +403,11 @@
     "correct": "B",
     "explanation": "**YHQ 15-bobi 100-bandiga asosan**: Svetoforning qizil yoki sariq ishorasi bilan bir vaqtda yongan qo'shimcha tarmoqning yo'naltirgichli yashil ishorasi yo'nalishida harakatlanayotgan transport vositasining haydovchisi boshqa yo'nalishlarda harakatlanayotgan transport vositalariga yo'l berishi kerak.",
     "category": "2-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/2.6.1.mp4",
+      "B": "zip/videos/2.6.2.mp4"
+    }
   },
   {
     "id": 17,
@@ -623,7 +653,12 @@
     "correct": "B",
     "explanation": "**YHQ 15-bobi 100-bandiga asosan**: Svetoforning qizil yoki sariq ishorasi bilan bir vaqtda yongan qo'shimcha tarmoqning yo'naltirgichli yashil ishorasi yo'nalishida harakatlanayotgan transport vositasining haydovchisi boshqa yo'nalishlarda harakatlanayotgan transport vositalariga yo'l berishi kerak.\n**YHQ 15-bobi 101-bandining ikkinchi xatboshisiga asosan**: Svetoforning qizil yoki sariq ishorasi bilan bir vaqtda yongan qo'shimcha tarmog'ining yo'naltirgichli yashil ishorasi yo'nalishida haraka",
     "category": "3-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/3.6.1.mp4",
+      "B": "zip/videos/3.6.2.mp4",
+      "C": "zip/videos/3.6.3.mp4"
+    }
   },
   {
     "id": 27,
@@ -761,7 +796,11 @@
     "correct": "B",
     "explanation": "**YHQ 1-ilovasi 3.28. bandi** \"To'xtab turish taqiqlangan\". Transport vositalarining to'xtab turishi taqiqlanadi (xizmat vazifasini bajarayotgan xodimga biriktirilgan ko'k yoki qizil yoxud ko'k va qizil rangli yaltiroq mayoqchasi bilan jihozlangan hamda maxsus rangli bo'yoq sxemalar va yozuvlar bilan belgilangan transport vositalari bundan mustasno). 7.4.1— 7.4.10. \"Transport vositasining turi\". Belgining ta'siri joriy etilgan transport vositalari turini ko'rsatadi.",
     "category": "4-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/4.2.1.mp4",
+      "B": "zip/videos/4.2.2.mp4"
+    }
   },
   {
     "id": 33,
@@ -803,7 +842,11 @@
     "correct": "B",
     "explanation": "**YHQ 1-ilovasi 99-bandi**: Svetoforning ruxsat etuvchi ishorasida chapga burilayotgan yoki qayrilib olayotgan relssiz transport vositasining haydovchisi qarama-qarshi tomondan to'g'riga harakatlanayotgan va o'ngga burilayotgan transport vositalariga yo'l berishi shart. Tramvay haydovchilari ham ushbu Qoidaga amal qilishlari kerak. 2.1 - \"Asosiy yo'l\". Harakat tartibga solinmagan chorrahalarda oldin o'tish huquqini beradi. Belgi asosiy yo'l boshiga va chorrahalarning bevosita oldiga o'rnatiladi.",
     "category": "4-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/4.4.1.mp4",
+      "B": "zip/videos/4.4.2.mp4"
+    }
   },
   {
     "id": 35,
@@ -830,7 +873,14 @@
     "correct": "B",
     "explanation": "**YHQ 7-bobi 38-bandi**: Tartibga soluvchining ishoralari quyidagi ma'noni bildiradi:\nQo'llari yon tomonga uzatilganda yoki tushirilganda:\nchap va o'ng yon tomonidan tramvayga to'g'riga, relssiz transport vositalariga to'g'riga va o'ngga harakatlanishga, piyodalarga qatnov qismini kesib o'tishga ruxsat beriladi;\nold va orqa tomonidan barcha transport vositalari va piyodalarning harakatlanishi taqiqlanadi.\no'ng qo'li oldinga uzatilganda:\nchap yonidan tramvayga chapga, relssiz transport vositalari",
     "category": "4-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/4.5.1.mp4",
+      "B": "zip/videos/4.5.2.mp4",
+      "C": "zip/videos/4.5.3.mp4",
+      "D": "zip/videos/4.5.4.mp4",
+      "E": "zip/videos/4.5.5.mp4"
+    }
   },
   {
     "id": 36,
@@ -849,7 +899,11 @@
     "correct": "B",
     "explanation": "**YHQ 15-bobi 100-bandi**: Svetoforning taqiqlovchi qizil yoki sariq ishorasi bilan bir vaqtda yongan qo'shimcha tarmoqning ko'rsatkichli yashil ishorasi yo'nalishida harakatlanayotgan haydovchi boshqa yo'nalishlardan harakatlanayotgan transport vositalariga yo'l berishi kerak.",
     "category": "4-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/4.6.1.mp4",
+      "B": "zip/videos/4.6.2.mp4"
+    }
   },
   {
     "id": 37,
@@ -987,7 +1041,11 @@
     "correct": "B",
     "explanation": "**YHQ 1-ilovasi 2-bob, 2.6. bandi**: \"Ro'para harakatlanishning ustunligi\". Qarama-qarshi harakatlanishni qiyinlashtiradigan hollarda yo'lning tor qismiga kirish taqiqlanadi. Haydovchi yo'lning tor qismida bo'lgan yoki ro'paradan unga yaqin bo'lgan transport vositasiga yo'l berishi kerak.",
     "category": "5-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/5.2.1.mp4",
+      "B": "zip/videos/5.2.2.mp4"
+    }
   },
   {
     "id": 43,
@@ -1037,7 +1095,12 @@
     "correct": "B",
     "explanation": "**YHQ 14-bobi 97-bandi**: Haydovchi tirbandlik tufayli majburiy to'xtab, ko'ndalang yo'nalishdagi transport vositalarining harakatlanishiga to'sqinlik tug'diradigan bo'lsa, chorrahaga kirishi, agar to'xtash chizig'i yoki 5.33 - \"To'xtash\" yo'l belgisidan o'tib bo'lgan haydovchiga esa qatnov qismlari kesishmasiga kirishi taqiqlanadi.",
     "category": "5-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/5.4.1.mp4",
+      "B": "zip/videos/5.4.2.mp4",
+      "C": "zip/videos/5.4.3.mp4"
+    }
   },
   {
     "id": 45,
@@ -1083,7 +1146,11 @@
     "correct": "B",
     "explanation": "**YHQ 11-bobi 79-bandi**: Aholi punktlaridan tashqarida:\nyengil avtomobillarga va ruxsat etilgan to'liq vazni 3,5 tonnadan oshmaydigan yuk avtomobillariga tezlikni soatiga 100 kilometrdan oshirmasdan;\nshaharlararo qatnaydigan avtobuslarga va mikroavtobuslarga tezlikni soatiga 90 kilometrdan oshirmasdan;\nboshqa avtobuslar, tirkamali yengil avtomobillar, mototsikllar, elektromototsikllar ruxsat etilgan to'liq vazni 3,5 tonnadan ortiq bo'lgan yuk avtomobillariga tezlikni soatiga 80 kilometrdan oshi",
     "category": "5-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/5.6.1.mp4",
+      "B": "zip/videos/5.6.2.mp4"
+    }
   },
   {
     "id": 47,
@@ -1233,7 +1300,11 @@
     "correct": "B",
     "explanation": "**YHQ 24-bobi 145-bandi**: Shatakka olish quyidagi holatlarda taqiqlanadi:\nrul boshqaruvi ishlamayotgan transport vositalarini (qisman ortish usuli bilan shatakka olish bundan mustasno);\nikki va undan ko'p transport vositalarini;\nshatakka olingan va shatakka olgan transport vositalarining ulagich bilan birga umumiy uzunligi 20 metrdan ortiq bo'lsa;\nishchi tormoz tizimi ishlamayotgan transport vositasining haqiqiy vazni shatakka olgan transport vositasining haqiqiy vaznining yarmidan ortiq bo'lsa",
     "category": "6-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/6.2.1.mp4",
+      "B": "zip/videos/6.2.2.mp4"
+    }
   },
   {
     "id": 53,
@@ -1306,7 +1377,12 @@
     "correct": "B",
     "explanation": "**YHQ 1-ilovasi 1-bo'limining** 1.11.1 - \"Xavfli burilish\", 1.11.2 - \"Xavfli burilish\" yo'l belgilari bilan belgilangan yo'llarning burilishi oldida. Chorraha va yo'l kesishmalarining **YHQ 1-ilovasi 4-bo'limining** 4.1.2 - \"Harakatlanish o'ngga\" va 4.1.3 - \"Harakatlanish chapga\" belgilari o'rnatilgan tomondan chorrahaga kirib kelayotganda. Chorrahada aylanma harakat tashkil qilingan bo'lsa, chorrahaga kirishda Qoidalar ogohlantirish ishorasini berishni talab qilmaydi.",
     "category": "6-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/6.5.1.mp4",
+      "B": "zip/videos/6.5.2.mp4",
+      "C": "zip/videos/6.5.3.mp4"
+    }
   },
   {
     "id": 56,
@@ -1333,7 +1409,12 @@
     "correct": "B",
     "explanation": "5.1. Shina protektori naqshlarining qoldiq balandligi N2, N3, O3, O4 toifadagi avtotransport vositalari uchun — 1,0 mm dan kam bo'lsa;\nM1, N1, O1, O2 toifadagi avtotransport vositalari uchun — 1,6 mm dan, kam bo'lsa;\nM2, M3 toifadagi avtotransport vositalari uchun — 2,0 mm dan kam bo'lsa;\nMototsikl, elektromototsikl, moped va skuterlar uchun — 0,8 mm dan kam bo'lsa.\nIzoh: tirkamalar shinasi naqshlarining qoldiq balandligi shatakchi transport vositasi shinalari uchun belgilangan me'yor kabidir.",
     "category": "6-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/6.6.1.mp4",
+      "B": "zip/videos/6.6.2.mp4",
+      "C": "zip/videos/6.6.3.mp4"
+    }
   },
   {
     "id": 57,
@@ -1552,7 +1633,12 @@
     "correct": "A",
     "explanation": "**YHQ 24-bobi 143-bandiga asosan**: Qattiq yoki egiluvchan ulagich yordamida shatakka olingan avtobusda, trolleybusda va yuk avtomobili yukxonasida odam tashish, qisman ortish yo'li bilan shatakka olishda esa shatakka olingan transport vositasining yukxonasida, shuningdek shatakka olgan transport vositasining yukxonasida odamlar bo'lishi taqiqlanadi.\nQoidalarda shatakka olingan engil avtomobilda odamlarni tashish taqiqlanmagan.",
     "category": "7-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/7.5.1.mp4",
+      "B": "zip/videos/7.5.2.mp4",
+      "C": "zip/videos/7.5.3.mp4"
+    }
   },
   {
     "id": 66,
@@ -1575,7 +1661,12 @@
     "correct": "B",
     "explanation": "**YHQ 1-ilovasi 3-bo'limining yigirma oltinchi xatboshisiga asosan**: 3.22 - \"Yuk avtomobillarida quvib o'tish taqiqlangan\". To'liq vazni 3,5 tonnadan ortiq bo'lgan yuk avtomobillarida barcha transport vositalarini quvib o'tish taqiqlanishini bildiradi (soatiga 40 km dan kam tezlikda harakatlanayotgan transport vositasi, traktor, ot-arava, velosiped bundan mustasno).\n**YHQ 1-ilovasi 7-bo'limining ikkinchi xatboshisiga asosan**: 7.1.1 - \"Manzilgacha bo'lgan masofa\". Belgidan yo'lning xavfli joyi,",
     "category": "7-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/7.6.1.mp4",
+      "B": "zip/videos/7.6.2.mp4",
+      "C": "zip/videos/7.6.3.mp4"
+    }
   },
   {
     "id": 67,
@@ -1721,7 +1812,12 @@
     "correct": "A",
     "explanation": "**YHQ 8-bobi 44-bandiga asosan**, quyidagilar ogohlantiruvchi ishoralar hisoblanadi: burilishni ko'rsatadigan miltillovchi chiroq yoki qo'l bilan beriladigan ishoralar;\ntovushli ishoralar;\nchiroqlarning yoqib o'chirilishi;\nkunduz kuni yaqinni yorituvchi chiroqlarning yoqilishi.",
     "category": "8-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/8.2.1.mp4",
+      "B": "zip/videos/8.2.2.mp4",
+      "C": "zip/videos/8.2.3.mp4"
+    }
   },
   {
     "id": 73,
@@ -1794,7 +1890,12 @@
     "correct": "C",
     "explanation": "**YHQ 7-bobi 32-bandiga asosan**: Yo'naltirgich ko'rinishidagi qizil, sariq va yashil rangli svetofor ishoralari ham doirasimon shaklidagi svetofor ishoralari bilan bir xil ma'noga ega bo'ladi. Ular faqat ko'rsatilgan yo'nalishga ta'sir etadi.\nAgar tegishli yo'l belgisi bilan qayrilib olish taqiqlanmagan bo'lsa, chapga burilishga ruxsat beruvchi yo'naltirgich qayrilib olishga ham ruxsat beradi. Qo'shimcha tarmoqdagi yashil yo'naltirgich ham xuddi shu ma'noni bildiradi.\nSvetoforning qo'shimcha ta",
     "category": "8-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/8.5.1.mp4",
+      "B": "zip/videos/8.5.2.mp4",
+      "C": "zip/videos/8.5.3.mp4"
+    }
   },
   {
     "id": 76,
@@ -1817,7 +1918,12 @@
     "correct": "C",
     "explanation": "**YHQ 10-bobi 67-bandining uchinchi xatboshisiga asosan**: Bir yo'nalishdagi uch va undan ortiq tasmali har qanday yo'lda chetki chap qatorni harakat serqatnovligi sababli boshqa bo'laklar band bo'lgan hollarda, shuningdek, quvib o'tish, chapga burilish yoki qayrilib olishga, yuk avtomobillariga faqat chapga burilish yoki qayrilib olish uchun chetki chap qatorni egallashga ruxsat etiladi.\nBoshqa hollarda yuk avtomobillariga yo'lning chetki chap qatorida harakatlanish taqiqlanadi.",
     "category": "8-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/8.6.1.mp4",
+      "B": "zip/videos/8.6.2.mp4",
+      "C": "zip/videos/8.6.3.mp4"
+    }
   },
   {
     "id": 77,
@@ -1944,7 +2050,12 @@
     "correct": "A",
     "explanation": "**YHQ 27-bobi 164-bandining birinchi xatboshisiga asosan**: O'ta og'ir, katta o'lchamli va xavfli yuklarni tashishda gabarit o'lchamlari yukli yoki yuksiz holda eni bo'yicha 2,55 (refrijeratorlar va izotermik kuzovlar uchun — 2,6) metrdan va balandligi bo'yicha yo'l sathidan 4 metrdan, uzunligi bo'yicha yakka avtotransport vositasi uchun — 12 metrdan, tirkama uchun — 12 metrdan, yarimtirkamali avtopoezd uchun — 20 metrdan, tirkamali avtopoezd uchun — 20 metrdan ortiq bo'lgan yoki yuki transport",
     "category": "9-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/9.1.1.mp4",
+      "B": "zip/videos/9.1.2.mp4",
+      "C": "zip/videos/9.1.3.mp4"
+    }
   },
   {
     "id": 82,
@@ -1967,7 +2078,12 @@
     "correct": "A",
     "explanation": "**YHQ 6-bobi 26-bandiga asosan**: Haydovchilar tezkor va maxsus xizmatlarning ko'k yoki qizil yoxud ko'k va qizil rangli yalt-yalt etuvchi mayoqchalar va maxsus tovushli ishorasi yoqilgan holda yaqinlashayotgan transport vositalariga, shuningdek ularning kuzatuvidagi, yaqinni yorituvchi fara chiroqlari yoqilgan transport vositasi (transport vositalari)ga yo'l berishlari shart.\nMazkur turdagi transport vositalarini quvib o'tish taqiqlanadi.",
     "category": "9-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/9.2.1.mp4",
+      "B": "zip/videos/9.2.2.mp4",
+      "C": "zip/videos/9.2.3.mp4"
+    }
   },
   {
     "id": 83,
@@ -2048,7 +2164,12 @@
     "correct": "B",
     "explanation": "**YHQ 18-bobi 118-bandining ikkinchi xatboshisiga asosan**, temir yo'l kesishmasiga quyidagi hollarda kirish taqiqlanadi: shlagbaum holatidan qat'i nazar, svetoforning taqiqlovchi ishorasida.\n**YHQ 18-bobi 119-bandiga asosan**: Kesishma orqali harakatlanish taqiqlangan hollarda haydovchi to'xtash chizig'i, 2.5 - \"To'xtamasdan harakatlanish taqiqlangan\" yo'l belgisi yoki svetofor oldida, ular bo'lmaganda shlagbaumga kamida 5 metr, shlagbaum bo'lmaganda esa birinchi temir yo'l iziga kamida 10 metr",
     "category": "9-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/9.5.1.mp4",
+      "B": "zip/videos/9.5.2.mp4",
+      "C": "zip/videos/9.5.3.mp4"
+    }
   },
   {
     "id": 86,
@@ -2071,7 +2192,11 @@
     "correct": "B",
     "explanation": "**YHQ 16-bobi 104-Bandiga asosan**: Teng ahamiyatga ega bo'lmagan yo'llar kesishgan chorrahada, ikkinchi darajali yo'lda harakatlanayotgan transport vositasining haydovchisi asosiy yo'ldan yaqinlashayotgan transport vositalariga, ularning keyingi harakat yo'nalishidan qat'iy nazar, yo'l berishi kerak. Bunday chorrahalarda tramvay harakatlanish yo'nalishidan qat'iy nazar, teng ahamiyatga ega bo'lgan yo'lda bir yo'nalishda yoki qarama-qarshi yo'nalishda harakatlanayotgan relssiz transport vositala",
     "category": "9-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/9.6.1.mp4",
+      "B": "zip/videos/9.6.2.mp4"
+    }
   },
   {
     "id": 87,
@@ -2202,7 +2327,12 @@
     "correct": "B",
     "explanation": "**YHQ 2-ilovasi 1-bo'limining yettinchi, sakkizinchi va o'ttiz beshinchi xatboshlariga asosan**: 1.5 — ikki yoki uch tasmali yo'llarda qarama-qarshi yo'nalishlarda harakatlanayotgan transport vositalari oqimlarini ajratadi; bir yo'nalishda harakatlanish uchun mo'ljallangan ikki yoki undan ko'proq tasmali yo'llarda tasmalarning chegaralarini va bir yo'nalishdagi harakatlanish bo'lagi bilan velosiped bo'lagi chegarasini bildiradi;\n1.6 (yaqinlashish chizig'i — har bir chiziq uzunligi ular orasidagi",
     "category": "10-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/10.1.1.mp4",
+      "B": "zip/videos/10.1.2.mp4",
+      "C": "zip/videos/10.1.3.mp4"
+    }
   },
   {
     "id": 92,
@@ -2302,7 +2432,12 @@
     "correct": "A",
     "explanation": "**YHQ 8-bobi 46-bandining uchinchi xatboshisiga asosan**: Ogohlantiruvchi ishora berish haydovchiga oldin o'tish huquqini bermaydi va uni zaruriy ehtiyot choralarini ko'rish mas'uliyatidan ozod etmaydi.",
     "category": "10-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/10.5.1.mp4",
+      "B": "zip/videos/10.5.2.mp4",
+      "C": "zip/videos/10.5.3.mp4"
+    }
   },
   {
     "id": 96,
@@ -2352,7 +2487,11 @@
     "correct": "C",
     "explanation": "**YHQ 25-bobi 149-bandiga asosan**: Transport vositasini boshqarish huquqiga ega bo'lishi uchun o'rganuvchi o'quv muddati yakunida: \"B\" va \"C\" toifalari uchun — 18 yoshga to'lgan bo'lishi kerak.",
     "category": "10-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/10.7.1.mp4",
+      "B": "zip/videos/10.7.2.mp4"
+    }
   },
   {
     "id": 98,
@@ -2456,7 +2595,13 @@
     "correct": "C",
     "explanation": "Yo'l harakati qoidalariga ko'ra, temir yo'l kesishmasi oldida turgan transport vositalarini qarama-qarshi harakatlanish boʻlagiga chiqib aylanib oʻtish qat'iyan man etiladi\n\nYo'l harakati qoidalariga ko'ra, quvib o'tish faqat temir yo'l kesishmasining o'zida va unga 100 metr qolganda taqiqlanadi. Temir yo'l kesishmasidan to'liq o'tib bo'lingandan so'ng esa quvib o'tishga ruxsat beriladi (agar boshqa taqiqlovchi belgilar yoki sidirg'a chiziqlar bo'lmasa)",
     "category": "11-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/11-1-F.1.mp4",
+      "B": "zip/videos/11-1-F.2.mp4",
+      "C": "zip/videos/11-1-F.3.mp4",
+      "D": "zip/videos/11-1-F.4.mp4"
+    }
   },
   {
     "id": 102,
@@ -2510,7 +2655,10 @@
     "correct": "C",
     "explanation": "**YHQ 9-bobi 54-bandiga asosan**: Yondosh hududlardan yo'lga chiqayotgan haydovchi unda harakatlanayotgan transport vositalari va piyodalarga, shuningdek yo'ldan chiqishda harakat yo'nalishini kesib o'tayotgan piyodalar va velosipedchilarga yo'l berishi kerak.",
     "category": "11-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "main": "zip/videos/11-3-F-kiril.mp4"
+    }
   },
   {
     "id": 104,
@@ -2556,7 +2704,12 @@
     "correct": "A",
     "explanation": "**YHQ 27-bobi 160-bandiga asosan**: Tashilayotgan yukning vazni va o'qlarga tushadigan og'irlik miqdorining taqsimlanishi ishlab chiqargan korxona tomonidan ushbu transport vositasi uchun belgilangan miqdordan oshmasligi kerak.",
     "category": "11-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/11.5.1.mp4",
+      "B": "zip/videos/11.5.2.mp4",
+      "C": "zip/videos/11.5.3.mp4"
+    }
   },
   {
     "id": 106,
@@ -2802,7 +2955,13 @@
     "correct": "B",
     "explanation": "**YHQ 3-ilovasi 3-bo'limining 3.1-bandiga** asosan: tashqi yoritqichlar soni, turi, joylashuvi va ishlash tartibi transport vositasining konstruksiyasi talabiga mos kelmasa foydalanish taqiqlanadi. Ishlab chiqarilishi to'xtatilgan yengil avtomobillarga boshqa turdagi va rusumdagi transport vositalarining tashqi yoritqichlarini o'rnatishga ruxsat etiladi.\n\n**Eslatma:** Mototsikl, mopedlar bitta, boshqa transport vositalari esa **ikkita** tumanga qarshi faralar bilan jihozlangan bo'lishi mumkin.",
     "category": "12-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/12.5.1.mp4",
+      "B": "zip/videos/12.5.2.mp4",
+      "C": "zip/videos/12.5.3.mp4",
+      "D": "zip/videos/12.5.4.mp4"
+    }
   },
   {
     "id": 116,
@@ -2848,7 +3007,11 @@
     "correct": "A",
     "explanation": "**YHQ 22-bobi 132-bandining** birinchi xatboshisiga asosan:\n\nYo'nalishi transport vositalarining harakatlanishi uchun 5.9 - \"Belgilangan yo'nalishli transport vositalari uchun mo'ljallangan bo'lak\", 5.10.1 - \"Belgilangan yo'nalishli transport vositalari uchun bo'lagi bor yo'l\" — 5.10.3 - \"Belgilangan yo'nalishli transport vositalari uchun bo'lagi bor yo'l\" yo'l belgilari bilan ajratilgan tasmada boshqa transport vositalarning harakatlanishi va to'xtashi **taqiqlanadi**.\n\nShuningdek, bunday joyla",
     "category": "12-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/12.7.1.mp4",
+      "B": "zip/videos/12.7.2.mp4"
+    }
   },
   {
     "id": 118,
@@ -2940,7 +3103,12 @@
     "correct": "A",
     "explanation": "**YHQ 3-ilovasi 5-bo'limining 5.5-bandiga** asosan:\n\nTransport vositasining bitta o'qiga har xil o'lchamli va konstruksiyali (diagonal va radial, kamerali va kamerasiz), har xil naqshli, sovuqqa chidamli va chidamsiz, yangi va qayta tiklangan, yangi va protektor naqshi chuqurlashtirilgan shinalar o'rnatilgan bo'lsa — foydalanish **taqiqlanadi**.",
     "category": "13-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/13.1.1.mp4",
+      "B": "zip/videos/13.1.2.mp4",
+      "C": "zip/videos/13-1(F1-F3).mp4"
+    }
   },
   {
     "id": 122,
@@ -2967,7 +3135,10 @@
     "correct": "C",
     "explanation": "**YHQ 8-bobi 44-bandiga** asosan, quyidagilar ogohlantiruvchi ishoralar hisoblanadi:\n\n- Burilishni ko'rsatadigan **miltillovchi chiroq** yoki qo'l bilan beriladigan ishoralar;\n- **Tovushli ishoralar**;\n- Chiroqlarning **yoqib o'chirilishi**;\n- Kunduz kuni **yaqinni yorituvchi chiroqlarning** yoqilishi.",
     "category": "13-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "main": "zip/videos/13-2-F-kiril.mp4"
+    }
   },
   {
     "id": 123,
@@ -3040,7 +3211,12 @@
     "correct": "C",
     "explanation": "**YHQ 2-ilovasi 1-bo'limining** oltinchi xatboshisiga asosan:\n\n1.4 chizig'i — **to'xtash taqiqlangan** joyni bildiradi. Yakka holda yoki 3.27 - \"To'xtash taqiqlangan\" yo'l belgisi bilan qo'llaniladi hamda yo'lning qatnov qismi chetiga yoki yo'l chetidagi to'siq ustidan chiziladi.",
     "category": "13-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/13.5.1.mp4",
+      "B": "zip/videos/13.5.2.mp4",
+      "C": "zip/videos/13.5.3.mp4"
+    }
   },
   {
     "id": 126,
@@ -3063,7 +3239,11 @@
     "correct": "A",
     "explanation": "**YHQ 16-bobi 104-bandiga** asosan, teng ahamiyatga ega bo'lmagan yo'llar kesishgan chorrahada, keyingi harakat yo'nalishidan qat'iy nazar, asosiy yo'ldan kelayotgan transport vositasiga ikkinchi darajali yo'ldan kelayotgan transport vositasining haydovchisi yo'l berishi kerak.\n\n**YHQ 16-bobi 107-bandiga** asosan, chapga burilishda yoki qayrilib olishda relssiz transport vositasining haydovchisi teng ahamiyatli yo'lda qarama-qarshi yo'nalishdan to'g'riga yoki o'ngga harakatlanayotgan, shuningdek",
     "category": "13-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "main": "zip/videos/13-6-F.mp4",
+      "A": "zip/videos/13.6.1.mp4"
+    }
   },
   {
     "id": 127,
@@ -3086,7 +3266,12 @@
     "correct": "A",
     "explanation": "**YHQ 8-bobi 46-bandining** ikkinchi xatboshisiga asosan:\n\nBurilish ko'rsatkichi yoki qo'l bilan berilayotgan ishora manyovrni bajarishdan oldinroq berilishi va uni tugallagach, darhol to'xtatilishi kerak (qo'l bilan berilayotgan ishorani manyovrni bevosita bajarishdan oldin tugallash mumkin).\n\nBeriladigan ishoralar yo'l harakatining boshqa qatnashchilarini **chalg'itmasligi** kerak. Ogohlantiruvchi ishora berish haydovchiga oldin o'tish huquqini bermaydi va uni zaruriy ehtiyot choralarini ko'ri",
     "category": "13-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/13.7.1.mp4",
+      "B": "zip/videos/13.7.2.mp4",
+      "C": "zip/videos/13-7(F1-F3).mp4"
+    }
   },
   {
     "id": 128,
@@ -3263,7 +3448,12 @@
     "correct": "B",
     "explanation": "**YHQ 18-bobi 116-bandiga** asosan:\n\nTransport vositalarining haydovchilari temir yo'llarni faqat **temir yo'l kesishmalari orqali** poyezd (lokomotiv, drezina)larga yo'l berib kesib o'tishlari mumkin.",
     "category": "14-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/14.4.1.mp4",
+      "B": "zip/videos/14.4.2.mp4",
+      "C": "zip/videos/14.4.3.mp4"
+    }
   },
   {
     "id": 135,
@@ -3286,7 +3476,12 @@
     "correct": "A",
     "explanation": "**YHQ 16-bobi 104-bandiga** asosan, teng ahamiyatga ega bo'lmagan yo'llar kesishgan chorrahada, keyingi harakat yo'nalishidan qat'iy nazar, asosiy yo'ldan harakatlanayotgan transport vositasiga ikkinchi darajali yo'ldan kelayotgan transport vositasining haydovchisi yo'l berishi kerak.\n\n**YHQ 16-bobi 107-bandiga** asosan, chapga burilishda yoki qayrilib olishda relssiz transport vositasining haydovchisi teng ahamiyatli yo'lda qarama-qarshi yo'nalishdan to'g'riga yoki o'ngga harakatlanayotgan, shu",
     "category": "14-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/14.5.1.mp4",
+      "B": "zip/videos/14.5.2.mp4",
+      "C": "zip/videos/14.5.3.mp4"
+    }
   },
   {
     "id": 136,
@@ -3313,7 +3508,10 @@
     "correct": "A",
     "explanation": "**YHQ 10-bobi 67-bandining** ikkinchi xatboshisiga asosan:\n\nAholi punktlarida ushbu bandning birinchi xatboshi va ushbu qoidalarning 69, 123 va 161-bandlaridagi talablarni hisobga olgan holda, haydovchilar o'zlariga qulay bo'lgan harakatlanish bo'lagidan foydalanishlari mumkin.\n\nHarakatlanish serqatnovligi sababli boshqa tasmalar band bo'lganda harakatlanish qatorini faqat o'ngga yoki chapga burilish, **qayrilib olish**, to'xtash yoki to'siqni aylanib o'tish uchun o'zgartirishga ruxsat etiladi.",
     "category": "14-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/14.6.1.mp4"
+    }
   },
   {
     "id": 137,
@@ -3467,7 +3665,12 @@
     "correct": "A",
     "explanation": "**YHQ 16-bobi 104-bandining** birinchi xatboshisiga asosan: teng ahamiyatga ega bo'lmagan yo'llar kesishgan chorrahada, ikkinchi darajali yo'lda harakatlanayotgan transport vositasining haydovchisi asosiy yo'ldan yaqinlashayotgan transport vositalariga, ularning keyingi harakat yo'nalishidan qat'iy nazar, yo'l berishi kerak.\n\n**YHQ 16-bobi 107-bandiga** asosan, chapga burilishda yoki qayrilib olishda relssiz transport vositasining haydovchisi teng ahamiyatli yo'lda qarama-qarshi yo'nalishdan to'",
     "category": "15-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/15-2-F.1.mp4",
+      "B": "zip/videos/15-2-F.2.mp4",
+      "C": "zip/videos/15-2-F.3.mp4"
+    }
   },
   {
     "id": 143,
@@ -3509,7 +3712,13 @@
     "correct": "A",
     "explanation": "**YHQ 12-bobi 86-bandining** ikkinchi xatboshisiga asosan:\n\nQuvib o'tish taqiqlanadi — tartibga solinmaydigan chorrahalarda **asosiy hisoblanmaydigan** yo'llarda harakatlanishda.",
     "category": "15-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/15-4-F.1.mp4",
+      "B": "zip/videos/15-4-F.2.mp4",
+      "C": "zip/videos/15-4-F.3.mp4",
+      "D": "zip/videos/15-4-F.4.mp4"
+    }
   },
   {
     "id": 145,
@@ -3536,7 +3745,12 @@
     "correct": "C",
     "explanation": "**YHQ 8-bobi 50-bandining** ikkinchi xatboshisiga asosan, avariya ishorasi quyidagi hollarda yoqilishi kerak:\n- **Shatakka olishida** (shatakka olingan transport vositasida).\n\n**YHQ 8-bobi 52-bandiga** asosan: shatakka olingan transport vositasida avariya yorug'lik ishoralari bo'lmasa yoki ular ishlamasa, uning orqa tomoniga **avariya sababli to'xtash belgisi** o'rnatilishi kerak.",
     "category": "15-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/15.5.1.mp4",
+      "B": "zip/videos/15.5.2.mp4",
+      "C": "zip/videos/15.5.3.mp4"
+    }
   },
   {
     "id": 146,
@@ -3582,7 +3796,12 @@
     "correct": "A",
     "explanation": "**YHQ 1-bobi 6-bandining** sakkizinchi xatboshisiga asosan:\n\n**Asosiy yo'l** — tuproqli yoki shag'alli yo'lga nisbatan qattiq qoplamali (asfalt va sement-betonli va shunga o'xshashlar yotqizilgan), kesishayotgan yoki tutashgan yo'lga nisbatan 2.1 - \"Asosiy yo'l\", 2.3.1 - \"Ikkinchi darajali yo'l bilan kesishuv\" — 2.3.3 - \"tutashuv chapdan\" yoki 5.1 - \"Avtomagistral\" yo'l belgilari bilan belgilangan yoxud yondosh hududdan chiqadigan yo'lga nisbatan har qanday yo'l.\n\nIkkinchi darajali yo'lning bevo",
     "category": "15-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/15.7.1.mp4",
+      "B": "zip/videos/15.7.2.mp4",
+      "C": "zip/videos/15.7.3.mp4"
+    }
   },
   {
     "id": 148,
@@ -3697,7 +3916,12 @@
     "correct": "A",
     "explanation": "**YHQ 23-bobi 134-bandining** birinchi va ikkinchi xatboshilariga asosan:\n\nQorong'i vaqtda va yetarlicha ko'rinmaydigan sharoitda, shuningdek yo'lning yoritilganligidan qat'iy nazar, tunnellarda harakatlanayotgan transport vositalarida quyidagi yoritish asboblari yoqilgan bo'lishi kerak:\n\n- Barcha mexanik transport vositalari — **uzoqni yoki yaqinni yorituvchi chiroqlar**.",
     "category": "16-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/16-2(F1).mp4",
+      "B": "zip/videos/16-2(F2).mp4",
+      "C": "zip/videos/16-2(F3).mp4"
+    }
   },
   {
     "id": 153,
@@ -3770,7 +3994,12 @@
     "correct": "A",
     "explanation": "**YHQ 3-ilovasi** \"Transport vositalaridan foydalanishni taqiqlovchi shartlar\", **5-bo'limining 5.1-bandiga** asosan:\n\nShina protektori naqshlarining qoldiq balandligi **N2, N3, O3, O4** toifadagi avtotransport vositalari uchun — **1,0 mm** dan kam bo'lsa transport vositalaridan foydalanish taqiqlanadi.\n\nShunga ko'ra, N2, N3 toifadagi transport vositalari shinalari protektori naqshining qoldiq balandligi **1,6 mm** ni tashkil qilsa, bunday transport vositasidan foydalanish mumkin.",
     "category": "16-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/16.5.1.mp4",
+      "B": "zip/videos/16.5.2.mp4",
+      "C": "zip/videos/16.5.3.mp4"
+    }
   },
   {
     "id": 156,
@@ -3939,7 +4168,13 @@
     "correct": "A",
     "explanation": "**YHQ 8-bobi 50-band**ining birinchi xatboshisiga asosan:\n\nBurulishni ko'rsatuvchi barcha yorug'lik ishoralarining bir vaqtda miltillashi **avariya (xavf-xatar) ishoralari** hisoblanadi.\n\n**YHQ 8-bobi 50-band**ining to'rtinchi xatboshisiga asosan, avariya ishorasi quyidagi hollarda yoqilishi kerak:\n\n- Shatakka olishda (shatakka olingan transport vositasida)",
     "category": "17-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/17-2-F.1.mp4",
+      "B": "zip/videos/17-2-F.2.mp4",
+      "C": "zip/videos/17-2-F.3.mp4",
+      "D": "zip/videos/17-2-F.4.mp4"
+    }
   },
   {
     "id": 163,
@@ -3989,7 +4224,12 @@
     "correct": "B",
     "explanation": "**YHQ 3-ilovasi 5-bo'limi 5.1-band**ining to'rtinchi xatboshisiga asosan:\n\nShina protektori naqshlarining qoldiq balandligi **mototsikl va mopedlar** (skuterlar, kvadrotsikllar) uchun — **0,8 mm** dan kam bo'lsa foydalanish taqiqlanadi.",
     "category": "17-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/17.4.1.mp4",
+      "B": "zip/videos/17.4.2.mp4",
+      "C": "zip/videos/17-4(F1-F3).mp4"
+    }
   },
   {
     "id": 165,
@@ -4012,7 +4252,12 @@
     "correct": "C",
     "explanation": "**YHQ 1-ilovasi 5-bo'lim**ining sakkizinchi xatboshisiga asosan:\n\n5.7.1 - \"Bir tomonlama harakatlanish yo'liga chiqish\", 5.7.2 - \"Bir tomonlama harakatlanish yo'liga chiqish\" — Harakatlanish bir tomonlama bo'lgan yo'lga yoki qatnov qismiga chiqishni bildiradi.\n\nBunday holda, birinchi va beshinchi belgilar \"Bir tomonlama harakatli yo'lga chiqish\" deb nomlanadi.",
     "category": "17-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/17.5.1.mp4",
+      "B": "zip/videos/17.5.2.mp4",
+      "C": "zip/videos/17.5.3.mp4"
+    }
   },
   {
     "id": 166,
@@ -4108,7 +4353,12 @@
     "correct": "A",
     "explanation": "**YHQ 27-bobi 163-band**iga asosan:\n\nTransport vositasining gabaritlaridan oldi yoki orqa tomonga **1 metrdan**, yon tomonga gabaritning chetki qismidan **0,4 metrdan** ortiq chiqib turgan yuk **\"Katta o'lchamli yuk\"** taniqlik belgisi bilan belgilanishi kerak.\n\nSutkaning qorong'i vaqtida va yetarlicha ko'rinmaydigan sharoitda esa bunga qo'shimcha ravishda:\n- Oldi — oq rangli chiroq yoki yorug'lik qaytargich\n- Orqasi — qizil rangli chiroq yoki yorug'lik qaytargich bilan belgilanishi kerak",
     "category": "17-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/17.9.1.mp4",
+      "B": "zip/videos/17.9.2.mp4",
+      "C": "zip/videos/17-9-F3.mp4"
+    }
   },
   {
     "id": 170,
@@ -4242,7 +4492,13 @@
     "correct": "B",
     "explanation": "**YHQ 2-ilovasi 1-bo'lim**ining o'ttiz sakkizinchi xatboshisiga asosan:\n\n1.11 chizig'ini uzuq-uzuq chiziq tomonidan, sidirg'a chiziq tomonidan esa faqat quvib yoki aylanib o'tishni tugatayotganda bosib o'tishga ruxsat etiladi.",
     "category": "18-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/18.5.1.mp4",
+      "B": "zip/videos/18.5.2.mp4",
+      "C": "zip/videos/18.5.3.mp4",
+      "D": "zip/videos/18.5.4.mp4"
+    }
   },
   {
     "id": 176,
@@ -4311,7 +4567,12 @@
     "correct": "B",
     "explanation": "**YHQ 23-bobi 136-band**:\n\nSutkaning qorong'i vaqtida yo'lning yoritilmagan qismida, shuningdek yetarlicha ko'rinmaydigan sharoitda to'xtagan yoki to'xtab turgan transport vositasida **gabarit fara chiroqlari** yoqilgan bo'lishi kerak.",
     "category": "18-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/18.8.1.mp4",
+      "B": "zip/videos/18.8.2.mp4",
+      "C": "zip/videos/18.8.3.mp4"
+    }
   },
   {
     "id": 179,
@@ -4461,7 +4722,11 @@
     "correct": "C",
     "explanation": "**YHQ 16-bobi 105-band**iga asosan:\n\nTeng ahamiyatga ega bo'lgan yo'llar kesishgan chorrahada relssiz transport vositasining haydovchisi **o'ngdan kelayotgan** transport vositalariga yo'l berishi shart.",
     "category": "19-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/19.4.1.mp4",
+      "B": "zip/videos/19.4.2.mp4"
+    }
   },
   {
     "id": 185,
@@ -4488,7 +4753,13 @@
     "correct": "B",
     "explanation": "**YHQ 23-bobi 135-band**ining to'rtinchi xatboshisiga asosan:\n\nKo'zi qamashgan haydovchi:\n- **Avariya ishoralarini** yoqishi\n- Harakatlanish bo'lagini o'zgartirmasdan **tezlikni kamaytirishi**\n- **To'xtashi** kerak",
     "category": "19-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/19.5.1.mp4",
+      "B": "zip/videos/19.5.2.mp4",
+      "C": "zip/videos/19.5.3.mp4",
+      "D": "zip/videos/19.5.4.mp4"
+    }
   },
   {
     "id": 186,
@@ -4507,7 +4778,11 @@
     "correct": "A",
     "explanation": "**To'xtash yo'li**ga haydovchining xavf-xatarni sezgan vaqtidan boshlab transport vositasining butunlay to'xtagunga qadar yurib o'tgan masofasi tushuniladi.\n\nTo'xtash yo'li doim **tormoz yo'lidan ko'proq** bo'ladi, chunki tormozlanish boshlanishidan avval transport vositasi haydovchining reaksiya vaqti va tormoz uzatmasining ishlab ketish vaqtiga bog'liq bo'lgan masofadan o'tib oladi.",
     "category": "19-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/19-6(F1).mp4",
+      "B": "zip/videos/19-6(f2).mp4"
+    }
   },
   {
     "id": 187,
@@ -4630,7 +4905,11 @@
     "correct": "C",
     "explanation": "**YHQ 1-ilovasi 3-bo'lim**ining yettinchi xatboshisiga asosan:\n\n3.5 - \"Mototsikllar harakatlanishi taqiqlangan\" belgisi faqat mototsikl va elektromototsikllar harakatlanishini taqiqlaydi. Avtomobil harakati uchun taqiq yo'q.",
     "category": "20-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/20.1.1.mp4",
+      "B": "zip/videos/20.1.2.mp4"
+    }
   },
   {
     "id": 192,
@@ -4672,7 +4951,10 @@
     "correct": "C",
     "explanation": "**YHQ 16-bobi 104-band**ining birinchi xatboshisiga asosan:\n\nTeng ahamiyatga ega bo'lmagan yo'llar kesishgan chorrahada, ikkinchi darajali yo'lda harakatlanayotgan transport vositasining haydovchisi asosiy yo'ldan yaqinlashayotgan transport vositalariga, ularning keyingi harakat yo'nalishidan qat'iy nazar, yo'l berishi kerak.\n\n**YHQ 16-bobi 106-band**iga asosan:\n\nAsosiy yo'lning yo'nalishi chorrahada o'zgarganda asosiy yo'lda harakatlanayotgan haydovchilar o'zaro teng ahamiyatli yo'llar chorraha",
     "category": "20-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/20-3-F1.mp4"
+    }
   },
   {
     "id": 194,
@@ -4714,7 +4996,13 @@
     "correct": "B",
     "explanation": "**YHQ 12-bobi 83-band**iga asosan:\n\nBir yo'nalishda harakatlanayotgan relssiz transport vositalarini har ikki tomonidan o'zib ketishga ruxsat beriladi.\n\nBiroq chapga burilish ishorasini berib, burilishga kirishgan transport vositasini o'zib ketish **o'ng tomondan** amalga oshiriladi.",
     "category": "20-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/20.5.1.mp4",
+      "B": "zip/videos/20.5.2.mp4",
+      "C": "zip/videos/20.5.3.mp4",
+      "D": "zip/videos/20-5-F4.mp4"
+    }
   },
   {
     "id": 196,
@@ -4741,7 +5029,12 @@
     "correct": "C",
     "explanation": "**YHQ 24-bobi 145-band**ining birinchi xatboshisiga asosan, shatakka olish quyidagi holatlarda taqiqlanadi:\n\n- Rul boshqaruvi ishlamayotgan transport vositalarini (**qisman ortish yo'li bilan** shatakka olish bundan mustasno)",
     "category": "20-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/20.6.1.mp4",
+      "B": "zip/videos/20.6.2.mp4",
+      "C": "zip/videos/20-6(F1-F3).mp4"
+    }
   },
   {
     "id": 197,
@@ -4937,7 +5230,12 @@
     "correct": "C",
     "explanation": "Toliqishning fiziologik mohiyati organizmning ish intensivligini kamaytirish yoki to'xtatish zarurligi hamda xabar berishdan iborat bo'lib, u **charchash hissiyoti** tarzida seziladi.\n\nToliqish natijasida haydovchi favqulodda harakatlarga tayyorligini yo'qotadi, ya'ni yo'l transport hodisasi ehtimolini ko'payishiga olib keluvchi **hushyorlik kamayishi** yuzaga keladi.\n\nPsixologik nuqtai nazardan hushyorlik — bu markaziy nerv tizimining doimiy o'zgaruvchan yo'l-transport holatlariga nisbatan zaru",
     "category": "21-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/21.4.1.mp4",
+      "B": "zip/videos/21.4.2.mp4",
+      "C": "zip/videos/21.4.3.mp4"
+    }
   },
   {
     "id": 205,
@@ -4960,7 +5258,12 @@
     "correct": "A",
     "explanation": "**YHQ 28-bobi 169-band**iga asosan:\n\nChorrahadan tashqaridagi tartibga solinmagan velosiped yo'lkasi bilan yo'l kesishmasida velosiped va individual harakatlanish vositalari yo'lda harakatlanayotgan boshqa transport vositalariga **yo'l berishlari kerak**.",
     "category": "21-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/21.5.1.mp4",
+      "B": "zip/videos/21.5.2.mp4",
+      "C": "zip/videos/21.5.3.mp4"
+    }
   },
   {
     "id": 206,
@@ -5010,7 +5313,11 @@
     "correct": "B",
     "explanation": "Yo'l harakati qoidalariga ko'ra, agar yo'lda 5.11.1 - \"Qayrilish joyi\" yoki 5.11.2 - \"Qayrilish oralig'i\" axborot-ko'rsatkich belgilari o'rnatilgan bo'lsa:\n\n- Ushbu belgilar turgan joyda haydovchiga orqaga **qayrilib olishga ruxsat etiladi**\n- Biroq **chapga burilish qat'iyan taqiqlanadi**\n\nDemak, siz ushbu belgi turgan joydan qayrilib olishingiz yoki (agar yo'nalish bo'yicha boshqa taqiq bo'lmasa) to'g'riga harakatlanishingiz mumkin, lekin yondosh hududlarga, hovlilarga yoki boshqa ko'chaga cha",
     "category": "21-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/21.7.1.mp4",
+      "B": "zip/videos/21.7.2.mp4"
+    }
   },
   {
     "id": 208,
@@ -5037,7 +5344,12 @@
     "correct": "A",
     "explanation": "**YHQ 2-ilovasi 1-bo'lim**ining yigirma birinchi xatboshisiga asosan:\n\n**1.17** chizig'i — yo'nalishli transport vositalarining bekatlari hamda taksilarning to'xtab turish joylarini bildiradi.",
     "category": "21-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/21.8.1.mp4",
+      "B": "zip/videos/21.8.2.mp4",
+      "C": "zip/videos/21.8.3.mp4"
+    }
   },
   {
     "id": 209,
@@ -5106,7 +5418,12 @@
     "correct": "B",
     "explanation": "Tormoz yo'lining kamayishiga blokirovka chegarasida erishiladi, chunki blokirovka qilingan g'ildiraklar aylanmay (sirpanib to'xtash) yo'lda sirpanadi va tormoz yo'lini uzaytiradi.",
     "category": "22-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/22.1.1.mp4",
+      "B": "zip/videos/22.1.2.mp4",
+      "C": "zip/videos/22.1.3.mp4"
+    }
   },
   {
     "id": 212,
@@ -5202,7 +5519,12 @@
     "correct": "B",
     "explanation": "**YHQ 2-ilovasi 1-bo'limining** o'n birinchi xatboshisiga asosan: 1.9 chizig'i — reversiv harakat tashkil etilgan bo'laklarning chegarasini belgilaydi.\n\nReversiv harakatlanish amalga oshirilgan yo'llarda (reversiv svetofor o'chirilgan holatda) qarama-qarshi yo'nalishdagi transport oqimini ajratadi.",
     "category": "22-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/22.5.1.mp4",
+      "B": "zip/videos/22.5.2.mp4",
+      "C": "zip/videos/22.5.3.mp4"
+    }
   },
   {
     "id": 216,
@@ -5394,7 +5716,14 @@
     "correct": "A",
     "explanation": "**YHQ 1-ilovasi 3-bo'limining** to'qqizinchi xatboshisiga asosan: 3.7 - \"Tirkama bilan harakatlanish taqiqlanadi\". Yuk tashuvchi transport vositalari, traktorlarning barcha turdagi tirkamalar bilan harakatlanishi, shuningdek mexanik transport vositalarini har qanday usulda shatakka olish taqiqlanishini bildiradi.",
     "category": "23-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/23.3.1.ru.mp4",
+      "B": "zip/videos/23.3.2.ru.mp4",
+      "C": "zip/videos/23.3.3.ru.mp4",
+      "D": "zip/videos/23.3.4.ru.mp4",
+      "E": "zip/videos/23.3.5.ru.mp4"
+    }
   },
   {
     "id": 224,
@@ -5417,7 +5746,12 @@
     "correct": "C",
     "explanation": "**YHQ 2-ilovasi 1-bo'limining** o'n to'rtinchi xatboshisiga asosan: 1.12 (to'xtash chizig'i) — 2.5 - \"To'xtamasdan harakatlanish taqiqlangan\" belgisi yoki svetoforning (tartibga soluvchining) taqiqlovchi ishorasida haydovchi to'xtash kerak bo'lgan joyni ko'rsatadi.",
     "category": "23-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/23.4.1.mp4",
+      "B": "zip/videos/23.4.2.mp4",
+      "C": "zip/videos/23.4.3.mp4"
+    }
   },
   {
     "id": 225,
@@ -5440,7 +5774,12 @@
     "correct": "C",
     "explanation": "**YHQ 16-bobi 105-bandiga** asosan: Teng ahamiyatga ega bo'lgan yo'llar kesishgan chorrahada relssiz transport vositasining haydovchisi o'ngdan kelayotgan transport vositalariga yo'l berishi shart. Bu qoidaga tramvay haydovchilari ham o'zaro amal qilishlari kerak. Bunday chorrahalarda, keyingi harakat yo'nalishidan qat'iy nazar, tramvay relssiz transport vositalariga nisbatan oldin o'tish huquqiga ega bo'ladi.\n\n**YHQ 16-bobi 107-bandiga** asosan: Chapga burilishda yoki qayrilib olishda relssiz t",
     "category": "23-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/23.5.1.mp4",
+      "B": "zip/videos/23.5.2.mp4",
+      "C": "zip/videos/23.5.3.mp4"
+    }
   },
   {
     "id": 226,
@@ -5463,7 +5802,10 @@
     "correct": "A",
     "explanation": "**YHQ 16-bobi 105-bandiga** asosan: Teng ahamiyatga ega bo'lgan yo'llar kesishgan chorrahada relssiz transport vositasining haydovchisi o'ngdan kelayotgan transport vositalariga yo'l berishi shart.\n\n**YHQ 16-bobi 107-bandiga** asosan: Chapga burilishda yoki qayrilib olishda relssiz transport vositasining haydovchisi teng ahamiyatli yo'ldan qarama-qarshi yo'nalishdan to'g'riga yoki o'ngga harakatlanayotgan, shuningdek ruxsat etilgan hollarda quvib o'tayotgan transport vositalariga yo'l berishi sh",
     "category": "23-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/23.6.1.mp4"
+    }
   },
   {
     "id": 227,
@@ -5490,7 +5832,11 @@
     "correct": "C",
     "explanation": "**YHQ 23-bobi 135-bandining** ikkinchi va uchinchi xatboshlariga asosan, quyidagi hollarda uzoqni yorituvchi chiroqlar o'rniga yaqinni yorituvchi chiroqlar yoqilishi kerak:\n\n- Qarama-qarshi yo'nalishdagi transport vositasiga kamida **150 metr** masofa qolganda, shuningdek haydovchi transport vositasining chiroqlarini vaqt-vaqti bilan o'chirib bunga zaruriyat borligini bildirgan hollarda undan ham ko'proq masofada;\n- Qarama-qarshi va bir yo'nalishdagi transport vositalari haydovchilarining ko'zin",
     "category": "23-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/23.7.1.mp4",
+      "B": "zip/videos/23.7.2.mp4"
+    }
   },
   {
     "id": 228,
@@ -5517,7 +5863,11 @@
     "correct": "C",
     "explanation": "**YHQ 79-bandga** ko'ra, aholi punktlaridan tashqarida **tirkamali yengil avtomobillar** uchun maksimal tezlik soatiga **80 km/soat**dan oshmasligi kerak.",
     "category": "23-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/23.8.1.mp4",
+      "B": "zip/videos/23.8.2.mp4"
+    }
   },
   {
     "id": 229,
@@ -5594,7 +5944,11 @@
     "correct": "C",
     "explanation": "**YHQ 1-ilovasi 1-bo'limining** yigirma yettinchi xatboshisiga asosan: 1.22 - \"Velosiped yo'lkasi bilan kesishuv\".",
     "category": "24-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/24.1.1.mp4",
+      "B": "zip/videos/24.1.2.mp4"
+    }
   },
   {
     "id": 232,
@@ -5644,7 +5998,10 @@
     "correct": "A",
     "explanation": "**YHQ 16-bobi 105-bandiga** asosan, teng ahamiyatga ega bo'lgan yo'llar kesishgan chorrahada relssiz transport vositasining haydovchisi o'ng tomondan yaqinlashib kelayotgan transport vositalariga yo'l berishi shart. Bu qoidaga tramvay haydovchilari ham o'zaro amal qilishlari kerak. Bunday chorrahalarda, keyingi harakat yo'nalishidan qat'iy nazar, tramvay relssiz transport vositalariga nisbatan oldin o'tish huquqiga ega bo'ladi.",
     "category": "24-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/24.3.1.mp4"
+    }
   },
   {
     "id": 234,
@@ -5698,7 +6055,13 @@
     "correct": "B",
     "explanation": "**YHQ 1-ilovasi 3-bo'limining** yigirma sakkizinchi xatboshisiga asosan: 3.24 - \"Yuqori tezlik cheklangan\". Belgida ko'rsatilganidan ortiq tezlikda (km/s) harakatlanish taqiqlanishini bildiradi.\n\n**YHQ 11-bobi 79-bandining** uchinchi xatboshisiga asosan, aholi punktlaridan tashqarida: boshqa avtobuslar, tirkamali yengil avtomobillar, mototsikllar, elektromototsikllar, ruxsat etilgan to'la vazni 3,5 tonnadan ortiq bo'lgan yuk avtomobillariga tezlikni soatiga **80 kilometrdan** oshirmasdan harakat",
     "category": "24-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/24.5.1.mp4",
+      "B": "zip/videos/24.5.2.mp4",
+      "C": "zip/videos/24.5.3.mp4",
+      "D": "zip/videos/24.5.4.mp4"
+    }
   },
   {
     "id": 236,
@@ -5725,7 +6088,12 @@
     "correct": "B",
     "explanation": "**YHQ 24-bobi 143-bandiga** asosan: Qattiq yoki egiluvchan ulagich yordamida shatakka olingan avtobusda, trolleybusda va yuk avtomobili yukxonasida odam tashish, qisman ortish yo'li bilan shatakka olishda esa shatakka olingan transport vositasining kabinasida va yukxonasida, shuningdek shatakka olgan transport vositasining yukxonasida odamlar bo'lishi taqiqlanadi.",
     "category": "24-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/24.6.1.mp4",
+      "B": "zip/videos/24.6.2.mp4",
+      "C": "zip/videos/24.6.3.mp4"
+    }
   },
   {
     "id": 237,
@@ -5748,7 +6116,12 @@
     "correct": "C",
     "explanation": "**YHQ 3-ilovasi 7-bo'limining 7.1-bandiga** asosan: Orqa tomonni ko'rsatuvchi ko'zgular soni, joylashuvi va turi belgilangan talablarga mos kelmasa, transport vositasining konstruksiyasida ko'zda tutilgan oynalari bo'lmasa foydalanish taqiqlanadi.",
     "category": "24-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/24.7.1.mp4",
+      "B": "zip/videos/24.7.2.mp4",
+      "C": "zip/videos/24.7.3.mp4"
+    }
   },
   {
     "id": 238,
@@ -5898,7 +6271,14 @@
     "correct": "C",
     "explanation": "**YHQ 23-bobi 139-bandining** birinchi xatboshisiga asosan: Projektor chiroq va izlovchi chiroqlardan faqat aholi yashash joylaridan tashqarida, qarama-qarshi yo'nalishdan kelayotgan transport vositalari bo'lmaganda foydalanish mumkin.",
     "category": "25-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/25.3.1.ru.mp4",
+      "B": "zip/videos/25.3.2.ru.mp4",
+      "C": "zip/videos/25.3.3.ru.mp4",
+      "D": "zip/videos/25.3.4.ru.mp4",
+      "E": "zip/videos/25.3.5.ru.mp4"
+    }
   },
   {
     "id": 244,
@@ -5925,7 +6305,11 @@
     "correct": "B",
     "explanation": "**YHQ 8-bobi 48-bandiga** asosan, tovushli ishoralar faqat quyidagi hollarda qo'llanilishi mumkin:\n\n- Aholi punktlaridan tashqarida boshqa haydovchilarni quvib o'tish haqida ogohlantirish uchun;\n- Zarur bo'lgan hollarda yo'l-transport hodisasining oldini olish uchun.",
     "category": "25-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/25.4.1.mp4",
+      "B": "zip/videos/25.4.2.mp4"
+    }
   },
   {
     "id": 245,
@@ -5944,7 +6328,12 @@
     "correct": "A",
     "explanation": "**YHQ 2-ilovasi 1-bo'limining** oltinchi xatboshisiga asosan: 1.4 chizig'i — to'xtash taqiqlangan joyni bildiradi. Yakka holda yoki 3.27 - \"To'xtash taqiqlangan\" yo'l belgisi bilan qo'llaniladi hamda yo'lning qatnov qismi chetiga yoki yo'l chetidagi to'siq ustidan chiziladi.",
     "category": "25-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/25.5.1.mp4",
+      "B": "zip/videos/25.5.2.mp4",
+      "C": "zip/videos/25.5.3.mp4"
+    }
   },
   {
     "id": 246,
@@ -5986,7 +6375,10 @@
     "correct": "B",
     "explanation": "**YHQ 6-bobi 25-bandining** birinchi xatboshisiga asosan: Ko'k yoki ko'k va qizil rangli yalt-yalt etuvchi chiroq-mayoqchasi yoqilgan transport vositalarining haydovchilari kechiktirib bo'lmaydigan xizmat vazifalarini bajarayotib, yo'l harakati xavfsizligini ta'minlash sharti bilan ushbu Qoidalarning 7-bob (38-bandidan tashqari), 9-16, 19-20 boblari, 1 va 2-ilovalari talablaridan chetga chiqishlari mumkin.\n\nYo'l harakatining boshqa ishtirokchilariga nisbatan imtiyozga ega bo'lishi uchun tezkor v",
     "category": "25-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/25.7.1.mp4"
+    }
   },
   {
     "id": 248,
@@ -6013,7 +6405,10 @@
     "correct": "B",
     "explanation": "**YHQ 1-ilovasi 3-bo'limining** yigirma to'rtinchi xatboshisiga asosan: 3.20 - \"Quvib o'tish taqiqlanadi\". Soatiga 40 km dan kam tezlikda harakatlanayotgan yakka transport vositasidan boshqa transport vositalarini quvib o'tish taqiqlanishini bildiradi.",
     "category": "25-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/25.8.1.mp4"
+    }
   },
   {
     "id": 249,
@@ -6124,7 +6519,14 @@
     "correct": "A",
     "explanation": "Avtopoezd bilan bir vaqtda burilishni o'tayotganda ushbu transport vositasigacha bo'lgan yon oraliq masofasini ko'paytirishingiz lozim, chunki avtopoezd (tirkama)ning orqa g'ildiraklari **burilish markazi tomon siljiydi** va avtopoezd harakat bo'lagi kattalashadi.",
     "category": "26-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/26.3.1.mp4",
+      "B": "zip/videos/26.3.2.mp4",
+      "C": "zip/videos/26.3.3.mp4",
+      "D": "zip/videos/26.3.4.mp4",
+      "E": "zip/videos/26.3.5.mp4"
+    }
   },
   {
     "id": 254,
@@ -6174,7 +6576,12 @@
     "correct": "C",
     "explanation": "**YHQ 1-ilovasi 1-bo'limining** o'ttiz yettinchi xatboshisiga asosan: 1.31.2 - \"Burilishning yo'nalishi\". Kichik radiusli, ko'rinishi cheklangan yo'lda harakatlanish yo'nalishini va yo'lning ta'mirlanayotgan qismini aylanib o'tish yo'nalishini bildiradi.",
     "category": "26-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/26.5.1.mp4",
+      "B": "zip/videos/26.5.2.mp4",
+      "C": "zip/videos/26.5.3.mp4"
+    }
   },
   {
     "id": 256,
@@ -6201,7 +6608,12 @@
     "correct": "A",
     "explanation": "**YHQ 19-bobi 121-bandining** oltinchi xatboshisiga asosan, avtomagistrallarda quyidagilar taqiqlanadi:\n\n- Transport vositasini o'rganish uchun boshqarish.",
     "category": "26-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/26.6.1.ru.mp4",
+      "B": "zip/videos/26.6.2.ru.mp4",
+      "C": "zip/videos/26.6.3.ru.mp4"
+    }
   },
   {
     "id": 257,
@@ -6397,7 +6809,12 @@
     "correct": "A",
     "explanation": "**YHQ 1-ilovasining 5-bo'limidagi** 5.30.2 - \"Yuk avtomobillari uchun harakatlanish yo'nalishi\" belgisiga asosan, yuk avtomobillari haydovchilariga eng qulay yo'lni ko'rsatadi va shu yo'l bo'yicha harakatlanishni tavsiya etadi.",
     "category": "27-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/27.4.1.mp4",
+      "B": "zip/videos/27.4.2.mp4",
+      "C": "zip/videos/27.4.3.mp4"
+    }
   },
   {
     "id": 265,
@@ -6420,7 +6837,12 @@
     "correct": "B",
     "explanation": "**YHQ 1-ilovasi 1-bo'limining** o'n beshinchi xatboshisiga asosan: 1.10 - \"Sohilga chiqish\". Daryo yoki suv havzasi qirg'og'iga chiqishni bildiradi.",
     "category": "27-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/27.5.1.mp4",
+      "B": "zip/videos/27.5.2.mp4",
+      "C": "zip/videos/27.5.3.mp4"
+    }
   },
   {
     "id": 266,
@@ -6489,7 +6911,11 @@
     "correct": "C",
     "explanation": "**YHQ 10-bobi 67-bandi 2-xatboshiga** asosan, aholi punktlarida Qoidalarning 69, 123, 161 bandlaridagi talablarni hisobga olgan holda haydovchilar o'zlariga qulay bo'lgan harakatlanish bo'lagidan foydalanishlari mumkin.\n\nBiroq, bir yo'nalishdagi uch va undan ortiq tasmali har qanday yo'lda chetki chap qatorni harakat serqatnovligi sababli boshqa bo'laklar band bo'lgan hollarda, shuningdek, quvib o'tish, chapga burilish yoki qayrilib olishga, yuk avtomobillariga faqat chapga burilish yoki qayrili",
     "category": "27-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/27.8.1.mp4",
+      "B": "zip/videos/27.8.2.mp4"
+    }
   },
   {
     "id": 269,
@@ -6554,7 +6980,13 @@
     "correct": "C",
     "explanation": "**YHQ 26-bobi 159-bandining** beshinchi xatboshisiga asosan, odamlarni tashish quyidagi hollarda taqiqlanadi:\n\n- **12 yoshga** to'lmagan bolalarni mototsikl, elektromototsikl, moped va skuterning orqa o'rindig'ida, shuningdek, bolalarni ushlab turuvchi maxsus qurilma o'rnatilmagan transport vositasining old o'rindig'ida.",
     "category": "28-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/28.1.1.mp4",
+      "B": "zip/videos/28.1.2.mp4",
+      "C": "zip/videos/28.1.3.mp4",
+      "D": "zip/videos/28.1.4.mp4"
+    }
   },
   {
     "id": 272,
@@ -6631,7 +7063,12 @@
     "correct": "D",
     "explanation": "**YHQ 2-ilovasi 1-bo'limining** oltinchi, o'n ikkinchi va yigirma birinchi xatboshlariga asosan: 1.4 chizig'i — to'xtash taqiqlangan joyni bildiradi. Yakka holda yoki 3.27 - \"To'xtash taqiqlangan\" yo'l belgisi bilan qo'llaniladi hamda yo'lning qatnov qismi chetiga yoki yo'l chetidagi to'siq ustidan chiziladi.",
     "category": "28-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/28.4.1.mp4",
+      "B": "zip/videos/28.4.2.mp4",
+      "C": "zip/videos/28.4.3.mp4"
+    }
   },
   {
     "id": 275,
@@ -6654,7 +7091,12 @@
     "correct": "A",
     "explanation": "**YHQ 2-ilovasi 1-bo'limining** o'ninchi xatboshisiga asosan: 1.8 (enli uzuq-uzuq chiziq) — tezlashish yoki sekinlashish bo'lagi bilan yo'lning qatnov qismidagi asosiy bo'lagi o'rtasidagi chegarani bildiradi.",
     "category": "28-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/28.5.1.mp4",
+      "B": "zip/videos/28.5.2.mp4",
+      "C": "zip/videos/28.5.3.mp4"
+    }
   },
   {
     "id": 276,
@@ -6892,7 +7334,11 @@
     "correct": "A",
     "explanation": "**YHQ 11-bobi 79-bandining** ikkinchi xatboshisiga asosan, aholi punktlaridan tashqarida: shaharlararo qatnaydigan avtobuslarga va mikroavtobuslarga tezlikni soatiga **90 kilometrdan** oshirmasdan harakatlanishga ruxsat etiladi.\n\n**YHQ 11-bobi 80-bandining** birinchi xatboshisiga asosan, har qanday yo'llarda: yukxonasida odam tashiyotgan yuk avtomobillariga tezlikni soatiga **60 kilometrdan** oshirmasdan harakatlanishga ruxsat etiladi.",
     "category": "29-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/29.5.1.mp4",
+      "B": "zip/videos/29.5.2.mp4"
+    }
   },
   {
     "id": 286,
@@ -6965,7 +7411,10 @@
     "correct": "B",
     "explanation": "Haydovchi toliqishning o'ziga xos alomatlariga — **uyqu kelishi**, **lanjlik** va **diqqatning pasayishi** kiradi. Bu holatda transport vositasini boshqarish xavfli bo'lganligi bois taqiqlangan.",
     "category": "29-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/29.8.1.mp4"
+    }
   },
   {
     "id": 289,
@@ -6992,7 +7441,11 @@
     "correct": "A",
     "explanation": "**YHQ 27-bobi 164-bandining** birinchi xatboshisiga asosan: O'ta og'ir, katta o'lchamli va xavfli yuklarni tashishda gabarit o'lchamlari yukli yoki yuksiz holda eni bo'yicha **2,55** (refrijeratorlar va izotermik kuzovlar uchun — **2,6**) metrdan va balandligi bo'yicha yo'l sathidan **4 metrdan**, uzunligi bo'yicha yakka avtotransport vositasi uchun — **12 metrdan**, tirkama uchun — **12 metrdan**, yarimtirkamali avtopoezd uchun — **20 metrdan**, tirkamali avtopoezd uchun — **20 metrdan** ortiq",
     "category": "29-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/29.9.1.mp4",
+      "B": "zip/videos/29.9.2.mp4"
+    }
   },
   {
     "id": 290,
@@ -7042,7 +7495,11 @@
     "correct": "A",
     "explanation": "**YHQ 1-ilovasi 1-bo'limining** yigirma sakkizinchi xatboshisiga asosan: 1.23 - \"Ta'mirlash ishlari\".\n\n**YHQ 1-ilovasi 7-bo'limining** yigirma beshinchi xatboshisiga asosan: 7.12 - \"Xavfli yo'l yoqasi\". Yo'l ishlari bajarilayotgani sababli yo'l yoqasiga chiqish xavfli ekanligi haqida ogohlantiradi. 1.23 - \"Ta'mirlash ishlari\" belgisi bilan qo'llaniladi.",
     "category": "30-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/30.1.1.mp4",
+      "B": "zip/videos/30.1.2.mp4"
+    }
   },
   {
     "id": 292,
@@ -7111,7 +7568,13 @@
     "correct": "B",
     "explanation": "**YHQ 15-bobi 101-bandining** birinchi xatboshisiga asosan: Agar svetofor yoki tartibga soluvchining ishoralari tramvay va relssiz transport vositalariga bir vaqtda harakatlanishga ruxsat bersa, harakatlanish yo'nalishidan qat'iy nazar, tramvay oldin o'tish huquqiga ega bo'ladi.",
     "category": "30-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/30.4.1.mp4",
+      "main": "zip/videos/30.4.2--.mp4",
+      "B": "zip/videos/30.4.2.mp4",
+      "C": "zip/videos/30.4.3.mp4"
+    }
   },
   {
     "id": 295,
@@ -7138,7 +7601,12 @@
     "correct": "B",
     "explanation": "**YHQ 15-bobi 103-bandiga** asosan: Svetoforning ruxsat etuvchi ishorasi yonganda haydovchi chorraha orqali harakatlanishni tugallayotgan transport vositalari va qatnov qismidan tegishli yo'nalishda o'tishni tugallayotgan piyoda(lar)ga yo'l berishi shart.",
     "category": "30-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/30.5.1.mp4",
+      "B": "zip/videos/30.5.2.mp4",
+      "C": "zip/videos/30.5.3.mp4"
+    }
   },
   {
     "id": 296,
@@ -7161,7 +7629,11 @@
     "correct": "A",
     "explanation": "**YHQ 10-bobi 67-bandiga** asosan: Aholi punktlaridan tashqaridagi yo'llarda hamda aholi punktlarida ayrim turdagi transport vositalari uchun ushbu Qoidalarda belgilangandan yuqori tezlikda harakatlanish ruxsat etilgan yo'l qismlarida haydovchilar transport vositalarini mumkin qadar qatnov qismining o'ng chetiga yaqinroq olib harakatlanishlari kerak. O'ng tasmalar bo'sh bo'lganda chap tasmalarni egallash taqiqlanadi.\n\nAholi punktlarida ushbu bandning birinchi xatboshi va ushbu Qoidalarning 69, 1",
     "category": "30-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/30.6.1.mp4",
+      "B": "zip/videos/30.6.2.mp4"
+    }
   },
   {
     "id": 297,
@@ -7188,7 +7660,11 @@
     "correct": "B",
     "explanation": "**YHQ 1-ilovasi 3-bo'limi** 3.24 - \"Yuqori tezlik cheklangan\" belgi talabiga asosan, belgida ko'rsatilganidan ortiq tezlikda harakatlanish taqiqlanishini bildiradi.",
     "category": "30-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/30.7.1.mp4",
+      "B": "zip/videos/30.7.2.mp4"
+    }
   },
   {
     "id": 298,
@@ -7207,7 +7683,11 @@
     "correct": "B",
     "explanation": "Haydovchi tormoz pedalini bosgandan boshlab avtomobilni to'xtaguncha bosib o'tgan yo'liga — **\"tormoz yo'li\"** deyiladi.",
     "category": "30-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/30.8.1.mp4",
+      "B": "zip/videos/30.8.2.mp4"
+    }
   },
   {
     "id": 299,
@@ -7257,7 +7737,11 @@
     "correct": "B",
     "explanation": "**YHQ 4-bobi 21-bandiga** asosan: Yalt-yalt etuvchi ko'k rangli yoki ko'k va qizil rangli chiroq-mayoqchasi va maxsus tovushli ishorasi yoqilgan transport vositalari yaqinlashib kelayotgan bo'lsa, piyodalar qatnov qismidan o'tmasliklari, unda harakatlanayotganlari esa bu transport vositalariga yo'l berishlari va zudlik bilan qatnov qismini bo'shatishlari kerak.",
     "category": "30-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/30.10.1.mp4",
+      "B": "zip/videos/30.10.2.mp4"
+    }
   },
   {
     "id": 301,
@@ -7376,7 +7860,12 @@
     "correct": "A",
     "explanation": "**YHQ 10-bobi 66-bandiga** asosan: Harakat ikki tomonlama bo'lgan va chiziqlar bilan belgilangan (1.9 yo'l chizig'i bilan belgilanganidan tashqari) uchta tasmali yo'llarda, ikki yo'nalishda harakatlanish uchun mo'ljallangan o'rta qatorga faqat quvib o'tish, aylanib o'tish, chapga burilish va qayrilib olish uchungina chiqishga ruxsat etiladi.\n\nQarama-qarshi yo'nalishda harakatlanish uchun mo'ljallangan chetki chap qatorni egallash taqiqlanadi.",
     "category": "31-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/31.5.1.mp4",
+      "B": "zip/videos/31.5.2.mp4",
+      "C": "zip/videos/31.5.3.mp4"
+    }
   },
   {
     "id": 306,
@@ -7591,7 +8080,12 @@
     "correct": "A",
     "explanation": "**YHQ 11-bobi 79-bandi**ning uchinchi xatboshisiga asosan, aholi punktlaridan tashqarida:\n\n- Boshqa avtobuslar, tirkamali yengil avtomobillar, mototsikllar, elektromototsikllar, ruxsat etilgan to'la vazni 3,5 tonnadan ortiq bo'lgan yuk avtomobillariga tezlikni soatiga **80 kilometr**dan oshirmasdan.",
     "category": "32-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/32.4.1.mp4",
+      "B": "zip/videos/32.4.2.mp4",
+      "C": "zip/videos/32.4.3.mp4"
+    }
   },
   {
     "id": 315,
@@ -7614,7 +8108,12 @@
     "correct": "B",
     "explanation": "**YHQ 16-bobi 104-bandi**ga muvofiq, teng ahamiyatga ega bo'lgan yo'llar kesishgan chorrahada relssiz transport vositasining haydovchisi o'ngdan yaqinlashib kelayotgan transport vositalariga yo'l berishi shart. Bu qoidaga tramvay haydovchilari ham o'zaro amal qilishlari kerak.\n\nBunday chorrahalarda, keyingi harakat yo'nalishidan qat'iy nazar, tramvay relssiz transport vositalariga nisbatan oldin o'tish huquqiga ega bo'ladi.",
     "category": "32-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/32.5.1.mp4",
+      "B": "zip/videos/32.5.2.mp4",
+      "C": "zip/videos/32.5.3.mp4"
+    }
   },
   {
     "id": 316,
@@ -7679,7 +8178,12 @@
     "correct": "C",
     "explanation": "**YHQ 5-bobi 23-bandi**ning ikkinchi xatboshisiga asosan:\n\nYo'lovchilarning transport vositalaridan trotuar yoki yo'l yoqasi tomondan tushishi yoki ularga chiqishining iloji bo'lmagan hollarda, agar bu harakat xavf tug'dirmasa yoki boshqa yo'l harakati qatnashchilariga xalaqit bermasa, yo'lning qatnov qismi tomonidan amalga oshirilishi mumkin.",
     "category": "32-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/32.8.1.mp4",
+      "B": "zip/videos/32.8.2.ru.mp4",
+      "C": "zip/videos/32.8.3.ru.mp4"
+    }
   },
   {
     "id": 319,
@@ -7848,7 +8352,11 @@
     "correct": "C",
     "explanation": "**YHQ 1-ilovasi 3-bo'limi**ning o'ttiz ikkinchi xatboshisiga asosan:\n\n3.28 - \"To'xtab turish ta'qiqlangan\" — transport vositalarining to'xtab turishi taqiqlanishini bildiradi.\n\n**YHQ 13-bobi 88-bandi**ning uchinchi xatboshisiga asosan: ruxsat etilgan to'la vazni 3,5 tonnadan ko'p bo'lgan yuk avtomobillari bir tomonlama harakatli yo'llarning chap tomonida faqat yuk ortish va tushirish uchun to'xtashlari mumkin.",
     "category": "33-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/33.5.1.mp4",
+      "B": "zip/videos/33.5.2.mp4"
+    }
   },
   {
     "id": 326,
@@ -8071,7 +8579,12 @@
     "correct": "C",
     "explanation": "Keskin tormoz berish oqibatida blokirovka bo'lgan g'ildiraklarga rul chambaragining burilishi ta'sir qilmaydi.\n\nSirpanchiq yo'lda dvigatel orqali, g'ildiraklarni blokirovka qilmasdan tormoz berish samarali tormoz berishga yordam beradi.",
     "category": "34-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/34.4.1.mp4",
+      "B": "zip/videos/34.4.2.mp4",
+      "C": "zip/videos/34.4.3.mp4"
+    }
   },
   {
     "id": 335,
@@ -8336,7 +8849,11 @@
     "correct": "A",
     "explanation": "**YHQ 1-ilovasi 4-bo'limi**ning birinchi va to'qqizinchi xatboshlariga asosan:\n\n4.1.1 - \"Harakatlanish to'g'riga\" belgisi yo'lning qismi boshlanishiga o'rnatilsa, unga yaqin chorrahagacha amal qilinadi. Belgi o'ng tomonda joylashgan hovli va boshqa yondosh hududlarga burilishni **taqiqlamaydi**.",
     "category": "35-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/35.5.1.mp4",
+      "B": "zip/videos/35.5.2.mp4"
+    }
   },
   {
     "id": 346,
@@ -8543,7 +9060,11 @@
     "correct": "A",
     "explanation": "**YHQ 16-bobi 105-bandi**ga asosan:\n\nTeng ahamiyatga ega bo'lgan yo'llar kesishgan chorrahada relssiz transport vositasining haydovchisi **o'ngdan yaqinlashayotgan** transport vositalariga yo'l berishi shart. Bu qoidaga tramvay haydovchilari ham o'zaro amal qilishlari kerak.\n\nBunday chorrahalarda keyingi harakat yo'nalishidan qat'iy nazar, tramvay relssiz transport vositalariga nisbatan oldin o'tish huquqiga ega bo'ladi.",
     "category": "36-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/36.4.1.mp4",
+      "B": "zip/videos/36.4.2.mp4"
+    }
   },
   {
     "id": 355,
@@ -8685,7 +9206,11 @@
     "correct": "A",
     "explanation": "**YHQ 1-ilovasi 2-bo'limi**ning yettinchi xatboshisiga asosan:\n\n2.4 - \"Yo'l bering\" — haydovchi kesib o'tilayotgan yo'ldan, 7.13 - \"Asosiy yo'lning yo'nalishi\" qo'shimcha-axborot belgisi bo'lganda esa asosiy yo'ldan harakatlanayotgan transport vositasiga yo'l berishi kerak.",
     "category": "36-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/36.10.1.mp4",
+      "B": "zip/videos/36.10.2.mp4"
+    }
   },
   {
     "id": 361,
@@ -8869,7 +9394,12 @@
     "correct": "A",
     "explanation": "**YHQ 11-bobi 80-bandi**ning birinchi xatboshisiga asosan, har qanday yo'llarda:\n\n- Yukxonasida odam tashiyotgan yuk avtomobillariga tezlikni soatiga **60 kilometr**dan oshirmasdan.",
     "category": "37-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/37.8.1.mp4",
+      "B": "zip/videos/37.8.2.mp4",
+      "C": "zip/videos/37.8.3.mp4"
+    }
   },
   {
     "id": 369,
@@ -9007,7 +9537,12 @@
     "correct": "A",
     "explanation": "**YHQ 9-bobi 55-bandi**ga asosan:\n\nHaydovchi qayta tizilishda harakatlanish yo'nalishini o'zgartirmasdan harakatlanayotgan **yo'lakay** transport vositalariga yo'l berishi kerak.\n\nBir yo'nalishda harakatlanayotgan transport vositalari bir vaqtda qayta tizilayotganlarida haydovchi **o'ng tomondagi** transport vositasiga yo'l berishi kerak.",
     "category": "38-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/38.4.1.mp4",
+      "B": "zip/videos/38.4.2.mp4",
+      "C": "zip/videos/38.4.3.mp4"
+    }
   },
   {
     "id": 375,
@@ -9030,7 +9565,12 @@
     "correct": "A",
     "explanation": "**YHQ 12-bobi 87-bandi**ga asosan:\n\nAholi punktlaridan tashqaridagi yo'llarda sekin harakatlanadigan yoki katta hajmli transport vositasini quvib o'tish qiyin bo'lgan hollarda uning haydovchisi ushbu transport vositasini iloji boricha yo'lning o'ng tomoniga olishi, zarur bo'lganda esa orqasida to'planib qolgan transport vositalarini o'tkazib yuborish uchun **to'xtashi** kerak.",
     "category": "38-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/38.5.1.mp4",
+      "B": "zip/videos/38.5.2.mp4",
+      "C": "zip/videos/38.5.3.mp4"
+    }
   },
   {
     "id": 376,
@@ -9249,7 +9789,11 @@
     "correct": "A",
     "explanation": "**YHQ 2-bobi 11-bandi**ning 3-punktiga asosan, quyidagi hollarda transport vositasini foydalanish uchun taqdim etishi kerak:\n\nIchki ishlar xodimlariga qonunda belgilangan hollarda kechiktirib bo'lmaydigan xizmat vazifalarini bajarish uchun, shuningdek yo'l-transport hodisasi tufayli shikastlangan yoki nosoz transport vositalarini olib ketish (shatakka olish) uchun (**faqat yuk avtomobilidan**).",
     "category": "39-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/39.4.1.mp4",
+      "B": "zip/videos/39.4.2.mp4"
+    }
   },
   {
     "id": 385,
@@ -9272,7 +9816,12 @@
     "correct": "A",
     "explanation": "**YHQ 1-ilovasi 5-bo'limi**ning yigirma beshinchi xatboshisiga asosan:\n\n5.11.1 - \"Qayrilib olish joyi\" — chapga burilish **taqiqlanadi**.",
     "category": "39-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/39.5.1.mp4",
+      "B": "zip/videos/39.5.2.mp4",
+      "C": "zip/videos/39.5.3.mp4"
+    }
   },
   {
     "id": 386,
@@ -9349,7 +9898,12 @@
     "correct": "B",
     "explanation": "**YHQ 10-bobi 66-bandi**ga asosan:\n\nHarakat ikki tomonlama bo'lgan va chiziqlar bilan belgilangan (1.9 yo'l chizig'i bilan belgilanganidan tashqari) uchta tasmali yo'llarda, ikki yo'nalishda harakatlanish uchun mo'ljallangan o'rta qatorga faqat quvib o'tish, aylanib o'tish, chapga burilish va qayrilib olish uchungina chiqishga ruxsat etiladi.\n\nQarama-qarshi yo'nalishda harakatlanish uchun mo'ljallangan **chetki chap qatorni egallash taqiqlanadi**.",
     "category": "39-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/39.8.1.mp4",
+      "B": "zip/videos/39.8.2.mp4",
+      "C": "zip/videos/39.8.3.mp4"
+    }
   },
   {
     "id": 389,
@@ -9422,7 +9976,13 @@
     "correct": "B",
     "explanation": "Burilishda o'tayotgan vaqtda haydovchi shuni inobatga olishi lozimki, avtomobilning harakat tezligi kattalashganida markazdan qochirma kuch tezlik kvadratiga mos ravishda ortadi va transport vositasining ag'darilishiga olib kelishi mumkin.",
     "category": "40-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/40.1.1.mp4",
+      "B": "zip/videos/40.1.2.mp4",
+      "C": "zip/videos/40.1.3.mp4",
+      "D": "zip/videos/40.1.4.mp4"
+    }
   },
   {
     "id": 392,
@@ -9495,7 +10055,11 @@
     "correct": "A",
     "explanation": "**YHQ 1-ilovasi 4-bo'limi**ning uchinchi va sakkizinchi xatboshlariga asosan: 4.1.3 - \"Harakatlanish chapga\" yo'l belgisi qatnov qismining qaysi kesishmasi oldiga o'rnatilsa, shu kesishmaga ta'sir etadi.",
     "category": "40-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/40.4.1.mp4",
+      "B": "zip/videos/40.4.2.mp4"
+    }
   },
   {
     "id": 395,
@@ -9518,7 +10082,11 @@
     "correct": "C",
     "explanation": "**YHQ 2-ilovasi 2-bo'limi**ning ikkinchi xatboshisiga asosan:\n\n**2.1** chizig'i — harakatlanayotgan transport vositalariga xavf tug'diradigan yo'l inshootlarining tik elementlari (ko'priklar, yo'l o'tkazgich va estakadalar, ustunlar va h.k.)ni bildiradi.",
     "category": "40-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/40.5.1.mp4",
+      "B": "zip/videos/40.5.2.mp4"
+    }
   },
   {
     "id": 396,
@@ -9656,7 +10224,10 @@
     "correct": "A",
     "explanation": "**YHQ 6-bobi 25-bandi**ning birinchi xatboshisiga asosan:\n\nKo'k yoki ko'k va qizil rangli yalt-yalt etuvchi chiroq-mayoqchasi yoqilgan transport vositalarining haydovchilari kechiktirib bo'lmaydigan xizmat vazifalarini bajarayotib, yo'l harakati xavfsizligini ta'minlash sharti bilan ushbu Qoidalarning 7-bob (38-bandidan tashqari), 9-16, 19-20 boblari, 1 va 2-ilovalari talablaridan chetga chiqishlari mumkin.\n\n**YHQ 16-bobi 105-bandi**ga asosan: teng ahamiyatga ega bo'lgan yo'llar kesishgan chorra",
     "category": "41-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/41.1.1.mp4"
+    }
   },
   {
     "id": 402,
@@ -9710,7 +10281,12 @@
     "correct": "B",
     "explanation": "**YHQ 2-ilovasi 2-bo'limi**ning yettinchi xatboshisiga asosan:\n\n**2.6** chizig'i — boshqa joylardagi to'siqlarning yon yuzalarini bildiradi.",
     "category": "41-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/41.3.1.mp4",
+      "B": "zip/videos/41.3.2.mp4",
+      "C": "zip/videos/41.3.3.mp4"
+    }
   },
   {
     "id": 404,
@@ -9737,7 +10313,12 @@
     "correct": "A",
     "explanation": "**YHQ 17-bobi 113-bandi**ga asosan:\n\n**Barcha hollarda**, shu jumladan, piyodalar o'tish joylaridan tashqarida ham haydovchi oq hassa bilan ishora berayotgan ko'zi ojiz piyoda(lar)ni o'tkazib yuborishi kerak.",
     "category": "41-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/41.4.1.mp4",
+      "B": "zip/videos/41.4.2.mp4",
+      "C": "zip/videos/41.4.3.mp4"
+    }
   },
   {
     "id": 405,
@@ -9948,7 +10529,10 @@
     "correct": "B",
     "explanation": "**YHQ 7-bobi 38-bandi**ga asosan, tartibga soluvchining ishoralari quyidagi ma'noni bildiradi:\n\n**Qo'llari yon tomonga uzatilganda yoki tushirilganda:**\n- Chap va o'ng yon tomonidan tramvayga to'g'riga, relssiz transport vositalariga to'g'riga va o'ngga harakatlanishga ruxsat beriladi\n- Old va orqa tomonidan barcha transport vositalari va piyodalarning harakatlanishi taqiqlanadi\n\n**O'ng qo'li oldinga uzatilganda:**\n- Chap yonidan tramvayga chapga, relssiz transport vositalariga barcha yo'nalishl",
     "category": "42-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/42.3.1.mp4"
+    }
   },
   {
     "id": 414,
@@ -9971,7 +10555,11 @@
     "correct": "A",
     "explanation": "**YHQ 9-bobi 57-bandi**ning ikkinchi xatboshisiga asosan:\n\nO'ngga burilayotgan transport vositasi iloji boricha qatnov qismining **o'ng chetiga yaqinroqda** harakatlanishi kerak.\n\n**YHQ 9-bobi 61-bandi**ning birinchi xatboshisiga asosan:\n\nSekinlashish bo'lagi bor bo'lgan yo'lda burilmoqchi bo'lgan haydovchi o'z vaqtida ushbu tasmaga qayta tizilishi va tezlikni faqat unda kamaytirishi kerak.",
     "category": "42-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/42.4.1.mp4",
+      "B": "zip/videos/42.4.2.mp4"
+    }
   },
   {
     "id": 415,
@@ -9998,7 +10586,13 @@
     "correct": "A",
     "explanation": "**YHQ 1-ilovasi 5-bo'limi**ning birinchi xatboshisiga asosan:\n\n5.1 - \"Avtomagistral\" — yo'l harakati qoidalarining avtomagistrallarda harakatlanish tartibi o'rnatilgan yo'l.",
     "category": "42-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/42.5.1.mp4",
+      "B": "zip/videos/42.5.2.mp4",
+      "C": "zip/videos/42.5.3.mp4",
+      "D": "zip/videos/42.5.4.mp4"
+    }
   },
   {
     "id": 416,
@@ -10025,7 +10619,10 @@
     "correct": "B",
     "explanation": "**YHQ 11-bobi 77-bandi**ning uchinchi xatboshisiga asosan:\n\nHarakatlanish vaqtida haydovchi aniqlay olishi imkoniyatidagi xavf yuzaga kelsa, u transport vositasining tezligini u **to'la to'xtashni ta'minlaydigan darajada kamaytirishi** yoki to'siqni boshqa harakat qatnashchiilari uchun xavf tug'dirmagan holda aylanib o'tish choralarini ko'rishi kerak.",
     "category": "42-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/42.6.1.mp4"
+    }
   },
   {
     "id": 417,
@@ -10148,7 +10745,10 @@
     "correct": "A",
     "explanation": "**YHQ 16-bobi 105-bandiga** asosan: Teng ahamiyatga ega bo'lgan yo'llar kesishgan chorrahada relssiz transport vositasining haydovchisi o'ngdan kelayotgan transport vositalariga yo'l berishi shart.",
     "category": "43-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/43.1.1.mp4"
+    }
   },
   {
     "id": 422,
@@ -10217,7 +10817,11 @@
     "correct": "A",
     "explanation": "**YHQ 10-bobi 67-bandining** birinchi xatboshisiga asosan: Aholi punktlaridan tashqaridagi yo'llarda hamda aholi punktlarida ayrim turdagi transport vositalari uchun ushbu Qoidalarda belgilangandan yuqori tezlikda harakatlanish ruxsat etilgan yo'l qismlarida haydovchilar transport vositalarini mumkin qadar qatnov qismining o'ng chetiga yaqinroq olib harakatlanishlari kerak. O'ng tasmalar bo'sh bo'lganda chap tasmalarni egallash taqiqlanadi.",
     "category": "43-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/43.4.1.mp4",
+      "B": "zip/videos/43.4.2.mp4"
+    }
   },
   {
     "id": 425,
@@ -10244,7 +10848,12 @@
     "correct": "B",
     "explanation": "**YHQ 13-bobi 92-bandining** uchinchi xatboshisiga asosan: to'xtab turish taqiqlanadi: temir yo'l kesishmalariga 50 metrdan kam masofada",
     "category": "43-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/43.5.1.mp4",
+      "B": "zip/videos/43.5.2.mp4",
+      "C": "zip/videos/43.5.3.mp4"
+    }
   },
   {
     "id": 426,
@@ -10290,7 +10899,10 @@
     "correct": "C",
     "explanation": "**YHQ 27-bobi 160-bandiga** asosan: Tashilayotgan yukning vazni va o'qlarga tushadigan og'irlik miqdorining taqsimlanishi ishlab chiqargan korxona tomonidan ushbu transport vositasi uchun belgilangan miqdordan oshmasligi kerak.",
     "category": "43-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/43.7.1.mp4"
+    }
   },
   {
     "id": 428,
@@ -10436,7 +11048,10 @@
     "correct": "D",
     "explanation": "**YHQ 2-ilovasi 1-bo'limining** oltinchi xatboshisiga asosan: 1.4 - to'xtash taqiqlangan joyni bildiradi. Yakka holda yoki 3.27 - \"To'xtash taqiqlangan\" yo'l belgisi bilan qo'llaniladi hamda yo'lning qatnov qismi chetiga yoki yo'l chetidagi to'siq ustidan chiziladi. **YHQ 13-bobi 91-bandiga** asosan, Quyidagilarda to'xtash taqiqlanadi: bekat maydonchalarida, yo'nalishli transport vositalari to'xtash joylarida, jumladan, 1.17 chizig'i bilan belgilangan, ular bo'lmaganda esa yo'nalishli transport",
     "category": "44-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/44.3.1.mp4"
+    }
   },
   {
     "id": 434,
@@ -10509,7 +11124,11 @@
     "correct": "C",
     "explanation": "Shinalarning birida bosimning kamayishi uning aylanishiga qarama-qarshiligini kuchaytiradi va ko'ndalang qattiqligini kamaytiradi. Shuning uchun bosimi bo'lmagan shina bilan avtomobil yon tomonga og'adi. Boshqarishni saqlab qolish uchun haydovchi rul chambaragini ushlab turib, tezligini pasaytirishi va to'xtatish lozim.",
     "category": "44-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/44.6.1.mp4",
+      "B": "zip/videos/44.6.2.mp4"
+    }
   },
   {
     "id": 437,
@@ -10536,7 +11155,11 @@
     "correct": "A",
     "explanation": "**YHQ 1-ilovasi 1-bo'limining** yettinchi xatboshisiga asosan: 1.3.1. — bir izli temir yo'l, belgisi shlagbaum bilan jihozlanmagan temir yo'l kesishmasi oldida o'rnatiladi.",
     "category": "44-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/44.7.1.mp4",
+      "C": "zip/videos/44.7.3.mp4"
+    }
   },
   {
     "id": 438,
@@ -10574,7 +11197,12 @@
     "correct": "B",
     "explanation": "**YHQ 16-bobi 104-bandiga** asosan: Teng ahamiyatga ega bo'lmagan yo'llar kesishgan chorrahada, ikkinchi darajali yo'lda harakatlanayotgan transport vositasining haydovchisi asosiy yo'ldan yaqinlashayotgan transport vositalariga, ularning keyingi harakat yo'nalishidan qat'i nazar, yo'l berishi kerak. Bunday chorrahalarda tramvay harakatlanish yo'nalishidan qat'i nazar, teng ahamiyatga ega bo'lgan yo'lda bir yo'nalishda yoki qarama-qarshi yo'nalishda harakatlanayotgan relssiz transport vositalari",
     "category": "44-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/44.9.1.mp4",
+      "B": "zip/videos/44.9.2.mp4",
+      "C": "zip/videos/44.9.3.mp4"
+    }
   },
   {
     "id": 440,
@@ -10624,7 +11252,11 @@
     "correct": "A",
     "explanation": "**YHQ 13-bobi 89- va 91-bandlariga asosan:**\nAholi punktlaridan tashqarida to'xtash yo'lning o'ng tomonidagi yo'l yoqasida (obochinada) amalga oshirilishi lozim. Yo'lning ko'rinishi 100 metrdan kam bo'lgan do'ngliklar va 1.14 «Tik nishablik» qismlarida bevosita **qatnov qismida** to'xtash taqiqlanadi (yo'l yoqasida to'xtash bundan mustasno).\n\nRasmda kumushrang yengil avtomobil qatnov qismidan tashqarida — yo'l yoqasida to'xtagan, sariq yuk avtomobili esa tik nishablikda qatnov qismida to'xtab turibdi. Shuning uchun faqat **yengil avtomobil haydovchisiga** to'xtashga ruxsat etilgan.",
     "category": "45-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/45.1.1.mp4",
+      "B": "zip/videos/45.1.2.mp4"
+    }
   },
   {
     "id": 442,
@@ -10724,7 +11356,12 @@
     "correct": "B",
     "explanation": "**YHQ 27-bobi 163-bandiga** asosan: Transport vositasining gabaritlaridan old yoki orqa tomonga bir metrdan, yon tomonga gabarit chiroqlarining chetki qismidan 0,4 metrdan ortiq chiqib turgan yuk \"Katta o'lchamli yuk\" taniqlik belgisi bilan belgilanishi, qorong'i vaqtda va yetarlicha ko'rinmaydigan sharoitda esa bunga qo'shimcha ravishda old oq chiroq yoki yorug'lik qaytargich, orqasi esa qizil chiroq yoki yorug'lik qaytargich bilan belgilanishi kerak.",
     "category": "45-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/45.5.1.mp4",
+      "B": "zip/videos/45.5.2.mp4",
+      "C": "zip/videos/45.5.3.mp4"
+    }
   },
   {
     "id": 446,
@@ -10820,7 +11457,10 @@
     "correct": "A",
     "explanation": "**YHQ 16-bobi 104-bandiga** asosan: Teng ahamiyatga ega bo'lmagan yo'llar kesishgan chorrahada, ikkinchi darajali yo'lda harakatlanayotgan transport vositasining haydovchisi asosiy yo'ldan yaqinlashayotgan transport vositalariga, ularning keyingi harakat yo'nalishidan qat'i nazar, yo'l berishi kerak. Bunday chorrahalarda tramvay harakatlanish yo'nalishidan qat'i nazar, teng ahamiyatga ega bo'lgan yo'lda bir yo'nalishda yoki qarama-qarshi yo'nalishda harakatlanayotgan relssiz transport vositalari",
     "category": "45-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/45.9.1.mp4"
+    }
   },
   {
     "id": 450,
@@ -10935,7 +11575,13 @@
     "correct": "C",
     "explanation": "Bir oqda o'rnatilgan (chap va o'ng) shinalar naqshining ustki shakli va uning yoyilganlik darajasi barcha hollarda bir xil bo'lishi lozim, chunki bu hol tormozlanayotganda avtomobilning muvozanatini ta'minlovchi shartlardan biri hisoblanadi. Ushbu tartib inobatga olinmasatormozlanish vaqtida har xil tormoz kuchlari yuzaga kelib, muozanatni yo'qotishga olib keluvchi hollarni vujudga keltiradi. Avtomobilning yeyilgan shina naqshi tomoni oldinga intilib, aks tomoni orqada qoladi. Bu holda avtomobil",
     "category": "46-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/46.4.1.mp4",
+      "B": "zip/videos/46.4.2.mp4",
+      "C": "zip/videos/46.4.3.mp4",
+      "D": "zip/videos/46.4.4.mp4"
+    }
   },
   {
     "id": 455,
@@ -10954,7 +11600,12 @@
     "correct": "A",
     "explanation": "**YHQ 26-bobi 154-bandiga** asosan: Odam tashishga moslashtirilmagan yuk avtomobillarining yukxonasida faqat yukni olish uchun borayotgan yoki uni kuzatib borayotgan shaxslarning bo'lishiga yo'l qo'yiladi, bunda ular bortlardan pastda joylashgan o'rindiqlar bilan ta'minlanishlari kerak.",
     "category": "46-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/46.5.1.mp4",
+      "B": "zip/videos/46.5.2.mp4",
+      "C": "zip/videos/46.5.3.mp4"
+    }
   },
   {
     "id": 456,
@@ -11196,7 +11847,12 @@
     "correct": "A",
     "explanation": "**YHQ 1-ilovasi 1-bo'limining** ikkinchi xatboshisiga asosan: 1.1 - \"Shlagbaumli temir yo'l kesishmasi\".",
     "category": "47-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/47.5.1.mp4",
+      "B": "zip/videos/47.5.2.mp4",
+      "C": "zip/videos/47.5.3.mp4"
+    }
   },
   {
     "id": 466,
@@ -11219,7 +11875,11 @@
     "correct": "A",
     "explanation": "**YHQ 1-ilovasi 3-bo'limining** oltinchi xatboshisiga asosan: 3.4 - \"Yuk avtomobillarining harakatlanishi taqiqlangan\" yo'l belgisi bortlariga qiya oq chiziq tortilgan yoki odamlarni tashish uchun mo'ljallangan yuk avtomobillarining harakatlanishini taqiqlamaydi.",
     "category": "47-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/47.6.1.mp4",
+      "B": "zip/videos/47.6.2.mp4"
+    }
   },
   {
     "id": 467,
@@ -11242,7 +11902,10 @@
     "correct": "B",
     "explanation": "**YHQ 18-bobi 118-bandining** to'qqizinchi xatboshisiga asosan, temir yo'l kesishmasiga quyidagi hollarda kirish taqiqlanadi: kesishma orqali qishloq xo'jaligi, yo'l qurilishi, qurilish va boshqa mashina hamda mexanizmlarni olib o'tish.\nIzoh: temir yo'l kesishmasi orqali zanjirli bo'lgan qishloq xo'jaligi, yo'l qurilishi, qurilish va boshqa mashina hamda mexanizmlarni, mexanik transport vositasiga yuklab olib o'tishga ruxsat etiladi.",
     "category": "47-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/47.7.1.mp4"
+    }
   },
   {
     "id": 468,
@@ -11338,7 +12001,12 @@
     "correct": "A",
     "explanation": "Yo'l harakati qoidalari\n 1-bob, 6-band (asosiy tushunchalar) ga ko'ra:\n\n\"Transport vositasini boshqarish o'rgatilayotganda o'rgatuvchi shaxs haydovchi hisoblanadi.\"\n\nShu bandning o'zida aniq belgilangan:\n\nO'rgatuvchi (instruktor) — haydovchi maqomiga ega.\n\nDemak, u yo'l harakati qoidalariga rioya qilish, xavfsizlikni ta'minlash va javobgarlik nuqtai nazaridan haydovchi sifatida qaraladi.\n\n Qo'shimcha:\nShuningdek, shu 6-bandda ot arava boshqarayotgan yoki hayvon minib harakatlanayotgan shaxslar h",
     "category": "48-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/48.1.1.mp4",
+      "B": "zip/videos/48.1.2.mp4",
+      "C": "zip/videos/48.1.3.mp4"
+    }
   },
   {
     "id": 472,
@@ -11426,7 +12094,11 @@
     "correct": "A",
     "explanation": "YHQ 43-bandi: Svetofor ishoralari imtiyoz belgilari talablariga zid boʻlgan hollarda haydovchilar svetofor ishoralariga amal qilishlari kerak.\n\nYa'ni chorrahada svetofor ishlab turgan bo'lsa, kim asosiy yo'lda ekanligiga emas, svetoforning qaysi chirog'i yonib turganiga qaraladi.\n\n**YHQ 15-bobi 99-bandiga** asosan: Svetoforning yashil ishorasida chapga burilayotgan yoki qayrilib olayotgan relssiz transport vositasining haydovchisi qarama-qarshi tomondan to'g'riga harakatlanayotgan va o'ngga buri",
     "category": "48-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/48.5.1.mp4",
+      "B": "zip/videos/48.5.2.mp4"
+    }
   },
   {
     "id": 476,
@@ -11449,7 +12121,10 @@
     "correct": "B",
     "explanation": "**YHQ 11-bobi 79-bandining** ikkinchi xatboshisiga asosan, aholi punktlaridan tashqarida: shaharlararo qatnaydigan avtobuslarga vα mikroavtobuslarga tezlikni soatiga 90 kilometrdan oshirmasdan harakatlanishga ruxsat etiladi.",
     "category": "48-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/48.6.1.ru.mp4"
+    }
   },
   {
     "id": 477,
@@ -11576,7 +12251,10 @@
     "correct": "A",
     "explanation": "**YHQ 1-ilovasi 7-bo'limining** o'n to'qqizinchi xatboshisiga asosan: 7.6.2 - \"Transport vositasini to'xtab turish joyiga qo'yish usuli\".",
     "category": "49-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/49.1.1.mp4"
+    }
   },
   {
     "id": 482,
@@ -11626,7 +12304,12 @@
     "correct": "A",
     "explanation": "**YHQ 18-bobi 118-bandining** o'ninchi xatboshisiga asosan, temir yo'l kesishmasiga quyidagi hollarda kirish taqiqlanadi: temir yo'l distansiyasi boshlig'ining ruxsatisiz tezligi soatiga 8 kilometrdan kam bo'lgan transport vositalarini harakatlanishi.",
     "category": "49-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/49.3.1.mp4",
+      "B": "zip/videos/49.3.2.mp4",
+      "C": "zip/videos/49.3.3.mp4"
+    }
   },
   {
     "id": 484,
@@ -11699,7 +12382,10 @@
     "correct": "B",
     "explanation": "**YHQ 24-bobi 145-bandining** beshinchi xatboshisiga asosan, shatakka olish quyidagi holatlarda taqiqlanadi: kajavasiz mototsikllar bilan, shuningdek bunday mototsikllarni.",
     "category": "49-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/49.6.1.mp4"
+    }
   },
   {
     "id": 487,
@@ -11860,7 +12546,10 @@
     "correct": "B",
     "explanation": "**YHQ 13-bobi 91-bandining** to'rtinchi xatboshisiga asosan, quyidagi joy va holatlarda to'xtash taqiqlanadi: to'xtagan transport vositasi bilan sidirg'a chiziq (qatnov qismining chetini belgilovchi chiziqdan tashqari), ajratuvchi mintaqa yoki qatnov qismining qarama-qarshi cheti orasidagi masofa 3 metrdan kam bo'lgan joylarda.",
     "category": "50-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/50.3.1.mp4"
+    }
   },
   {
     "id": 494,
@@ -11879,7 +12568,13 @@
     "correct": "B",
     "explanation": "Etillangan benzin (tetraetilqo'rg'oshin qo'shilgan benzin)ning birdan katta miqdori havoga ajralishidan o'tkir zaharlanish kelib chiqadi va unda ko'ngil aynish, qusish, holsizlanish, bosh aylanishi, ishtahaning yo'qolishi hollari yuzaga keladi. Og'izda metal ta'mi, tilda yot jizm sezilishi kabilar o'ziga xos belgilaridan biridir. Og'ir holatlarda asabiylashish, chayqalib yurish, alohsirash, ko'rish va eshitishga oid gallyusinatsiyalar va tomir tortishlar kuzatiladi. Etillanmagan benzindan ham za",
     "category": "50-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/50.4.1.mp4",
+      "B": "zip/videos/50.4.2.mp4",
+      "C": "zip/videos/50.4.3.mp4",
+      "D": "zip/videos/50.4.4.mp4"
+    }
   },
   {
     "id": 495,
@@ -11898,7 +12593,14 @@
     "correct": "B",
     "explanation": "**YHQ 26-bobi 152-bandiga** asosan: Yuk avtomobilining yukxonasida odam tashish \"C\" toifasidagi transport vositalarini boshqarish huquqiga ega bo'lgan, odamlar soni kabinadagi yo'lovchilarni ham qo'shib hisoblaganda 8 nafardan ortiq bo'lganda esa, \"C\" va \"D\" toifalaridagi transport vositalarini boshqarish huquqiga ega bo'lgan va shu toifaga taalluqli transport vositalaridan birini 3 yildan ortiq boshqargan haydovchilar tomonidan amalga oshirilishi kerak. Harbiy haydovchilarga yuk avtomobillarida",
     "category": "50-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/50.5.1.mp4",
+      "B": "zip/videos/50.5.2.mp4",
+      "C": "zip/videos/50.5.3.mp4",
+      "D": "zip/videos/50.5.4.mp4",
+      "E": "zip/videos/50.5.5.mp4"
+    }
   },
   {
     "id": 496,
@@ -11925,7 +12627,11 @@
     "correct": "C",
     "explanation": "**YHQ 1-bobi 6-bandining** o'n to'qqizinchi xatboshisiga asosan: yetarlicha ko'rinmaslik — yomg'ir, qor yog'ishi, tuman tushishi va shunga o'xshash sharoitlarda, shuningdek kunning g'ira-shira vaqtida yo'lning ko'rinish masofasi 300 metrdan kam bo'lishi.",
     "category": "50-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/50.6.1.mp4",
+      "B": "zip/videos/50.6.2.mp4"
+    }
   },
   {
     "id": 497,
@@ -11948,7 +12654,10 @@
     "correct": "A",
     "explanation": "**YHQ 1-ilovasi 3-bo'limining** qirq ikkinchi xatboshisiga asosan: 3.18.1 - \"O'ngga burilish ta'qiqlanadi\" belgisi qatnov qismlarining qaysi kesishmasi oldiga o'rnatilsa, shu kesishmaga tatbiq etiladi. Izoh: 3.18.1 - \"O'ngga burilish ta'qiqlanadi\" belgisi qayrilib olishni taqiqlamaydi.",
     "category": "50-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/50.7.1.mp4"
+    }
   },
   {
     "id": 498,
@@ -12121,7 +12830,12 @@
     "correct": "A",
     "explanation": "**YHQ 24-bobi 145-bandining** to'rtinchi xatboshisiga asosan, shatakka olish quyidagi holatlarda taqiqlanadi: tormoz tizimi ishlamayotgan transport vositasining haqiqiy vazni shatakka olgan transport vositasining haqiqiy vaznining yarmidan ortiq bo'lsa (haqiqiy vazni kam bo'lgan bunday transport vositasini Faqat qattiq ulagich yordamida yoki qisman ortish usuli bilan shatakka olishga yo'l qo'yiladi).",
     "category": "51-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/51.4.1.mp4",
+      "B": "zip/videos/51.4.2.mp4",
+      "C": "zip/videos/51.4.3.mp4"
+    }
   },
   {
     "id": 505,
@@ -12144,7 +12858,12 @@
     "correct": "C",
     "explanation": "**YHQ 29-bobi 179-bandining** uchinchi xatboshisiga asosan, quyidagi hollarda transport vositalaridan foydalanish taqiqlanadi: transport vositalari belgilangan tartibda davlat texnik ko'rigidan o'tmagan bo'lsa.",
     "category": "51-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/51.5.1.mp4",
+      "B": "zip/videos/51.5.2.mp4",
+      "C": "zip/videos/51.5.3.mp4"
+    }
   },
   {
     "id": 506,
@@ -12213,7 +12932,12 @@
     "correct": "A",
     "explanation": "**YHQ 16-bobi 105-bandiga** asosan: Teng ahamiyatga ega bo'lgan yo'llar kesishgan chorrahada relssiz transport vositasining haydovchisi o'ngdan kelayotgan transport vositalariga yo'l berishi shart.",
     "category": "51-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/51.8.1.mp4",
+      "B": "zip/videos/51.8.2.mp4",
+      "C": "zip/videos/51.8.3.mp4"
+    }
   },
   {
     "id": 509,
@@ -12363,7 +13087,11 @@
     "correct": "D",
     "explanation": "**YHQ 3-ilovasi 5-Bo'limi 5.1-bandining** uchinchi xatboshisiga asosan: M2, M3 toifadagi avtotransport vositalari uchun — 2,0 mm dan kam bo'lsa foydalanish taqiqlanadi.",
     "category": "52-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/52.4.1.mp4",
+      "B": "zip/videos/52.4.2.mp4"
+    }
   },
   {
     "id": 515,
@@ -12390,7 +13118,14 @@
     "correct": "A",
     "explanation": "**YHQ umumiy qoidalar**: tartibga soluvchi — o'zbekiston Respublikasi Ichki ishlar vazirligi Davlat yo'l harakati xavfsizligi xizmatining (keyingi o'rinlarda — DYHXX), harbiy avtomobil nazorati organlari xodimi, o'z xizmat vazifalarini bajarayotgan, ushbu Qoidalarda ko'zda tutilgan ishoralar yordamida yo'l harakatini tartibga solish vakolatiga ega bo'lgan va uni bevosita amalga oshirayotgan yo'ldan foydalanish xizmati xodimlari, temir yo'l kesishmasi va sol kechuvlaridagi navbatchilar hamda jamo",
     "category": "52-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/52.5.1.mp4",
+      "B": "zip/videos/52.5.2.mp4",
+      "C": "zip/videos/52.5.3.mp4",
+      "D": "zip/videos/52.5.4.mp4",
+      "E": "zip/videos/52.5.5.mp4"
+    }
   },
   {
     "id": 516,
@@ -12417,7 +13152,10 @@
     "correct": "A",
     "explanation": "**YHQ 1-ilovasi 3-bo'limining** yigirma ikkinchi xatboshisiga asosan: 3.18.2 - \"Chapga burilish taqiqlanadi\".\nIzoh: 3.18.2 - \"Chapga burilish taqiqlanadi\" belgisi, qayrilib olishni taqiqlamaydi",
     "category": "52-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/52.6.1.mp4"
+    }
   },
   {
     "id": 517,
@@ -12555,7 +13293,13 @@
     "correct": "C",
     "explanation": "Avtomobilni sirpanchiq yo'lda sirpanishi, orqa g'ildiraklarini blokirovkasi sababli vujudga keladi. Bu holda birinchi navbatda surilish sababini bartaraf etish, ya'ni boshlangan tormozlanishni to'xtatish lozim. Keyinchalik rul chambaragini surilish tomon burib, harakat yo'nalishini to'g'rilab olish mumkin.",
     "category": "53-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/53.2.1.mp4",
+      "B": "zip/videos/53.2.2.mp4",
+      "C": "zip/videos/53.2.3.mp4",
+      "D": "zip/videos/53.2.4.mp4"
+    }
   },
   {
     "id": 523,
@@ -12605,7 +13349,11 @@
     "correct": "A",
     "explanation": "**YHQ 1-ilovasi** 3-bo'limining o'ttiz birinchi va o'ttiz sakkizinchi xatboshlariga asosan: 3.27 - \"To'xtash taqiqlangan\" Transport vositalarining to'xtashi va to'xtab turishi taqiqlanishini bildiradi. 3.27 - \"To'xtash taqiqlangan\" belgisiga amal qilish yo'nalishli transport vositalariga ta'sir qilmaydi.",
     "category": "53-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/53.4.1.mp4",
+      "B": "zip/videos/53.4.2.mp4"
+    }
   },
   {
     "id": 525,
@@ -12624,7 +13372,13 @@
     "correct": "B",
     "explanation": "**YHQ 2-ilovasi 1-bo'limining** beshinchi va o'ttiz to'rtinchi xatboshlariga asosan: 1.3 — to'rt va undan ortiq harakatlanish bo'lagi bo'lgan yo'llarda qarama-qarshi yo'nalishdagi transport vositalari oqimini ajratadi. 1.3 chizig'ini bosib o'tish taqiqlanadi.",
     "category": "53-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/53.5.1.mp4",
+      "B": "zip/videos/53.5.2.mp4",
+      "C": "zip/videos/53.5.3.mp4",
+      "D": "zip/videos/53.5.4.mp4"
+    }
   },
   {
     "id": 526,
@@ -12647,7 +13401,10 @@
     "correct": "A",
     "explanation": "**YHQ 16-bobi 104-bandining birinchi xatboshisiga** asosan: Teng ahamiyatga ega bo'lmagan yo'llar kesishgan chorrahada, ikkinchi darajali yo'lda harakatlanayotgan transport vositasining haydovchisi asosiy yo'ldan yaqinlashayotgan transport vositalariga, ularning keyingi harakat yo'nalishidan qat'i nazar, yo'l berishi kerak.\n**YHQ 16-bobi 107-bandiga** asosan: Chapga burilishda yoki qayrilib olishda rel'ssiz transport vositasining haydovchisi teng ahamiyatli yo'ldan qarama-qarshi yo'nalishdan to'",
     "category": "53-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/53.6.1.mp4"
+    }
   },
   {
     "id": 527,
@@ -12666,7 +13423,10 @@
     "correct": "A",
     "explanation": "**YHQ 17-bobi 110-bandiga** asosan: Agar tartibga solinmagan piyodalar o'tish joyi oldida transport vositasi harakatini sekinlashtirsa yoki to'xtasa, qo'shni tasmalarda harakatlanayotgan boshqa haydovchilar bu transport vositasi oldida piyoda (lar) yo'qligiga ishonch hosil qilganlaridan so'nggina harakatlanishni davom ettirishlari mumkin.",
     "category": "53-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/53.7.1.mp4"
+    }
   },
   {
     "id": 528,
@@ -12827,7 +13587,12 @@
     "correct": "B",
     "explanation": "**YHQ 1-ilovasi 5-bo'limining** o'ttiz sakkizinchi va oltmish sakkizinchi xatboshlariga asosan: 5.21.1 - \"Yo'nalish ko'rsatkichi\" Aholi punktida o'rnatilgan 5.20.1 yo'l belgisidagi yashil, ko'k rang ko'rsatilgan aholi punktiga yoki ob'ektga ushbu aholi punktidan chiqqandan so'ng avtomagistral yoxud boshqa yo'l orqali harakatlanish mumkinligini anglatadi, oq rang esa ko'rsatilgan ob'ekt shu aholi punktida joylashganligini bildiradi.",
     "category": "54-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/54.4.1.mp4",
+      "B": "zip/videos/54.4.2.mp4",
+      "C": "zip/videos/54.4.3.mp4"
+    }
   },
   {
     "id": 535,
@@ -12850,7 +13615,11 @@
     "correct": "B",
     "explanation": "**YHQ 2-ilovasi** 1-bo'limining o'n to'qqizinchi xatboshisiga asosan: 1.15 – yo'lining velosiped yo'lkasi kesib o'tgan joyini bildiradi.",
     "category": "54-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/54.5.1.mp4",
+      "B": "zip/videos/54.5.2.mp4"
+    }
   },
   {
     "id": 536,
@@ -12896,7 +13665,10 @@
     "correct": "C",
     "explanation": "**YHQ 14-bobi 96-bandiga** asosan: Chapga yoki o'ngga burilayotgan haydovchi kesishayotgan yo'lning qatnov qismidan o'tayotgan piyoda(lar)ga, shuningdek velosiped yo'lkasidan yo'lni kesib o'tayotgan velosipedchi(lar)ga va individual harakatlanish vositalarini boshqarayotgan shaxs(lar)ga yo'l berishi kerak.",
     "category": "54-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/54.7.1.mp4"
+    }
   },
   {
     "id": 538,
@@ -12988,7 +13760,10 @@
     "correct": "A",
     "explanation": "**YHQ 12-bobi 86-bandining** to'rtinchi xatboshisiga asosan, quvib o'tish quyidagi hollarda taqiqlanadi: temir yo'l kesishmalarida va ulargacha 100 metrdan kam masofa qolganda.",
     "category": "55-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/55.1.1.mp4"
+    }
   },
   {
     "id": 542,
@@ -13088,7 +13863,13 @@
     "correct": "B",
     "explanation": "**YHQ 2-ilovasi** 1-bo'limining o'n to'qqizinchi xatboshisiga asosan: 1.15-yo'lning velosiped yo'lkasi kesib o'tgan joyini bildiradi.",
     "category": "55-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/55.5.1.mp4",
+      "B": "zip/videos/55.5.2.mp4",
+      "C": "zip/videos/55.5.3.mp4",
+      "D": "zip/videos/55.5.4.mp4"
+    }
   },
   {
     "id": 546,
@@ -13111,7 +13892,12 @@
     "correct": "A",
     "explanation": "**YHQ 16-bobi 104-bandining birinchi xatboshisiga** asosan: Teng ahamiyatga ega bo'lmagan yo'llar kesishgan chorrahada, ikkinchi darajali yo'lda harakatlanayotgan transport vositasining haydovchisi asosiy yo'ldan yaqinlashayotgan transport vositalariga, ularning keyingi harakat yo'nalishidan qat'i nazar, yo'l berishi kerak.\n**YHQ 16-bobi 106-bandiga** asosan: Asosiy yo'lning yo'nalishi chorrahada o'zgarganda asosiy yo'lda harakatlanayotgan haydovchilar o'zaro teng ahamiyatli yo'llar chorrahasida",
     "category": "55-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/55.6.1.mp4",
+      "B": "zip/videos/55.6.2.mp4",
+      "C": "zip/videos/55.6.3.mp4"
+    }
   },
   {
     "id": 547,
@@ -13157,7 +13943,12 @@
     "correct": "B",
     "explanation": "**YHQ 9-bobi 59-bandining ikkinchi xatboshisiga** asosan: Chorrahadan tashqarida qayrilib olishda, agar qatnov qismining kengligi manyovrni chetki chap holatdan bajarish uchun yetarli bo'lmasa, uni qatnov qismining o'ng chetidan (o'ng yo'l yoqasidan) amalga oshirishga yo'l qo'yiladi. Bu holda haydovchi shu yo'nalishdagi va qarama-qarshi yo'nalishdagi transport vositalariga yo'l berishi shart.",
     "category": "55-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/55.8.1.mp4",
+      "B": "zip/videos/55.8.2.mp4",
+      "C": "zip/videos/55.8.3.mp4"
+    }
   },
   {
     "id": 549,
@@ -13299,7 +14090,12 @@
     "correct": "B",
     "explanation": "**YHQ 1-ilovasi 3-bo'limining yigirma oltinchi xatboshisiga** asosan: 3.22 - \"Yuk avtomobillarida quvib o'tish taqiqlangan\" To'la vazni 3,5 tonnadan ortiq bo'lgan yuk avtomobillarida barcha transport vositalarini quvib o'tish taqiqlanishini bildiradi. (soatiga 40 km dan kam tezlikda harakatlanayotgan transport vositasi, traktor, ot-arava, velosiped bundan mustasno).",
     "category": "56-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/56.4.1.mp4",
+      "B": "zip/videos/56.4.2.mp4",
+      "C": "zip/videos/56.4.3.mp4"
+    }
   },
   {
     "id": 555,
@@ -13322,7 +14118,11 @@
     "correct": "A",
     "explanation": "**YHQ 16-bobi 104-bandining birinchi xatboshisiga** asosan: Teng ahamiyatga ega bo'lmagan yo'llar kesishgan chorrahada, ikkinchi darajali yo'lda harakatlanayotgan transport vositasining haydovchisi asosiy yo'ldan yaqinlashayotgan transport vositalariga, ularning keyingi harakat yo'nalishidan qat'i nazar, yo'l berishi kerak.\n**YHQ 16-bobi 106-bandiga** asosan: Asosiy yo'lning yo'nalishi chorrahada o'zgarganda asosiy yo'lda harakatlanayotgan haydovchilar o'zaro teng ahamiyatli yo'llar chorrahasida",
     "category": "56-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/56.5.1.mp4",
+      "B": "zip/videos/56.5.2.mp4"
+    }
   },
   {
     "id": 556,
@@ -13364,7 +14164,10 @@
     "correct": "B",
     "explanation": "**YHQ 19-bobi 121-bandining birinchi xatboshisiga** asosan, avtomagistrallarda quyidagilar taqiqlanadi: piyodalar, uy hayvonlari, ot-aravalar, velosipedlar, individual harakatlanish vositalari, skuterlar, mopedlar, traktorlar va o'zi yurar avtomobillar, texnik tavsifnomasiga yoki holatiga ko'ra tezligi soatiga 40 kilometrdan kam bo'lgan transport vositalarining harakatlanishi.",
     "category": "56-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/56.7.1.mp4"
+    }
   },
   {
     "id": 558,
@@ -13429,7 +14232,13 @@
     "correct": "B",
     "explanation": "Haydovchining reaksiya vaqti xavf-xatar ko'ringan paytdan to xavf-xatarni bartaraf qilish chorasi ko'rilgunga qadar vaqti tushuniladi. Haydovchining ahvoli va tajribasiga hamda haydovchi sharoitining og'irligiga bog'liq bo'lgan holda bu 0,5 dan 1,5 soniyagacha bo'lgan vaqtni tashkil qiladi.",
     "category": "56-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/56.10.1.ru.mp4",
+      "B": "zip/videos/56.10.2.ru.mp4",
+      "C": "zip/videos/56.10.3.ru.mp4",
+      "D": "zip/videos/56.10.4.ru.mp4"
+    }
   },
   {
     "id": 561,
@@ -13552,7 +14361,11 @@
     "correct": "A",
     "explanation": "**YHQ 16-bobi 105-bandiga** asosan: Teng ahamiyatga ega bo'lgan yo'llar kesishgan chorrahada relssiz transport vositasining haydovchisi o'ngdan kelayotgan transport vositalariga yo'l berishi shart.",
     "category": "57-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/57.5.1.mp4",
+      "B": "zip/videos/57.5.2.mp4"
+    }
   },
   {
     "id": 566,
@@ -13759,7 +14572,12 @@
     "correct": "A",
     "explanation": "**YHQ 16-bobi 105-bandiga** asosan: Teng ahamiyatga ega bo'lgan yo'llar kesishgan chorrahada relssiz transport vositasining haydovchisi o'ngdan kelayotgan transport vositalariga yo'l berishi shart.",
     "category": "58-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/58.4.1.mp4",
+      "B": "zip/videos/58.4.2.mp4",
+      "C": "zip/videos/58.4.3.mp4"
+    }
   },
   {
     "id": 575,
@@ -13782,7 +14600,12 @@
     "correct": "C",
     "explanation": "**YHQ 7-bobi 36-bandiga** asosan: Tramvaylarning hamda maxsus ajratilgan tasma bo'ylab harakatlanayotgan yo'nalishli transport vositalarining harakatlanishini tartibga solish uchun \"T\" — harfi ko'rinishida joylashgan to'rtta doirasimon oq rang ishorali svetoforlar qo'llanilishi mumkin. Yuqoridagi bir yoki bir nechta va pastki ishora bir vaqtning o'zida yonganda, harakatlanishga ruxsat etiladi. Ulardan chapdagisi chapga, o'ngdagisi o'ng tomonga burilishga, o'rtadagisi to'g'riga yurishga ruxsat be",
     "category": "58-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/58.5.1.mp4",
+      "B": "zip/videos/58.5.2.mp4",
+      "C": "zip/videos/58.5.3.mp4"
+    }
   },
   {
     "id": 576,
@@ -14024,7 +14847,13 @@
     "correct": "D",
     "explanation": "**YHQ 26-bobi 159-bandining beshinchi xatboshisiga** asosan, odamlarni tashish quyidagi hollarda taqiqlanadi: 12 yoshga to'lmagan bolalarni mototsiklning orqa o'rindig'ida, shuningdek bolalarni ushlab turuvchi maxsus qurilma o'rnatilmagan transport vositasining old o'rindig'ida.",
     "category": "59-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/59.5.1.mp4",
+      "B": "zip/videos/59.5.2.mp4",
+      "C": "zip/videos/59.5.3.mp4",
+      "D": "zip/videos/59.5.4.mp4"
+    }
   },
   {
     "id": 586,
@@ -14174,7 +15003,12 @@
     "correct": "A",
     "explanation": "**YHQ 1-ilovasi 3-bo'limining** to'rtinchi xatboshisiga asosan: 3.3 - \"Mexanik transport vositalarining harakatlanishi taqiqlangan\"\n**YHQ 1-bobi 6-bandining** o'n beshinchi xatboshisiga asosan: Mexanik transport vositasi — dvigatel bilan harakatga keltiriladigan transport vositasi (mopeddan tashqari). Bu atama barcha traktor va o'ziyurar moslamalarga ham taalluqlidir.",
     "category": "60-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/60.1.1.mp4",
+      "B": "zip/videos/60.1.2.mp4",
+      "C": "zip/videos/60.1.3.mp4"
+    }
   },
   {
     "id": 592,
@@ -14247,7 +15081,12 @@
     "correct": "A",
     "explanation": "**YHQ 11-bobi 80-bandining uchinchi xatboshisiga** asosan, har qanday yo'llarda: mexanik transport vositalarini shatakka olgan transport vositalariga tezlikni soatiga 50 kilometrdan oshirmasdan harakatlanishga ruxsat etilgan.",
     "category": "60-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/60.4.1.mp4",
+      "B": "zip/videos/60.4.2.mp4",
+      "C": "zip/videos/60.4.3.mp4"
+    }
   },
   {
     "id": 595,
@@ -14270,7 +15109,10 @@
     "correct": "B",
     "explanation": "Qorin bo'shlig'ining yopiq jarohatlari hollarida gavdaning holati oyoqlarni tizzalaridan bukib, yon tarafga qarab yotiladi. Qorin qismiga muz xaltachasi qo'yiladi.",
     "category": "60-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/60.5.1.mp4"
+    }
   },
   {
     "id": 596,
@@ -14316,7 +15158,10 @@
     "correct": "A",
     "explanation": "**YHQ 13-bobi 91-bandining** uchinchi va yettinchi xatboshlariga asosan, quyidagi joy va holatlarda to'xtash taqiqlanadi: bir yo'nalishda harakatlanish uchun uchtadan kam bo'lagi bo'lgan ko'prik, yo'l o'tkazgich va estakada hamda ularning ostida (tegishli yo'l belgilari bilan to'xtab turish ruxsat berilgan yo'l qismlari bundan mustasno); qatnov qismida ko'rinish masofasi 100 metrdan kam bo'lgan yo'l do'ngliklari yaqinida va xavfli burilishlarda;",
     "category": "60-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/60.7.1.mp4"
+    }
   },
   {
     "id": 598,
@@ -14485,7 +15330,12 @@
     "correct": "A",
     "explanation": "**YHQ 2 ilova**: 1.21 (\"STOP\" — To'xtang! yozuvi) — 2.5 - \"To'xtamasdan harakatlanish taqiqlangan\" belgisi bilan birga qo'llanilganda haydovchini 1.12 chizig'iga yaqinlashayotganligi haqida ogohlantiradi.",
     "category": "61-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/61.4.1.mp4",
+      "B": "zip/videos/61.4.2.mp4",
+      "C": "zip/videos/61.4.3.mp4"
+    }
   },
   {
     "id": 605,
@@ -14508,7 +15358,11 @@
     "correct": "C",
     "explanation": "**YHQ 20-bobi 124-bandi**: Turar joy dahalarida quyidagilar taqiqlanadi: mexanik transport vositalarini boshqarishni o'rgatish;\ndvigateli ishlab turgan holda to'xtab turish;\nruxsat etilgan to'la vazni 3,5 tonnadan ortiq bo'lgan yuk avtomobillarining maxsus ajratilgan, yo'l belgilari va (yoki) yo'l chiziqlari bilan belgilangan joylardan tashqarida to'xtab turishi.",
     "category": "61-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/61.5.1.mp4",
+      "B": "zip/videos/61.5.2.mp4"
+    }
   },
   {
     "id": 606,
@@ -14554,7 +15408,13 @@
     "correct": "C",
     "explanation": "**Old qismida oq yoki sariq rangli tumanga qarshi faralar o'rnatilgan bo'lsa**, transport vositasidan foydalanishga ruxsat etiladi.\n\nBuning sababi Yo'l harakati qoidalariga 3-ilovada (\"Transport vositalaridan foydalanishni taqiqlovchi shartlar\") aniq ko'rsatib o'tilgan:\n1. **Tashqi yoritgich asboblari ifloslangan bo'lsa:** Bu holatda transport vositasidan foydalanish taqiqlanadi.\n2. **Yorituvchi chiroq nurining yo'nalishi buzilgan bo'lsa:** Bu holatda ham transport vositasidan foydalanish qat'iy",
     "category": "61-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/61.7.1.mp4",
+      "B": "zip/videos/61.7.2.mp4",
+      "C": "zip/videos/61.7.3.mp4",
+      "D": "zip/videos/61.7.4.mp4"
+    }
   },
   {
     "id": 608,
@@ -14711,7 +15571,12 @@
     "correct": "C",
     "explanation": "1 km = 1000 metr\n1 soat = 60 min = 3600 sekund\nKeling, ushbu qiymatlarni almashtiramiz:\n108 km/soat = 108*1000/(1*3600) = 108000/3600 = 30 m/s.",
     "category": "62-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/62.4.1.mp4",
+      "B": "zip/videos/62.4.2.mp4",
+      "C": "zip/videos/62.4.3.mp4"
+    }
   },
   {
     "id": 615,
@@ -14734,7 +15599,11 @@
     "correct": "C",
     "explanation": "**YHQ 3-ilova, 2.1-band:** Boshqaruv qurilmasidagi lyuft yig'indisi reglament (qat'iy belgilangan) sharoitlardagi sinovlarda quyidagi ko'rsatkichdan katta bo'lmasligi kerak:\n\n| Transport vositasi toifasi | Yo'l qo'yilgan lyuft (gradusda) |\n|---|---|\n| M1 | 10° |\n| M2, M3, N1 | 20° |\n| N2, N3 | 25° |",
     "category": "62-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/62.5.1.mp4",
+      "B": "zip/videos/62.5.2.mp4"
+    }
   },
   {
     "id": 616,
@@ -14961,7 +15830,13 @@
     "correct": "C",
     "explanation": "**YHQ 20-bobi 123-band:** Turar joy dahalari (5.38 - \"Turar-joy dahasi\" va 5.39 - \"Turar-joy dahasining oxiri\" yo'l belgilari bilan belgilangan hududlar)da piyodalarga **trotuarlar hamda qatnov qismida** harakatlanishga ruxsat etiladi.\n\nBunda piyodalar imtiyozga ega bo'ladilar, biroq ular transport vositalarining harakatlanishiga asossiz xalaqit bermasliklari kerak.",
     "category": "63-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/63.4.1.mp4",
+      "B": "zip/videos/63.4.2.mp4",
+      "C": "zip/videos/63.4.3.mp4",
+      "D": "zip/videos/63.4.4.mp4"
+    }
   },
   {
     "id": 625,
@@ -14984,7 +15859,11 @@
     "correct": "B",
     "explanation": "**YHQ 3-bobi 13-band:** Yo'l-transport hodisasi sodir bo'lganda unga daxldor haydovchilar quyidagilarni bajarishlari shart:\n- Transport vositasini **darhol to'xtatishi**\n- **Avariya ishoralarini yoqishi**\n- **Avariya sababli to'xtash belgisini** o'rnatishi\n- Transport vositasini va hodisaga daxldor buyumlarni joyidan qo'zg'atmasligi\n\n**YHQ 8-bobi 51-band:** Avariya sababli to'xtash belgisi aholi punktlarida transport vositasidan **15 metr**, aholi punktlaridan tashqaridagi joylarda esa **30 metr",
     "category": "63-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/63.5.1.mp4",
+      "C": "zip/videos/63.5.3.mp4"
+    }
   },
   {
     "id": 626,
@@ -15122,7 +16001,10 @@
     "correct": "C",
     "explanation": "**YHQ 8-bobi 49-band:** Quvib o'tish haqida tovushli ishora o'rniga yoki u bilan birga fara chiroqlarini yoqib-o'chirib, ogohlantirish ishorasini ham berish mumkin.\n\nDemak, aholi punktlaridan tashqarida **barcha usullarni** va ularni birga qo'llash mumkin.",
     "category": "64-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/64.1.1.ru.mp4"
+    }
   },
   {
     "id": 632,
@@ -15149,7 +16031,12 @@
     "correct": "A",
     "explanation": "**YHQ 3-ilova, 7.10-band:** M1, N1, N2, N3 toifadagi, mikroavtobus va g'ildirakli traktorlarda tibbiyot qutichasi, o't o'chirgich, majburiy to'xtaganligini bildiruvchi belgi va nur qaytargichli kamzul (jilet) bo'lishi kerak.\n\n**Barcha mototsikllar** uchun o't o'chirgich majburiy jihozlar ro'yxatiga kiritilmagan.",
     "category": "64-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/64.2.1.mp4",
+      "B": "zip/videos/64.2.2.mp4",
+      "C": "zip/videos/64.2.3.mp4"
+    }
   },
   {
     "id": 633,
@@ -15191,7 +16078,12 @@
     "correct": "C",
     "explanation": "Burilishdan oldin tezlikni kamaytirish, kerak bo'lsa uzatmalar pog'onasini pasaytirish, burilishdan o'tayotganda tezlikni oshirmaslik va avtomobilni keskin tormozlamaslik kerak.",
     "category": "64-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/64.4.1.mp4",
+      "B": "zip/videos/64.4.2.mp4",
+      "C": "zip/videos/64.4.3.mp4"
+    }
   },
   {
     "id": 635,
@@ -15214,7 +16106,12 @@
     "correct": "A",
     "explanation": "Tormoz tizimiga ega bo'lmagan tirkama qo'shimcha massa qo'shadi, lekin o'z tormozi bo'lmagani uchun to'xtash uchun ko'proq masofa talab etiladi. Shuning uchun **tormoz yo'li uzayadi**.",
     "category": "64-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/64.5.1.mp4",
+      "B": "zip/videos/64.5.2.mp4",
+      "C": "zip/videos/64.5.3.mp4"
+    }
   },
   {
     "id": 636,
@@ -15348,7 +16245,14 @@
     "correct": "C",
     "explanation": "**Antiblokirovka tizimi (ABS)** avtomobilning tormoz tizimi bilan birga ishlaydi — g'ildiraklarni keskin tormozlaganda ularni blokirovkadan asraydi. Bu bilan avtomobilning turg'unligini va boshqaruvchanligini yengillashtiradi.\n\nBiroq burilishlarda markazdan qochirma kuch evaziga ABS **sirpanish va yonga siljishga ta'sir eta olmay qolish** ehtimoli yuzaga keladi.",
     "category": "65-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/65.1.1.mp4",
+      "B": "zip/videos/65.1.2.mp4",
+      "C": "zip/videos/65.1.3.mp4",
+      "D": "zip/videos/65.1.4.mp4",
+      "E": "zip/videos/65.1.5.mp4"
+    }
   },
   {
     "id": 642,
@@ -15413,7 +16317,12 @@
     "correct": "A",
     "explanation": "**Vazirlar Mahkamasining 2019 yil 2 avgustdagi 646-son qarori:** Avtotransport vositalari orqa oynasining tusini o'zgartirish (qoraytirish) ruxsatnomasiz, tasdiqlangan davlat standarti asosida amalga oshiriladi.\n\nDemak, ikki tomonda orqani ko'rsatuvchi ko'zgusi bo'lsa, orqa oynaga parda yoki jalyuzilar o'rnatishga **ruxsat etiladi**.",
     "category": "65-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/65.4.1.mp4",
+      "B": "zip/videos/65.4.2.mp4",
+      "C": "zip/videos/65.4.3.mp4"
+    }
   },
   {
     "id": 645,
@@ -15482,7 +16391,10 @@
     "correct": "B",
     "explanation": "**YHQ 9-bobi 63-band:** Transport vositasini orqaga harakatlantirishda haydovchi yo'l harakati xavfsizligini ta'minlashi va boshqa yo'l harakati qatnashchilariga xalaqit bermasligi shart.\n\nZarurat tug'ilganda haydovchi **boshqa shaxslarning yordamidan** foydalanishi kerak.",
     "category": "65-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/65.7.1.mp4"
+    }
   },
   {
     "id": 648,
@@ -15639,7 +16551,12 @@
     "correct": "B",
     "explanation": "**YHQ 1-ilova:** 5.22 - \"Aholi yashaydigan joyning boshlanishi\" belgisi — Qoidalarning aholi punktlarida harakatlanish tartibini belgilovchi talablariga amal qilinadigan joylarning nomi hamda uning boshlanishini bildiradi.\n\nFaqat **oq rangli** 5.22 yo'l belgisidan boshlab aholi punktlariga tegishli qoidalar qo'llaniladi.",
     "category": "66-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/66.4.1.mp4",
+      "B": "zip/videos/66.4.2.mp4",
+      "C": "zip/videos/66.4.3.mp4"
+    }
   },
   {
     "id": 655,
@@ -15865,7 +16782,12 @@
     "correct": "C",
     "explanation": "Suvda sirpanish kuchli yomg'ir, sel yoki suv toshgan yo'l qismlarida sodir bo'ladi. Bu holda harakat xavfsizligini ta'minlash maqsadida avtomobilni **dvigatel bilan tormozlash** yaxshi samara beradi.\n\nBahorgi, kuzgi yomg'irlar va suv toshgan yo'lning pastqam qismlarida harakatlanishda yuqoridagi usulda tormozlash tavsiya etiladi.",
     "category": "67-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/67.4.1.mp4",
+      "B": "zip/videos/67.4.2.mp4",
+      "C": "zip/videos/67.4.3.mp4"
+    }
   },
   {
     "id": 665,
@@ -15934,7 +16856,11 @@
     "correct": "A",
     "explanation": "**YHQ 7-bobi 42-band:** Sariq ishora yonganda, **keskin tormoz bermasdan to'xtashga ulgura olmaydigan** transport vositalarining haydovchilariga harakatni davom ettirishga ruxsat etiladi.",
     "category": "67-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/67.7.1.mp4",
+      "B": "zip/videos/67.7.2.mp4"
+    }
   },
   {
     "id": 668,
@@ -16095,7 +17021,13 @@
     "correct": "A",
     "explanation": "Bosh miya jarohatlanishining asosiy alomatlari:\n- **Hushdan ketish** — bir necha soniyadan bir necha soatgacha bo'lishi mumkin\n- **Qayt qilish** — bir-ikki marta, og'ir holatlarda ko'proq bo'lishi mumkin\n- **Amneziya** — xotiraning yo'qolishi, sodir bo'lgan jarohatlanish bilan bog'liq va hayotdagi ba'zi voqealar xotirasidan o'chadi\n\nYuqoridagi **barcha holatlar** to'g'ri.",
     "category": "68-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/68.4.1.mp4",
+      "B": "zip/videos/68.4.2.mp4",
+      "C": "zip/videos/68.4.3.mp4",
+      "D": "zip/videos/68.4.4.mp4"
+    }
   },
   {
     "id": 675,
@@ -16122,7 +17054,12 @@
     "correct": "B",
     "explanation": "**YHQ 1-ilova, Umumiy qoidalar:** Harakatlanish bo'lagi — avtomobillarning bir qator bo'lib harakatlanishi uchun yetarlicha keng bo'lgan, yo'l chiziqlari bilan belgilangan yoki belgilanmagan yo'l qatnov qismining har qanday bo'ylama bo'lagi.",
     "category": "68-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/68.5.1.mp4",
+      "B": "zip/videos/68.5.2.mp4",
+      "C": "zip/videos/68.5.3.mp4"
+    }
   },
   {
     "id": 676,
@@ -16271,7 +17208,10 @@
     "correct": "B",
     "explanation": "Har qanday tirkama, shu jumladan yengil avtomobil tirkamasi ham burilishda avtomobil burilish trayektoriyasidan **ichkarida — markazga tomon** siljiydi.",
     "category": "69-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/69.2.1.mp4"
+    }
   },
   {
     "id": 683,
@@ -16313,7 +17253,12 @@
     "correct": "A",
     "explanation": "Qon tomiridan to'q qizil rangdagi qon sizib oqib chiqadi.",
     "category": "69-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/69.4.1.mp4",
+      "B": "zip/videos/69.4.2.mp4",
+      "C": "zip/videos/69.4.3.mp4"
+    }
   },
   {
     "id": 685,
@@ -16332,7 +17277,12 @@
     "correct": "B",
     "explanation": "**YHQ 9-bobi 61-bandi:** Sekinlashish bo'lagi bor bo'lgan yo'lda burilmoqchi bo'lgan haydovchi o'z vaqtida ushbu tasmaga qayta tizilishi va tezlikni faqat unda kamaytirishi kerak.\nYo'lga chiqish joyida tezlashish bo'lagi bo'lsa, haydovchi unda harakatlanishi va qo'shni tasmada harakatlanayotgan transport vositalariga yo'l berib, transport oqimiga qo'shilishi kerak.",
     "category": "69-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/69.5.1.mp4",
+      "B": "zip/videos/69.5.2.mp4",
+      "C": "zip/videos/69.5.3.mp4"
+    }
   },
   {
     "id": 686,
@@ -16485,7 +17435,11 @@
     "correct": "A",
     "explanation": "Qorni o'g'rigan odamga oshqozonga tushadigan hech narsa berish kerak emas (yodlash uchun osonroq bo'ladi)",
     "category": "70-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/70.2.1.mp4",
+      "B": "zip/videos/70.2.2.mp4"
+    }
   },
   {
     "id": 693,
@@ -16531,7 +17485,12 @@
     "correct": "A",
     "explanation": "**YHQ 3 ilova:** 2.1. Boshqaruv qurilmasidagi lyuft yig'indisi reglament (qat'iy belgilangan) sharoitlardagi sinovlarda quyidagi ko'rsatkichdan katta bo'lmasligi kerak: Transport vositasining toifasi Yo'l qo'yilgan lyuft ko'rsatgichi (gradusda)\nM1 - 10%\nM2, M3, N1 - 20%\nN2, N3 - 25%.",
     "category": "70-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/70.4.1.mp4",
+      "B": "zip/videos/70.4.2.mp4",
+      "C": "zip/videos/70.4.3.mp4"
+    }
   },
   {
     "id": 695,
@@ -16554,7 +17513,11 @@
     "correct": "B",
     "explanation": "Haydovchilarning reaksiya vaqti turlicha bo'lib u yoshiga, kasbiga va malakasiga bog'liq. Shunga qaramay o'rtacha reaksiya vaqti haydovchilar uchun tajribaga asosan 1 sekund deb qabul qilingan. 1 sekund juda qisqa vaqt \"yigirma ikki\" deguncha bir sekund vaqt o'tdi. Reaksiya vaqtini oshirishning \"oson yo'li\" tezlikni kamaytirishdir.",
     "category": "70-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "media_urls": {
+      "A": "zip/videos/70.5.1.mp4",
+      "B": "zip/videos/70.5.2.mp4"
+    }
   },
   {
     "id": 696,

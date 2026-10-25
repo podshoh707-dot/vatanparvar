@@ -156,7 +156,7 @@ async def test_menu(message: types.Message, state: FSMContext):
     keyboard = [
         [InlineKeyboardButton(text="🎓 GAI Imtihoni (20 ta, Sertifikatli)", callback_data="testcnt_gai")],
         [InlineKeyboardButton(text="🎯 Marafon 805 (To'xtagan joydan)", callback_data="testcnt_marathon")],
-        [InlineKeyboardButton(text="🎬 Video-Testlar (207 ta 3D Vaziyat)", callback_data="testcnt_videos")],
+        [InlineKeyboardButton(text="🎬 3D Video-Testlar (Animatsion)", callback_data="test_video_menu")],
         [InlineKeyboardButton(text="⚡️ Ekspress Blits (10 ta tezkor)", callback_data="testcnt_10"),
          InlineKeyboardButton(text="🧠 Zaif tomonlarim (Xatolar)", callback_data="test_mistakes")],
         [InlineKeyboardButton(text="📂 Barcha 81 ta Biletlar Katalogi", callback_data="biletpage_1")],
@@ -228,6 +228,25 @@ async def bilet_page_handler(callback: types.CallbackQuery):
         f"👇 <i>Ishlamoqchi bo'lgan biletingizni tanlang:</i>"
     )
     await callback.message.edit_text(text, reply_markup=InlineKeyboardMarkup(inline_keyboard=keyboard), parse_mode="HTML")
+    await callback.answer()
+
+@test_router.callback_query(F.data == "test_video_menu")
+async def video_test_menu(callback: types.CallbackQuery, state: FSMContext):
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="⚡️ 10 ta 3D Video-Savol", callback_data="testcnt_videos_10"),
+         InlineKeyboardButton(text="🎬 20 ta 3D Video-Savol", callback_data="testcnt_videos_20")],
+        [InlineKeyboardButton(text="🔥 50 ta 3D Video-Savol", callback_data="testcnt_videos_50"),
+         InlineKeyboardButton(text="🏆 Barcha 3D Video-Savollar", callback_data="testcnt_videos_all")],
+        [InlineKeyboardButton(text="🔙 Test menyusiga qaytish", callback_data="test_back_to_cats")]
+    ])
+    text = (
+        "🎬 <b>3D ANIMATSION VIDEO-TESTLAR REJIMI</b>\n"
+        "━━━━━━━━━━━━━━━━━━━━\n\n"
+        "🏎 <b>Chorrahada harakatlanish va YHQ simulyatsiyasi!</b>\n"
+        "Barcha savollar 3D formatda bo'lib, javob berganingizdan so'ng vaziyatning jonli videoroligi ko'rsatiladi.\n\n"
+        "👇 <i>Nechta video-test ishlashni xohlaysiz?</i>"
+    )
+    await callback.message.edit_text(text, reply_markup=keyboard, parse_mode="HTML")
     await callback.answer()
 
 @test_router.callback_query(F.data == "test_back_to_cats")
@@ -624,7 +643,11 @@ async def send_question(message_or_callback, state: FSMContext):
         try:
             m_dict = json.loads(q.media_urls) if isinstance(q.media_urls, str) else q.media_urls
             if isinstance(m_dict, dict) and m_dict.get("main"):
-                main_vid_path = os.path.join(BASE_DIR, m_dict["main"].replace('\\', '/'))
+                main_vid_path = os.path.join(BASE_DIR, str(m_dict["main"]).replace('\\', '/'))
+                if not os.path.exists(main_vid_path):
+                    alt_path = os.path.join("E:/videos", os.path.basename(str(m_dict["main"])))
+                    if os.path.exists(alt_path):
+                        main_vid_path = alt_path
                 if os.path.exists(main_vid_path):
                     video_file = FSInputFile(main_vid_path)
         except Exception as e:
@@ -752,7 +775,7 @@ async def start_test(callback: types.CallbackQuery, state: FSMContext):
         
     is_gai = mode == "gai"
     is_marathon = mode == "marathon"
-    is_videos = mode == "videos"
+    is_videos = mode.startswith("videos")
     is_bilet = mode.startswith("bilet_")
     
     data = await state.get_data()
@@ -801,9 +824,15 @@ async def start_test(callback: types.CallbackQuery, state: FSMContext):
             result_q = await session.execute(stmt)
             q_ids = result_q.scalars().all()
             
-        # 2. Faqat Video-testlar rejimi
+        # 2. Faqat Video-testlar rejimi (E:\videos 3D animatsiyalari)
         elif is_videos:
-            stmt = select(Question.id).where((Question.media_urls != None) | (Question.image_url != None)).order_by(func.random()).limit(20)
+            vid_parts = mode.split("_")
+            if len(vid_parts) > 1:
+                v_arg = vid_parts[1]
+                vid_limit = 312 if v_arg == "all" else int(v_arg)
+            else:
+                vid_limit = 20
+            stmt = select(Question.id).where(Question.media_urls != None).order_by(func.random()).limit(vid_limit)
             result_q = await session.execute(stmt)
             q_ids = result_q.scalars().all()
             
@@ -1042,10 +1071,14 @@ async def process_answer(callback: types.CallbackQuery, state: FSMContext):
         try:
             m_dict = json.loads(q.media_urls) if isinstance(q.media_urls, str) else q.media_urls
             if isinstance(m_dict, dict):
-                # O'quvchi tanlagan variant yoki to'g'ri variant videosi
-                v_target = m_dict.get(ans) or m_dict.get(q.correct_option)
+                # O'quvchi tanlagan variant, to'g'ri variant yoki umumiy video
+                v_target = m_dict.get(ans) or m_dict.get(q.correct_option) or m_dict.get("main")
                 if v_target:
-                    v_full = os.path.join(BASE_DIR, v_target.replace('\\', '/'))
+                    v_full = os.path.join(BASE_DIR, str(v_target).replace('\\', '/'))
+                    if not os.path.exists(v_full):
+                        v_alt = os.path.join("E:/videos", os.path.basename(str(v_target)))
+                        if os.path.exists(v_alt):
+                            v_full = v_alt
                     if os.path.exists(v_full):
                         anim_vid_file = FSInputFile(v_full)
         except Exception:

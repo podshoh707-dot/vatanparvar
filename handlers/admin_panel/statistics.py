@@ -10,12 +10,7 @@ import json
 statistics_router = Router()
 
 
-@statistics_router.callback_query(F.data == "admin_stats")
-async def show_statistics(callback: types.CallbackQuery):
-    if not await check_permission(callback.from_user.id, "can_view_stats"):
-        await callback.answer("Sizda ushbu bo'limni ko'rish ruxsati yo'q!", show_alert=True)
-        return
-
+async def generate_statistics_data():
     now = datetime.utcnow()
     today_start = now.replace(hour=0, minute=0, second=0, microsecond=0)
     week_start = today_start - timedelta(days=7)
@@ -23,7 +18,7 @@ async def show_statistics(callback: types.CallbackQuery):
 
     async with async_session() as session:
         # ─── Obunachilar ───
-        total_users = (await session.execute(select(func.count()).select_from(User))).scalar()
+        total_users = (await session.execute(select(func.count()).select_from(User))).scalar() or 0
         
         active_users = (await session.execute(
             select(func.count()).select_from(User).where(
@@ -31,56 +26,49 @@ async def show_statistics(callback: types.CallbackQuery):
                 User.full_name.isnot(None),
                 User.phone.isnot(None)
             )
-        )).scalar()
-        
-        blocked_users = (await session.execute(
-            select(func.count()).select_from(User).where(User.is_premium == False)
-        )).scalar()
-        # Actually blocked count — hard to track without a field, use 0 as placeholder
-        blocked_count = 0  # Bot tomonidan bloklanganlar (real tracking kerak)
+        )).scalar() or 0
         
         premium_users = (await session.execute(
             select(func.count()).select_from(User).where(
                 User.is_premium == True,
                 User.premium_expires_at > now
             )
-        )).scalar()
+        )).scalar() or 0
 
         # ─── O'sish ───
         today_count = (await session.execute(
             select(func.count()).select_from(User).where(User.created_at >= today_start)
-        )).scalar()
+        )).scalar() or 0
 
         week_count = (await session.execute(
             select(func.count()).select_from(User).where(User.created_at >= week_start)
-        )).scalar()
+        )).scalar() or 0
 
         month_count = (await session.execute(
             select(func.count()).select_from(User).where(User.created_at >= month_start)
-        )).scalar()
+        )).scalar() or 0
 
         # ─── Faollik (UserStat orqali) ───
-        yesterday_start = today_start - timedelta(days=1)
         active_today = (await session.execute(
             select(func.count()).select_from(UserStat).where(UserStat.last_active >= today_start)
-        )).scalar()
+        )).scalar() or 0
         
         active_week = (await session.execute(
             select(func.count()).select_from(UserStat).where(UserStat.last_active >= week_start)
-        )).scalar()
+        )).scalar() or 0
 
         # ─── Guruhlar ───
         total_groups = (await session.execute(
             select(func.count()).select_from(BotGroup)
-        )).scalar()
+        )).scalar() or 0
         
         active_groups = (await session.execute(
             select(func.count()).select_from(BotGroup).where(BotGroup.is_active == True)
-        )).scalar()
+        )).scalar() or 0
 
         admin_count = (await session.execute(
             select(func.count()).select_from(AdminUser).where(AdminUser.is_active == True)
-        )).scalar()
+        )).scalar() or 0
 
         # ─── Majburiy obuna kanallari ───
         result_ch = await session.execute(select(Setting).where(Setting.key == "required_channel"))
@@ -92,7 +80,6 @@ async def show_statistics(callback: types.CallbackQuery):
             except Exception:
                 channels = [ch_setting.value]
 
-    # Majburiy obuna check (kanallar soni)
     total_channels = len(channels)
 
     # ─── To'lovlar (Payments) ───
@@ -109,12 +96,9 @@ async def show_statistics(callback: types.CallbackQuery):
     
     import re
     for p in approved_payments:
-        # Raqamlarni ajratib olish (masalan "50 000 so'm" -> 50000)
         amount_str = re.sub(r'\D', '', str(p.amount))
         amount = int(amount_str) if amount_str else 0
-        
         total_earnings += amount
-        
         if p.resolved_at:
             if p.resolved_at >= today_start:
                 today_earnings += amount
@@ -122,10 +106,6 @@ async def show_statistics(callback: types.CallbackQuery):
                 week_earnings += amount
             if p.resolved_at >= month_start:
                 month_earnings += amount
-
-    # Reklama statistikasi placeholder
-    ad_total = 0
-    ad_success = 0
 
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
         [
@@ -167,7 +147,25 @@ async def show_statistics(callback: types.CallbackQuery):
         f"   💵 7 kun: <b>{week_earnings:,} so'm</b>\n"
         f"   💵 30 kun: <b>{month_earnings:,} so'm</b>"
     )
+    return msg_text, keyboard
 
+
+@statistics_router.message(F.text.in_(["📊 Statistika & Excel", "📊 Statistika", "📊 Statistika va Excel"]))
+async def msg_show_statistics(message: types.Message):
+    if not await check_permission(message.from_user.id, "can_view_stats"):
+        await message.answer("Sizda ushbu bo'limni ko'rish ruxsati yo'q!")
+        return
+    msg_text, keyboard = await generate_statistics_data()
+    await message.answer(msg_text, reply_markup=keyboard, parse_mode="HTML")
+
+
+@statistics_router.callback_query(F.data == "admin_stats")
+async def show_statistics(callback: types.CallbackQuery):
+    if not await check_permission(callback.from_user.id, "can_view_stats"):
+        await callback.answer("Sizda ushbu bo'limni ko'rish ruxsati yo'q!", show_alert=True)
+        return
+
+    msg_text, keyboard = await generate_statistics_data()
     from aiogram.exceptions import TelegramBadRequest
     try:
         if callback.message.photo:
@@ -175,8 +173,8 @@ async def show_statistics(callback: types.CallbackQuery):
             await callback.message.answer(msg_text, reply_markup=keyboard, parse_mode="HTML")
         else:
             await callback.message.edit_text(msg_text, reply_markup=keyboard, parse_mode="HTML")
-    except TelegramBadRequest:
-        pass
+    except Exception:
+        await callback.message.answer(msg_text, reply_markup=keyboard, parse_mode="HTML")
 
     await callback.answer()
 

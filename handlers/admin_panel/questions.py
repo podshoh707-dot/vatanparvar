@@ -45,6 +45,53 @@ async def auto_sync_questions():
 # ══════════════════════════════════════════════════════════════════════════════
 # 1. SAVOLLAR RO'YXATI (PAGINATION)
 # ══════════════════════════════════════════════════════════════════════════════
+@questions_router.message(F.text.in_(["📝 Savollar (805 ta)", "📝 Savollar", "📝 Savollar bazasi"]))
+async def msg_questions_list(message: types.Message, state: FSMContext = None):
+    if not await check_permission(message.from_user.id, "can_manage_content"):
+        await message.answer("Sizda bu bo'limga ruxsat yo'q!")
+        return
+    if state:
+        await state.clear()
+    page = 1
+    per_page = 15
+    offset = 0
+    async with async_session() as session:
+        total = (await session.execute(select(func.count()).select_from(Question))).scalar() or 0
+        result = await session.execute(select(Question).order_by(Question.id.asc()).offset(offset).limit(per_page))
+        questions = result.scalars().all()
+    total_pages = max(1, (total + per_page - 1) // per_page)
+    buttons = [
+        [
+            InlineKeyboardButton(text="🔍 Qidirish (ID / Matn)", callback_data="q_search_start"),
+            InlineKeyboardButton(text="🎫 Biletlar (1-81)", callback_data="q_bilets_1")
+        ],
+        [
+            InlineKeyboardButton(text="➕ Yangi savol qo'shish", callback_data="q_add")
+        ]
+    ]
+    for q in questions:
+        cat_badge = f"[{q.category}] " if q.category else ""
+        short_text = q.text[:30] + "..." if len(q.text) > 30 else q.text
+        has_img = "🖼 " if q.image_url else "📄 "
+        buttons.append([
+            InlineKeyboardButton(text=f"{has_img}#{q.id} {cat_badge}{short_text}", callback_data=f"q_detail_{q.id}")
+        ])
+    if total_pages > 1:
+        buttons.append([
+            InlineKeyboardButton(text=f"📄 1/{total_pages}", callback_data="noop"),
+            InlineKeyboardButton(text="Keyingi ➡️", callback_data="admin_tests_2")
+        ])
+    buttons.append([InlineKeyboardButton(text="🏠 Bosh menyu", callback_data="admin_back_main")])
+    text = (
+        "🗃 <b>SAVOLLAR BAZASI BOSHQARUVI</b>\n"
+        "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
+        f"📊 Jami rasmiy savollar: <b>{total} ta</b>\n"
+        f"📑 Sahifa: <b>1/{total_pages}</b> (Savollar: 1–{min(per_page, total)})\n\n"
+        "<i>Qidirish yoki biletlar bo'yicha saralash uchun yuqoridagi tugmalardan foydalaning:</i>"
+    )
+    await message.answer(text, reply_markup=InlineKeyboardMarkup(inline_keyboard=buttons), parse_mode="HTML")
+
+
 @questions_router.callback_query(F.data.startswith("admin_tests"))
 async def admin_questions_list(callback: types.CallbackQuery, state: FSMContext = None):
     if not await check_permission(callback.from_user.id, "can_manage_content"):

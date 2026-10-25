@@ -149,7 +149,10 @@ async def test_menu(message: types.Message, state: FSMContext):
     )
     
     if isinstance(message, types.CallbackQuery):
-        await message.message.edit_text(text, reply_markup=markup, parse_mode="HTML")
+        try:
+            await message.message.edit_text(text, reply_markup=markup, parse_mode="HTML")
+        except Exception:
+            await message.message.answer(text, reply_markup=markup, parse_mode="HTML")
     else:
         await message.answer(text, reply_markup=markup, parse_mode="HTML")
 
@@ -615,7 +618,12 @@ async def send_question(message_or_callback, state: FSMContext):
             print(f"Error sending photo question: {e}")
 
     # 4. Oddiy matnli savol (yoki rasm/video yuklanmagan holatda)
-    await bot_obj.send_message(chat_id=chat_id, text=caption, reply_markup=keyboard, protect_content=protect, parse_mode="HTML")
+    try:
+        await bot_obj.send_message(chat_id=chat_id, text=caption, reply_markup=keyboard, protect_content=protect, parse_mode="HTML")
+    except Exception:
+        import re
+        clean_text = re.sub(r'<[^>]+>', '', caption)
+        await bot_obj.send_message(chat_id=chat_id, text=clean_text, reply_markup=keyboard, protect_content=protect)
 
 
 @test_router.callback_query(F.data.startswith("testcnt_") | F.data.startswith("testbilet_") | F.data.in_(["test_mistakes"]))
@@ -708,7 +716,7 @@ async def start_test(callback: types.CallbackQuery, state: FSMContext):
             
         # 2. Faqat Video-testlar rejimi
         elif is_videos:
-            stmt = select(Question.id).where(Question.media_urls != None).order_by(func.random()).limit(20)
+            stmt = select(Question.id).where((Question.media_urls != None) | (Question.image_url != None)).order_by(func.random()).limit(20)
             result_q = await session.execute(stmt)
             q_ids = result_q.scalars().all()
             
@@ -746,21 +754,32 @@ async def start_test(callback: types.CallbackQuery, state: FSMContext):
     await callback.message.delete()
     await send_question(callback, state)
 
-@test_router.callback_query(TestStates.taking_test, F.data.startswith("ans_"))
+@test_router.callback_query(F.data.startswith("ans_"))
 async def process_answer(callback: types.CallbackQuery, state: FSMContext):
     ans = callback.data.split("_")[1]
     
     if ans == "quit":
-        await callback.message.delete()
-        data = await state.get_data()
-        answered = data.get("current_idx", 0)  # Hozircha nechta savol o'tilgan
-        q_ids = data.get("questions", [])
-        # Savollar ro'yxatini faqat javob berilganlarga qisqartir
-        await state.update_data(questions=q_ids[:answered], current_idx=answered)
-        await send_question(callback, state)
+        await state.clear()
+        await delete_test_session(callback.from_user.id)
+        try:
+            await callback.message.delete()
+        except Exception:
+            pass
+        await callback.answer("🛑 Test to'xtatildi.", show_alert=True)
+        await test_menu(callback, state)
         return
         
     data = await state.get_data()
+    if not data or not data.get("questions"):
+        saved = await load_test_session(callback.from_user.id)
+        if saved:
+            await state.set_state(TestStates.taking_test)
+            await state.update_data(**saved)
+            data = saved
+        else:
+            await callback.answer("⚠️ Test sessiyasi eskirgan. Yangi test boshlang.", show_alert=True)
+            return
+
     q_ids = data.get("questions", [])
     current_idx = data.get("current_idx", 0)
     correct_count = data.get("correct_answers", 0)
@@ -958,8 +977,17 @@ async def process_answer(callback: types.CallbackQuery, state: FSMContext):
 
     await bot_obj.send_message(chat_id=chat_id, text=result_msg, reply_markup=keyboard, protect_content=protect, parse_mode="HTML")
 
-@test_router.callback_query(TestStates.taking_test, F.data == "next_question")
+@test_router.callback_query(F.data == "next_question")
 async def next_question(callback: types.CallbackQuery, state: FSMContext):
+    data = await state.get_data()
+    if not data or not data.get("questions"):
+        saved = await load_test_session(callback.from_user.id)
+        if saved:
+            await state.set_state(TestStates.taking_test)
+            await state.update_data(**saved)
+        else:
+            await callback.answer("⚠️ Sessiya eskirgan. Yangi test boshlang.", show_alert=True)
+            return
     await callback.answer()
     try:
         await callback.message.delete()

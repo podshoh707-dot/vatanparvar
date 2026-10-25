@@ -18,6 +18,55 @@ class PremiumStates(StatesGroup):
 
 
 
+@settings_router.message(F.text.in_(["💳 VIP & Promokodlar", "💳 VIP", "💳 Promokodlar", "💳 VIP Sozlamalari"]))
+async def msg_premium_menu(message: types.Message):
+    if not await check_permission(message.from_user.id, "can_manage_premium"):
+        await message.answer("Sizda bu bo'limga ruxsat yo'q!")
+        return
+    async with async_session() as session:
+        result = await session.execute(select(Setting).where(Setting.key == "premium_mode"))
+        setting = result.scalars().first()
+        is_on = setting.value == "1" if setting else False
+        status_text = "🟢 Yoqilgan" if is_on else "🔴 O'chirilgan"
+        
+        result_card = await session.execute(select(Setting).where(Setting.key == "admin_card"))
+        card_setting = result_card.scalars().first()
+        card_num = card_setting.value if card_setting else "O'rnatilmagan"
+        
+        result_price = await session.execute(select(Setting).where(Setting.key == "tariff_price"))
+        price_setting = result_price.scalars().first()
+        tariff_price = price_setting.value if price_setting else "O'rnatilmagan"
+        
+        result_text = await session.execute(select(Setting).where(Setting.key == "tariff_text"))
+        text_setting = result_text.scalars().first()
+        tariff_text = text_setting.value if text_setting else "O'rnatilmagan"
+    
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text=f"Premium reja: {status_text}", callback_data="admin_toggle_premium")],
+        [
+            InlineKeyboardButton(text="🎟 +5 ta Promokod Yaratish", callback_data="admin_gen_promos"),
+            InlineKeyboardButton(text="📋 Barcha Promokodlar", callback_data="admin_list_promos")
+        ],
+        [
+            InlineKeyboardButton(text="💳 Karta raqami", callback_data="admin_set_card"),
+            InlineKeyboardButton(text="💵 Tarif narxi", callback_data="admin_set_price")
+        ],
+        [InlineKeyboardButton(text="🧾 Kutilayotgan To'lov Cheklari", callback_data="admin_pending_payments")],
+        [InlineKeyboardButton(text="🎁 Foydalanuvchiga VIP berish", callback_data="admin_give_premium")],
+        [InlineKeyboardButton(text="🔙 Orqaga", callback_data="admin_back_main")]
+    ])
+    
+    text = (
+        f"💰 <b>PREMIUM VA TO'LOVLAR BOSHQARUVI</b>\n"
+        f"━━━━━━━━━━━━━━━━━━━━\n\n"
+        f"💳 <b>Karta raqami:</b> <code>{card_num}</code>\n"
+        f"💵 <b>Tarif narxi:</b> <code>{tariff_price}</code>\n"
+        f"📝 <b>Tarif tavsifi:</b>\n<i>{tariff_text}</i>\n\n"
+        f"Kerakli amalni tanlang:"
+    )
+    await message.answer(text, reply_markup=keyboard, parse_mode="HTML")
+
+
 @settings_router.callback_query(F.data == "admin_premium")
 async def admin_premium(callback: types.CallbackQuery):
     if not await check_permission(callback.from_user.id, "can_manage_premium"):

@@ -16,6 +16,27 @@ class BroadcastStates(StatesGroup):
     waiting_for_autoad_post = State()
 
 
+@broadcast_router.message(F.text.in_(["📢 Xabar Tarqatish", "📢 Xabar tarqatish", "📢 Xabar Tarqatish (Admin)"]))
+async def msg_broadcast_menu(message: types.Message, state: FSMContext):
+    if not await check_permission(message.from_user.id, "can_broadcast"):
+        await message.answer("Sizda bu bo'limga ruxsat yo'q!")
+        return
+    await state.clear()
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="📨 Bir marta xabar tarqatish", callback_data="admin_broadcast_manual")],
+        [InlineKeyboardButton(text="🤖 Avto-Reklama (Jadval soati)", callback_data="admin_autoad_menu")],
+        [InlineKeyboardButton(text="🔙 Orqaga", callback_data="admin_back_main")]
+    ])
+    await message.answer(
+        "📢 <b>XABARLAR VA REKLAMA BO'LIMI</b>\n\n"
+        "Kerakli bo'limni tanlang:\n"
+        "• <b>Bir marta xabar tarqatish:</b> barcha foydalanuvchilarga darhol yuborish.\n"
+        "• <b>Avto-Reklama:</b> guruh va lichkalarga belgilangan soat oralig'ida avtomatik reklama posti yuborish.",
+        reply_markup=keyboard,
+        parse_mode="HTML"
+    )
+
+
 @broadcast_router.callback_query(F.data == "admin_broadcast")
 async def broadcast_main_menu(callback: types.CallbackQuery, state: FSMContext):
     if not await check_permission(callback.from_user.id, "can_broadcast"):

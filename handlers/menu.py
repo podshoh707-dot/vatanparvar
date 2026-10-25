@@ -282,12 +282,15 @@ async def show_video(callback: types.CallbackQuery):
         video = result.scalars().first()
 
     if not video:
-        await callback.answer("Video topilmadi.", show_alert=True)
+        await callback.answer("Video dars topilmadi.", show_alert=True)
         return
 
     sec_prefix = (video.section or "Umumiy")[:20]
+    v_url = video.video_url or video.youtube_url or f"https://e-avtomaktab.uz/storage/course/lessons/{video.id}.mp4"
+    video_source = video.telegram_video_id or v_url
+
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="🎬 Videoni Onlayn Ko'rish (HD)", url=video.video_url or video.youtube_url or "https://e-avtomaktab.uz")],
+        [InlineKeyboardButton(text="🌐 Onlayn ko'rish (e-avtomaktab)", url=v_url)],
         [InlineKeyboardButton(text="🔙 Ro'yxatga qaytish", callback_data=f"vsec_{sec_prefix}_1")],
         [InlineKeyboardButton(text="🏠 Bosh menyu", callback_data="back_to_main_menu")]
     ])
@@ -297,15 +300,53 @@ async def show_video(callback: types.CallbackQuery):
         f"━━━━━━━━━━━━━━━━━━━━\n\n"
         f"📁 <b>Bo'lim:</b> {video.section or 'Umumiy ta\'lim darslari'}\n"
         f"🌐 <b>Manba:</b> e-avtomaktab.uz rasmiy darsi\n\n"
-        f"👇 <i>Darsni to'liq HD sifatda tomosha qilish uchun pastdagi tugmani bosing:</i>"
+        f"👇 <i>Telegramda to'g'ridan-to'g'ri tomosha qiling:</i>"
     )
 
-    if callback.message.photo:
-        await callback.message.delete()
-        await callback.message.answer(text, reply_markup=keyboard, parse_mode="HTML")
-    else:
-        await callback.message.edit_text(text, reply_markup=keyboard, parse_mode="HTML")
-    await callback.answer()
+    await callback.answer("🎬 Video darslik yuklanmoqda...")
+
+    # Telegram orqali videoni to'g'ridan-to'g'ri yuborish
+    video_sent = False
+    try:
+        if callback.message:
+            try:
+                await callback.message.delete()
+            except Exception:
+                pass
+        sent_msg = await callback.message.bot.send_video(
+            chat_id=callback.message.chat.id,
+            video=video_source,
+            caption=text,
+            reply_markup=keyboard,
+            parse_mode="HTML",
+            supports_streaming=True
+        )
+        if sent_msg and sent_msg.video and not video.telegram_video_id:
+            async with async_session() as session_upd:
+                res_u = await session_upd.execute(select(VideoLesson).where(VideoLesson.id == vid_id))
+                v_db = res_u.scalars().first()
+                if v_db:
+                    v_db.telegram_video_id = sent_msg.video.file_id
+                    await session_upd.commit()
+        video_sent = True
+    except Exception as e:
+        print(f"Error sending video {vid_id} via telegram: {e}")
+
+    # Agar videoni to'g'ridan-to'g'ri uzatishda xatolik bo'lsa
+    if not video_sent:
+        fallback_text = (
+            f"🎥 <b>{video.id}-DARS: {video.topic}</b>\n"
+            f"━━━━━━━━━━━━━━━━━━━━\n\n"
+            f"📁 <b>Bo'lim:</b> {video.section or 'Umumiy ta\'lim darslari'}\n"
+            f"🌐 <b>Manba:</b> e-avtomaktab.uz rasmiy video darsi\n\n"
+            f"👇 <i>Ushbu darsni yuqori HD sifatda tomosha qilish uchun pastdagi tugmani bosing:</i>"
+        )
+        await callback.message.bot.send_message(
+            chat_id=callback.message.chat.id,
+            text=fallback_text,
+            reply_markup=keyboard,
+            parse_mode="HTML"
+        )
 
 
 @menu_router.callback_query(F.data == "vback")

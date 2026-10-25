@@ -286,15 +286,24 @@ async def process_phone(message: types.Message, state: FSMContext):
     await send_main_menu(message, lang, full_name)
 
 
-async def send_main_menu(message: types.Message, lang: str, name: str):
+async def send_main_menu(message: types.Message, lang: str, name: str, user_id: int = None):
     """Asosiy menyuni yuborish uchun yordamchi funksiya"""
+    from utils.permissions import is_any_admin
+    uid = user_id or (message.from_user.id if message.from_user else message.chat.id)
+    is_admin = await is_any_admin(uid)
+
+    keyboard = [
+        [KeyboardButton(text="🚗 Test Ishlash (805 ta YHQ)")],
+        [KeyboardButton(text="🎓 GAI Imtihoni (Sertifikatli)"), KeyboardButton(text="🚦 Yo'l Belgilari")],
+        [KeyboardButton(text="🎥 Video Darslar"), KeyboardButton(text="📚 YHQ Qoidalari")],
+        [KeyboardButton(text="📊 Mening Natijam"), KeyboardButton(text="🏛 Tashkilot & O'qish")],
+        [KeyboardButton(text="💎 VIP (Premium)")]
+    ]
+    if is_admin:
+        keyboard.append([KeyboardButton(text="🛠 Boshqaruv Paneli (Admin)")])
+
     kb = ReplyKeyboardMarkup(
-        keyboard=[
-            [KeyboardButton(text="🚗 Test Ishlash (805 ta YHQ)")],
-            [KeyboardButton(text="🎓 GAI Imtihoni (Sertifikatli)"), KeyboardButton(text="🚦 Yo'l Belgilari")],
-            [KeyboardButton(text="📊 Mening Natijam"), KeyboardButton(text="📚 YHQ Qoidalari")],
-            [KeyboardButton(text="🏛 Tashkilot & O'qish"), KeyboardButton(text="💎 VIP (Premium)")]
-        ],
+        keyboard=keyboard,
         resize_keyboard=True
     )
 
@@ -400,7 +409,7 @@ async def process_check_sub(callback: types.CallbackQuery, bot: Bot):
         user = result.scalars().first()
     
     if user and user.language and user.full_name:
-        await send_main_menu(callback.message, user.language, user.full_name)
+        await send_main_menu(callback.message, user.language, user.full_name, user_id=callback.from_user.id)
     else:
         await callback.message.answer("Iltimos, botdan foydalanish uchun /start buyrug'ini yuboring.")
 
@@ -418,7 +427,7 @@ async def cb_back_to_main_menu(callback: types.CallbackQuery, state: FSMContext)
         user = result.scalars().first()
         lang = user.language if user and user.language else "uz"
         name = user.full_name if user and user.full_name else callback.from_user.full_name
-    await send_main_menu(callback.message, lang, name)
+    await send_main_menu(callback.message, lang, name, user_id=callback.from_user.id)
     await callback.answer()
 
 

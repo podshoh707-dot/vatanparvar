@@ -16,6 +16,37 @@ def back_kb(cb: str):
         [InlineKeyboardButton(text="🔙 Orqaga", callback_data=cb)]
     ])
 
+@groups_admin_router.message(F.text.in_(["👥 Guruhlar & Kanallar", "👥 Guruhlar", "👥 Guruhlar va Kanallar"]))
+async def msg_groups_list(message: types.Message):
+    if not await check_permission(message.from_user.id, "can_manage_groups"):
+        await message.answer("Sizda bu bo'limga ruxsat yo'q!")
+        return
+    page = 1
+    per_page = 20
+    offset = 0
+    async with async_session() as session:
+        from sqlalchemy import func
+        total = (await session.execute(select(func.count()).select_from(BotGroup))).scalar() or 0
+        result = await session.execute(select(BotGroup).order_by(BotGroup.id.asc()).offset(offset).limit(per_page))
+        groups = result.scalars().all()
+    buttons = []
+    for g in groups:
+        title = g.title or str(g.chat_id)
+        status = "✅" if g.is_active else "❌"
+        buttons.append([InlineKeyboardButton(text=f"{status} {title[:35]}", callback_data=f"group_detail_{g.id}")])
+    if total > per_page:
+        buttons.append([InlineKeyboardButton(text="Keyingi ➡️", callback_data="admin_groups_2")])
+    buttons.append([
+        InlineKeyboardButton(text="📢 Majburiy Obuna Kanallari", callback_data="admin_channels_menu"),
+        InlineKeyboardButton(text="🔙 Orqaga", callback_data="admin_back_main")
+    ])
+    await message.answer(
+        f"👥 <b>GURUHLAR VA KANALLAR BAZASI</b> ({total} ta)\nKo'rsatilmoqda: 1–{min(per_page, total)}\n\nGuruhni tanlang:",
+        reply_markup=InlineKeyboardMarkup(inline_keyboard=buttons),
+        parse_mode="HTML"
+    )
+
+
 @groups_admin_router.callback_query(F.data.startswith("admin_groups"))
 async def admin_groups_list(callback: types.CallbackQuery):
     if not await check_permission(callback.from_user.id, "can_manage_groups"):

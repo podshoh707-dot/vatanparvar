@@ -152,28 +152,31 @@ async def init_db():
                 await session.commit()
                 print(f"[init_db] Successfully seeded {len(rules_data)} YHQ rules!")
 
-        # Auto-seed video lessons if empty
+        # Auto-seed video lessons if empty or outdated
         from .models import VideoLesson
         res_videos = await session.execute(select(func.count(VideoLesson.id)))
         count_videos = res_videos.scalar() or 0
-        if count_videos == 0:
-            videos_file = os.path.join(os.path.dirname(__file__), "videos.json")
-            if os.path.exists(videos_file):
-                print(f"[init_db] Seeding video lessons from {videos_file}...")
-                with open(videos_file, "r", encoding="utf-8") as f:
-                    videos_data = json.load(f)
-                for v in videos_data:
-                    vid_obj = VideoLesson(
-                        id=v.get("id"),
-                        topic=v.get("topic", ""),
-                        section=v.get("section", "Umumiy ta'lim"),
-                        video_url=v.get("video_url"),
-                        youtube_url=v.get("youtube_url") or v.get("video_url"),
-                        telegram_video_id=v.get("telegram_video_id")
-                    )
-                    session.add(vid_obj)
-                await session.commit()
-                print(f"[init_db] Successfully seeded {len(videos_data)} video lessons!")
+        first_video = (await session.execute(select(VideoLesson).limit(1))).scalars().first()
+        is_corrupted = first_video and (first_video.topic.startswith("'") or "\ufffd" in first_video.topic)
+        videos_file = os.path.join(os.path.dirname(__file__), "videos.json")
+        if (count_videos < 133 or is_corrupted or count_videos == 0) and os.path.exists(videos_file):
+            print(f"[init_db] Seeding video lessons from {videos_file}...")
+            with open(videos_file, "r", encoding="utf-8") as f:
+                videos_data = json.load(f)
+            await session.execute(text("DELETE FROM video_lessons"))
+            session.expunge_all()
+            for v in videos_data:
+                vid_obj = VideoLesson(
+                    id=v.get("id"),
+                    topic=v.get("topic", ""),
+                    section=v.get("section", "Umumiy ta'lim"),
+                    video_url=v.get("video_url"),
+                    youtube_url=v.get("youtube_url") or v.get("video_url"),
+                    telegram_video_id=v.get("telegram_video_id")
+                )
+                session.add(vid_obj)
+            await session.commit()
+            print(f"[init_db] Successfully seeded {len(videos_data)} video lessons!")
 
         # Auto-seed news if empty
         from .models import News

@@ -12,6 +12,68 @@ from config import ADMIN_IDS
 
 system_router = Router()
 
+@system_router.message(F.text.in_(["⚙️ Tizim Sozlamalari", "⚙️ Tizim sozlamalari", "⚙️ Sozlamalar"]))
+async def msg_system_menu(message: types.Message):
+    if not is_superadmin(message.from_user.id):
+        await message.answer("Bu amal faqat asosiy admin uchun!")
+        return
+        
+    async with async_session() as session:
+        result = await session.execute(select(Setting).where(Setting.key == "forward_status"))
+        setting = result.scalars().first()
+        status_text = "🟢 Yoqilgan" if setting and setting.value == "1" else "🔴 O'chirilgan"
+        
+        result_protect = await session.execute(select(Setting).where(Setting.key == "protect_content"))
+        protect_setting = result_protect.scalars().first()
+        protect_text = "🟢 Yoqilgan" if protect_setting and protect_setting.value == "1" else "🔴 O'chirilgan"
+    
+        result_auto = await session.execute(select(Setting).where(Setting.key == "auto_test_enabled"))
+        auto_setting = result_auto.scalars().first()
+        auto_text = "🟢 Yoqilgan" if auto_setting and auto_setting.value == "1" else "🔴 O'chirilgan"
+
+        result_auto_users = await session.execute(select(Setting).where(Setting.key == "auto_test_send_users"))
+        auto_users_setting = result_auto_users.scalars().first()
+        auto_users_text = "🟢 Yoqilgan" if auto_users_setting and auto_users_setting.value == "1" else "🔴 O'chirilgan"
+
+        result_interval = await session.execute(select(Setting).where(Setting.key == "auto_test_interval"))
+        interval_setting = result_interval.scalars().first()
+        interval_val = interval_setting.value if interval_setting else "10"
+
+        result_light = await session.execute(select(Setting).where(Setting.key == "card_light_start"))
+        light_setting = result_light.scalars().first()
+        light_hour = light_setting.value if light_setting else "6"
+
+        result_dark = await session.execute(select(Setting).where(Setting.key == "card_dark_start"))
+        dark_setting = result_dark.scalars().first()
+        dark_hour = dark_setting.value if dark_setting else "21"
+    
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[
+        [
+            InlineKeyboardButton(text="💾 Baza Nusxasi (Backup)", callback_data="admin_backup_db"),
+            InlineKeyboardButton(text="🧹 Tizim Salomatligi", callback_data="admin_system_health")
+        ],
+        [InlineKeyboardButton(text="📢 Majburiy obuna kanallari", callback_data="admin_channels_menu")],
+        [InlineKeyboardButton(text=f"⏱ Avto-test: {auto_text}", callback_data="toggle_auto_test"),
+         InlineKeyboardButton(text=f"🕐 Har {interval_val} daq", callback_data="admin_set_interval")],
+        [InlineKeyboardButton(text=f"👤 Lichkaga avto-savol: {auto_users_text}", callback_data="toggle_auto_test_users")],
+        [InlineKeyboardButton(text=f"☀️ Och tema: {light_hour}:00 dan", callback_data="admin_set_light_hour"),
+         InlineKeyboardButton(text=f"🌙 To'q tema: {dark_hour}:00 dan", callback_data="admin_set_dark_hour")],
+        [InlineKeyboardButton(text=f"📨 Xabar uzatish: {status_text}", callback_data="toggle_forward")],
+        [InlineKeyboardButton(text=f"🛡 Kontentni himoyalash: {protect_text}", callback_data="toggle_protect_content")],
+        [InlineKeyboardButton(text="🔙 Orqaga", callback_data="admin_back_main")]
+    ])
+    
+    await message.answer(
+        f"⚙️ <b>TIZIM SOZLAMALARI VA XAVFSIZLIK</b>\n\n"
+        f"🕐 Avto-test oraligi: har <b>{interval_val} daqiqa</b>\n"
+        f"☀️ Och (Light) tema: <b>{light_hour}:00 – {dark_hour}:00</b>\n"
+        f"🌙 To'q (Dark) tema: <b>{dark_hour}:00 – {light_hour}:00</b>\n\n"
+        f"Kerakli bo'limni tanlang:",
+        reply_markup=keyboard,
+        parse_mode="HTML"
+    )
+
+
 @system_router.callback_query(F.data == "admin_system")
 async def admin_system_menu(callback: types.CallbackQuery):
     if not is_superadmin(callback.from_user.id):

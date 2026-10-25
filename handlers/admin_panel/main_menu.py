@@ -58,40 +58,80 @@ async def get_pro_admin_keyboard(user_id: int):
         
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
 
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
+from database import async_session, User
+from sqlalchemy import select
+
+def get_admin_reply_keyboard() -> ReplyKeyboardMarkup:
+    """Doim pastda turadigan to'liq Admin Reply Paneli"""
+    return ReplyKeyboardMarkup(
+        keyboard=[
+            [KeyboardButton(text="📊 Statistika & Excel"), KeyboardButton(text="📢 Xabar Tarqatish")],
+            [KeyboardButton(text="📝 Savollar (805 ta)"), KeyboardButton(text="🚦 Yo'l Belgilari (279)")],
+            [KeyboardButton(text="📚 YHQ Qoidalari"), KeyboardButton(text="🎥 Video Darslar")],
+            [KeyboardButton(text="🏢 Tashkilot & O'qish"), KeyboardButton(text="👥 Guruhlar & Kanallar")],
+            [KeyboardButton(text="💳 VIP & Promokodlar"), KeyboardButton(text="⚙️ Tizim Sozlamalari")],
+            [KeyboardButton(text="🏠 Foydalanuvchi Menyusi")]
+        ],
+        resize_keyboard=True,
+        is_persistent=True
+    )
+
 @main_menu_router.message(Command("admin"))
+@main_menu_router.message(F.text.in_([
+    "🛠 Boshqaruv Paneli (Admin)", "🛠 Boshqaruv Paneli", "🛠 Admin Panel",
+    "🛠 Панель управления", "🛠 Панел", "🛠 Admin", "/admin"
+]))
 async def admin_panel(message: types.Message):
     if not await is_any_admin(message.from_user.id):
         await message.answer("❌ Kechirasiz, sizda administratorlik huquqi mavjud emas.")
         return
         
-    kb = await get_pro_admin_keyboard(message.from_user.id)
     status_role = "👑 Bosh Administrator" if is_superadmin(message.from_user.id) else "👮 Moderator"
+    reply_kb = get_admin_reply_keyboard()
+    
     text = (
         "👑 <b>VATANPARVAR AVTOTEST — BOSHQARUV MARKAZI</b>\n"
         "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
         f"👤 <b>Administrator:</b> {message.from_user.full_name}\n"
         f"🎖 <b>Mansab:</b> <i>{status_role}</i>\n"
-        "🟢 <b>Tizim holati:</b> Faol (805 ta rasmiy test)\n"
+        "🟢 <b>Tizim holati:</b> Faol (805 ta rasmiy test • 279 ta belgi • 133 ta video)\n"
         "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-        "👇 <i>Quyidagi bo'limlardan birini tanlang:</i>"
+        "👇 <b>Barcha amallarni ekranning pastidagi tugmalar orqali to'g'ridan-to'g'ri bajarishingiz mumkin:</b>"
     )
-    await message.answer(text, reply_markup=kb, parse_mode="HTML")
+    await message.answer(text, reply_markup=reply_kb, parse_mode="HTML")
+
+@main_menu_router.message(F.text.in_(["🏠 Foydalanuvchi Menyusi", "🏠 Bosh menyu"]))
+async def admin_switch_to_user_menu(message: types.Message):
+    if not await is_any_admin(message.from_user.id):
+        return
+    from handlers.registration import send_main_menu
+    async with async_session() as session:
+        result = await session.execute(select(User).where(User.telegram_id == message.from_user.id))
+        user = result.scalars().first()
+        lang = user.language if user and user.language else "uz"
+        name = user.full_name if user and user.full_name else message.from_user.full_name
+    await send_main_menu(message, lang, name, user_id=message.from_user.id)
 
 @main_menu_router.callback_query(F.data == "admin_back_main")
 async def admin_back_main(callback: types.CallbackQuery):
     if not await is_any_admin(callback.from_user.id):
         return
         
-    kb = await get_pro_admin_keyboard(callback.from_user.id)
     status_role = "👑 Bosh Administrator" if is_superadmin(callback.from_user.id) else "👮 Moderator"
+    reply_kb = get_admin_reply_keyboard()
     text = (
         "👑 <b>VATANPARVAR AVTOTEST — BOSHQARUV MARKAZI</b>\n"
         "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
         f"👤 <b>Administrator:</b> {callback.from_user.full_name}\n"
         f"🎖 <b>Mansab:</b> <i>{status_role}</i>\n"
-        "🟢 <b>Tizim holati:</b> Faol (805 ta rasmiy test)\n"
+        "🟢 <b>Tizim holati:</b> Faol (805 ta rasmiy test • 279 ta belgi • 133 ta video)\n"
         "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-        "👇 <i>Quyidagi bo'limlardan birini tanlang:</i>"
+        "👇 <i>Pastki paneldan kerakli bo'limni tanlang:</i>"
     )
-    await callback.message.edit_text(text, reply_markup=kb, parse_mode="HTML")
+    try:
+        await callback.message.delete()
+    except Exception:
+        pass
+    await callback.message.answer(text, reply_markup=reply_kb, parse_mode="HTML")
     await callback.answer()

@@ -134,6 +134,18 @@ def get_org_admin_kb() -> InlineKeyboardMarkup:
 # ══════════════════════════════════════════════════════════════════════════════
 # ASOSIY MENU
 # ══════════════════════════════════════════════════════════════════════════════
+@organization_router.message(F.text.in_(["🏢 Tashkilot & O'qish", "🏢 Tashkilot", "🏢 Tashkilot va O'qish"]))
+async def msg_org_hub(message: types.Message, state: FSMContext = None):
+    if not await check_permission(message.from_user.id, "can_manage_content"):
+        await message.answer("Sizda bu bo'limga ruxsat yo'q!")
+        return
+    if state:
+        await state.clear()
+    data = await get_org_data()
+    text = format_org_preview_text(data)
+    await message.answer(text, reply_markup=get_org_admin_kb(), parse_mode="HTML")
+
+
 @organization_router.callback_query(F.data == "admin_org_hub")
 async def admin_org_hub(callback: types.CallbackQuery, state: FSMContext = None):
     if not await check_permission(callback.from_user.id, "can_manage_content"):

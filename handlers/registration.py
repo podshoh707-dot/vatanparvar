@@ -136,10 +136,8 @@ async def cmd_start(message: types.Message, state: FSMContext, bot: Bot):
         "🏎 <b>805 ta Rasmiy E-Avtomaktab Savollari</b> — barcha 81 ta biletlar to'liq tahlili\n"
         "🎬 <b>207 ta 3D Harakatlanish Videolari</b> — murakkab chorrahalar jonli animatsiyalari\n"
         "🎓 <b>GAI Davlat Imtihoni (20/20)</b> — haqiqiy test simulyatori va Oltin Sertifikat\n"
-        "🥊 <b>1vs1 Real-Time Duel</b> — do'stlaringiz bilan jonli bilim jangi\n"
         "🚦 <b>130 ta Yo'l Belgilari & Jarimalar</b> — batafsil ma'lumotlar bilan\n"
-        "🏛 <b>Avtomaktab & Toifalar</b> — A, B, BC, C, D, E o'qish narxlari va hujjatlar\n"
-        "📱 <b>Telegram Mini Ilova (WebApp)</b> — qulay interaktiv mobil platforma\n\n"
+        "🏛 <b>Avtomaktab & Toifalar</b> — A, B, BC, C, D, E o'qish narxlari va hujjatlar\n\n"
         "🎁 <b>Ro'yxatdan o'tganingiz uchun 5 KUNLIK VIP PREMIUM bepul beriladi!</b>\n"
         "━━━━━━━━━━━━━━━━━━━━\n"
         "🌐 <i>Iltimos, o'zingizga qulay tilni tanlang:</i>\n"
@@ -306,9 +304,8 @@ async def send_main_menu(message: types.Message, lang: str, name: str):
         keyboard=[
             [KeyboardButton(text="🚗 Test Ishlash (805 ta YHQ)")],
             [KeyboardButton(text="🎓 GAI Imtihoni (Sertifikatli)"), KeyboardButton(text="🚦 Yo'l Belgilari")],
-            [KeyboardButton(text="⚔️ Duel Jang (1vs1)"), KeyboardButton(text="📊 Mening Natijam")],
-            [KeyboardButton(text="📚 YHQ Qoidalari"), KeyboardButton(text="🏛 Tashkilot & O'qish")],
-            [KeyboardButton(text="💎 VIP (Premium)"), KeyboardButton(text="📱 Avtomaktab (Mini App)", web_app=WebAppInfo(url=WEBAPP_URL))]
+            [KeyboardButton(text="📊 Mening Natijam"), KeyboardButton(text="📚 YHQ Qoidalari")],
+            [KeyboardButton(text="🏛 Tashkilot & O'qish"), KeyboardButton(text="💎 VIP (Premium)")]
         ],
         resize_keyboard=True
     )
@@ -322,7 +319,6 @@ async def send_main_menu(message: types.Message, lang: str, name: str):
         f"🏎 <b>805 ta Rasmiy E-Avtomaktab Savollari:</b> Barcha testlar va 81 ta rasmiy biletlar\n"
         f"🎬 <b>207 ta 3D Harakatlanish Videolari:</b> Murakkab chorrahalar animatsiyasi\n"
         f"🎓 <b>GAI Davlat Imtihoni (20/20):</b> Jonli taymer va Oltin Sertifikat\n"
-        f"🥊 <b>1vs1 Duel Janglari:</b> Do'stlar bilan onlayn bilim bellashuvi\n"
         f"🚦 <b>130 ta HD Yo'l Belgilari:</b> Barcha rasmiy belgilar va jarimalar\n"
         f"🎥 <b>133 ta Rasmiy Video Darslar:</b> e-avtomaktab to'liq video kursi\n"
         f"🧠 <b>Spaced Repetition:</b> Xatolaringiz ustida aqlli ishlash tizimi\n\n"
@@ -336,10 +332,6 @@ async def send_main_menu(message: types.Message, lang: str, name: str):
     if not os.path.exists(welcome_img):
         welcome_img = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "logo.png")
 
-    inline_kb = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="✨ Mini Ilovani Ochish 📱", web_app=WebAppInfo(url=WEBAPP_URL))]
-    ])
-
     if os.path.exists(welcome_img):
         from aiogram.types import FSInputFile
         photo = FSInputFile(welcome_img)
@@ -350,21 +342,11 @@ async def send_main_menu(message: types.Message, lang: str, name: str):
                 reply_markup=kb,
                 parse_mode="HTML"
             )
-            await message.answer(
-                "📱 <b>Interaktiv Mini App orqali ham test yechishingiz mumkin:</b>",
-                reply_markup=inline_kb,
-                parse_mode="HTML"
-            )
             return
         except Exception:
             pass
 
     await message.answer(caption, reply_markup=kb, parse_mode="HTML")
-    await message.answer(
-        "📱 <b>Interaktiv Mini App orqali ham test yechishingiz mumkin:</b>",
-        reply_markup=inline_kb,
-        parse_mode="HTML"
-    )
 
 @registration_router.message(F.text.in_(["⚙️ Tilni o'zgartirish", "⚙️ Тилни ўзгартириш", "⚙️ Изменить язык"]))
 async def change_language(message: types.Message, state: FSMContext):

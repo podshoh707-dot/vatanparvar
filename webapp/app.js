@@ -634,10 +634,17 @@ function renderQuestion() {
   // Image
   const imgDiv = document.getElementById('question-image');
   const imgEl = document.getElementById('question-img-el');
-  if (q.image_url) {
-    imgEl.src = q.image_url;
+  const resolvedImg = q.image_url || (q.id ? `images/q_${q.id}.webp` : null);
+  if (resolvedImg) {
+    imgEl.src = resolvedImg;
     imgDiv.classList.remove('hidden');
-    imgEl.onerror = () => imgDiv.classList.add('hidden');
+    imgEl.onerror = () => {
+      if (q.id && !imgEl.src.endsWith(`q_${q.id}.webp`)) {
+        imgEl.src = `images/q_${q.id}.webp`;
+      } else {
+        imgDiv.classList.add('hidden');
+      }
+    };
   } else {
     imgDiv.classList.add('hidden');
   }

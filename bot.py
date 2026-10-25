@@ -112,10 +112,8 @@ async def set_bot_profile_and_description(bot: Bot):
         "🎬 207 ta 3D Harakatlanish Videolari\n"
         "🎓 GAI Davlat Imtihoni Simulyatori (20/20) & Oltin Sertifikat\n"
         "🤖 AI Ustoz — Aqlli Avto-Instruktor (Tushuntirish va sirlar)\n"
-        "🥊 1vs1 Real-Time Duel Janglari\n"
         "🚦 130 ta Yo'l Belgilari & Jarimalar Jadvali\n"
-        "🎥 133 ta Rasmiy Video Darsliklar\n"
-        "📱 Telegram Mini App (WebApp)\n\n"
+        "🎥 133 ta Rasmiy Video Darsliklar\n\n"
         "🎁 /start bosing va 5 kunlik VIP Premium obunaga ega bo'ling! 🚀"
     )
     
@@ -126,16 +124,14 @@ async def set_bot_profile_and_description(bot: Bot):
         "🎬 207 3D видео-анимаций перекрестков\n"
         "🎓 Симулятор госэкзамена ГАИ и Золотой Сертификат\n"
         "🤖 ИИ Авто-Инструктор (разбор правил)\n"
-        "🥊 Онлайн дуэли 1 на 1\n"
         "🚦 130 дорожных знаков и штрафы\n"
-        "🎥 133 видеоурока\n"
-        "📱 Telegram Mini App\n\n"
+        "🎥 133 видеоурока\n\n"
         "🎁 Нажмите /start и получите 5 дней VIP бесплатно! 🚀"
     )
 
     # 2. Qisqa tavsif (Bio / About) — max 120 belgi
-    short_uz = "🚘 805 ta E-Avtomaktab testi, 3D videolar, GAI simulyatori, AI Ustoz va 1vs1 Duel! 🏆 Bepul sinab ko'ring!"
-    short_ru = "🚘 805 вопросов E-Avtomaktab, 3D видео, симулятор ГАИ, ИИ-инструктор и дуэли! 🏆 Попробуйте бесплатно!"
+    short_uz = "🚘 805 ta E-Avtomaktab testi, 3D videolar, GAI simulyatori, AI Ustoz va Yo'l belgilari! 🏆 Bepul sinab ko'ring!"
+    short_ru = "🚘 805 вопросов E-Avtomaktab, 3D видео, симулятор ГАИ, ИИ-инструктор и знаки! 🏆 Попробуйте бесплатно!"
 
     try:
         await bot.set_my_description(description=desc_uz)
@@ -151,15 +147,11 @@ async def set_bot_profile_and_description(bot: Bot):
 
 
 async def set_menu_button(bot: Bot):
-    """Botning chap pastki burchagidagi Menu tugmasini Mini App ga ulaymiz"""
+    """Botning chap pastki burchagidagi Menu tugmasini standart buyruqlarga ulaymiz"""
     try:
-        await bot.set_chat_menu_button(
-            menu_button=MenuButtonWebApp(
-                text="📱 Mini Ilova",
-                web_app=WebAppInfo(url=WEBAPP_URL)
-            )
-        )
-        print("Menu Button (WebApp) ulandi!")
+        from aiogram.types import MenuButtonDefault
+        await bot.set_chat_menu_button(menu_button=MenuButtonDefault())
+        print("Menu Button standart buyruqlarga o'rnatildi!")
     except Exception as e:
         print(f"Menu Button o'rnatishda xatolik: {e}")
 

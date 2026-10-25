@@ -582,16 +582,29 @@ async def send_question(message_or_callback, state: FSMContext):
 
     # 3. Yagona Rasm mavjud bo'lsa (HD Tiniqlashtirish bilan)
     photo_file = None
+    img_candidates = []
     if q.image_url:
-        if not str(q.image_url).startswith("http"):
-            cand1 = os.path.join(BASE_DIR, "webapp", str(q.image_url).replace('\\', '/'))
-            cand2 = os.path.join(BASE_DIR, str(q.image_url).replace('\\', '/'))
-            raw_path = cand1 if os.path.exists(cand1) else (cand2 if os.path.exists(cand2) else None)
-            if raw_path:
-                hd_path = get_enhanced_image_path(raw_path)
-                photo_file = FSInputFile(hd_path)
-        else:
-            photo_file = q.image_url
+        img_candidates.append(os.path.join(BASE_DIR, str(q.image_url).replace('\\', '/')))
+        img_candidates.append(os.path.join(BASE_DIR, "webapp", str(q.image_url).replace('\\', '/')))
+        img_candidates.append(os.path.join(BASE_DIR, "images", os.path.basename(str(q.image_url))))
+        img_candidates.append(os.path.join(BASE_DIR, "webapp", "images", os.path.basename(str(q.image_url))))
+    # Har doim standart q_{id}.webp va q_{id}.jpg ni ham tekshiramiz
+    img_candidates.append(os.path.join(BASE_DIR, "images", f"q_{q.id}.webp"))
+    img_candidates.append(os.path.join(BASE_DIR, "webapp", "images", f"q_{q.id}.webp"))
+    img_candidates.append(os.path.join(BASE_DIR, "images", f"q_{q.id}.jpg"))
+    img_candidates.append(os.path.join(BASE_DIR, "webapp", "images", f"q_{q.id}.jpg"))
+
+    found_img_path = None
+    for cand in img_candidates:
+        if os.path.exists(cand) and os.path.getsize(cand) > 100:
+            found_img_path = cand
+            break
+
+    if found_img_path:
+        hd_path = get_enhanced_image_path(found_img_path)
+        photo_file = FSInputFile(hd_path)
+    elif q.image_url and str(q.image_url).startswith("http"):
+        photo_file = q.image_url
 
     if photo_file:
         try:

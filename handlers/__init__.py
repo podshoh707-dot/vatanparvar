@@ -8,7 +8,6 @@ from .school import school_router
 from .premium import premium_router
 from .registration import registration_router
 from .channel_quiz import channel_quiz_router
-from .duel import duel_router
 from .ai_tutor_handler import ai_tutor_router
 from .business import business_router
 from .catchall import catchall_router
@@ -31,6 +30,5 @@ router.include_router(groups_router)
 router.include_router(school_router)
 router.include_router(premium_router)
 router.include_router(channel_quiz_router)
-router.include_router(duel_router)
 router.include_router(business_router)
 router.include_router(catchall_router)

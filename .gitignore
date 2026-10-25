@@ -1,10 +1,21 @@
-# Katta papkalar (minglab test rasmlari - serverga kerak emas)
-/images/
+# Katta papkalar va cache
+images/hd_cache/
 /zip/
 *.zip
+*.mp4
+
+# Test va Yo'l belgilari rasmlarini Git va Render serverga yuklashga ruxsat berish
+/images/*
+!/images/q_*.webp
+!/images/q_*.jpg
+
 /webapp/images/*
+!/webapp/images/q_*.webp
+!/webapp/images/q_*.jpg
 !/webapp/images/signs/
 !/webapp/images/signs/**
+!/webapp/images/signs_hq/
+!/webapp/images/signs_hq/**
 
 # Python
 __pycache__/

@@ -312,17 +312,30 @@ async def start_group_quiz_callback(callback: types.CallbackQuery):
                 print(f"Group video send error: {e}")
 
         # Agar video bo'lmasa, rasmni tekshirish
-        if not media_sent and q.image_url:
+        if not media_sent:
             try:
                 photo_file = None
-                if not str(q.image_url).startswith("http"):
-                    cand1 = os.path.join(BASE_DIR, "webapp", str(q.image_url).replace('\\', '/'))
-                    cand2 = os.path.join(BASE_DIR, str(q.image_url).replace('\\', '/'))
-                    if os.path.exists(cand1):
-                        photo_file = FSInputFile(cand1)
-                    elif os.path.exists(cand2):
-                        photo_file = FSInputFile(cand2)
-                else:
+                img_candidates = []
+                if q.image_url:
+                    img_candidates.append(os.path.join(BASE_DIR, str(q.image_url).replace('\\', '/')))
+                    img_candidates.append(os.path.join(BASE_DIR, "webapp", str(q.image_url).replace('\\', '/')))
+                    img_candidates.append(os.path.join(BASE_DIR, "images", os.path.basename(str(q.image_url))))
+                    img_candidates.append(os.path.join(BASE_DIR, "webapp", "images", os.path.basename(str(q.image_url))))
+                # Har doim standart q_{id}.webp va q_{id}.jpg ni ham tekshiramiz
+                img_candidates.append(os.path.join(BASE_DIR, "images", f"q_{q.id}.webp"))
+                img_candidates.append(os.path.join(BASE_DIR, "webapp", "images", f"q_{q.id}.webp"))
+                img_candidates.append(os.path.join(BASE_DIR, "images", f"q_{q.id}.jpg"))
+                img_candidates.append(os.path.join(BASE_DIR, "webapp", "images", f"q_{q.id}.jpg"))
+
+                found_img_path = None
+                for cand in img_candidates:
+                    if os.path.exists(cand) and os.path.getsize(cand) > 100:
+                        found_img_path = cand
+                        break
+
+                if found_img_path:
+                    photo_file = FSInputFile(found_img_path)
+                elif q.image_url and str(q.image_url).startswith("http"):
                     photo_file = q.image_url
 
                 if photo_file:

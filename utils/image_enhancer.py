@@ -19,7 +19,8 @@ def get_enhanced_image_path(original_path: str) -> str:
 
     # Fayl nomiga qarab kesh kaliti yaratish
     file_stat = os.stat(original_path)
-    cache_key = hashlib.md5(f"{original_path}_{file_stat.st_mtime}_{file_stat.st_size}".encode()).hexdigest()
+    abs_path = os.path.abspath(original_path)
+    cache_key = hashlib.md5(f"{abs_path}_{file_stat.st_mtime}_{file_stat.st_size}".encode()).hexdigest()
     cached_file = os.path.join(CACHE_DIR, f"hd_{cache_key}.jpg")
 
     if os.path.exists(cached_file):

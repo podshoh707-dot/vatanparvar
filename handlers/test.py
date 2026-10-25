@@ -66,6 +66,37 @@ class TestStates(StatesGroup):
 async def start_gai_exam_from_message(message: types.Message, state: FSMContext):
     """Xabar orqali GAI imtihonini to'g'ridan-to'g'ri boshlash"""
     async with async_session() as session:
+        result_user = await session.execute(select(User).where(User.telegram_id == message.from_user.id))
+        user = result_user.scalars().first()
+        now = datetime.utcnow()
+        is_expired = True
+        if user and user.is_premium:
+            if user.premium_expires_at and user.premium_expires_at > now:
+                is_expired = False
+            else:
+                user.is_premium = False
+                await session.commit()
+                
+        result_mode = await session.execute(select(Setting).where(Setting.key == "premium_mode"))
+        mode_setting = result_mode.scalars().first()
+        is_premium_mode_on = mode_setting.value == "1" if mode_setting else False
+        
+        if is_premium_mode_on and (not user or not user.is_premium or is_expired):
+            from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+            kb = InlineKeyboardMarkup(inline_keyboard=[
+                [InlineKeyboardButton(text="💎 VIP Obunani Olish", callback_data="premium_buy")],
+                [InlineKeyboardButton(text="⭐ Telegram Stars orqali", callback_data="premium_stars")],
+                [InlineKeyboardButton(text="🎟 Promokod kiritish", callback_data="premium_promo")]
+            ])
+            await message.answer(
+                "👑 <b>GAI Imtihoni Simulyatori faqat VIP Premium foydalanuvchilar uchun!</b>\n\n"
+                "Sizda faol VIP obuna yo'q yoki uning 30 kunlik muddati yakunlangan.\n"
+                "Cheksiz testlar va Oltin Sertifikat olish uchun quyidagi tugmalar orqali obunani faollashtiring:",
+                reply_markup=kb,
+                parse_mode="HTML"
+            )
+            return
+
         result_q = await session.execute(select(Question.id).order_by(func.random()).limit(20))
         q_ids = result_q.scalars().all()
 
@@ -642,9 +673,12 @@ async def start_test(callback: types.CallbackQuery, state: FSMContext):
             result_user = await session.execute(select(User).where(User.telegram_id == callback.from_user.id))
             user = result_user.scalars().first()
             is_expired = True
-            if user and user.is_premium and user.premium_expires_at:
-                if user.premium_expires_at > datetime.utcnow():
+            if user and user.is_premium:
+                if user.premium_expires_at and user.premium_expires_at > datetime.utcnow():
                     is_expired = False
+                else:
+                    user.is_premium = False
+                    await session.commit()
             
             if not user or not user.is_premium or is_expired:
                 await callback.answer("👑 Kechirasiz, bu bo'lim faqat VIP (Premium) foydalanuvchilar uchun ochiq!", show_alert=True)
@@ -693,15 +727,26 @@ async def start_test(callback: types.CallbackQuery, state: FSMContext):
 
         if is_premium_mode_on:
             is_expired = True
-            if user and user.is_premium and user.premium_expires_at:
-                if user.premium_expires_at > datetime.utcnow():
+            if user and user.is_premium:
+                if user.premium_expires_at and user.premium_expires_at > datetime.utcnow():
                     is_expired = False
+                else:
+                    user.is_premium = False
+                    await session.commit()
             
             if not user or not user.is_premium or is_expired:
+                from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+                kb = InlineKeyboardMarkup(inline_keyboard=[
+                    [InlineKeyboardButton(text="💎 VIP Obuna Olish", callback_data="premium_buy")],
+                    [InlineKeyboardButton(text="⭐ Telegram Stars orqali", callback_data="premium_stars")],
+                    [InlineKeyboardButton(text="🎟 Promokod kiritish", callback_data="premium_promo")]
+                ])
                 await callback.message.edit_text(
-                    "🔒 Hozirda bot faqat **Premium** tarifda ishlamoqda.\n"
-                    "Sizda faol obuna yo'q yoki uning muddati tugagan.\n\n"
-                    "Iltimos, Asosiy menyudan **⭐ Premium** bo'limiga o'tib, bot tarifini xarid qiling."
+                    "🔒 <b>Hozirda bot faqat VIP Premium rejimida ishlamoqda.</b>\n\n"
+                    "Sizning 30 kunlik VIP obunangiz muddati yakunlangan yoki faol emas.\n\n"
+                    "Testlarni davom ettirish uchun VIP tarifini faollashtiring:",
+                    reply_markup=kb,
+                    parse_mode="HTML"
                 )
                 return
                 

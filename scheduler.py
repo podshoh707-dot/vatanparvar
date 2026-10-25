@@ -207,19 +207,39 @@ async def check_expired_premiums(bot: Bot):
         result = await session.execute(select(User).where(User.is_premium == True))
         users = result.scalars().all()
         now = datetime.utcnow()
+        expired_count = 0
         
         for user in users:
-            if user.premium_expires_at and user.premium_expires_at < now:
+            if not user.premium_expires_at or user.premium_expires_at <= now:
                 user.is_premium = False
-                await session.commit()
+                expired_count += 1
+                from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+                kb = InlineKeyboardMarkup(inline_keyboard=[
+                    [InlineKeyboardButton(text="💳 VIP Obunani Yangilash", callback_data="premium_buy")],
+                    [InlineKeyboardButton(text="⭐ Telegram Stars orqali", callback_data="premium_stars")],
+                    [InlineKeyboardButton(text="🎟 Promokod kiritish", callback_data="premium_promo")]
+                ])
                 try:
                     await bot.send_message(
-                        user.telegram_id,
-                        "⚠️ **Diqqat!** Bepul 5 kunlik Premium (VIP) muddati o'z nihoyasiga yetdi. \n\nVIP testlarni va Imtihon simulyatorini davom ettirish uchun asosiy menyudan **⭐ Premium** bo'limiga o'tib obuna xarid qiling!",
-                        parse_mode="Markdown"
+                        chat_id=user.telegram_id,
+                        text=(
+                            "⚠️ <b>VIP PREMIUM OBUNANGIZ MUDDATI YAKUNLANDI!</b>\n"
+                            "───────────────────────────\n\n"
+                            "Sizning <b>30 kunlik VIP Premium</b> tarifingiz muddati o'z nihoyasiga yetdi va VIP imtiyozlar avtomatik yopildi.\n\n"
+                            "🔒 <b>Yopilgan imtiyozlar:</b>\n"
+                            " • GAI Imtihon Simulyatori va sertifikat olish\n"
+                            " • Xatolar tahlili ustida ishlash\n"
+                            " • Cheksiz testlar yechish\n\n"
+                            "👇 VIP imkoniyatlarni qayta ochish uchun quyidagi tugmalar orqali obunani yangilashingiz mumkin:"
+                        ),
+                        reply_markup=kb,
+                        parse_mode="HTML"
                     )
                 except Exception as e:
-                    print(f"Error sending expiration notice to {user.telegram_id}: {e}")
+                    pass
+        if expired_count > 0:
+            await session.commit()
+            print(f"[Scheduler] {expired_count} ta foydalanuvchining muddati o'tgan VIP obunasi yopildi.")
 
 async def send_daily_smart_reminder(bot: Bot):
     """Foydalanuvchilarga kunlik xatolarni takrorlash eslatmasi (Spaced Repetition)"""
@@ -318,7 +338,7 @@ async def setup_scheduler(bot: Bot) -> AsyncIOScheduler:
 
     scheduler.add_job(broadcast_auto_test, "interval", minutes=interval, args=[bot], id="auto_test_job", replace_existing=True)
     scheduler.add_job(broadcast_auto_ad, "interval", hours=ad_interval, args=[bot], id="auto_ad_job", replace_existing=True)
-    scheduler.add_job(check_expired_premiums, "interval", hours=1, args=[bot], id="expired_premium_job", replace_existing=True)
+    scheduler.add_job(check_expired_premiums, "interval", minutes=10, args=[bot], id="expired_premium_job", replace_existing=True)
     scheduler.add_job(send_daily_smart_reminder, "cron", hour=18, minute=0, args=[bot], id="daily_reminder_job", replace_existing=True)
     scheduler.add_job(send_personalized_hourly_reminders, "cron", minute=0, args=[bot], id="personalized_reminders_job", replace_existing=True)
     scheduler.start()

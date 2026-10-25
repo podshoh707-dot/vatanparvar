@@ -1,4 +1,4 @@
-from aiogram import Router, types, F
+from aiogram import Router, types, F, Bot
 from utils.permissions import check_permission, is_superadmin
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from database import async_session, User, Setting
@@ -173,30 +173,86 @@ async def give_premium_prompt(callback: types.CallbackQuery, state: FSMContext):
     if not await check_permission(callback.from_user.id, "can_manage_premium"):
         await callback.answer("Sizda bu bo'limga ruxsat yo'q!", show_alert=True)
         return
-    await callback.message.edit_text("Premium berish kerak bo'lgan foydalanuvchining Telegram ID sini yozing:")
+    kb = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="🔙 Orqaga", callback_data="admin_premium")]
+    ])
+    await callback.message.edit_text(
+        "🎁 <b>Foydalanuvchiga VIP berish:</b>\n\n"
+        "VIP Premium berish kerak bo'lgan foydalanuvchining Telegram ID sini yozing:",
+        reply_markup=kb,
+        parse_mode="HTML"
+    )
     await state.set_state(PremiumStates.waiting_for_user_id)
 
 @settings_router.message(PremiumStates.waiting_for_user_id)
-async def give_premium_save(message: types.Message, state: FSMContext):
+async def give_premium_save(message: types.Message, state: FSMContext, bot: Bot):
     if not await check_permission(message.from_user.id, "can_manage_premium"):
         await message.answer("Sizda bu bo'limga ruxsat yo'q!")
         return
-    try:
-        target_id = int(message.text)
-    except ValueError:
-        await message.answer("Faqat raqam kiriting.")
+    text = (message.text or "").strip()
+    if text.startswith("/") or text in ["🔙 Orqaga", "Bekor qilish"]:
+        await state.clear()
+        await message.answer("VIP berish bekor qilindi.")
         return
+    try:
+        target_id = int(text)
+    except ValueError:
+        await message.answer("❌ Faqat raqam (Telegram ID) kiriting:")
+        return
+        
+    from database import Payment
     async with async_session() as session:
         result = await session.execute(select(User).where(User.telegram_id == target_id))
         user = result.scalars().first()
         if not user:
-            await message.answer("Bu ID ga ega foydalanuvchi topilmadi.")
+            await message.answer("❌ Bu ID ga ega foydalanuvchi bot bazasida topilmadi. Foydalanuvchi avval botda /start bosgan bo'lishi kerak.")
             return
-        user.is_premium = True
-        user.premium_expires_at = datetime.utcnow() + timedelta(days=30)
+            
+        now = datetime.utcnow()
+        if user.is_premium and user.premium_expires_at and user.premium_expires_at > now:
+            user.premium_expires_at += timedelta(days=30)
+        else:
+            user.is_premium = True
+            user.premium_expires_at = now + timedelta(days=30)
+            
+        payment = Payment(
+            user_telegram_id=target_id,
+            user_full_name=user.full_name,
+            amount="Admin sovg'asi (+30 kun)",
+            status="approved",
+            days_granted=30,
+            approved_by=message.from_user.id,
+            resolved_at=now
+        )
+        session.add(payment)
         await session.commit()
+        exp_str = user.premium_expires_at.strftime('%d.%m.%Y %H:%M')
+
+    try:
+        kb_user = InlineKeyboardMarkup(inline_keyboard=[
+            [InlineKeyboardButton(text="🚗 Testlarni boshlash", callback_data="testcnt_gai")],
+            [InlineKeyboardButton(text="👑 Bosh menyu", callback_data="back_to_main_menu")]
+        ])
+        await bot.send_message(
+            target_id,
+            f"🎉 <b>TABRIKLAYMIZ! SIZGA VIP PREMIUM SOVG'A QILINDI!</b>\n"
+            f"───────────────────────────\n\n"
+            f"Admin tomonidan sizga <b>30 kunlik VIP Premium</b> taqdim etildi.\n"
+            f"⏳ Amal qilish muddati: <b>{exp_str} gacha</b>.\n\n"
+            f"👑 <i>Endi barcha VIP imkoniyatlardan cheksiz foydalanishingiz mumkin!</i>",
+            reply_markup=kb_user,
+            parse_mode="HTML"
+        )
+    except Exception:
+        pass
+
     await state.clear()
-    await message.answer(f"✅ {target_id} ID egasiga 30 kunlik Premium taqdim etildi.\n/admin orqali panelga qaytishingiz mumkin.")
+    await message.answer(
+        f"✅ <code>{target_id}</code> ID egasiga <b>30 kunlik VIP Premium</b> muvaffaqiyatli berildi!\n"
+        f"⏳ Amal qilish muddati: <b>{exp_str}</b>\n\n"
+        f"/admin orqali panelga qaytishingiz mumkin.",
+        parse_mode="HTML"
+    )
 
 @settings_router.callback_query(F.data == "admin_set_price")
 async def set_price_prompt(callback: types.CallbackQuery, state: FSMContext):
@@ -408,17 +464,102 @@ async def pending_payments_handler(callback: types.CallbackQuery):
     
     for p in pending_list:
         dt_str = p.created_at.strftime("%d.%m %H:%M") if p.created_at else ""
+        u_name = f"(@{p.username})" if p.username else ""
         text += (
-            f"📌 <b>ID: #{p.id}</b> | User ID: <code>{p.user_id}</code>\n"
+            f"📌 <b>ID: #{p.id}</b> | <code>{p.user_telegram_id}</code>\n"
+            f"👤 Mijoz: <b>{p.user_full_name or 'Noma`lum'}</b> {u_name}\n"
             f"💵 Summa: <b>{p.amount}</b> | Sana: {dt_str}\n"
             f"───────────────────\n"
         )
         buttons.append([
-            InlineKeyboardButton(text=f"✅ #{p.id} Tasdiqlash", callback_data=f"pay_appr_{p.id}"),
-            InlineKeyboardButton(text=f"❌ Rad etish", callback_data=f"pay_rejc_{p.id}")
+            InlineKeyboardButton(text=f"✅ #{p.id} Tasdiqlash (+30 kun)", callback_data=f"pay_appr_{p.id}"),
+            InlineKeyboardButton(text=f"❌ #{p.id} Rad etish", callback_data=f"pay_rejc_{p.id}")
         ])
         
-    buttons.append([InlineKeyboardButton(text="🔙 Premium menyusi", callback_data="admin_premium")])
+    buttons.append([
+        InlineKeyboardButton(text="🔄 Yangilash", callback_data="admin_pending_payments"),
+        InlineKeyboardButton(text="🔙 Premium menyusi", callback_data="admin_premium")
+    ])
     kb = InlineKeyboardMarkup(inline_keyboard=buttons)
     await callback.message.edit_text(text, reply_markup=kb, parse_mode="HTML")
     await callback.answer()
+
+
+@settings_router.callback_query(F.data.startswith("pay_appr_") | F.data.startswith("pay_rejc_"))
+async def process_admin_panel_payment(callback: types.CallbackQuery, bot: Bot):
+    if not await check_permission(callback.from_user.id, "can_manage_premium"):
+        await callback.answer("Ruxsat yo'q!", show_alert=True)
+        return
+        
+    parts = callback.data.split("_")
+    action = parts[1]  # "appr" or "rejc"
+    payment_id = int(parts[2])
+    
+    from database import Payment, User
+    async with async_session() as session:
+        result = await session.execute(select(Payment).where(Payment.id == payment_id))
+        payment = result.scalars().first()
+        if not payment:
+            await callback.answer("To'lov topilmadi!", show_alert=True)
+            return
+            
+        if payment.status != 'pending':
+            await callback.answer(f"Bu to'lov allaqachon ko'rib chiqilgan ({payment.status})!", show_alert=True)
+            await pending_payments_handler(callback)
+            return
+            
+        now = datetime.utcnow()
+        days = payment.days_granted or 30
+        
+        if action == "appr":
+            payment.status = "approved"
+            payment.approved_by = callback.from_user.id
+            payment.resolved_at = now
+            
+            result_user = await session.execute(select(User).where(User.telegram_id == payment.user_telegram_id))
+            user = result_user.scalars().first()
+            if user:
+                if user.is_premium and user.premium_expires_at and user.premium_expires_at > now:
+                    user.premium_expires_at += timedelta(days=days)
+                else:
+                    user.is_premium = True
+                    user.premium_expires_at = now + timedelta(days=days)
+            await session.commit()
+            
+            exp_date_str = user.premium_expires_at.strftime('%d.%m.%Y %H:%M') if (user and user.premium_expires_at) else "30 kun"
+            try:
+                kb_user = InlineKeyboardMarkup(inline_keyboard=[
+                    [InlineKeyboardButton(text="🚗 Testlarni boshlash", callback_data="testcnt_gai")],
+                    [InlineKeyboardButton(text="👑 Bosh menyu", callback_data="back_to_main_menu")]
+                ])
+                await bot.send_message(
+                    payment.user_telegram_id,
+                    f"🎉 <b>TABRIKLAYMIZ! TO'LOVINGIZ TASDIQLANDI!</b>\n"
+                    f"───────────────────────────\n\n"
+                    f"Admin tomonidan to'lovingiz tasdiqlandi va sizga <b>{days} kunlik VIP Premium</b> taqdim etildi.\n"
+                    f"⏳ Amal qilish muddati: <b>{exp_date_str} gacha</b>.\n\n"
+                    f"👑 <i>Endi barcha VIP imkoniyatlardan cheksiz foydalanishingiz mumkin!</i>",
+                    reply_markup=kb_user,
+                    parse_mode="HTML"
+                )
+            except Exception:
+                pass
+            await callback.answer(f"#{payment_id} tasdiqlandi! (+{days} kun VIP berildi)")
+        else:
+            payment.status = "rejected"
+            payment.approved_by = callback.from_user.id
+            payment.resolved_at = now
+            await session.commit()
+            try:
+                await bot.send_message(
+                    payment.user_telegram_id,
+                    "❌ <b>Kechirasiz, siz yuborgan to'lov cheki admin tomonidan tasdiqlanmadi.</b>\n\n"
+                    "Savollar bo'yicha @Avto_admin bilan bog'laning.",
+                    parse_mode="HTML"
+                )
+            except Exception:
+                pass
+            await callback.answer(f"#{payment_id} rad etildi!")
+            
+    # Refresh pending payments view
+    await pending_payments_handler(callback)

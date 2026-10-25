@@ -11,11 +11,16 @@ class SubscriptionCheckMiddleware(BaseMiddleware):
         data: Dict[str, Any]
     ) -> Any:
         
-        # ── 1. "check_sub" callback'ini DOIM o'tkazib yuboramiz ──
-        if isinstance(event, CallbackQuery) and event.data == "check_sub":
+        # ── 1. To'lovlar (Stars va cheklar) va /start buyrug'ini DOIM o'tkazamiz ──
+        if isinstance(event, Message) and (event.successful_payment or (event.text and event.text.startswith("/start"))):
             return await handler(event, data)
 
-        # ── 2. Guruh/supergroup xabar va callback'larini o'tkazib yuboramiz ──
+        # ── 2. "check_sub" va Premium / To'lov callback'larini DOIM o'tkazib yuboramiz ──
+        if isinstance(event, CallbackQuery) and event.data:
+            if event.data == "check_sub" or event.data.startswith(("premium_", "pay_", "approve_prem_", "reject_prem_")):
+                return await handler(event, data)
+
+        # ── 3. Guruh/supergroup xabar va callback'larini o'tkazib yuboramiz ──
         chat = None
         if isinstance(event, Message):
             chat = event.chat
@@ -29,6 +34,11 @@ class SubscriptionCheckMiddleware(BaseMiddleware):
         user = event.from_user
         
         if not user or not bot:
+            return await handler(event, data)
+
+        # Adminlar uchun majburiy obuna cheklovi qo'yilmaydi
+        from utils.permissions import is_any_admin
+        if await is_any_admin(user.id):
             return await handler(event, data)
             
         # Obunani check_user_subscription funksiyamiz orqali xavfsiz tekshiramiz

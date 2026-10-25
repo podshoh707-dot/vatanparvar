@@ -8,6 +8,7 @@ from database import async_session, User, Setting, Rule, VideoLesson, News, QAIt
 from sqlalchemy import select, func
 from sqlalchemy.sql.expression import desc
 from aiogram.fsm.context import FSMContext
+from datetime import datetime
 
 menu_router = Router()
 
@@ -392,11 +393,22 @@ async def show_stats(message: types.Message):
             await message.answer("❌ Siz hali ro'yxatdan o'tmagansiz. /start ni bosing.")
             return
 
+        now = datetime.utcnow()
+        if user.is_premium:
+            if user.premium_expires_at and user.premium_expires_at > now:
+                days_left = (user.premium_expires_at - now).days
+                premium_status = f"💎 VIP Premium ({days_left} kun qoldi)"
+            else:
+                user.is_premium = False
+                await session.commit()
+                premium_status = "⭐️ Standart (VIP muddati tugagan)"
+        else:
+            premium_status = "⭐️ Standart"
+
         result_stat = await session.execute(select(UserStat).where(UserStat.user_id == user.id))
         stat = result_stat.scalars().first()
 
     name = user.full_name or "Noma'lum"
-    premium_status = "💎 VIP Premium" if user.is_premium else "⭐️ Standart"
 
     if not stat or (stat.tests_taken == 0):
         text = (

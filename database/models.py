@@ -1,7 +1,8 @@
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
-from sqlalchemy.orm import declarative_base
+from sqlalchemy.orm import declarative_base, validates
 from sqlalchemy import Column, Integer, String, BigInteger, Boolean, ForeignKey, DateTime, Text
 import os
+import json
 from datetime import datetime
 
 Base = declarative_base()
@@ -43,6 +44,14 @@ class Question(Base):
     explanation = Column(Text, nullable=True)
     difficulty = Column(String, default="o'rta") # oson, o'rta, qiyin
     category = Column(String, default="Umumiy")
+
+    @validates('media_urls', 'option_images')
+    def validate_json_fields(self, key, value):
+        if value is None:
+            return None
+        if isinstance(value, (dict, list)):
+            return json.dumps(value, ensure_ascii=False)
+        return str(value)
 
 class Sign(Base):
     __tablename__ = 'signs'

@@ -41,10 +41,16 @@ async def export():
         if q.option_d:
             options.append({"letter": "D", "text": q.option_d})
         
+        m_urls = json.loads(q.media_urls) if isinstance(q.media_urls, str) else q.media_urls
+        opt_imgs = json.loads(q.option_images) if isinstance(q.option_images, str) else q.option_images
+        
         data.append({
             "id": q.id,
             "text": q.text,
             "image_url": image_url,
+            "option_images": opt_imgs,
+            "media_type": q.media_type or "image",
+            "media_urls": m_urls,
             "options": options,
             "correct": q.correct_option,
             "explanation": q.explanation or "",

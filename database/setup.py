@@ -87,12 +87,26 @@ async def init_db():
                     opt_d = opt_d or item.get("option_d")
                     correct_opt = (item.get("correct") or item.get("correct_option") or "A").strip().upper()
 
+                    # JSON field serialization for SQLite compatibility
+                    media_urls_val = item.get("media_urls")
+                    if isinstance(media_urls_val, (dict, list)):
+                        media_urls_val = json.dumps(media_urls_val, ensure_ascii=False)
+                    elif media_urls_val is not None and not isinstance(media_urls_val, str):
+                        media_urls_val = str(media_urls_val)
+
+                    option_images_val = item.get("option_images")
+                    if isinstance(option_images_val, (dict, list)):
+                        option_images_val = json.dumps(option_images_val, ensure_ascii=False)
+                    elif option_images_val is not None and not isinstance(option_images_val, str):
+                        option_images_val = str(option_images_val)
+
                     q_obj = Question(
                         id=item.get("id"),
                         text=item.get("text", ""),
                         image_url=item.get("image_url"),
+                        option_images=option_images_val,
                         media_type=item.get("media_type", "image"),
-                        media_urls=item.get("media_urls"),
+                        media_urls=media_urls_val,
                         option_a=opt_a,
                         option_b=opt_b,
                         option_c=opt_c,

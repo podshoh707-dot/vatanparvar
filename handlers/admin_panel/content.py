@@ -56,33 +56,7 @@ def back_kb(cb: str):
 # ══════════════════════════════════════════════════════════
 # 🎥 VIDEO DARSLAR — Admin
 # ══════════════════════════════════════════════════════════
-@content_router.message(F.text.in_(["🎥 Video Darslar", "🎥 Video darslar", "🎥 Videolar"]))
-async def msg_videos_list(message: types.Message):
-    if not await check_permission(message.from_user.id, "can_manage_content"):
-        await message.answer("Sizda bu bo'limga ruxsat yo'q!")
-        return
-    page = 1
-    per_page = 15
-    offset = 0
-    async with async_session() as session:
-        from sqlalchemy import func
-        total = (await session.execute(select(func.count()).select_from(VideoLesson))).scalar() or 0
-        result = await session.execute(select(VideoLesson).order_by(VideoLesson.id.asc()).offset(offset).limit(per_page))
-        videos = result.scalars().all()
-    buttons = []
-    for v in videos:
-        buttons.append([InlineKeyboardButton(text=f"🎥 #{v.id} {v.topic[:35]}", callback_data=f"vid_admin_{v.id}")])
-    if total > per_page:
-        buttons.append([InlineKeyboardButton(text="Keyingi ➡️", callback_data="admin_videos_2")])
-    buttons.append([
-        InlineKeyboardButton(text="➕ Yangi video qo'shish", callback_data="video_add"),
-        InlineKeyboardButton(text="🔙 Orqaga", callback_data="admin_back_main")
-    ])
-    await message.answer(
-        f"🎥 <b>VIDEO DARSLAR BAZASI</b> ({total} ta)\nKo'rsatilmoqda: 1–{min(per_page, total)}\n\nVideoni tanlang:",
-        reply_markup=InlineKeyboardMarkup(inline_keyboard=buttons),
-        parse_mode="HTML"
-    )
+
 
 
 @content_router.callback_query(F.data.startswith("admin_videos"))
@@ -320,33 +294,7 @@ async def admin_video_add_url(message: types.Message, state: FSMContext):
 # ══════════════════════════════════════════════════════════
 # 📚 QOIDALAR — Admin
 # ══════════════════════════════════════════════════════════
-@content_router.message(F.text.in_(["📚 YHQ Qoidalari", "📚 YHQ qoidalari", "📚 Qoidalar"]))
-async def msg_rules_list(message: types.Message):
-    if not await check_permission(message.from_user.id, "can_manage_content"):
-        await message.answer("Sizda bu bo'limga ruxsat yo'q!")
-        return
-    page = 1
-    per_page = 15
-    offset = 0
-    async with async_session() as session:
-        from sqlalchemy import func
-        total = (await session.execute(select(func.count()).select_from(Rule))).scalar() or 0
-        result = await session.execute(select(Rule).order_by(Rule.id.asc()).offset(offset).limit(per_page))
-        rules = result.scalars().all()
-    buttons = []
-    for r in rules:
-        buttons.append([InlineKeyboardButton(text=f"📚 #{r.id} {r.title[:35]}", callback_data=f"rule_admin_{r.id}")])
-    if total > per_page:
-        buttons.append([InlineKeyboardButton(text="Keyingi ➡️", callback_data="admin_rules_2")])
-    buttons.append([
-        InlineKeyboardButton(text="➕ Yangi qoida qo'shish", callback_data="rule_add"),
-        InlineKeyboardButton(text="🔙 Orqaga", callback_data="admin_back_main")
-    ])
-    await message.answer(
-        f"📚 <b>YHQ QOIDALARI BAZASI</b> ({total} ta bob)\nKo'rsatilmoqda: 1–{min(per_page, total)}\n\nQoidani tanlang:",
-        reply_markup=InlineKeyboardMarkup(inline_keyboard=buttons),
-        parse_mode="HTML"
-    )
+
 
 
 @content_router.callback_query(F.data.startswith("admin_rules"))

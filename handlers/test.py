@@ -98,7 +98,7 @@ async def start_gai_exam_from_message(message: types.Message, state: FSMContext)
             return
 
         result_q = await session.execute(select(Question.id).order_by(func.random()).limit(20))
-        q_ids = result_q.scalars().all()
+        q_ids = [qid for qid in result_q.scalars().all() if isinstance(qid, int) and 1 <= qid <= 805]
 
     if not q_ids:
         await message.answer("❌ Hozircha bazada savollar topilmadi.")
@@ -237,6 +237,13 @@ async def test_resume(callback: types.CallbackQuery, state: FSMContext):
     if not existing:
         await callback.answer("Sessiya topilmadi.", show_alert=True)
         return
+    valid_q = [qid for qid in existing.get('questions', []) if isinstance(qid, int) and 1 <= qid <= 805]
+    if not valid_q:
+        await delete_test_session(callback.from_user.id)
+        await callback.answer("⚠️ Sessiya eskirgan. Yangi test boshlang.", show_alert=True)
+        await test_menu(callback, state)
+        return
+    existing['questions'] = valid_q
     await state.set_state(TestStates.taking_test)
     await state.set_data(existing)
     await callback.message.delete()
@@ -537,10 +544,29 @@ async def send_question(message_or_callback, state: FSMContext):
     filled = int((curr_num / total_q) * 10)
     prog_bar = "🟩" * filled + "⬜️" * (10 - filled)
     prog_pct = int((curr_num / total_q) * 100)
-    category_label = q.category or "Umumiy"
+
+    # Rejimga qarab to'g'ri sarlavha tanlash
+    is_gai = data.get("is_gai_mode", False)
+    is_marathon = data.get("is_marathon_mode", False)
+    is_video = data.get("is_video_mode", False)
+    is_mistake = data.get("is_mistake_mode", False)
+    bilet_num = data.get("bilet_num")
+
+    if bilet_num:
+        header_title = f"📄 {bilet_num}-Bilet"
+    elif is_gai:
+        header_title = "🎓 GAI Imtihoni"
+    elif is_marathon:
+        header_title = "🎯 Marafon 805"
+    elif is_video:
+        header_title = "🎬 3D Harakatlanish Testi"
+    elif is_mistake:
+        header_title = "🧠 Xatolar Ustida Ishlash"
+    else:
+        header_title = f"🚗 Avtotest ({total_q} ta)"
 
     caption = (
-        f"🚘 <b>{category_label} • Savol {curr_num}/{total_q}</b>\n"
+        f"🚘 <b>{header_title} • Savol {curr_num}/{total_q}</b>\n"
         f"📊 <code>[{prog_bar}] {prog_pct}%</code>\n"
         f"━━━━━━━━━━━━━━━━━━━━\n\n"
         f"❓ <b>{safe_text}</b>\n\n"
@@ -694,9 +720,11 @@ async def start_test(callback: types.CallbackQuery, state: FSMContext):
                 return
                 
             result_mistakes = await session.execute(
-                select(UserMistake.question_id).where(UserMistake.user_id == user.id).order_by(func.random()).limit(50)
+                select(UserMistake.question_id).where(
+                    (UserMistake.user_id == user.id) & (UserMistake.question_id <= 805)
+                ).order_by(func.random()).limit(50)
             )
-            q_ids = result_mistakes.scalars().all()
+            q_ids = [qid for qid in result_mistakes.scalars().all() if 1 <= qid <= 805]
             
             if not q_ids:
                 await callback.message.edit_text("🎉 Sizda hozircha xato ishlangan testlar yo'q. Ofarin!")
@@ -704,6 +732,10 @@ async def start_test(callback: types.CallbackQuery, state: FSMContext):
                 
             await state.set_state(TestStates.taking_test)
             await state.update_data(questions=q_ids, current_idx=0, correct_answers=0, is_mistake_mode=True)
+            await save_test_session(callback.from_user.id, {
+                'questions': q_ids, 'current_idx': 0, 'correct_answers': 0,
+                'is_mistake_mode': True, 'selected_category': 'Xatolar'
+            })
             await callback.message.delete()
             await send_question(callback, state)
         return
@@ -782,6 +814,8 @@ async def start_test(callback: types.CallbackQuery, state: FSMContext):
             result_q = await session.execute(stmt.order_by(func.random()).limit(count))
             q_ids = result_q.scalars().all()
         
+    bilet_num = mode.split("_")[1] if is_bilet else None
+    q_ids = [qid for qid in q_ids if isinstance(qid, int) and 1 <= qid <= 805]
     if not q_ids:
         await callback.message.edit_text("Hozircha bazada savollar yo'q.")
         return
@@ -789,12 +823,14 @@ async def start_test(callback: types.CallbackQuery, state: FSMContext):
     await state.set_state(TestStates.taking_test)
     await state.update_data(
         questions=q_ids, current_idx=0, correct_answers=0, wrong_count=0,
-        is_gai_mode=is_gai, is_marathon_mode=is_marathon, is_video_mode=is_videos
+        is_gai_mode=is_gai, is_marathon_mode=is_marathon, is_video_mode=is_videos,
+        bilet_num=bilet_num
     )
     # Sessiyani bazaga saqlash
     await save_test_session(callback.from_user.id, {
         'questions': q_ids, 'current_idx': 0, 'correct_answers': 0,
-        'is_gai_mode': is_gai, 'is_marathon_mode': is_marathon, 'selected_category': category
+        'is_gai_mode': is_gai, 'is_marathon_mode': is_marathon, 'bilet_num': bilet_num,
+        'selected_category': category
     })
     await callback.message.delete()
     await send_question(callback, state)

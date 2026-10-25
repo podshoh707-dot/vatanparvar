@@ -159,10 +159,33 @@ async def show_rule(callback: types.CallbackQuery):
     await callback.answer()
 
 
-# ──────────────── 133 TA VIDEO DARSLAR ────────────────
+# ──────────────── 133 TA RASMIY VIDEO DARSLAR ────────────────
+VIDEO_MODULES = [
+    ('yhq', '🚦 Yo\'l harakati qoidalari', ['yo\'l harakati', 'asosiy qoidalar', 'harakatlanish', 'chorraha', 'to\'xtash', 'piyodalar']),
+    ('belgilar', '🛑 Yo\'l belgilari va chiziqlari', ['belgi', 'chiziq']),
+    ('texnika', '🚗 Avtomobil tuzilishi va xizmat', ['tuzilish', 'texnik', 'nosozlik']),
+    ('huquq', '⚖️ Haydovchi madaniyati va huquq', ['madaniyat', 'huquq']),
+    ('tibbiyot', '🚑 Birinchi tibbiy yordam', ['tibbiy', 'yordam']),
+    ('umumiy', '🎓 Umumiy ta\'lim va xavfsizlik', ['umumiy'])
+]
+
+def get_video_module_key(sec: str) -> str:
+    s = (sec or '').lower()
+    for key, title, keywords in VIDEO_MODULES:
+        if any(kw in s for kw in keywords):
+            return key
+    return 'umumiy'
+
+def get_module_title(m_key: str) -> str:
+    for key, title, _ in VIDEO_MODULES:
+        if key == m_key:
+            return title
+    return "Umumiy ta'lim darslari"
+
 @menu_router.message(F.text.in_([
-    "🎥 Video darslar", "🎬 Video Darsliklar (VIP)", "🎬 Video Darsliklar", "🎥 Video Darsliklar",
-    "🎥 Видео дарслар", "🎥 Видеоуроки", "🎥 Video darsliklar"
+    "🎥 Video Darslar", "🎬 Video Darslar", "🎥 Video darslar", "🎬 Video darslar",
+    "🎬 Video Darsliklar (VIP)", "🎬 Video Darsliklar", "🎥 Video Darsliklar",
+    "🎥 Видео дарслар", "🎥 Видеоуроки", "🎥 Video darsliklar", "🎥 Videolar", "🎬 Videolar"
 ]))
 async def video_menu(message: types.Message, state: FSMContext):
     if state:
@@ -183,22 +206,24 @@ async def show_video_sections(target, is_callback=False):
 
     if not videos:
         msg = "❌ Hozircha video darslar kiritilmagan."
-        if is_callback: await target.edit_text(msg)
-        else: await target.answer(msg)
+        if is_callback:
+            await target.edit_text(msg)
+        else:
+            await target.answer(msg)
         return
 
-    sections = {}
+    # Modullar bo'yicha sanash
+    counts = {m[0]: 0 for m in VIDEO_MODULES}
     for v in videos:
-        sec = v.section or "Umumiy ta'lim darslari"
-        if sec not in sections:
-            sections[sec] = 0
-        sections[sec] += 1
+        k = get_video_module_key(v.section)
+        counts[k] += 1
 
     buttons = []
-    for sec_name, count in sections.items():
+    for m_key, m_title, _ in VIDEO_MODULES:
+        c = counts.get(m_key, 0)
         buttons.append([InlineKeyboardButton(
-            text=f"📁 {sec_name} ({count} ta dars)",
-            callback_data=f"vsec_{sec_name[:20]}_1"
+            text=f"{m_title} ({c} ta dars)",
+            callback_data=f"vsec_{m_key}_1"
         )])
 
     buttons.append([
@@ -208,29 +233,33 @@ async def show_video_sections(target, is_callback=False):
 
     keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
     text = (
-        f"🎥 <b>133 TA RASMIY VIDEO DARSLAR BAZASI</b>\n"
+        f"🎬 <b>133 TA RASMIY VIDEO DARSLAR BAZASI</b>\n"
         f"━━━━━━━━━━━━━━━━━━━━\n\n"
-        f"📹 Jami darslar: <b>{len(videos)} ta</b> (e-avtomaktab.uz rasmiy darslari)\n\n"
+        f"📹 Jami darslar: <b>{len(videos)} ta</b> (e-avtomaktab.uz rasmiy video kursi)\n"
+        f"⚡️ Barcha mavzular rasmiy standartlar bo'yicha tartiblangan.\n\n"
         f"👇 <i>Ko'rmoqchi bo'lgan mavzuli bo'limni tanlang:</i>"
     )
     if is_callback:
-        await target.edit_text(text, reply_markup=keyboard, parse_mode="HTML")
+        try:
+            await target.edit_text(text, reply_markup=keyboard, parse_mode="HTML")
+        except Exception:
+            await target.answer(text, reply_markup=keyboard, parse_mode="HTML")
     else:
         await target.answer(text, reply_markup=keyboard, parse_mode="HTML")
 
 
-@menu_router.callback_query(F.data.regexp(r'^vsec_(.+)_(\d+)$'))
+@menu_router.callback_query(F.data.regexp(r'^vsec_([a-z_]+)_(\d+)$'))
 async def video_section(callback: types.CallbackQuery):
-    match = re.match(r'^vsec_(.+)_(\d+)$', callback.data)
-    sec_prefix = match.group(1)
+    match = re.match(r'^vsec_([a-z_]+)_(\d+)$', callback.data)
+    m_key = match.group(1)
     page = int(match.group(2))
-    
+
     async with async_session() as session:
         result = await session.execute(select(VideoLesson).order_by(VideoLesson.id))
         all_vids = result.scalars().all()
 
-    # Bo'lim bo'yicha filter
-    matched_vids = [v for v in all_vids if (v.section or "Umumiy ta'lim darslari").startswith(sec_prefix)]
+    # Modul bo'yicha filtrlash
+    matched_vids = [v for v in all_vids if get_video_module_key(v.section) == m_key]
     if not matched_vids:
         matched_vids = all_vids
 
@@ -247,27 +276,29 @@ async def video_section(callback: types.CallbackQuery):
         topic_title = v.topic if len(v.topic) <= 45 else v.topic[:42] + "..."
         buttons.append([InlineKeyboardButton(
             text=f"▶️ {v.id}-Dars: {topic_title}",
-            callback_data=f"vid_{v.id}"
+            callback_data=f"vid_{v.id}_{m_key}"
         )])
 
     nav_row = []
     if page > 1:
-        nav_row.append(InlineKeyboardButton(text="⬅️ Oldingi", callback_data=f"vsec_{sec_prefix}_{page-1}"))
-    nav_row.append(InlineKeyboardButton(text=f"{page}/{total_pages}", callback_data="rules_nop"))
+        nav_row.append(InlineKeyboardButton(text="⬅️ Oldingi", callback_data=f"vsec_{m_key}_{page-1}"))
+    nav_row.append(InlineKeyboardButton(text=f"📑 {page}/{total_pages}", callback_data="rules_nop"))
     if page < total_pages:
-        nav_row.append(InlineKeyboardButton(text="Keyingi ➡️", callback_data=f"vsec_{sec_prefix}_{page+1}"))
+        nav_row.append(InlineKeyboardButton(text="Keyingi ➡️", callback_data=f"vsec_{m_key}_{page+1}"))
 
     if nav_row:
         buttons.append(nav_row)
+
     buttons.append([
         InlineKeyboardButton(text="🔙 Bo'limlarga qaytish", callback_data="vback"),
         InlineKeyboardButton(text="🏠 Bosh menyu", callback_data="back_to_main_menu")
     ])
 
     keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
-    sec_title = matched_vids[0].section if matched_vids else "Darslar"
+    sec_title = get_module_title(m_key)
     await callback.message.edit_text(
-        f"📁 <b>Bo'lim: {sec_title}</b> (Jami: {len(matched_vids)} ta dars)\n\n"
+        f"📁 <b>{sec_title}</b>\n"
+        f"📊 Ushbu bo'limda: <b>{len(matched_vids)} ta</b> rasmiy dars mavjud\n\n"
         f"👇 <i>Ko'rmoqchi bo'lgan darsingizni tanlang:</i>",
         reply_markup=keyboard,
         parse_mode="HTML"
@@ -275,9 +306,12 @@ async def video_section(callback: types.CallbackQuery):
     await callback.answer()
 
 
-@menu_router.callback_query(F.data.regexp(r'^vid_\d+$'))
+@menu_router.callback_query(F.data.regexp(r'^vid_(\d+)(?:_([a-z_]+))?$'))
 async def show_video(callback: types.CallbackQuery):
-    vid_id = int(callback.data.split("_")[1])
+    match = re.match(r'^vid_(\d+)(?:_([a-z_]+))?$', callback.data)
+    vid_id = int(match.group(1))
+    m_key = match.group(2)
+
     async with async_session() as session:
         result = await session.execute(select(VideoLesson).where(VideoLesson.id == vid_id))
         video = result.scalars().first()
@@ -286,27 +320,45 @@ async def show_video(callback: types.CallbackQuery):
         await callback.answer("Video dars topilmadi.", show_alert=True)
         return
 
-    sec_prefix = (video.section or "Umumiy")[:20]
+    if not m_key:
+        m_key = get_video_module_key(video.section)
+
     v_url = video.video_url or video.youtube_url or f"https://e-avtomaktab.uz/storage/course/lessons/{video.id}.mp4"
     video_source = video.telegram_video_id or v_url
 
-    keyboard = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="🌐 Onlayn ko'rish (e-avtomaktab)", url=v_url)],
-        [InlineKeyboardButton(text="🔙 Ro'yxatga qaytish", callback_data=f"vsec_{sec_prefix}_1")],
-        [InlineKeyboardButton(text="🏠 Bosh menyu", callback_data="back_to_main_menu")]
+    prev_id = max(1, vid_id - 1)
+    next_id = min(133, vid_id + 1)
+
+    nav_buttons = []
+    if vid_id > 1:
+        nav_buttons.append(InlineKeyboardButton(text="◀️ Oldingi dars", callback_data=f"vid_{prev_id}_{m_key}"))
+    if vid_id < 133:
+        nav_buttons.append(InlineKeyboardButton(text="Keyingi dars ▶️", callback_data=f"vid_{next_id}_{m_key}"))
+
+    btn_rows = [
+        [InlineKeyboardButton(text="🌐 Onlayn ko'rish (e-avtomaktab)", url=v_url)]
+    ]
+    if nav_buttons:
+        btn_rows.append(nav_buttons)
+    btn_rows.append([
+        InlineKeyboardButton(text="🔙 Ro'yxatga qaytish", callback_data=f"vsec_{m_key}_1"),
+        InlineKeyboardButton(text="🏠 Bosh menyu", callback_data="back_to_main_menu")
     ])
 
+    keyboard = InlineKeyboardMarkup(inline_keyboard=btn_rows)
+
+    sec_title = get_module_title(m_key)
     text = (
-        f"🎥 <b>{video.id}-DARS: {video.topic}</b>\n"
+        f"🎬 <b>{video.id}-DARS: {video.topic}</b>\n"
         f"━━━━━━━━━━━━━━━━━━━━\n\n"
-        f"📁 <b>Bo'lim:</b> {video.section or 'Umumiy ta\'lim darslari'}\n"
-        f"🌐 <b>Manba:</b> e-avtomaktab.uz rasmiy darsi\n\n"
+        f"📂 <b>Bo'lim:</b> {sec_title}\n"
+        f"🏛 <b>Manba:</b> e-avtomaktab.uz rasmiy video kursi\n"
+        f"🎥 <b>Format:</b> Yuqori sifatli (HD) video dars\n\n"
         f"👇 <i>Telegramda to'g'ridan-to'g'ri tomosha qiling:</i>"
     )
 
     await callback.answer("🎬 Video darslik yuklanmoqda...")
 
-    # Telegram orqali videoni to'g'ridan-to'g'ri yuborish
     video_sent = False
     try:
         if callback.message:
@@ -333,13 +385,12 @@ async def show_video(callback: types.CallbackQuery):
     except Exception as e:
         print(f"Error sending video {vid_id} via telegram: {e}")
 
-    # Agar videoni to'g'ridan-to'g'ri uzatishda xatolik bo'lsa
     if not video_sent:
         fallback_text = (
-            f"🎥 <b>{video.id}-DARS: {video.topic}</b>\n"
+            f"🎬 <b>{video.id}-DARS: {video.topic}</b>\n"
             f"━━━━━━━━━━━━━━━━━━━━\n\n"
-            f"📁 <b>Bo'lim:</b> {video.section or 'Umumiy ta\'lim darslari'}\n"
-            f"🌐 <b>Manba:</b> e-avtomaktab.uz rasmiy video darsi\n\n"
+            f"📂 <b>Bo'lim:</b> {sec_title}\n"
+            f"🏛 <b>Manba:</b> e-avtomaktab.uz rasmiy video kursi\n\n"
             f"👇 <i>Ushbu darsni yuqori HD sifatda tomosha qilish uchun pastdagi tugmani bosing:</i>"
         )
         await callback.message.bot.send_message(
@@ -348,37 +399,6 @@ async def show_video(callback: types.CallbackQuery):
             reply_markup=keyboard,
             parse_mode="HTML"
         )
-
-
-@menu_router.callback_query(F.data == "vback")
-async def video_back(callback: types.CallbackQuery):
-    async with async_session() as session:
-        result = await session.execute(select(VideoLesson))
-        videos = result.scalars().all()
-
-    sections = {}
-    for v in videos:
-        sec = v.section or "Umumiy"
-        if sec not in sections:
-            sections[sec] = []
-        sections[sec].append(v)
-
-    buttons = []
-    for sec_name, vids in sections.items():
-        buttons.append([InlineKeyboardButton(
-            text=f"📁 {sec_name} ({len(vids)} ta dars)",
-            callback_data=f"vsec_{sec_name}"
-        )])
-
-    keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
-    text = (
-        f"🎥 <b>MAVZULASHGAN VIDEO DARSLAR</b>\n"
-        f"───────────────────────────\n\n"
-        f"📹 Jami darslar: <b>{len(videos)} ta</b>\n\n"
-        f"👇 <i>Ko'rmoqchi bo'lgan bo'limni tanlang:</i>"
-    )
-    await callback.message.edit_text(text, reply_markup=keyboard, parse_mode="HTML")
-    await callback.answer()
 
 
 # ──────────────── STATISTIKA ────────────────

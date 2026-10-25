@@ -16,5 +16,3 @@ definition:
   env:
     - key: PYTHONUNBUFFERED
       value: "1"
-    - key: WEBAPP_URL
-      value: "https://avtomaktab-webapp.vercel.app/"

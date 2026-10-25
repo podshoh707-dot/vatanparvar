@@ -537,8 +537,9 @@ async def send_question(message_or_callback, state: FSMContext):
                     if not img_path:
                         continue
                     if not str(img_path).startswith("http"):
-                        cand1 = os.path.join(BASE_DIR, "webapp", str(img_path).replace('\\', '/'))
-                        cand2 = os.path.join(BASE_DIR, str(img_path).replace('\\', '/'))
+                        clean_p = str(img_path).replace('\\', '/').replace("webapp/", "")
+                        cand1 = os.path.join(BASE_DIR, clean_p)
+                        cand2 = os.path.join(BASE_DIR, "images", os.path.basename(clean_p))
                         target_cand = cand1 if os.path.exists(cand1) else (cand2 if os.path.exists(cand2) else None)
                         if target_cand:
                             hd_p = get_enhanced_image_path(target_cand)
@@ -585,14 +586,10 @@ async def send_question(message_or_callback, state: FSMContext):
     img_candidates = []
     if q.image_url:
         img_candidates.append(os.path.join(BASE_DIR, str(q.image_url).replace('\\', '/')))
-        img_candidates.append(os.path.join(BASE_DIR, "webapp", str(q.image_url).replace('\\', '/')))
         img_candidates.append(os.path.join(BASE_DIR, "images", os.path.basename(str(q.image_url))))
-        img_candidates.append(os.path.join(BASE_DIR, "webapp", "images", os.path.basename(str(q.image_url))))
     # Har doim standart q_{id}.webp va q_{id}.jpg ni ham tekshiramiz
     img_candidates.append(os.path.join(BASE_DIR, "images", f"q_{q.id}.webp"))
-    img_candidates.append(os.path.join(BASE_DIR, "webapp", "images", f"q_{q.id}.webp"))
     img_candidates.append(os.path.join(BASE_DIR, "images", f"q_{q.id}.jpg"))
-    img_candidates.append(os.path.join(BASE_DIR, "webapp", "images", f"q_{q.id}.jpg"))
 
     found_img_path = None
     for cand in img_candidates:

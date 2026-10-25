@@ -8,14 +8,8 @@ images/hd_cache/
 /images/*
 !/images/q_*.webp
 !/images/q_*.jpg
-
-/webapp/images/*
-!/webapp/images/q_*.webp
-!/webapp/images/q_*.jpg
-!/webapp/images/signs/
-!/webapp/images/signs/**
-!/webapp/images/signs_hq/
-!/webapp/images/signs_hq/**
+!/images/signs/
+!/images/signs/**
 
 # Python
 __pycache__/
@@ -46,6 +40,8 @@ fsm_data.json
 
 # Logs
 *.log
+/python
+scripts/
 
 # IDE
 .idea/

@@ -58,18 +58,7 @@ async def cmd_start(message: types.Message, state: FSMContext, bot: Bot):
                 except Exception as e:
                     print(f"Error unmuting: {e}")
 
-            # ⚔️ Duel chaqiruvi
-            if payload and payload.startswith("duel_"):
-                inviter_id_str = payload.replace("duel_", "")
-                if inviter_id_str.isdigit():
-                    inviter_id = int(inviter_id_str)
-                    if inviter_id != message.from_user.id:
-                        from handlers.duel import handle_duel_invite
-                        await handle_duel_invite(
-                            bot, inviter_id,
-                            message.from_user.id, message.from_user.full_name
-                        )
-                        return
+
 
             # Asosiy menyuni chiqarish
             await send_main_menu(message, user.language, user.full_name)

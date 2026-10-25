@@ -11,7 +11,5 @@ services:
         sync: false
       - key: ADMIN_IDS
         sync: false
-      - key: WEBAPP_URL
-        value: https://avtomaktab-webapp.vercel.app/
       - key: PYTHONUNBUFFERED
         value: "1"

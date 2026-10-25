@@ -190,12 +190,18 @@ async def show_sign_detail(callback: types.CallbackQuery):
 
     photo_to_send = None
     if sign.image_url:
-        if not sign.image_url.startswith("http"):
-            path1 = os.path.join(BASE_DIR, 'webapp', sign.image_url.replace('\\', '/'))
-            path2 = os.path.join(BASE_DIR, sign.image_url.replace('\\', '/'))
-            target_path = path1 if os.path.exists(path1) else (path2 if os.path.exists(path2) else None)
-            if target_path:
-                photo_to_send = FSInputFile(target_path)
+        if not str(sign.image_url).startswith("http"):
+            raw_url = str(sign.image_url).replace('\\', '/')
+            base_fname = os.path.basename(raw_url)
+            cand_paths = [
+                os.path.join(BASE_DIR, "images", "signs", base_fname),
+                os.path.join(BASE_DIR, raw_url),
+                os.path.join(BASE_DIR, raw_url.replace("webapp/", ""))
+            ]
+            for cand in cand_paths:
+                if os.path.exists(cand) and os.path.getsize(cand) > 100:
+                    photo_to_send = FSInputFile(cand)
+                    break
         else:
             photo_to_send = sign.image_url
 

@@ -34,7 +34,7 @@ def back_kb(cb: str):
 
 
 async def auto_sync_questions():
-    """Savollar bazasini webapp/questions.json bilan avtomatik sinxronlashtirish"""
+    """Savollar bazasini JSON fayllar bilan avtomatik sinxronlashtirish"""
     try:
         from export_questions import export
         await export()
@@ -433,7 +433,7 @@ async def admin_question_preview_image(callback: types.CallbackQuery):
             rel_path = rel_path[1:]
         abs_path = os.path.join(BASE_DIR, rel_path)
         if not os.path.exists(abs_path):
-            abs_path = os.path.join(BASE_DIR, "webapp", rel_path)
+            abs_path = os.path.join(BASE_DIR, "images", os.path.basename(rel_path))
         if os.path.exists(abs_path):
             photo_obj = FSInputFile(abs_path)
 
@@ -540,7 +540,7 @@ async def q_send_do(message: types.Message, state: FSMContext):
                 if rel_path.startswith('/'): rel_path = rel_path[1:]
                 abs_path = os.path.join(BASE_DIR, rel_path)
                 if not os.path.exists(abs_path):
-                    abs_path = os.path.join(BASE_DIR, "webapp", rel_path)
+                    abs_path = os.path.join(BASE_DIR, "images", os.path.basename(rel_path))
                 if os.path.exists(abs_path):
                     photo_obj = FSInputFile(abs_path)
 

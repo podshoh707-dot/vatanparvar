@@ -94,24 +94,7 @@ async def group_test_launcher(message: types.Message):
     chat_id = message.chat.id
     chat_type = message.chat.type
     
-    # Guruhda adminlikni tekshirish
-    if chat_type in ["group", "supergroup"]:
-        is_admin = False
-        if message.sender_chat and message.sender_chat.id == message.chat.id:
-            is_admin = True
-        elif message.from_user:
-            try:
-                chat_member = await message.chat.get_member(message.from_user.id)
-                if chat_member.status in ["administrator", "creator"]:
-                    is_admin = True
-            except Exception:
-                pass
-        
-        # Agar admin bo'lmasa, faoliyatni tekshirish yoki xabar berish
-        if not is_admin:
-            msg = await message.answer("ℹ️ <i>Guruhda viktorinani faqat guruh adminlari boshlashi mumkin.</i>", parse_mode="HTML")
-            asyncio.create_task(delete_later(msg, 6))
-            return
+    # Faol viktorina bor-yo'qligini tekshiramiz
 
     if chat_id in active_quizzes and active_quizzes[chat_id].get("is_active"):
         msg = await message.answer("⏳ <b>Hozir guruhda faol viktorina davom etmoqda!</b>\nIltimos, avvalgi viktorina yakunlanishini kuting yoki <code>/toxta</code> buyrug'ini bering.", parse_mode="HTML")
@@ -150,16 +133,6 @@ async def group_test_launcher(message: types.Message):
 @groups_router.callback_query(F.data.startswith("startgq_"))
 async def start_group_quiz_callback(callback: types.CallbackQuery):
     chat_id = callback.message.chat.id
-    chat_type = callback.message.chat.type
-    
-    if chat_type in ["group", "supergroup"]:
-        try:
-            chat_member = await callback.message.chat.get_member(callback.from_user.id)
-            if chat_member.status not in ["administrator", "creator"]:
-                await callback.answer("❌ Faqat adminlar boshlay oladi!", show_alert=True)
-                return
-        except Exception:
-            pass
             
     try:
         await callback.message.delete()
@@ -318,14 +291,10 @@ async def start_group_quiz_callback(callback: types.CallbackQuery):
                 img_candidates = []
                 if q.image_url:
                     img_candidates.append(os.path.join(BASE_DIR, str(q.image_url).replace('\\', '/')))
-                    img_candidates.append(os.path.join(BASE_DIR, "webapp", str(q.image_url).replace('\\', '/')))
                     img_candidates.append(os.path.join(BASE_DIR, "images", os.path.basename(str(q.image_url))))
-                    img_candidates.append(os.path.join(BASE_DIR, "webapp", "images", os.path.basename(str(q.image_url))))
                 # Har doim standart q_{id}.webp va q_{id}.jpg ni ham tekshiramiz
                 img_candidates.append(os.path.join(BASE_DIR, "images", f"q_{q.id}.webp"))
-                img_candidates.append(os.path.join(BASE_DIR, "webapp", "images", f"q_{q.id}.webp"))
                 img_candidates.append(os.path.join(BASE_DIR, "images", f"q_{q.id}.jpg"))
-                img_candidates.append(os.path.join(BASE_DIR, "webapp", "images", f"q_{q.id}.jpg"))
 
                 found_img_path = None
                 for cand in img_candidates:

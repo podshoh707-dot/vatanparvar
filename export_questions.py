@@ -1,7 +1,6 @@
 """
-Bu skript bazadan savollarni olib webapp/questions.json va webapp/avtomaktab-webapp/questions.json fayllariga yozadi.
+Bu skript bazadan savollarni olib database/questions_data.json va db/questions.json fayllariga yozadi.
 Ishga tushirish: python export_questions.py
-Keyin questions.json faylini GitHub'ga yuklang — GitHub Pages avtomatik yangilanadi.
 """
 import asyncio
 import json
@@ -15,8 +14,8 @@ from database import async_session, Question
 from sqlalchemy import select
 
 async def export():
-    output_path1 = os.path.join(os.path.dirname(__file__), "webapp", "questions.json")
-    output_path2 = os.path.join(os.path.dirname(__file__), "webapp", "avtomaktab-webapp", "questions.json")
+    output_path1 = os.path.join(os.path.dirname(__file__), "database", "questions_data.json")
+    output_path2 = os.path.join(os.path.dirname(__file__), "db", "questions.json")
     
     async with async_session() as session:
         result = await session.execute(select(Question))

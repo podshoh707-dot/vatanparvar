@@ -53,7 +53,6 @@ async def init_db():
             candidate_files = [
                 os.path.join(os.path.dirname(__file__), "questions_data.json"),
                 os.path.join(os.path.dirname(os.path.dirname(__file__)), "db", "questions.json"),
-                os.path.join(os.path.dirname(os.path.dirname(__file__)), "webapp", "questions.json"),
             ]
             questions_file = next((cf for cf in candidate_files if os.path.exists(cf)), None)
             if questions_file:
@@ -112,7 +111,7 @@ async def init_db():
         res_signs = await session.execute(select(func.count(Sign.id)))
         count_signs = res_signs.scalar() or 0
         if count_signs == 0:
-            signs_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), "webapp", "signs.json")
+            signs_file = os.path.join(os.path.dirname(__file__), "signs.json")
             if os.path.exists(signs_file):
                 print(f"[init_db] Seeding signs from {signs_file}...")
                 with open(signs_file, "r", encoding="utf-8") as f:

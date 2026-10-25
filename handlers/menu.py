@@ -537,8 +537,6 @@ async def org_info_handler(message: types.Message, state: FSMContext = None):
             from config import BASE_DIR
             from aiogram.types import FSInputFile
             local_p = os.path.join(BASE_DIR, photo_id)
-            if not os.path.exists(local_p):
-                local_p = os.path.join(BASE_DIR, "webapp", photo_id)
             if os.path.exists(local_p):
                 photo_obj = FSInputFile(local_p)
         else:

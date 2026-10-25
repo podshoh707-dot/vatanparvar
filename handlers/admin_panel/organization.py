@@ -55,8 +55,8 @@ async def get_org_data() -> dict:
             except Exception:
                 pass
 
-    # WebApp JSON faylidan tekshirish
-    json_path = os.path.join(BASE_DIR, "webapp", "org_info.json")
+    # Database JSON faylidan tekshirish
+    json_path = os.path.join(BASE_DIR, "database", "org_info.json")
     if os.path.exists(json_path):
         try:
             with open(json_path, "r", encoding="utf-8") as f:
@@ -69,7 +69,7 @@ async def get_org_data() -> dict:
 
 
 async def save_org_data(data: dict):
-    """DB ga va webapp/org_info.json ga saqlash"""
+    """DB ga va database/org_info.json ga saqlash"""
     val_json = json.dumps(data, ensure_ascii=False, indent=2)
 
     # 1. DB ga yozish
@@ -83,13 +83,13 @@ async def save_org_data(data: dict):
             setting.value = val_json
         await session.commit()
 
-    # 2. webapp/org_info.json ga yozish
-    webapp_json = os.path.join(BASE_DIR, "webapp", "org_info.json")
+    # 2. database/org_info.json ga yozish
+    db_json = os.path.join(BASE_DIR, "database", "org_info.json")
     try:
-        with open(webapp_json, "w", encoding="utf-8") as f:
+        with open(db_json, "w", encoding="utf-8") as f:
             f.write(val_json)
     except Exception as e:
-        print(f"Error saving to webapp/org_info.json: {e}")
+        print(f"Error saving to database/org_info.json: {e}")
 
 
 def format_org_preview_text(data: dict) -> str:
@@ -402,8 +402,6 @@ async def org_preview_user(callback: types.CallbackQuery):
     if photo_id:
         if photo_id.endswith(".png") or photo_id.endswith(".jpg"):
             local_p = os.path.join(BASE_DIR, photo_id)
-            if not os.path.exists(local_p):
-                local_p = os.path.join(BASE_DIR, "webapp", photo_id)
             if os.path.exists(local_p):
                 photo_obj = FSInputFile(local_p)
         else:

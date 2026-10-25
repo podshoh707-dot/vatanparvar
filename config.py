@@ -21,4 +21,3 @@ DB_FILE = os.path.join(DB_DIR, "questions.json")
 TEST_SOURCE_URL = os.getenv("TEST_SOURCE_URL", "https://e-avtomaktab.uz/Home/Test")
 SQLITE_DB_FILE = os.path.join(DB_DIR, "database.sqlite")
 REQUIRED_SUB_CHANNEL = "@your_channel_username"  # Bot foydalanuvchilaridan ushbu kanalga obuna bo‘lishni talab qiladi
-WEBAPP_URL = os.getenv("WEBAPP_URL", "https://avtomaktab-webapp.vercel.app/")

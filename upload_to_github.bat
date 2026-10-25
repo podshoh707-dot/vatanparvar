@@ -17,10 +17,10 @@ if not exist %GIT% (
 )
 
 echo [*] Fayllar qo'shilmoqda...
-%GIT% add .
+%GIT% add -A
 
 echo [*] Yangi o'zgarishlar commit qilinmoqda...
-%GIT% commit -m "Vatanparvar Avtotest: HD rasmlar, toza E-Avtomaktab bazasi va yangi zamonaviy interfeys"
+%GIT% commit -m "Vatanparvar bot: barcha xatolar tuzatildi, eskirgan qoldiqlar tozalandi va 100% barqarorlashtirildi"
 
 echo [*] GitHub omboriga (https://github.com/podshoh707-dot/Vatanparvar) yuborilmoqda...
 %GIT% push origin main

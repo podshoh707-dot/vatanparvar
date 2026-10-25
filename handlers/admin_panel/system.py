@@ -59,7 +59,6 @@ async def admin_system_menu(callback: types.CallbackQuery):
             InlineKeyboardButton(text="🧹 Tizim Salomatligi", callback_data="admin_system_health")
         ],
         [InlineKeyboardButton(text="📢 Majburiy obuna kanallari", callback_data="admin_channels_menu")],
-        [InlineKeyboardButton(text="🔄 WebApp bazasini yangilash", callback_data="admin_export_webapp")],
         [InlineKeyboardButton(text=f"⏱ Avto-test: {auto_text}", callback_data="toggle_auto_test"),
          InlineKeyboardButton(text=f"🕐 Har {interval_val} daq", callback_data="admin_set_interval")],
         [InlineKeyboardButton(text=f"👤 Lichkaga avto-savol: {auto_users_text}", callback_data="toggle_auto_test_users")],
@@ -100,19 +99,6 @@ async def toggle_forward(callback: types.CallbackQuery):
         
     await admin_system_menu(callback)
 
-@system_router.callback_query(F.data == "admin_export_webapp")
-async def admin_export_webapp_handler(callback: types.CallbackQuery):
-    if not is_superadmin(callback.from_user.id):
-        await callback.answer("Bu amal faqat asosiy admin uchun!", show_alert=True)
-        return
-        
-    await callback.answer("⏳ Bazani eksport qilish boshlandi...", show_alert=False)
-    try:
-        from export_questions import export
-        await export()
-        await callback.message.answer("✅ Savollar bazasi muvaffaqiyatli WebApp (Mini Ilova) ga eksport qilindi!\n\nEndi `webapp/questions.json` faylida yangilangan bazani ko'rishingiz mumkin. Agar siz Vercel/GitHub ishlatsangiz, o'zgarishlarni yuklashni unutmang.")
-    except Exception as e:
-        await callback.message.answer(f"❌ Xatolik yuz berdi: {e}")
 
 @system_router.callback_query(F.data == "toggle_auto_test")
 async def toggle_auto_test(callback: types.CallbackQuery):

@@ -637,9 +637,9 @@ async def send_question(message_or_callback, state: FSMContext):
         except Exception as e:
             print(f"Error sending option media group: {e}")
 
-    # 2. Asosiy Video mavjud bo'lsa
+    # 2. Asosiy Video mavjud bo'lsa (FAQAT 3D Video-test rejimida)
     video_file = None
-    if q.media_urls:
+    if is_video and q.media_urls:
         try:
             m_dict = json.loads(q.media_urls) if isinstance(q.media_urls, str) else q.media_urls
             if isinstance(m_dict, dict) and m_dict.get("main"):
@@ -655,6 +655,7 @@ async def send_question(message_or_callback, state: FSMContext):
 
     if video_file:
         try:
+            await state.update_data(is_loading_next=False, is_processing_answer=False)
             if len(caption) <= 1024:
                 await bot_obj.send_video(chat_id=chat_id, video=video_file, caption=caption, reply_markup=keyboard, protect_content=protect, parse_mode="HTML")
             else:
@@ -695,6 +696,7 @@ async def send_question(message_or_callback, state: FSMContext):
 
     if photo_file:
         try:
+            await state.update_data(is_loading_next=False, is_processing_answer=False)
             if len(caption) <= 1024:
                 await bot_obj.send_photo(chat_id=chat_id, photo=photo_file, caption=caption, reply_markup=keyboard, protect_content=protect, parse_mode="HTML")
             else:
@@ -705,6 +707,7 @@ async def send_question(message_or_callback, state: FSMContext):
             print(f"Error sending photo question: {e}")
 
     # 4. Oddiy matnli savol (yoki rasm/video yuklanmagan holatda)
+    await state.update_data(is_loading_next=False, is_processing_answer=False)
     try:
         await bot_obj.send_message(chat_id=chat_id, text=caption, reply_markup=keyboard, protect_content=protect, parse_mode="HTML")
     except Exception:
@@ -829,7 +832,7 @@ async def start_test(callback: types.CallbackQuery, state: FSMContext):
             vid_parts = mode.split("_")
             if len(vid_parts) > 1:
                 v_arg = vid_parts[1]
-                vid_limit = 312 if v_arg == "all" else int(v_arg)
+                vid_limit = 50 if v_arg == "all" else int(v_arg)
             else:
                 vid_limit = 20
             stmt = select(Question.id).where(Question.media_urls != None).order_by(func.random()).limit(vid_limit)
@@ -893,6 +896,11 @@ async def process_answer(callback: types.CallbackQuery, state: FSMContext):
         return
         
     data = await state.get_data()
+    if data and data.get("is_processing_answer"):
+        await callback.answer()
+        return
+    await state.update_data(is_processing_answer=True)
+
     if not data or not data.get("questions"):
         saved = await load_test_session(callback.from_user.id)
         if saved:
@@ -900,6 +908,7 @@ async def process_answer(callback: types.CallbackQuery, state: FSMContext):
             await state.update_data(**saved)
             data = saved
         else:
+            await state.update_data(is_processing_answer=False)
             await callback.answer("⚠️ Test sessiyasi eskirgan. Yangi test boshlang.", show_alert=True)
             return
 
@@ -1026,9 +1035,9 @@ async def process_answer(callback: types.CallbackQuery, state: FSMContext):
     await save_test_session(callback.from_user.id, {'questions': q_ids, 'current_idx': new_idx, 'correct_answers': correct_count, 'wrong_count': wrong_count, 'is_mistake_mode': data.get('is_mistake_mode', False), 'is_gai_mode': data.get('is_gai_mode', False), 'selected_category': data.get('selected_category')})
     
     if is_correct:
-        await callback.answer("🎉 Qoyil! Javobingiz to'g'ri!", show_alert=True)
+        await callback.answer("🎉 Javobingiz to'g'ri!")
     else:
-        await callback.answer("❌ Noto'g'ri javob!", show_alert=True)
+        await callback.answer("❌ Noto'g'ri javob!")
     
     try:
         await callback.message.delete()
@@ -1065,9 +1074,10 @@ async def process_answer(callback: types.CallbackQuery, state: FSMContext):
         [InlineKeyboardButton(text="➡️ Keyingi savol", callback_data="next_question")]
     ])
 
-    # Variant videosini (3D animatsiyani) tekshirish
+    # Variant videosini (3D animatsiyani) tekshirish (FAQAT 3D Video-test rejimida)
     anim_vid_file = None
-    if q.media_urls:
+    is_video_mode = data.get("is_video_mode", False)
+    if is_video_mode and q.media_urls:
         try:
             m_dict = json.loads(q.media_urls) if isinstance(q.media_urls, str) else q.media_urls
             if isinstance(m_dict, dict):
@@ -1079,13 +1089,14 @@ async def process_answer(callback: types.CallbackQuery, state: FSMContext):
                         v_alt = os.path.join("E:/videos", os.path.basename(str(v_target)))
                         if os.path.exists(v_alt):
                             v_full = v_alt
-                    if os.path.exists(v_full):
+                    if os.path.exists(v_full) and os.path.getsize(v_full) <= 20 * 1024 * 1024:
                         anim_vid_file = FSInputFile(v_full)
         except Exception:
             pass
 
     if anim_vid_file:
         try:
+            await state.update_data(is_processing_answer=False)
             if len(result_msg) <= 1024:
                 await bot_obj.send_video(
                     chat_id=chat_id,
@@ -1102,17 +1113,24 @@ async def process_answer(callback: types.CallbackQuery, state: FSMContext):
         except Exception as e:
             print(f"Error sending anim video: {e}")
 
+    await state.update_data(is_processing_answer=False)
     await bot_obj.send_message(chat_id=chat_id, text=result_msg, reply_markup=keyboard, protect_content=protect, parse_mode="HTML")
 
 @test_router.callback_query(F.data == "next_question")
 async def next_question(callback: types.CallbackQuery, state: FSMContext):
     data = await state.get_data()
+    if data and data.get("is_loading_next"):
+        await callback.answer()
+        return
+    await state.update_data(is_loading_next=True)
+
     if not data or not data.get("questions"):
         saved = await load_test_session(callback.from_user.id)
         if saved:
             await state.set_state(TestStates.taking_test)
             await state.update_data(**saved)
         else:
+            await state.update_data(is_loading_next=False)
             await callback.answer("⚠️ Sessiya eskirgan. Yangi test boshlang.", show_alert=True)
             return
     await callback.answer()

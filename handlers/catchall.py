@@ -52,7 +52,7 @@ async def web_app_data_handler(message: types.Message):
 
             await message.answer(
                 f"🎉 <b>XUSH KELIBSIZ, {full_name.upper()}!</b>\n\n"
-                f"✅ Mini Ilova orqali ro'yxatdan muvaffaqiyatli o'tdingiz!\n"
+                f"✅ Ro'yxatdan muvaffaqiyatli o'tdingiz!\n"
                 f"🎁 Sizga <b>5 kunlik VIP Premium</b> va <b>+50 ball</b> sovg'a qilindi!",
                 parse_mode="HTML"
             )

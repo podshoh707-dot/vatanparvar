@@ -4,14 +4,13 @@ from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import StatesGroup, State
 from aiogram.types import (
     ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove,
-    InlineKeyboardMarkup, InlineKeyboardButton, WebAppInfo
+    InlineKeyboardMarkup, InlineKeyboardButton
 )
 from database import async_session, User, Setting
 from sqlalchemy import select
 from locales import get_text
 import re
 from datetime import datetime, timedelta
-from config import WEBAPP_URL
 
 
 registration_router = Router()

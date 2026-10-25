@@ -2,13 +2,12 @@ from aiogram import Router, types, F
 from aiogram.filters import Command
 from aiogram.types import (
     InlineKeyboardMarkup, InlineKeyboardButton,
-    ReplyKeyboardMarkup, KeyboardButton, WebAppInfo
+    ReplyKeyboardMarkup, KeyboardButton
 )
 from database import async_session, User, Setting, Rule, VideoLesson, News, QAItem, UserStat
 from sqlalchemy import select, func
 from sqlalchemy.sql.expression import desc
 from aiogram.fsm.context import FSMContext
-from config import WEBAPP_URL
 
 menu_router = Router()
 
@@ -86,7 +85,6 @@ async def rules_hub_menu(message: types.Message, state: FSMContext = None):
     kb = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="📖 YHQ Qoidalari Kitobi (30 ta bob)", callback_data="rules_page_1")],
         [InlineKeyboardButton(text="🎥 133 ta Rasmiy Video Darslar", callback_data="vsec_all")],
-        [InlineKeyboardButton(text="📱 Mini Ilovada O'rganish", web_app=WebAppInfo(url=WEBAPP_URL))],
         [InlineKeyboardButton(text="🔙 Bosh menyu", callback_data="back_to_main_menu")]
     ])
     text = (
@@ -94,8 +92,7 @@ async def rules_hub_menu(message: types.Message, state: FSMContext = None):
         "━━━━━━━━━━━━━━━━━━━━\n\n"
         "Quyidagi o'quv bo'limlaridan birini tanlang:\n\n"
         "📖 <b>YHQ Qoidalari:</b> O'zbekiston Respublikasi rasmiy yo'l harakati qoidalari matnlari.\n"
-        "🎥 <b>Video Darslar:</b> e-avtomaktab va Vatanparvar ning 133 ta rasmiy videodarsliklari.\n"
-        "📱 <b>Mini Ilova:</b> Interaktiv animatsiyalar va qulay testlar."
+        "🎥 <b>Video Darslar:</b> e-avtomaktab va Vatanparvar ning 133 ta rasmiy videodarsliklari."
     )
     if isinstance(message, types.CallbackQuery):
         await message.message.edit_text(text, reply_markup=kb, parse_mode="HTML")
@@ -529,8 +526,7 @@ async def org_info_handler(message: types.Message, state: FSMContext = None):
     admin_clean = admin_u.replace('@', '')
 
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="💬 Adminga murojaat", url=f"https://t.me/{admin_clean}")],
-        [InlineKeyboardButton(text="📱 Mini Ilovada ko'rish", web_app=WebAppInfo(url=WEBAPP_URL))]
+        [InlineKeyboardButton(text="💬 Adminga murojaat", url=f"https://t.me/{admin_clean}")]
     ])
 
     photo_id = data.get("photo_id")

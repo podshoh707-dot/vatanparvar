@@ -1,25 +1,21 @@
-# ========================================================
-#    🚘 AVTOTEST / AVTOVATANPARVAR TELEGRAM BOT
+﻿# ========================================================
+#    🚘 AVTOVATANPARVAR TESTLARI TELEGRAM BOT
 # ========================================================
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
 Write-Host "========================================================" -ForegroundColor Cyan
-Write-Host "   🚘 AVTOTEST / AVTOVATANPARVAR TELEGRAM BOT" -ForegroundColor Cyan
+Write-Host "   🚘 AVTOVATANPARVAR TESTLARI TELEGRAM BOT" -ForegroundColor Cyan
 Write-Host "========================================================" -ForegroundColor Cyan
 Write-Host ""
 
-if (-not (Test-Path ".venv\Scripts\python.exe")) {
-    Write-Host "[XATO] .venv muhiti topilmadi!" -ForegroundColor Red
-    Read-Host "Davom etish uchun Enter bosing..."
-    exit 1
-}
+$py = if (Test-Path ".venv\Scripts\python.exe") { ".venv\Scripts\python.exe" } else { "python" }
 
-Write-Host "[*] Bot ishga tushirilmoqda..." -ForegroundColor Green
+Write-Host "[*] Bot ishga tushirilmoqda ($py bot.py)..." -ForegroundColor Green
 Write-Host "[*] To'xtatish uchun: Ctrl + C bosing" -ForegroundColor Gray
 Write-Host "========================================================" -ForegroundColor Cyan
 Write-Host ""
 
-& .venv\Scripts\python.exe bot.py
+& $py bot.py
 
 if ($LASTEXITCODE -ne 0) {
     Write-Host ""

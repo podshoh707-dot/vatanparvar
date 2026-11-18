@@ -1,19 +1,19 @@
 @echo off
 chcp 65001 > nul
-title AVTOVATANPARVAR - Avtotest Telegram Bot
+title AVTOVATANPARVAR TESTLARI — Professional Telegram Bot
 color 0A
 
 echo ========================================================
-echo    🚘 AVTOTEST / AVTOVATANPARVAR TELEGRAM BOT
+echo    🚘 AVTOVATANPARVAR TESTLARI TELEGRAM BOT
 echo ========================================================
 echo.
 
 set PY=.venv\Scripts\python.exe
 if not exist %PY% (
-    set PY=py
+    set PY=python
 )
 
-echo [*] Bot ishga tushirilmoqda (%PY%)...
+echo [*] Bot ishga tushirilmoqda (%PY% bot.py)...
 echo [*] To'xtatish uchun: Ctrl + C bosing
 echo ========================================================
 echo.

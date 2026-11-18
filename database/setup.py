@@ -49,7 +49,10 @@ async def init_db():
         sample_opts = res_sample.scalars().all()
         is_corrupted = len(sample_opts) > 0 and all(o == 'A' for o in sample_opts)
         
-        if count == 0 or is_corrupted:
+        # Eski OsonPrava aralashgan 805/591/1242 bazani avtomatik 500 ta sof E-Avtomaktabga yangilash
+        needs_eavto_sync = count in {591, 805, 1242}
+
+        if count == 0 or is_corrupted or needs_eavto_sync:
             candidate_files = [
                 os.path.join(os.path.dirname(__file__), "questions_data.json"),
                 os.path.join(os.path.dirname(os.path.dirname(__file__)), "db", "questions.json"),

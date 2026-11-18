@@ -101,7 +101,7 @@ async def start_gai_exam_from_message(message: types.Message, state: FSMContext)
             return
 
         result_q = await session.execute(select(Question.id).order_by(func.random()).limit(20))
-        q_ids = [qid for qid in result_q.scalars().all() if isinstance(qid, int) and 1 <= qid <= 805]
+        q_ids = [qid for qid in result_q.scalars().all() if isinstance(qid, int) and 1 <= qid <= 500]
 
     if not q_ids:
         await message.answer("❌ Hozircha bazada savollar topilmadi.")
@@ -121,7 +121,7 @@ async def start_gai_exam_from_message(message: types.Message, state: FSMContext)
 
 @test_router.message(Command("test"), F.chat.type == "private")
 @test_router.message(F.text.in_([
-    "🚗 Test Ishlash (805 ta YHQ)", "🎯 Test Ishlash (805 ta YHQ)", "🎯 Test Ishlash (1242 ta YHQ)", "🎯 Test Ishlash", "🎓 GAI Imtihoni (Sertifikatli)", "🎓 GAI Imtihoni",
+    "🚗 Test Ishlash (500 ta YHQ)", "🚗 Test Ishlash (591 ta YHQ)", "🚗 Test Ishlash (805 ta YHQ)", "🎯 Test Ishlash (805 ta YHQ)", "🎯 Test Ishlash (1242 ta YHQ)", "🎯 Test Ishlash", "🎓 GAI Imtihoni (Sertifikatli)", "🎓 GAI Imtihoni",
     "🚗 Ishlash testi", "🚀 Test Boshlash (Pro)", "🚀 Test Boshlash", "🚗 Test ishlash",
     "🚗 Ишлаш тести", "🚗 Тестирование"
 ]), F.chat.type == "private")
@@ -155,11 +155,11 @@ async def test_menu(message: types.Message, state: FSMContext):
     
     keyboard = [
         [InlineKeyboardButton(text="🎓 GAI Imtihoni (20 ta, Sertifikatli)", callback_data="testcnt_gai")],
-        [InlineKeyboardButton(text="🎯 Marafon 805 (To'xtagan joydan)", callback_data="testcnt_marathon")],
+        [InlineKeyboardButton(text="🎯 Marafon 500 (To'xtagan joydan)", callback_data="testcnt_marathon")],
         [InlineKeyboardButton(text="🎬 3D Video-Testlar (Animatsion)", callback_data="test_video_menu")],
         [InlineKeyboardButton(text="⚡️ Ekspress Blits (10 ta tezkor)", callback_data="testcnt_10"),
          InlineKeyboardButton(text="🧠 Zaif tomonlarim (Xatolar)", callback_data="test_mistakes")],
-        [InlineKeyboardButton(text="📂 Barcha 81 ta Biletlar Katalogi", callback_data="biletpage_1")],
+        [InlineKeyboardButton(text="📂 Barcha 50 ta Biletlar Katalogi", callback_data="biletpage_1")],
         [InlineKeyboardButton(text="🔙 Bosh menyu", callback_data="back_to_main_menu")]
     ]
     
@@ -175,9 +175,9 @@ async def test_menu(message: types.Message, state: FSMContext):
         "🏆 <b>AVTOMAKTAB — RASMIY AVTOTEST TIZIMI</b>\n"
         "━━━━━━━━━━━━━━━━━━━━\n\n"
         "🚦 <i>100% Rasmiy E-Avtomaktab Davlat Standartidagi testlar bazasi!</i>\n\n"
-        "🏎 <b>805 ta Rasmiy E-Avtomaktab Savollari</b> (3D video animatsiyalar va izohlar bilan)\n"
+        "🏎 <b>500 ta Rasmiy E-Avtomaktab Savollari</b> (100% sof E-Avtomaktab bazasi va 50 ta to'liq bilet)\n"
         "🎓 <b>GAI Imtihon Simulyatori:</b> 20 ta savol + Rasmiy Sertifikat\n"
-        "🎯 <b>805 Marafon:</b> Har bir savolni to'xtagan joyingizdan yechib boring\n"
+        "🎯 <b>500 Marafon:</b> Har bir savolni to'xtagan joyingizdan yechib boring\n"
         "🎬 <b>Video-Testlar:</b> Haqiqiy chorraha va harakat animatsiyalari\n\n"
         "👇 <b>Quyidagi test rejimlaridan birini tanlang:</b>"
     )
@@ -190,12 +190,12 @@ async def test_menu(message: types.Message, state: FSMContext):
     else:
         await message.answer(text, reply_markup=markup, parse_mode="HTML")
 
-# 81 ta bilet sahifalash (3x4 zamonaviy grid)
+# 50 ta bilet sahifalash (3x4 zamonaviy grid)
 @test_router.callback_query(F.data.startswith("biletpage_"))
 async def bilet_page_handler(callback: types.CallbackQuery):
     page = int(callback.data.split("_")[1])
     per_page = 12
-    total_bilets = 81
+    total_bilets = 50
     total_pages = (total_bilets + per_page - 1) // per_page
     start_bilet = (page - 1) * per_page + 1
     end_bilet = min(start_bilet + per_page - 1, total_bilets)
@@ -259,7 +259,7 @@ async def test_resume(callback: types.CallbackQuery, state: FSMContext):
     if not existing:
         await callback.answer("Sessiya topilmadi.", show_alert=True)
         return
-    valid_q = [qid for qid in existing.get('questions', []) if isinstance(qid, int) and 1 <= qid <= 805]
+    valid_q = [qid for qid in existing.get('questions', []) if isinstance(qid, int) and 1 <= qid <= 500]
     if not valid_q:
         await delete_test_session(callback.from_user.id)
         await callback.answer("⚠️ Sessiya eskirgan. Yangi test boshlang.", show_alert=True)
@@ -475,12 +475,12 @@ async def send_question(message_or_callback, state: FSMContext):
 
         if is_marathon:
             marathon_prog = user.marathon_progress if user else correct_count
-            m_pct = round(min(805, marathon_prog) / 805 * 100)
+            m_pct = round(min(500, marathon_prog) / 500 * 100)
             text = (
-                f"🎯 <b>805 MARAFON BOSQICHI YAKUNLANDI!</b>\n"
+                f"🎯 <b>500 MARAFON BOSQICHI YAKUNLANDI!</b>\n"
                 f"━━━━━━━━━━━━━━━━━━━━\n\n"
                 f"{streak_info}"
-                f"📊 <b>Umumiy Marafon Natijangiz:</b> {marathon_prog} / 805 ta ({m_pct}%)\n"
+                f"📊 <b>Umumiy Marafon Natijangiz:</b> {marathon_prog} / 500 ta ({m_pct}%)\n"
                 f"✅ <b>Ushbu bosqichda to'g'ri:</b> {correct_count} ta\n\n"
                 f"<i>Sizning ko'rsatkichingiz bazada saqlandi. Xohlagan vaqtingizda to'xtagan joyingizdan davom ettirishingiz mumkin!</i>"
                 f"{streak_bonus_text}"
@@ -578,7 +578,7 @@ async def send_question(message_or_callback, state: FSMContext):
     elif is_gai:
         header_title = "🎓 GAI Imtihoni"
     elif is_marathon:
-        header_title = "🎯 Marafon 805"
+        header_title = "🎯 Marafon 500"
     elif is_video:
         header_title = "🎬 3D Harakatlanish Testi"
     elif is_mistake:
@@ -757,10 +757,10 @@ async def start_test(callback: types.CallbackQuery, state: FSMContext):
                 
             result_mistakes = await session.execute(
                 select(UserMistake.question_id).where(
-                    (UserMistake.user_id == user.id) & (UserMistake.question_id <= 805)
+                    (UserMistake.user_id == user.id) & (UserMistake.question_id <= 500)
                 ).order_by(func.random()).limit(50)
             )
-            q_ids = [qid for qid in result_mistakes.scalars().all() if 1 <= qid <= 805]
+            q_ids = [qid for qid in result_mistakes.scalars().all() if 1 <= qid <= 500]
             
             if not q_ids:
                 await callback.message.edit_text("🎉 Sizda hozircha xato ishlangan testlar yo'q. Ofarin!")
@@ -818,10 +818,10 @@ async def start_test(callback: types.CallbackQuery, state: FSMContext):
                 )
                 return
                 
-        # 1. Marafon Rejimi (805 savol)
+        # 1. Marafon Rejimi (500 savol)
         if is_marathon:
             marathon_prog = user.marathon_progress if user and user.marathon_progress else 0
-            if marathon_prog >= 805:
+            if marathon_prog >= 500:
                 marathon_prog = 0 # Qayta boshlash
             stmt = select(Question.id).order_by(Question.id).offset(marathon_prog).limit(50)
             result_q = await session.execute(stmt)
@@ -857,7 +857,7 @@ async def start_test(callback: types.CallbackQuery, state: FSMContext):
             q_ids = result_q.scalars().all()
         
     bilet_num = mode.split("_")[1] if is_bilet else None
-    q_ids = [qid for qid in q_ids if isinstance(qid, int) and 1 <= qid <= 805]
+    q_ids = [qid for qid in q_ids if isinstance(qid, int) and 1 <= qid <= 500]
     if not q_ids:
         await callback.message.edit_text("Hozircha bazada savollar yo'q.")
         return

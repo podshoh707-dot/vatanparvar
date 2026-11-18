@@ -121,7 +121,7 @@ async def cmd_start(message: types.Message, state: FSMContext, bot: Bot):
         "⚡️ <i>Haydovchilik guvohnomasini birinchi urinishda olish uchun rasmiy tizim</i>\n"
         "━━━━━━━━━━━━━━━━━━━━\n\n"
         "🚀 <b>Botimizning barcha imkoniyatlari:</b>\n"
-        "🏎 <b>805 ta Rasmiy E-Avtomaktab Savollari</b> — barcha 81 ta biletlar to'liq tahlili\n"
+        "🏎 <b>500 ta Rasmiy E-Avtomaktab Savollari</b> — barcha 50 ta biletlar to'liq tahlili\n"
         "🎬 <b>207 ta 3D Harakatlanish Videolari</b> — murakkab chorrahalar jonli animatsiyalari\n"
         "🎓 <b>GAI Davlat Imtihoni (20/20)</b> — haqiqiy test simulyatori va Oltin Sertifikat\n"
         "🚦 <b>279 ta Yo'l Belgilari & Jarimalar</b> — 7 ta guruh, batafsil ma'lumotlar bilan\n"
@@ -298,7 +298,7 @@ async def send_main_menu(message: types.Message, lang: str, name: str, user_id: 
     is_admin = await is_any_admin(uid)
 
     keyboard = [
-        [KeyboardButton(text="🚗 Test Ishlash (805 ta YHQ)")],
+        [KeyboardButton(text="🚗 Test Ishlash (500 ta YHQ)")],
         [KeyboardButton(text="🎓 GAI Imtihoni (Sertifikatli)"), KeyboardButton(text="🚦 Yo'l Belgilari")],
         [KeyboardButton(text="🎥 Video Darslar"), KeyboardButton(text="📚 YHQ Qoidalari")],
         [KeyboardButton(text="📊 Mening Natijam"), KeyboardButton(text="🏛 Tashkilot & O'qish")],
@@ -318,7 +318,7 @@ async def send_main_menu(message: types.Message, lang: str, name: str, user_id: 
         f"⚡️ <i>O'zbekistonning 1-raqamli innovatsion YHQ va GAI tizimi</i>\n"
         f"━━━━━━━━━━━━━━━━━━━━\n\n"
         f"🚀 <b>Bu bot nima qila oladi?</b>\n"
-        f"🏎 <b>805 ta Rasmiy E-Avtomaktab Savollari:</b> Barcha testlar va 81 ta rasmiy biletlar\n"
+        f"🏎 <b>500 ta Rasmiy E-Avtomaktab Savollari:</b> 100% sof E-Avtomaktab testlari va 50 ta rasmiy bilet\n"
         f"🎬 <b>207 ta 3D Harakatlanish Videolari:</b> Murakkab chorrahalar animatsiyasi\n"
         f"🎓 <b>GAI Davlat Imtihoni (20/20):</b> Jonli taymer va Oltin Sertifikat\n"
         f"🚦 <b>279 ta HD Yo'l Belgilari:</b> Barcha rasmiy belgilar va jarimalar\n"

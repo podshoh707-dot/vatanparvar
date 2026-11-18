@@ -1,40 +1,64 @@
+"""
+AVTOVATANPARVAR TESTLARI — Professional Telegram Bot Entrypoint.
+
+Ushbu fayl loyihaning asosiy ishga tushiruvchi fayli bo'lib, Render, Koyeb, VPS
+yoki lokal Windows/Linux serverlarida quyidagilarni ta'minlaydi:
+1. Bir vaqtda bir nechta process ishga tushib ketishining oldini olish (PID lock).
+2. UTF-8 kodlashni majburlash.
+3. PostgreSQL / SQLite ma'lumotlar bazasini initsializatsiya qilish va barcha 500 ta
+   rasmiy E-Avtomaktab testlarini to'liq avtomatik yuklash (auto-seed).
+4. SuperAdmin va Adminlarni bazada faollashtirish.
+5. Rejimni tanlash:
+   - WEBHOOK_BASE_URL ko'rsatilgan bo'lsa (Render Web Service): FastAPI ilovasini uvicorn orqali yurgizadi va Webhook o'rnatadi.
+   - WEBHOOK_BASE_URL bo'sh bo'lsa (Render Worker yoki lokal): Aiogram Long Polling rejimida PersistentScheduler bilan ishga tushadi.
+"""
+
+from __future__ import annotations
+
 import asyncio
+import logging
 import os
 import sys
-import logging
 
+# UTF-8 terminal encoding
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 if hasattr(sys.stderr, "reconfigure"):
     sys.stderr.reconfigure(encoding="utf-8")
 
-# Set up logging to show all bot activity in the terminal
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(name)s - %(message)s")
+# Root path
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+if ROOT_DIR not in sys.path:
+    sys.path.insert(0, ROOT_DIR)
 
-from aiogram import Bot, Dispatcher
-from aiogram.types import BotCommand, BotCommandScopeAllPrivateChats, BotCommandScopeAllGroupChats, MenuButtonDefault
-from handlers import router
-from config import BOT_TOKEN
+from aiogram import Bot
+from aiogram.client.default import DefaultBotProperties
+from aiogram.enums import ParseMode
+from aiogram.types import BotCommand, BotCommandScopeAllPrivateChats, BotCommandScopeAllGroupChats
 
-LOCK_FILE = os.path.join(os.path.dirname(__file__), "bot.lock")
+from app.config import get_settings
+from app.database import db_manager
+from app.main import bootstrap_database, build_dispatcher, create_app
+from app.scheduler.engine import PersistentScheduler
+from app.utils.logging_config import setup_logging
 
+LOCK_FILE = os.path.join(ROOT_DIR, "bot.lock")
 lock_file_handle = None
+
 
 def acquire_lock():
     global lock_file_handle
-    # Eski lock faylni tozalash (Windows va Linux)
     if os.path.exists(LOCK_FILE):
         try:
-            with open(LOCK_FILE, 'r') as f:
+            with open(LOCK_FILE, "r") as f:
                 content = f.read().strip()
                 old_pid = int(content) if content.isdigit() else 0
-            if old_pid > 0:
+            if old_pid > 0 and old_pid != os.getpid():
                 try:
-                    os.kill(old_pid, 0)  # process mavjudligini tekshirish
+                    os.kill(old_pid, 0)
                 except (ProcessLookupError, OSError):
                     try:
                         os.remove(LOCK_FILE)
-                        print(f"Eski to'xtagan process (PID {old_pid}) lock fayli o'chirildi.")
                     except Exception:
                         pass
             else:
@@ -43,14 +67,11 @@ def acquire_lock():
                 except Exception:
                     pass
         except Exception:
-            try:
-                os.remove(LOCK_FILE)
-            except Exception:
-                pass
+            pass
 
     try:
         lock_file_handle = open(LOCK_FILE, "w")
-        if os.name == 'nt':
+        if os.name == "nt":
             import msvcrt
             msvcrt.locking(lock_file_handle.fileno(), msvcrt.LK_NBLCK, 1)
         else:
@@ -59,14 +80,15 @@ def acquire_lock():
         lock_file_handle.write(str(os.getpid()))
         lock_file_handle.flush()
     except Exception as e:
-        print(f"Bot allaqachon ishlayapti yoki lock fayl band. Xato: {e}. Chiqilmoqda.")
-        sys.exit(1)
+        print(f"⚠️ Bot allaqachon ishlayapti yoki lock fayl band: {e}. Chiqilmoqda.")
+        sys.exit(0)
+
 
 def release_lock():
     global lock_file_handle
     if lock_file_handle:
         try:
-            if os.name == 'nt':
+            if os.name == "nt":
                 import msvcrt
                 lock_file_handle.seek(0)
                 msvcrt.locking(lock_file_handle.fileno(), msvcrt.LK_UNLCK, 1)
@@ -82,202 +104,91 @@ def release_lock():
     except Exception:
         pass
 
+
 import atexit
 atexit.register(release_lock)
 
 
 async def set_default_commands(bot: Bot):
-    private_commands = [
-        BotCommand(command="start",  description="Botni ishga tushirish"),
-        BotCommand(command="test",   description="Yangi test boshlash"),
-        BotCommand(command="stats",  description="Natijalar statistikasi"),
-        BotCommand(command="help",   description="Yordam"),
+    commands = [
+        BotCommand(command="start", description="Botni ishga tushirish / Bosh menyu"),
+        BotCommand(command="test", description="Test ishlashni boshlash"),
+        BotCommand(command="help", description="Yordam va qo'llanma"),
+        BotCommand(command="cancel", description="Joriy amalni bekor qilish"),
     ]
-    group_commands = [
-        BotCommand(command="test",   description="Guruh viktorinasini boshlash"),
-        BotCommand(command="stats",  description="Natijalar statistikasi"),
-        BotCommand(command="help",   description="Yordam"),
-    ]
-    await bot.set_my_commands(private_commands, scope=BotCommandScopeAllPrivateChats())
-    await bot.set_my_commands(group_commands,   scope=BotCommandScopeAllGroupChats())
+    try:
+        await bot.set_my_commands(commands, scope=BotCommandScopeAllPrivateChats())
+        await bot.set_my_commands(commands[:3], scope=BotCommandScopeAllGroupChats())
+    except Exception as e:
+        logging.getLogger("bot").warning(f"Standart buyruqlarni o'rnatishda xatolik: {e}")
 
 
-async def set_bot_profile_and_description(bot: Bot):
-    """Botning Description (What can this bot do?) va Short Description (Bio) larini o'rnatish"""
-    # 1. To'liq tavsif (What can this bot do? ekrani)
-    desc_uz = (
-        "🏆 AVTOVATANPARVAR — O'zbekistonning 1-raqamli YHQ va GAI Imtihon platformasi! 🚘✨\n\n"
-        "Bot nima qila oladi? 👇\n"
-        "🏎 500 ta Rasmiy E-Avtomaktab Imtihon Savollari\n"
-        "🎬 207 ta 3D Harakatlanish Videolari\n"
-        "🎓 GAI Davlat Imtihoni Simulyatori (20/20) & Oltin Sertifikat\n"
-        "🤖 AI Ustoz — Aqlli Avto-Instruktor (Tushuntirish va sirlar)\n"
-        "🚦 279 ta Rasmiy Yo'l Belgilari & Jarimalar Jadvali\n"
-        "🎥 133 ta Rasmiy Video Darsliklar\n\n"
-        "🎁 /start bosing va 5 kunlik VIP Premium obunaga ega bo'ling! 🚀"
+async def run_polling():
+    settings = get_settings()
+    setup_logging(
+        level_name=settings.LOG_LEVEL,
+        secrets=[settings.BOT_TOKEN, settings.WEBHOOK_SECRET, settings.DATABASE_URL],
     )
-    
-    desc_ru = (
-        "🏆 АВТОВАТАНПАРВАР — №1 Платформа ПДД и экзаменов ГАИ в Узбекистане! 🚘✨\n\n"
-        "Возможности бота: 👇\n"
-        "🏎 500 официальных вопросов E-Avtomaktab\n"
-        "🎬 207 3D видео-анимаций перекрестков\n"
-        "🎓 Симулятор госэкзамена ГАИ и Золотой Сертификат\n"
-        "🤖 ИИ Авто-Инструктор (разбор правил)\n"
-        "🚦 279 официальных дорожных знаков и штрафы\n"
-        "🎥 133 видеоурока\n\n"
-        "🎁 Нажмите /start и получите 5 дней VIP бесплатно! 🚀"
+    logger = logging.getLogger("bot")
+
+    logger.info("AVTOVATANPARVAR TESTLARI ma'lumotlar bazasi tayyorlanmoqda...")
+    db_manager.init()
+    await bootstrap_database(db_manager, settings, create_tables_if_missing=True)
+
+    bot = Bot(
+        token=settings.BOT_TOKEN,
+        default=DefaultBotProperties(parse_mode=ParseMode.HTML),
     )
-
-    # 2. Qisqa tavsif (Bio / About) — max 120 belgi
-    short_uz = "🚘 500 ta rasmiy E-Avtomaktab testi, 3D videolar, GAI simulyatori, AI Ustoz va Yo'l belgilari! 🏆 Bepul sinab ko'ring!"
-    short_ru = "🚘 500 вопросов E-Avtomaktab, 3D видео, симулятор ГАИ, ИИ-инструктор и знаки! 🏆 Попробуйте бесплатно!"
-
-    try:
-        await bot.set_my_description(description=desc_uz)
-        await bot.set_my_description(description=desc_uz, language_code="uz")
-        await bot.set_my_description(description=desc_ru, language_code="ru")
-        
-        await bot.set_my_short_description(short_description=short_uz)
-        await bot.set_my_short_description(short_description=short_uz, language_code="uz")
-        await bot.set_my_short_description(short_description=short_ru, language_code="ru")
-        print("Bot Description va Bio muvaffaqiyatli yangilandi!")
-    except Exception as e:
-        print(f"Bot Description/Bio o'rnatishda xatolik: {e}")
-
-
-async def set_menu_button(bot: Bot):
-    """Botning chap pastki burchagidagi Menu tugmasini standart buyruqlarga ulaymiz"""
-    try:
-        from aiogram.types import MenuButtonDefault
-        await bot.set_chat_menu_button(menu_button=MenuButtonDefault())
-        print("Menu Button standart buyruqlarga o'rnatildi!")
-    except Exception as e:
-        print(f"Menu Button o'rnatishda xatolik: {e}")
-
-
-async def resume_interrupted_quizzes(bot: Bot):
-    """Bot qayta yonganda tugamagan viktorinalarni topib, natijalarini guruhga yuboradi."""
-    import json
-    from database import async_session, GroupQuizSession
-    from sqlalchemy import select
-
-    try:
-        async with async_session() as session:
-            result = await session.execute(
-                select(GroupQuizSession).where(GroupQuizSession.is_active == True)
-            )
-            interrupted = result.scalars().all()
-
-        for gs in interrupted:
-            try:
-                participants = json.loads(gs.participants or '{}')
-                total = gs.total_questions
-                chat_id = gs.chat_id
-                chat_title = gs.chat_title or "Guruh"
-
-                if not participants:
-                    # Hech kim ishtirok etmagan — shunchaki xabar yuboramiz
-                    await bot.send_message(
-                        chat_id,
-                        "⚠️ <b>Bot qayta ishga tushdi.</b>\n\n"
-                        "Oldingi viktorina to'xtatib qo'yildi. "
-                        "Yangi viktorina boshlash uchun /test yuboring.",
-                        parse_mode="HTML"
-                    )
-                else:
-                    # Natijalarni ko'rsatamiz
-                    sorted_users = sorted(
-                        participants.items(),
-                        key=lambda x: (x[1].get("score", 0), -x[1].get("time_taken", 0)),
-                        reverse=True
-                    )
-                    answered = gs.current_idx
-
-                    text = (
-                        f"⚠️ <b>Bot qayta ishga tushdi — viktorina to'xtatildi!</b>\n"
-                        "━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
-                        f"📊 <b>O'tilgan savollar:</b> {answered}/{total} ta\n"
-                        f"👥 <b>Ishtirokchilar:</b> {len(sorted_users)} ta\n\n"
-                        "🏆 <b>ORALIQ NATIJALAR:</b>\n"
-                        "━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
-                    )
-                    medals = ["🥇", "🥈", "🥉"]
-                    for i, (uid, udata) in enumerate(sorted_users[:10]):
-                        medal = medals[i] if i < 3 else f"🎖 {i+1}."
-                        name = udata.get("name", "Noma'lum")
-                        score = udata.get("score", 0)
-                        pct = round(score / max(answered, 1) * 100)
-                        text += f"{medal} <a href=\"tg://user?id={uid}\">{name}</a> — {score} ball ({pct}%)\n"
-
-                    text += (
-                        "\n━━━━━━━━━━━━━━━━━━━━━━━━\n"
-                        "🔄 Yangi viktorina boshlash uchun /test yuboring."
-                    )
-                    await bot.send_message(chat_id, text, parse_mode="HTML")
-
-                # DB dan o'chiramiz
-                async with async_session() as session2:
-                    r2 = await session2.execute(
-                        select(GroupQuizSession).where(GroupQuizSession.chat_id == chat_id)
-                    )
-                    gs2 = r2.scalars().first()
-                    if gs2:
-                        await session2.delete(gs2)
-                        await session2.commit()
-
-            except Exception as e:
-                print(f"Interrupted quiz recovery error (chat {gs.chat_id}): {e}")
-
-    except Exception as e:
-        print(f"resume_interrupted_quizzes error: {e}")
-
-
-async def main():
-    acquire_lock()
-    
-    # 1. Render.com port detection uchun veb serverni ishga tushiramiz
-    from api_server import start_api_server
-    api_runner = await start_api_server(port=3001)
-
-    # 2. Initialize DB (Render va serverlarda 805 ta savolni avtomatik to'g'ri o'rnatadi)
-    from database import init_db
-    await init_db()
-
-    # FSM Storage (Persistent JSON Storage - qayta ishga tushganda davom etishi uchun)
-    from utils.json_storage import JSONStorage
-    storage = JSONStorage(file_path="fsm_data.json")
-
-    bot = Bot(token=BOT_TOKEN)
-    dp  = Dispatcher(storage=storage)
-    dp.include_router(router)
-
     await set_default_commands(bot)
-    await set_bot_profile_and_description(bot)
-    await set_menu_button(bot)
-    await bot.delete_webhook(drop_pending_updates=True)
 
-    # Start APScheduler
-    from scheduler import setup_scheduler
-    app_scheduler = await setup_scheduler(bot)
+    scheduler = PersistentScheduler(
+        session_factory=db_manager.session_factory,
+        bot=bot,
+        settings=settings,
+    )
+    dp = build_dispatcher(db=db_manager, settings=settings, scheduler=scheduler)
 
-    print("Bot ishga tushdi...")
-    # Bot qayta yonganda tugamagan guruh viktorinalarini tekshiramiz
-    await resume_interrupted_quizzes(bot)
+    await bot.delete_webhook(drop_pending_updates=False)
+    await scheduler.start()
+
+    allowed = dp.resolve_used_update_types()
+    if "poll" not in allowed:
+        allowed.append("poll")
+    if "poll_answer" not in allowed:
+        allowed.append("poll_answer")
+
+    logger.info(
+        f"✅ AVTOVATANPARVAR TESTLARI boti muvaffaqiyatli ishga tushdi!\n"
+        f"👑 Super Admin: {settings.SUPERADMIN_ID}\n"
+        f"📢 Asosiy kanal: {settings.CHANNEL_USERNAME}\n"
+        f"🕒 Vaqt: {settings.TIMEZONE}"
+    )
+
     try:
-        await dp.start_polling(bot, skip_updates=True)
-    except asyncio.CancelledError:
-        print("Polling to'xtatildi.")
+        await dp.start_polling(bot, allowed_updates=allowed)
     finally:
-        await api_runner.cleanup()
+        logger.info("Bot to'xtatilmoqda...")
+        await scheduler.stop()
         await bot.session.close()
-        release_lock()
+        await db_manager.close()
+
+
+def run_webhook():
+    import uvicorn
+    settings = get_settings()
+    app = create_app(settings=settings, db=db_manager, create_tables_if_missing=True)
+    port = int(os.getenv("PORT", settings.PORT))
+    uvicorn.run(app, host="0.0.0.0", port=port, log_level=settings.LOG_LEVEL.lower())
+
+
+def main():
+    acquire_lock()
+    settings = get_settings()
+    if settings.WEBHOOK_BASE_URL:
+        run_webhook()
+    else:
+        asyncio.run(run_polling())
 
 
 if __name__ == "__main__":
-    try:
-        asyncio.run(main())
-    except KeyboardInterrupt:
-        print("Foydalanuvchi tomonidan to'xtatildi.")
-    finally:
-        release_lock()
+    main()

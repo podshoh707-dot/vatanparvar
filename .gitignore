@@ -35,6 +35,7 @@ env/
 db/
 *.sqlite
 *.sqlite3
+*.db
 
 # Lock fayllar
 bot.lock

@@ -1,6 +1,6 @@
 services:
-  - type: worker
-    name: avtomaktab-bot
+  - type: web
+    name: avtovatanparvar-bot
     env: python
     region: frankfurt
     plan: free
@@ -9,7 +9,17 @@ services:
     envVars:
       - key: BOT_TOKEN
         sync: false
+      - key: SUPERADMIN_ID
+        sync: false
       - key: ADMIN_IDS
         sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: CHANNEL_ID
+        value: "@AvtoVatanparvar_testlari"
+      - key: CHANNEL_USERNAME
+        value: "@AvtoVatanparvar_testlari"
       - key: PYTHONUNBUFFERED
         value: "1"
+      - key: TIMEZONE
+        value: "Asia/Tashkent"

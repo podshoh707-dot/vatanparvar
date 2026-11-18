@@ -1,0 +1,1 @@
+"""Statistika bo'limi paketi."""

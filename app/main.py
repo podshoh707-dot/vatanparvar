@@ -129,11 +129,14 @@ def create_app(
         if enable_scheduler:
             await scheduler.start()
 
+        polling_task = None
         if setup_webhook_on_start and cfg.webhook_url:
             try:
                 allowed = dp.resolve_used_update_types()
                 if "poll" not in allowed:
                     allowed.append("poll")
+                if "poll_answer" not in allowed:
+                    allowed.append("poll_answer")
                 await bot_instance.set_webhook(
                     url=cfg.webhook_url,
                     secret_token=cfg.WEBHOOK_SECRET,
@@ -143,6 +146,20 @@ def create_app(
                 logger.info("Webhook muvaffaqiyatli o'rnatildi: %s/webhook/***", cfg.WEBHOOK_BASE_URL)
             except Exception as exc:
                 logger.error("Webhook o'rnatishda xatolik: %s", exc)
+        else:
+            try:
+                await bot_instance.delete_webhook(drop_pending_updates=False)
+                allowed = dp.resolve_used_update_types()
+                if "poll" not in allowed:
+                    allowed.append("poll")
+                if "poll_answer" not in allowed:
+                    allowed.append("poll_answer")
+                polling_task = asyncio.create_task(
+                    dp.start_polling(bot_instance, allowed_updates=allowed)
+                )
+                logger.info("Bot Webhook URL ko'rsatilmaganligi sababli Long Polling rejimida orqa fonda ishga tushdi.")
+            except Exception as exc:
+                logger.error("Long Polling rejimini ishga tushirishda xatolik: %s", exc)
 
         app.state.bot = bot_instance
         app.state.dp = dp
@@ -151,6 +168,13 @@ def create_app(
         app.state.settings = cfg
 
         yield
+
+        if polling_task is not None:
+            polling_task.cancel()
+            try:
+                await polling_task
+            except (asyncio.CancelledError, Exception):
+                pass
 
         if enable_scheduler:
             await scheduler.stop()

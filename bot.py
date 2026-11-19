@@ -184,7 +184,8 @@ def run_webhook():
 def main():
     acquire_lock()
     settings = get_settings()
-    if settings.WEBHOOK_BASE_URL:
+    port_env = os.getenv("PORT")
+    if settings.WEBHOOK_BASE_URL or port_env:
         run_webhook()
     else:
         asyncio.run(run_polling())

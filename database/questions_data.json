@@ -512,9 +512,9 @@
   {
     "id": 20,
     "text": "Qaysi belgi transport vositalarining belgida ko'rsatilgandan kam oraliq masofada harakatlanishini taqiqlaydi?",
-    "image_url": "images/q_43.webp",
+    "image_url": "images/q_44.webp",
     "option_images": null,
-    "media_type": "multi_video",
+    "media_type": "image",
     "media_urls": null,
     "options": [
       {
@@ -542,9 +542,9 @@
   {
     "id": 21,
     "text": "Tartibga soluvchining mazkur ishorasi quyidagini bildiradi:",
-    "image_url": "images/q_45.webp",
+    "image_url": "images/q_46.webp",
     "option_images": null,
-    "media_type": "multi_video",
+    "media_type": "image",
     "media_urls": null,
     "options": [
       {
@@ -564,7 +564,7 @@
   {
     "id": 22,
     "text": "Aholi punktlaridan tashqarida yengil avtomobillarning qanday eng katta tezlik bilan harakatlanishiga ruxsat etiladi?",
-    "image_url": "images/q_46.webp",
+    "image_url": null,
     "option_images": null,
     "media_type": "text",
     "media_urls": null,
@@ -732,7 +732,7 @@
   {
     "id": 28,
     "text": "Avtomagistralda shatakka olishga ruxsat beriladimi?",
-    "image_url": "images/q_52.webp",
+    "image_url": null,
     "option_images": null,
     "media_type": "text",
     "media_urls": null,
@@ -792,9 +792,9 @@
   {
     "id": 30,
     "text": "Qaysi javobda yo'lovchilar uchun chiqish va tushish maydonchasi bo'lmagan sharoitdagi joylar to'liq ko'rsatilgan?",
-    "image_url": "images/q_57.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -848,9 +848,9 @@
   {
     "id": 32,
     "text": "Belgilangan yo'nalish bo'yicha harakatlanayotgan yo'nalishli transport vositalarining haydovchilari piyodalar o'tish joyidan tashqarida oq xassa bilan ishora berayotgan ko'zi ojiz piyodalarni o'tkazib yuborishlari kerakmi?",
-    "image_url": "images/q_59.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -896,9 +896,9 @@
   {
     "id": 34,
     "text": "Qattiq ulagich transport vositalari orasida qanchadan ortiq bo'lmagan masofani ta'minlashi kerak?",
-    "image_url": "images/q_63.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -1008,7 +1008,7 @@
   {
     "id": 38,
     "text": "Agar g'ildiraklardagi tortish kuchi yo'l bilan tishlashish kuchidan ortiq bo'lsa:",
-    "image_url": "images/q_73.webp",
+    "image_url": null,
     "option_images": null,
     "media_type": "text",
     "media_urls": null,
@@ -1205,9 +1205,9 @@
   {
     "id": 45,
     "text": "Qanday hollarda haydovchisi bo'lmagan transport vositalarini shatakka olish mumkin?",
-    "image_url": "images/q_87.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -1235,9 +1235,9 @@
   {
     "id": 46,
     "text": "Qaysi ishoralar ogohlantiruvchi hisoblanadi?",
-    "image_url": "images/q_88.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -1683,7 +1683,7 @@
   {
     "id": 62,
     "text": "Transport vositasining bitta o'qiga har xil naqshli shinalarni o'rnatishga ruxsat etiladimi?",
-    "image_url": "images/q_121.webp",
+    "image_url": null,
     "option_images": null,
     "media_type": "text",
     "media_urls": null,
@@ -1709,9 +1709,9 @@
   {
     "id": 63,
     "text": "Quvib o'tishda faralarning uzoqni yorituvchi chiroqlaridan ogohlantiruvchi ishora sifatida foydalanish mumkinmi?",
-    "image_url": "images/q_122.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -1873,7 +1873,7 @@
   {
     "id": 69,
     "text": "Temir yo'l izlarini qayerda kesib o'tishga ruxsat beriladi?",
-    "image_url": "images/q_134.webp",
+    "image_url": null,
     "option_images": null,
     "media_type": "text",
     "media_urls": null,
@@ -2019,7 +2019,7 @@
   {
     "id": 74,
     "text": "Qaysi javobda shatakka olingan transport vositasidagi yoritish asboblarini yoqishning to'g'ri holati ko'rsatilgan?",
-    "image_url": "images/q_145.webp",
+    "image_url": null,
     "option_images": null,
     "media_type": "text",
     "media_urls": null,
@@ -2079,14 +2079,10 @@
   {
     "id": 76,
     "text": "Agar tuproq yo'lda bevosita chorraha oldida to'shamali (qoplamali) yo'l qismi bo'lsa, bu uni ahamiyati jihatidan kesib o'tilayotgan yo'l qismi bilan teng huquqli qiladimi?",
-    "image_url": "images/q_147.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
-    "media_urls": {
-      "A": "zip/videos/15.7.1.mp4",
-      "B": "zip/videos/15.7.2.mp4",
-      "C": "zip/videos/15.7.3.mp4"
-    },
+    "media_type": "text",
+    "media_urls": null,
     "options": [
       {
         "letter": "A",
@@ -2105,7 +2101,7 @@
   {
     "id": 77,
     "text": "Yo'l-transport hodisasiga daxldor bo'lgan haydovchilar birinchi navbatda bajarishlari shart:",
-    "image_url": "images/q_156.webp",
+    "image_url": null,
     "option_images": null,
     "media_type": "text",
     "media_urls": null,
@@ -2213,9 +2209,9 @@
   {
     "id": 81,
     "text": "Qayrilish taqiqlanadi:",
-    "image_url": "images/q_161.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -2269,9 +2265,9 @@
   {
     "id": 83,
     "text": "Motosikllarning shinalari naqshining qoldiq chuqurligi qanchadan kam bo'lmasligi kerak?",
-    "image_url": "images/q_164.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -2351,7 +2347,7 @@
   {
     "id": 86,
     "text": "Kunduzgi vaqtda transportning old yoki orqa tomoniga 1 metrdan ortiq chiqib turgan yuk qanday belgilanadi?",
-    "image_url": "images/q_169.webp",
+    "image_url": null,
     "option_images": null,
     "media_type": "text",
     "media_urls": null,
@@ -2455,9 +2451,9 @@
   {
     "id": 90,
     "text": "Yo'lning yoritilmagan qismlarida qorong'i vaqtda to'xtaganda gabarit chiroqlari buzuq bo'lsa:",
-    "image_url": "images/q_178.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -2566,9 +2562,9 @@
   {
     "id": 94,
     "text": "To'xtash yo'li deb nimaga aytiladi?",
-    "image_url": "images/q_186.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "multi_video",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -2834,9 +2830,9 @@
   {
     "id": 104,
     "text": "Toliqish haydovchining diqqatiga va e'tiboriga qanday ta'sir qiladi?",
-    "image_url": "images/q_204.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -2938,9 +2934,9 @@
   {
     "id": 108,
     "text": "Yo'l quruq bo'lganda g'ildirak aylanmay, sirpanib tormozlanish tormoz yo'liga qanday ta'sir etadi?",
-    "image_url": "images/q_211.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -2964,9 +2960,9 @@
   {
     "id": 109,
     "text": "Xizmat vazifasini bajarayotganda shlagbaumni o'zboshimchalik bilan ochishga yoki uni aylanib o'tishga ruxsat etiladimi?",
-    "image_url": "images/q_216.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "multi_video",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -2994,9 +2990,9 @@
   {
     "id": 110,
     "text": "Quvib o'tishni boshlashdan oldin haydovchi shunga ishonch hosil qilishi kerakki:",
-    "image_url": "images/q_218.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -3024,9 +3020,9 @@
   {
     "id": 111,
     "text": "Majburiy to'xtagan haydovchi qanday choralar ko'rishi kerak?",
-    "image_url": "images/q_219.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "multi_video",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -3100,9 +3096,9 @@
   {
     "id": 114,
     "text": "Haydovchi, boshqa haydovchilarning ko'zini qamashtirishi mumkin bo'lgan uzoqni yorituvchi chiroqni yaqinni yorituvchiga qachon almashtirishi kerak?",
-    "image_url": "images/q_227.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -3130,9 +3126,9 @@
   {
     "id": 115,
     "text": "Aholi yashaydigan joylardan tashqarida tirkamali yengil avtomobil haydovchisiga eng katta tezlikni soatiga necha kilometrdan oshirmasdan harakatlanishga ruxsat etiladi?",
-    "image_url": "images/q_228.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -3420,9 +3416,9 @@
   {
     "id": 125,
     "text": "Qanday holda markazdan qochirma kuch burilishda kamayadi?",
-    "image_url": "images/q_251.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -3446,9 +3442,9 @@
   {
     "id": 126,
     "text": "Avtomagistralda boshqarishni o'rganish:",
-    "image_url": "images/q_256.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "multi_video",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -3662,9 +3658,9 @@
   {
     "id": 134,
     "text": "Haydovchi avtopoezd harakatining eng keng tasmasini aniqlashda nimani hisobga olishi kerak?",
-    "image_url": "images/q_270.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -3684,9 +3680,9 @@
   {
     "id": 135,
     "text": "Yengil avtomobillarning oldingi o'rindig'ida bolalarni tashishga ruxsat etiladimi?",
-    "image_url": "images/q_271.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -3840,9 +3836,9 @@
   {
     "id": 141,
     "text": "Qattiq charchoq boshlanishining asosiy tashqi alomatlari qanday?",
-    "image_url": "images/q_288.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -3866,9 +3862,9 @@
   {
     "id": 142,
     "text": "Tashilayotgan yuk DYHX xizmatining ruxsatisiz transport vositasi o'lchamlarining orqa nuqtasidan eng katta miqdorda qanday chiqib turishi mumkin?",
-    "image_url": "images/q_289.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -3978,9 +3974,9 @@
   {
     "id": 146,
     "text": "Aholi punktlaridan tashqarida, ruxsat etilgan to'la vazni 3,5 tonnadan ziyod avtomobillarning harakatlanishiga qaysi tasmadan ruxsat etiladi?",
-    "image_url": "images/q_296.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -4034,9 +4030,9 @@
   {
     "id": 148,
     "text": "Piyoda yalt-yalt etuvchi mayoqcha va maxsus tovushli ishoralarni yoqib kelayotgan transport vositasi yaqinlashib qolganda qanday yo'l tutishi kerak?",
-    "image_url": "images/q_300.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -4578,9 +4574,9 @@
   {
     "id": 168,
     "text": "Qish vaqtida orqa yetakchi ko'prikli avtomobilda chuqur bo'lib qolgan g'ildirak izidan qanday chiqish mumkin?",
-    "image_url": "images/q_351.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -4651,9 +4647,9 @@
   {
     "id": 171,
     "text": "Avtomobil haydovchisi uni boshqa transport vositalari quvib o'tayotganda qanday harakat qilishi kerak?",
-    "image_url": "images/q_357.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "multi_video",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -4762,9 +4758,9 @@
   {
     "id": 175,
     "text": "Ishlamayotgan boshqaruv ruli bilan to'xtab turish yoki ta'mirlash joyiga borishga ruxsat etiladimi?",
-    "image_url": "images/q_367.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -4844,14 +4840,10 @@
   {
     "id": 178,
     "text": "Qayta tizilishda haydovchi boshqa transport vositalariga yo'l berishi kerakmi?",
-    "image_url": "images/q_374.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
-    "media_urls": {
-      "A": "zip/videos/38.4.1.mp4",
-      "B": "zip/videos/38.4.2.mp4",
-      "C": "zip/videos/38.4.3.mp4"
-    },
+    "media_type": "text",
+    "media_urls": null,
     "options": [
       {
         "letter": "A",
@@ -5038,9 +5030,9 @@
   {
     "id": 185,
     "text": "Yo'lning chapga burilishiga yaqinlashganingizda, u o'ylaganingizdan ko'ra ancha keskinroq bo'lib chiqsa, Siz",
-    "image_url": "images/q_391.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -5090,9 +5082,9 @@
   {
     "id": 187,
     "text": "Sirpanchiq yo'lda yurgizgich bilan tormozlashni qo'llash orqa uzatmali avtomobil uchun:",
-    "image_url": "images/q_399.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -5176,9 +5168,9 @@
   {
     "id": 190,
     "text": "Aholi punktlarida relssiz transport vositalariga, agar bir yo'nalishda uchta va undan ortiq harakatlanish tasmasi bo'lganda, qaysi tasmadan harakatlanishga ruxsat etiladi? (yuk avtomobillari hisobga kirmaydi)",
-    "image_url": "images/q_408.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -5228,9 +5220,9 @@
   {
     "id": 192,
     "text": "Haydovchining o'zi aniqlay oladigan harakatlanish uchun to'sqinlik yoki xavf tug'ilganda qanday choralar ko'rishi kerak?",
-    "image_url": "images/q_416.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -5398,9 +5390,9 @@
   {
     "id": 198,
     "text": "Tashiladigan yuk vaznini va o'qlar bo'yicha tushadigan og'irlikni taqsimlashni kim tartibga solib turadi?",
-    "image_url": "images/q_427.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -5679,9 +5671,9 @@
   {
     "id": 208,
     "text": "Avtomagistralda qatnov qismining chetini bildiruvchi sidirg'a oq chiziqni bosib o'tishga ruxsat etiladimi?",
-    "image_url": "images/q_448.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -5705,9 +5697,9 @@
   {
     "id": 209,
     "text": "O'ng va chap g'ildiraklarining shinalari turlicha yeyilgan avtomobilga tormoz berish qanday xavfli oqibatlarga olib kelishi mumkin?",
-    "image_url": "images/q_454.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -5865,7 +5857,7 @@
   {
     "id": 215,
     "text": "Zanjirli bo'lgan qishloq xo'jalik, yo'l qurilishi va mexanik transport vositalariga temir yo'l kesishmasidan o'tishga ruxsat etiladimi?",
-    "image_url": "images/q_467.webp",
+    "image_url": null,
     "option_images": null,
     "media_type": "text",
     "media_urls": null,
@@ -5977,7 +5969,7 @@
   {
     "id": 219,
     "text": "Transport vositasini boshqarishni o'rgatyotgan shaxs haydovchi hisoblanadimi?",
-    "image_url": "images/q_471.webp",
+    "image_url": null,
     "option_images": null,
     "media_type": "text",
     "media_urls": null,
@@ -6055,9 +6047,9 @@
   {
     "id": 222,
     "text": "Qaysi yo'l asosiy yo'l hisoblanadi?",
-    "image_url": "images/q_480.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -6103,9 +6095,9 @@
   {
     "id": 224,
     "text": "Shatakka olingan yengil avtomobilda yo'lovchilarni tashish mumkinmi?",
-    "image_url": "images/q_487.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -6173,9 +6165,9 @@
   {
     "id": 227,
     "text": "Kesishma orqali harakatlanish hollarida haydovchi to'xtash chizig'i 2.5 \"To'xtamasdan harakatlanish taqiqlangan\" yo'l belgisi yoki svetofor bo'lmaganda, o'tib ketayotgan poezdni o'tkazib yuborishga qoida bo'yicha shlagbaumgacha kamida qancha masofa qolganida to'xtash kerak?",
-    "image_url": "images/q_499.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "multi_video",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -6683,9 +6675,9 @@
   {
     "id": 246,
     "text": "Quvib o'tish qaysi hollardan taqiqlanadi?",
-    "image_url": "images/q_541.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -6709,9 +6701,9 @@
   {
     "id": 247,
     "text": "Sanab o'tilgan hollarning qay birida qatnov qismining o'ng chetidan yoki yo'lning o'ng yoqasidan qayrilishga ruxsat etiladi?",
-    "image_url": "images/q_548.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -6839,9 +6831,9 @@
   {
     "id": 252,
     "text": "\"Reaksiya vaqti\" tushunchasi nimani bildiradi?",
-    "image_url": "images/q_560.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -6917,7 +6909,7 @@
   {
     "id": 255,
     "text": "Harakat tezligini tanlashda haydovchiga taqiqlanadi?",
-    "image_url": "images/q_568.webp",
+    "image_url": null,
     "option_images": null,
     "media_type": "text",
     "media_urls": null,
@@ -7211,9 +7203,9 @@
   {
     "id": 266,
     "text": "To'xtash va to'xtab turish taqiqlanadi:",
-    "image_url": "images/q_589.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -7271,7 +7263,7 @@
   {
     "id": 268,
     "text": "Egiluvchan ulagichda shatakka olinganda qanday yuqori tezlik bilan harakatlanishga ruxsat etilgan?",
-    "image_url": "images/q_594.webp",
+    "image_url": null,
     "option_images": null,
     "media_type": "text",
     "media_urls": null,
@@ -7353,9 +7345,9 @@
   {
     "id": 271,
     "text": "To'xtash va to'xtab turish taqiqlangan:",
-    "image_url": "images/q_597.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -7539,9 +7531,9 @@
   {
     "id": 278,
     "text": "Chorrahaga kirganingizda tartibga soluvchi qo'lini yuqoriga ko'tardi, sizga harakatlanishga ruxsat etiladimi?",
-    "image_url": "images/q_610.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -7859,9 +7851,9 @@
   {
     "id": 290,
     "text": "Kunning yorug' vaqtida aholi punktlaridan tashqarida Siz quvib o'tayotgan transport vositasi haydovchisining e'tiborini qanday jalb qilasiz?",
-    "image_url": "images/q_631.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -8037,9 +8029,9 @@
   {
     "id": 297,
     "text": "Cheklangan ko'rinish sharoitida orqaga harakatlanishda harakat xavfsizligini ta'minlash uchun:",
-    "image_url": "images/q_647.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -8137,9 +8129,9 @@
   {
     "id": 301,
     "text": "Piyodalar o'tish joyi – bu...",
-    "image_url": "images/q_656.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -8237,9 +8229,9 @@
   {
     "id": 305,
     "text": "To'xtab turish tormoz tizimi N toifadagi avtotransport vositalarini aslahalangan holatda qanday qiyalikda ushlab tura olmasa foydalanish taqiqlanadi?",
-    "image_url": "images/q_661.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -8297,9 +8289,9 @@
   {
     "id": 307,
     "text": "Shokning belgilari:",
-    "image_url": "images/q_668.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -8349,9 +8341,9 @@
   {
     "id": 309,
     "text": "Transport vositalarini qatnov qismining kengaytirilmagan joylarida qanday tartibda to'xtash va to'xtab turishga ruxsat etiladi?",
-    "image_url": "images/q_670.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -8509,9 +8501,9 @@
   {
     "id": 315,
     "text": "\"Imtiyoz\" atamasiga tegishli ta'rifni ko'rsating",
-    "image_url": "images/q_680.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -8601,9 +8593,9 @@
   {
     "id": 319,
     "text": "Yo'l harakati qoidalariga ko'ra yo'l belgilari nechta guruhga bo'linadi",
-    "image_url": "images/q_687.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -8679,9 +8671,9 @@
   {
     "id": 322,
     "text": "Tezlik ortishi bilan haydovchining ko'rish maydoni qanday o'zgaradi?",
-    "image_url": "images/q_691.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -8753,9 +8745,9 @@
   {
     "id": 325,
     "text": "Yo'lning xavfli burilishlarida oldingi uzatmali avtomobilning orqa o'qi yon tomonga sirpanganda siz qanday harakat qilasiz?",
-    "image_url": "images/q_696.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -9755,9 +9747,9 @@
   {
     "id": 362,
     "text": "Yengil avtomobilning tom qismiga o'rnatilgan yukxonasida yuk tashishdan, yukning uzunligi avtomobilning gabaritidan necha metrdan oshmasa tashishga yo'l qo'yiladi?",
-    "image_url": "images/q_759.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {
@@ -10575,9 +10567,9 @@
   {
     "id": 392,
     "text": "L- toifasi bu?",
-    "image_url": "images/q_804.webp",
+    "image_url": null,
     "option_images": null,
-    "media_type": "image",
+    "media_type": "text",
     "media_urls": null,
     "options": [
       {

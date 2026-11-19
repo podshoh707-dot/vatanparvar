@@ -24,10 +24,11 @@
         "text": "Hamma sanab o'tilgan transport vositalaridan"
       }
     ],
-    "correct": "B",
-    "explanation": "**YHQ 3-ilovasi 7.10-bandiga asosan**: Transport vositalari quyidagilar bilan jihozlanmagan bo'lsa ulardan foydalanish taqiqlanadi:\nM2, M3 toifadagi — favqulodda holatlarda oynani sindirish uchun foydalaniladigan bolg'acha, tibbiyot qutichasi, 2 ta o't o'chirgich (bittasi haydovchining kabinasida, ikkinchisi — yo'lovchilar salonida), majburiy to'xtaganini bildiruvchi belgi (yoki miltillovchi qizil chiroq) va nur qaytargichli kamzul (jilet);\nM1, N1, N2, N3 toifadagi, mikroavtobus va g'ildirakli t",
+    "correct": "D",
+    "explanation": "**YHQ 3-ilovasi 7.10-bandiga asosan**: Tibbiyot qutichasi va o't o'chirgich bilan jihozlanmagan barcha toifadagi (M1, M2, M3, N1, N2, N3) avtotransport vositalaridan foydalanish taqiqlanadi.",
     "category": "1-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "D"
   },
   {
     "id": 2,
@@ -132,10 +133,11 @@
         "text": "Yuqoridagi barcha holatlar"
       }
     ],
-    "correct": "B",
-    "explanation": "**YHQ 19-bobi 121-bandi**: Avtomagistrallarda quyidagilar taqiqlanadi:\npiyodalar, uy hayvonlari, ot-aravalar, velosipedlar, individual harakatlanish vositalari, skuterlar, mopedlar, traktorlar va o'ziyurar uskunalar, texnik tavsifnomasiga yoki holatiga ko'ra tezligi soatiga 40 kilometrdan kam bo'lgan transport vositalarining harakatlanishi;\nyuk avtomobillariga yo'lning chetki chap qatorida harakatlanishi;\n5.15 - \"To'xtab turish joyi\" yoki 6.11 - \"Dam olish joyi\" yo'l belgilari bilan belgilangan",
+    "correct": "D",
+    "explanation": "**YHQ 19-bobi 121-bandi**: Avtomagistrallarda piyodalar, uy hayvonlari, orqaga harakatlanish, qayrilib olish hamda maxsus maydonchalardan tashqarida to'xtash — barchasi qat'iyan taqiqlanadi.",
     "category": "1-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "D"
   },
   {
     "id": 6,
@@ -188,10 +190,11 @@
         "text": "Yuqoridagi barcha hollarda"
       }
     ],
-    "correct": "B",
-    "explanation": "**YHQ 10-bobi 65-bandiga asosan**: To'rt va undan ortiq tasmali, harakat ikki tomonlama bo'lgan yo'llarda qarama-qarshi yo'nalishda harakatlanish uchun mo'ljallangan tasmalarga chiqish taqiqlanadi.\n**YHQ 2-ilovasi 1-bobi beshinchi va o'ttiz to'rtinchi xatboshlariga asosan**: 1.3 — to'rt va undan ortiq harakatlanish tasmasi bo'lgan yo'llarda qarama-qarshi yo'nalishdagi transport vositalari oqimini ajratadi; 1.3 yotiq chizig'ini bosib o'tish taqiqlanadi.",
+    "correct": "C",
+    "explanation": "**YHQ 10-bobi 65-bandiga asosan**: To'rt va undan ortiq tasmali ikki tomonlama yo'llarda qarama-qarshi yo'nalishga chiqish barcha hollarda taqiqlanadi.",
     "category": "1-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "C"
   },
   {
     "id": 8,
@@ -1168,10 +1171,11 @@
         "text": "Yengil avtomobillarning tunda to'xtab turishini taqiqlaydi"
       }
     ],
-    "correct": "D",
-    "explanation": "**YHQ 20-bobi 124-bandining birinchi xatboshisiga asosan**, turar joy dahalarida quyidagilar taqiqlanadi: mexanik transport vositalarini boshqarishni o'rgatish.",
+    "correct": "B",
+    "explanation": "**YHQ 20-bobi 124-bandiga asosan**: 5.38 'Turar joy dahasi' belgisi o'rnatilgan hududda mexanik transport vositalarini boshqarishni o'rgatish taqiqlanadi.",
     "category": "5-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "B"
   },
   {
     "id": 44,
@@ -2231,10 +2235,11 @@
         "text": "Hamma sanab o'tilgan hollarda"
       }
     ],
-    "correct": "B",
-    "explanation": "**YHQ 9-bobi 62-band**ining birinchi xatboshisiga asosan, quyidagi joylarda qayrilib olish taqiqlanadi:\n\n- **Piyodalarning o'tish joylarida**",
+    "correct": "D",
+    "explanation": "**YHQ 9-bobi 62-bandiga asosan**: Piyodalar o'tish joylarida, ko'priklarda, temir yo'l kesishmalarida va sanab o'tilgan barcha joylarda qayrilib olish taqiqlanadi.",
     "category": "9-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "D"
   },
   {
     "id": 82,
@@ -2684,10 +2689,11 @@
         "text": "Biror bir transport vositasini boshqarayotgan shaxs"
       }
     ],
-    "correct": "B",
-    "explanation": "**YHQ 1-bobi 6-band**ining qirq to'qqizinchi xatboshisiga asosan:\n\n**Yo'l harakati qatnashchisi** — yo'l harakati jarayonida transport vositasining haydovchisi, yo'lovchisi yoki piyoda tariqasida bevosita ishtirok etayotgan shaxs.",
+    "correct": "A",
+    "explanation": "**YHQ 1-bobi 6-bandiga asosan**: 'Yo'l harakati qatnashchisi' — yo'l harakati jarayonida transport vositasining haydovchisi, yo'lovchisi yoki piyoda tariqasida bevosita ishtirok etayotgan shaxsdir.",
     "category": "10-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "A"
   },
   {
     "id": 99,
@@ -3012,10 +3018,11 @@
         "text": "Barcha ko'rsatilgan harakatlarni bajara olishida"
       }
     ],
-    "correct": "B",
-    "explanation": "**YHQ 12-bobi 82-bandiga** asosan, haydovchi quvib o'tishni boshlashdan oldin:\n\n- O'zi o'tmoqchi bo'lgan harakatlanish bo'lagi quvib o'tish uchun yetarlicha masofada bo'sh ekanligiga, quvib o'tish jarayonida harakatlanishga xavf tug'dirmasligiga va boshqa harakat qatnashchilariga xalaqit bermasligiga;\n- Shu tasmada orqada harakatlanayotgan transport vositasi quvib o'tishni boshlamaganligiga;\n- Oldinda harakatlanayotgan transport vositasi quvib o'tish, chapga burilish (qayta tizilish) ishorasini",
+    "correct": "D",
+    "explanation": "**YHQ 12-bobi 82-bandiga asosan**: Haydovchi quvib o'tishni boshlashdan oldin barcha ko'rsatilgan harakatlarni xavfsiz bajara olishiga to'liq ishonch hosil qilishi shart.",
     "category": "11-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "D"
   },
   {
     "id": 111,
@@ -3204,10 +3211,11 @@
         "text": "Barcha sanab o'tilgan talablar"
       }
     ],
-    "correct": "B",
-    "explanation": "**YHQ 16-bobi 156-bandiga** asosan: Bolalar guruhini tashkiliy tashishda avtobus (mikroavtobus)da katta yoshli kuzatib boruvchi(lar) bo'lishi shart.\n\nBunday avtobus (mikroavtobus)larning oldi va orqa tomoniga **\"Bolalar guruhini tashish\"** taniqlik belgisi o'rnatilishi kerak.",
+    "correct": "D",
+    "explanation": "**YHQ 16-bobi 156-bandiga asosan**: Bolalar guruhini tashkiliy tashishda sanab o'tilgan barcha xavfsizlik talablariga to'liq rioya etilishi shart.",
     "category": "12-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "D"
   },
   {
     "id": 118,
@@ -3650,10 +3658,11 @@
         "text": "Barcha sanab o'tilgan omillarni"
       }
     ],
-    "correct": "A",
-    "explanation": "**YHQ 11-bobi 77-bandining** birinchi xatboshisiga asosan: Haydovchi harakatning serqatnovligini, transport vositasi va yukning xususiyati hamda holatini, yo'l va ob-havo sharoitini, shuningdek harakatlanish yo'nalishidagi ko'rinishni hisobga olgan holda transport vositasi tezligini belgilangandan oshirmasdan boshqarishi kerak.",
+    "correct": "C",
+    "explanation": "**YHQ 11-bobi 77-bandiga asosan**: Haydovchi harakat tezligini tanlashda harakatning serqatnovligi, yo'l va ob-havo sharoiti hamda transport vositasi holati kabi barcha sanab o'tilgan omillarni hisobga olishi kerak.",
     "category": "14-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "C"
   },
   {
     "id": 134,
@@ -3914,10 +3923,11 @@
         "text": "Barcha sanab o'tilganlarni bajarishga"
       }
     ],
-    "correct": "C",
-    "explanation": "**YHQ 29-bobi 180-bandining** birinchi va ikkinchi xatboshilariga asosan, transport vositalarining texnik holatiga va ulardan foydalanishga javobgar bo'lgan mansabdor va boshqa shaxslarga quyidagilar taqiqlanadi:\n\n- Texnik nosoz, tegishli ruxsatsiz qayta jihozlangan, belgilangan tartibda ro'yxatdan o'tkazilmagan yoki davriy davlat texnik ko'rigidan o'tkazilmaganligi tufayli foydalanish taqiqlangan transport vositalarini yo'lga chiqarish;\n- Mastlik (giyohvand moddalar, alkogol va boshqalar) holat",
+    "correct": "D",
+    "explanation": "**YHQ 29-bobi 180-bandiga asosan**: Mansabdor shaxslarga texnik nosoz, qayd etilmagan yoki haydovchisi mast bo'lgan transport vositalarini yo'lga chiqarish qat'iyan taqiqlanadi (barcha sanab o'tilganlar).",
     "category": "15-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "D"
   },
   {
     "id": 144,
@@ -4536,10 +4546,11 @@
         "text": "Barcha sanab o'tilgan usullar bilan"
       }
     ],
-    "correct": "B",
-    "explanation": "**YHQ 10-bobi 64-bandi**ga asosan:\n\nRelssiz transport vositalari harakatlanadigan tasmalar soni chiziqlar va (yoki) 5.8.1 - \"Bo'laklar bo'yicha harakatlanish yo'nalishi\", 5.8.2, 5.8.7, 5.8.8 yo'l belgilari bilan belgilanadi.\n\nBunday chiziqlar yoki yo'l belgilari bo'lmasa, haydovchilar harakatlanish tasmalari sonini, qatnov qismining kengligini, transport vositalari orasidagi zarur yonlama oraliq masofani va ularning gabarit o'lchamlarini hisobga olgan holda o'zlari aniqlaydilar.\n\nBunda harakatla",
+    "correct": "D",
+    "explanation": "**YHQ 10-bobi 64-bandiga asosan**: Relssiz transport vositalari harakatlanadigan tasmalar soni chiziqlar, belgilar yoki qatnov qismi kengligini hisobga olgan holda haydovchilarning o'zlari tomonidan (barcha sanab o'tilganlar bilan) aniqlanadi.",
     "category": "17-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "D"
   },
   {
     "id": 167,
@@ -4832,10 +4843,11 @@
         "text": "Barcha sanab o'tilgan harakatlar"
       }
     ],
-    "correct": "B",
-    "explanation": "**YHQ 19-bobi 121-bandi**ning beshinchi xatboshisiga asosan, avtomagistrallarda quyidagilar taqiqlanadi:\n\n- **Orqaga harakatlanish**.",
+    "correct": "D",
+    "explanation": "**YHQ 19-bobi 121-bandiga asosan**: Avtomagistralda orqaga harakatlanish, o'quv mashg'ulotlari o'tkazish kabi barcha sanab o'tilgan harakatlar taqiqlanadi.",
     "category": "18-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "D"
   },
   {
     "id": 178,
@@ -6537,10 +6549,11 @@
         "text": "Barcha ko'rsatilgan joylarda"
       }
     ],
-    "correct": "A",
-    "explanation": "**YHQ 13-bobi 91-bandi** 3-xatboshiga asosan, quyidagi joylarda to'xtash taqiqlanadi: bir yo'nalishda harakatlanish uchun uchtadan kam tasmaga ega bo'lgan ko'prik, yo'l o'tkazgich va estakadalarning ustida;\nqatnov qismi kesishmalarida va kesishayotgan qatnov qismi chetiga 30 metrdan kam masofada (uch tomonlama kesishadigan chorrahalarda yondan tutashgan yo'lning sidirg'a chiziq yoki ajratuvchi mintaqa bilan ajratilgan qarama-qarshi tomoni bundan mustasno).",
+    "correct": "C",
+    "explanation": "**YHQ 13-bobi 91-bandiga asosan**: Sanab o'tilgan barcha joylarda transport vositalarining to'xtashi taqiqlanadi.",
     "category": "24-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "C"
   },
   {
     "id": 241,
@@ -6953,10 +6966,11 @@
         "text": "Kiyim-boshni yechishni sog' qo'ldan boshlash, so'ng kasal qo'lni bo'shatish"
       }
     ],
-    "correct": "B",
-    "explanation": "Shikastlangan qol yoki oyoqni majburiy harakatga solmasdan kiyim yechish imkonini yaratish uchun avval shikastlanmagan, so'ngra shikastlangan qo'l yoki oyoqdan ehtiyotlik bilan yechiladi.",
+    "correct": "A",
+    "explanation": "Birinchi tibbiy yordam ko'rsatish qoidasi: Qo'l jarohatlanganda kiyim-boshni yechishni sog' qo'ldan boshlash, so'ngra jarohatlangan qo'lni ehtiyotkorlik bilan bo'shatish lozim.",
     "category": "26-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "A"
   },
   {
     "id": 257,
@@ -7169,10 +7183,11 @@
         "text": "Barcha ko'rsatilgan joylarda"
       }
     ],
-    "correct": "B",
-    "explanation": "**YHQ 13-bobi 91-bandining** birinchi va o'ninchi xatboshlariga asosan, quyidagi joy va holatlarda to'xtash taqiqlanadi: tramvay yo'llarida, shuningdek bevosita ularga yaqinroqda tramvaylar harakatlanishiga xalaqit beradigan bo'lsa. transport vositasi svetofor ishoralari, yo'l belgilarini boshqa haydovchilardan to'sib qo'yadigan, boshqa transport vositalarining harakatlanishiga (kirish va chiqishiga) imkon qoldirmaydigan yoki piyodalarning harakatiga xalaqit beradigan joylarda.",
+    "correct": "D",
+    "explanation": "**YHQ 13-bobi 91-bandiga asosan**: Tramvay yo'llarida, temir yo'l kesishmalarida va piyodalar o'tish joylarida (barcha ko'rsatilgan joylarda) to'xtash taqiqlanadi.",
     "category": "27-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "D"
   },
   {
     "id": 265,
@@ -7225,10 +7240,11 @@
         "text": "Hovlidan chiqadigan joylarda"
       }
     ],
-    "correct": "A",
-    "explanation": "**YHQ 13-bobi 91-bandining** ikkinchi, beshinchi va o'ninchi xatboshlariga asosan, quyidagi joy va holatlarda to'xtash taqiqlanadi: tunnellarda, temir yo'l kesishmalarida; piyodalar o'tish joylarida va ulardan oldin 10 metrdan kam masofa qolganda; transport vositasi svetofor ishoralari, yo'l belgilarini boshqa haydovchilardan to'sib qo'yadigan, boshqa transport vositalarining harakatlanishiga (kirish va chiqishiga) imkon qoldirmaydigan yoki piyodalarning harakatiga xalaqit beradigan joylarda.",
+    "correct": "D",
+    "explanation": "**YHQ 13-bobi 91-92-bandlariga asosan**: Temir yo'l kesishmalarida, piyodalar o'tish joyida va harakatga xalaqit beradigan barcha sanab o'tilgan joylarda to'xtash va to'xtab turish taqiqlanadi.",
     "category": "27-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "D"
   },
   {
     "id": 267,
@@ -7285,10 +7301,11 @@
         "text": "40 km/s"
       }
     ],
-    "correct": "A",
-    "explanation": "**YHQ 11-bobi 80-bandining uchinchi xatboshisiga** asosan, har qanday yo'llarda: mexanik transport vositalarini shatakka olgan transport vositalariga tezlikni soatiga 50 kilometrdan oshirmasdan harakatlanishga ruxsat etilgan.",
+    "correct": "B",
+    "explanation": "**YHQ 11-bobi 78-bandiga asosan**: Mexanik transport vositalarini egiluvchan yoki qattiq ulagichda shatakka olishda eng yuqori tezlik soatiga 50 kilometrdan oshmasligi kerak.",
     "category": "27-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "B"
   },
   {
     "id": 269,
@@ -7337,10 +7354,11 @@
         "text": "Faqat xususiy egalariga tegishli avtomobillar, motosikllar va mopedlarga ruxsat etiladi"
       }
     ],
-    "correct": "A",
-    "explanation": "**YHQ 3-ilovasi** 7-bo'limining 7.6.-bandiga asosan: 7.6. Spidometr qurilmasi nosoz va tamg'alanmagan (shaxsiy transport vositalari, mototsikl, elektromototsikl, skuter va mopedlardan tashqari) bo'lsa foydalanish taqiqlanadi.",
+    "correct": "C",
+    "explanation": "**YHQ 3-ilovasi 7.6-bandiga asosan**: Spidometr qurilmasi nosoz yoki tamg'alanmagan transport vositalaridan foydalanish taqiqlanadi (faqat xususiy egalariga tegishli yengil avtomobil, mototsikl va mopedlar bundan mustasno).",
     "category": "27-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "C"
   },
   {
     "id": 271,
@@ -7363,10 +7381,11 @@
         "text": "Barcha sanab o'tilgan hollarda"
       }
     ],
-    "correct": "A",
-    "explanation": "**YHQ 13-bobi 91-bandining** uchinchi va yettinchi xatboshlariga asosan, quyidagi joy va holatlarda to'xtash taqiqlanadi: bir yo'nalishda harakatlanish uchun uchtadan kam bo'lagi bo'lgan ko'prik, yo'l o'tkazgich va estakada hamda ularning ostida (tegishli yo'l belgilari bilan to'xtab turish ruxsat berilgan yo'l qismlari bundan mustasno); qatnov qismida ko'rinish masofasi 100 metrdan kam bo'lgan yo'l do'ngliklari yaqinida va xavfli burilishlarda;",
+    "correct": "C",
+    "explanation": "**YHQ 13-bobi 91-92-bandlariga asosan**: Yo'lning xavfli burilishlarida, ko'priklarda va ko'rish masofasi 100 metrdan kam bo'lgan barcha sanab o'tilgan joylarda to'xtash va to'xtab turish taqiqlanadi.",
     "category": "28-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "C"
   },
   {
     "id": 272,
@@ -7497,10 +7516,11 @@
         "text": "Tormoz tepkisini bosish"
       }
     ],
-    "correct": "C",
-    "explanation": "Rul chambaragini zudlik bilan sirpanayotgan tomonga burish va tezda avtomobilni harakat yo'nalishini to'g'irlab olish.",
+    "correct": "A",
+    "explanation": "Harakat xavfsizligi qoidasi: Yo'lning sirpanchiq qismida sirpanish paydo bo'lganda tormoz bosilmaydi! Rul chambaragini zudlik bilan sirpanayotgan tomonga burish va tezda avtomobil yo'nalishini to'g'rilash lozim.",
     "category": "28-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "A"
   },
   {
     "id": 277,
@@ -7523,10 +7543,11 @@
         "text": "Har ikkala sanab o'tilgan hollarda"
       }
     ],
-    "correct": "A",
-    "explanation": "**YHQ 8-bobi 48-bandi**: Tovushli ishoralar faqat quyidagi hollarda qo'llanilishi mumkin: aholi punktlaridan tashqarida boshqa haydovchilarni quvib o'tish haqida ogohlantirish uchun; zarur bo'lgan hollarda yo'l-transport hodisasining oldini olish uchun.",
+    "correct": "B",
+    "explanation": "**YHQ 8-bobi 48-bandiga asosan**: Aholi punktlarida tovushli ishoralardan faqatgina yo'l-transport hodisasining oldini olish zaruriyati bo'lgandagina foydalanishga ruxsat etiladi.",
     "category": "28-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "B"
   },
   {
     "id": 278,
@@ -7549,10 +7570,11 @@
         "text": "Ruxsat etiladi"
       }
     ],
-    "correct": "A",
-    "explanation": "**YHQ 7-bobi 42-bandi**: Sariq ishora yonganda yoki tartibga soluvchining qo'li yuqoriga ko'tarilganida, ushbu Qoidalarning 41-bandida nazarda tutilgan joylarda, keskin tormoz bermasdan to'xtashga ulgura olmaydigan transport vositalarining haydovchilariga harakatni davom ettirishga ruxsat etiladi.",
+    "correct": "C",
+    "explanation": "**YHQ 7-bobi 42-bandiga asosan**: Chorrahaga kirib bo'lgan haydovchiga tartibga soluvchi qo'lini yuqoriga ko'targanda ham harakatni davom ettirishga va chorrahani bo'shatishga ruxsat etiladi.",
     "category": "28-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "C"
   },
   {
     "id": 279,
@@ -7657,10 +7679,11 @@
         "text": "Tovush signallari ishlamaydi"
       }
     ],
-    "correct": "A",
-    "explanation": "**YHQ 3-ilova, 7.2-band:** Agar avtomobilning **tovush signali (tovushli ishora) ishlamasa**, undan foydalanish qat'iyan taqiqlanadi.\n\nQolgan holatlar (yonilg'i datchigining ishlamasligi, o't oldirish tizimidagi nosozlik yoki dvigatelning qiyin yonishi) transport vositasidan foydalanishni taqiqlovchi bevosita shartlar ro'yxatiga kiritilmagan.",
+    "correct": "D",
+    "explanation": "**YHQ 3-ilovasi 7.2-bandiga asosan**: Belgilangan tartibda o'rnatilgan tovush signallari ishlamasa transport vositasidan foydalanish qat'iyan taqiqlanadi.",
     "category": "29-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "D"
   },
   {
     "id": 283,
@@ -8121,10 +8144,11 @@
         "text": "Faqat 30 km. tezlikda ruxsat etiladi"
       }
     ],
-    "correct": "A",
-    "explanation": "**YHQ 24-bobi 145-band:** Shatakka olish quyidagi holatlarda taqiqlanadi:\n- Tormoz tizimi ishlamayotgan transport vositasining haqiqiy vazni shatakka olgan transport vositasining haqiqiy vaznining **yarmidan ortiq** bo'lsa\n\nHaqiqiy vazni kam bo'lgan bunday transport vositasini faqat qattiq ulagich yordamida yoki qisman ortish usuli bilan shatakka olishga yo'l qo'yiladi.",
+    "correct": "B",
+    "explanation": "**YHQ 24-bobi 145-bandiga asosan**: Tormoz tizimi ishlamaydigan avtomobilning haqiqiy vazni sizning avtomobilingiz vaznining yarmidan ortiq bo'lsa, uni shatakka olish taqiqlanadi (ruxsat etilmaydi).",
     "category": "30-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "B"
   },
   {
     "id": 301,
@@ -8199,10 +8223,11 @@
         "text": "Barcha sanab o'tilgan holatlarga"
       }
     ],
-    "correct": "B",
-    "explanation": "**YHQ 28-bobi 166-band:** Velosipedlar, individual harakatlanish vositalari, mopedlar, aravalar va hayvonlarning yo'lning chetki o'ng bo'lagida imkoni boricha o'ng tomonidan bir qator bo'lib harakatlanishiga yo'l qo'yiladi. Agar piyodalarga xalaqit bermasa, yo'l yoqasidan harakatlanishga ham ruxsat etiladi. Demak, **barcha sanab o'tilgan holatlarga** ruxsat beriladi.",
+    "correct": "C",
+    "explanation": "**YHQ 28-bobi 166-bandiga asosan**: Moped haydovchilariga sanab o'tilgan barcha holatlarga (velo-yo'lka va yo'l yoqasidan harakatlanish) ruxsat beriladi.",
     "category": "31-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "C"
   },
   {
     "id": 304,
@@ -8281,10 +8306,11 @@
         "text": "Barchasi holatlar to'g'ri"
       }
     ],
-    "correct": "B",
-    "explanation": "Bosh miya jarohatlanishining asosiy alomatlari:\n- Hushdan ketish bir necha soniyadan bir necha soatgacha bo'lishi mumkin\n- Qayt qilish bir-ikki marta, og'ir holatlarda ko'proq bo'lishi mumkin\n- Amneziya — xotiraning yo'qolishi, sodir bo'lgan jarohatlanish bilan bog'liq va hayotdagi ba'zi voqealar xotirasidan o'chadi **Barcha holatlar to'g'ri.**",
+    "correct": "D",
+    "explanation": "Bosh miya jarohati alomatlari: hushdan ketish, ko'ngil aynishi/qayt qilish va bosh og'rig'i — barcha ko'rsatilgan alomatlar to'g'ri.",
     "category": "31-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "D"
   },
   {
     "id": 307,
@@ -8311,10 +8337,11 @@
         "text": "Barcha holatlar to'g'ri"
       }
     ],
-    "correct": "B",
-    "explanation": "",
+    "correct": "D",
+    "explanation": "Shokning asosiy alomatlari: terining oqarishi, sovuq ter ajralishi, chanqoqlik va nafas tezlashuvi — barcha holatlar to'g'ri.",
     "category": "31-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "D"
   },
   {
     "id": 308,
@@ -8385,10 +8412,11 @@
         "text": "Barcha javoblar to'g'ri"
       }
     ],
-    "correct": "A",
-    "explanation": "**YHQ 7-bobi 31-band:** Miltillovchi sariq ishora:\n- **Harakatlanishga ruxsat beradi**\n- Tartibga solinmagan chorraha yoki piyodalar o'tish joyi borligidan **xabardor qiladi**\n- **Xavf-xatar** haqida ogohlantiradi",
+    "correct": "C",
+    "explanation": "**YHQ 7-bobi 31-bandiga asosan**: Miltillovchi sariq ishora harakatlanishga ruxsat beradi hamda tartibga solinmagan chorraha yoki piyodalar o'tish joyi haqida ogohlantiradi (barcha javoblar to'g'ri).",
     "category": "31-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "C"
   },
   {
     "id": 311,
@@ -8415,10 +8443,11 @@
         "text": "Yuqoridagi barcha holatlar"
       }
     ],
-    "correct": "A",
-    "explanation": "Bosh miya jarohatlanishining asosiy alomatlari:\n- **Hushdan ketish** — bir necha soniyadan bir necha soatgacha bo'lishi mumkin\n- **Qayt qilish** — bir-ikki marta, og'ir holatlarda ko'proq bo'lishi mumkin\n- **Amneziya** — xotiraning yo'qolishi, sodir bo'lgan jarohatlanish bilan bog'liq va hayotdagi ba'zi voqealar xotirasidan o'chadi\n\nYuqoridagi **barcha holatlar** to'g'ri.",
+    "correct": "D",
+    "explanation": "Bosh miya jarohatlanishi hushdan ketish, qayt qilish, amneziya kabi barcha sanab o'tilgan alomatlar bilan xarakterlanadi.",
     "category": "32-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "D"
   },
   {
     "id": 312,
@@ -8441,10 +8470,11 @@
         "text": "Majburiy to'xtash"
       }
     ],
-    "correct": "A",
-    "explanation": "**YHQ 1-ilova, Umumiy qoidalar:** Majburiy to'xtash — texnik nuqson, tashilayotgan yuk, haydovchi va yo'lovchining holati, yo'ldagi biror to'siq tufayli xavf yuzaga kelganda yoxud ob-havo sharoitiga bog'liq holda transport vositasi harakatini to'xtatish.\n\nHaydovchining ushbu xatti-harakati oxirgi zarur chora bo'lib, **qoidabuzarlik deb e'tirof etilmaydi**.",
+    "correct": "C",
+    "explanation": "**YHQ 1-bobi 6-bandiga asosan**: Texnik nuqson, yuk xavfi, haydovchi holati yoki to'siq tufayli to'xtash — 'Majburiy to'xtash' deb ataladi.",
     "category": "32-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "C"
   },
   {
     "id": 313,
@@ -8845,10 +8875,11 @@
         "text": "Avtomobilni tormozlamasdan yo'lning qatnov qismiga ohista ravon burish"
       }
     ],
-    "correct": "A",
-    "explanation": "Bunday holatda avtomobilni moment kuchlar burib yuborishga moyil bo'ladi, shuning uchun Avtomobilni tormozlamasdan yo'lning qatnov qismiga ohista ravon burish usulni qo'llang.",
+    "correct": "C",
+    "explanation": "Xavfsizlik qoidasi: Agar o'ng g'ildiraklar yo'l yoqasiga chiqib qolsa, tormoz tepkisini bosish avtomobilni ag'darib yuborishi mumkin! Shuning uchun tormozlamasdan yo'l qatnov qismiga ohista ravon burish lozim.",
     "category": "33-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "C"
   },
   {
     "id": 329,
@@ -9035,10 +9066,11 @@
         "text": "Yo'lning yonma-yon joylashgan qatnov qismlarini ajratuvchi, transport vositalari harakatlanishi yoki to'xtashi uchun mo'ljallanmagan, yo'l sathidan ko'tarilgan yoki maysazor, ariq, maxsus to'siqlar bilan ajratilgan baland qismi"
       }
     ],
-    "correct": "B",
-    "explanation": "**YHQ 1-ilova Umumiy qoidalar:** Ajratuvchi mintaqa — yo'lning yonma-yon joylashgan qatnov qismlarini ajratuvchi, transport vositalari harakatlanishi yoki to'xtashi uchun mo'ljallanmagan, yo'l sathidan ko'tarilgan yoki maysazor, ariq, maxsus to'siqlar bilan ajratilgan baland qismi.",
+    "correct": "C",
+    "explanation": "**YHQ 1-bobi 6-bandiga asosan**: 'Ajratuvchi mintaqa' — yo'lning yonma-yon joylashgan qatnov qismlarini ajratuvchi, transport vositalari harakatlanishi yoki to'xtashi uchun mo'ljallanmagan ajratuvchi qismidir.",
     "category": "34-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "C"
   },
   {
     "id": 336,
@@ -9139,10 +9171,11 @@
         "text": "Barcha javoblar to'g'ri"
       }
     ],
-    "correct": "A",
-    "explanation": "**YHQ 9-bobi 63-bandi:** Transport vositasini orqaga harakatlantirishda haydovchi yo'l harakati xavfsizligini ta'minlashi va boshqa yo'l harakati qatnashchilariga xalaqit bermasligi shart. Zarurat tug'ilganda haydovchi boshqa shaxslarning yordamidan foydalanishi kerak.\nOrqaga harakatlanish chorrahalarda va ushbu Qoidalarning 62-bandiga muvofiq qayrilib olish mumkin bo'lmagan joylarda taqiqlanadi.",
+    "correct": "D",
+    "explanation": "**YHQ 9-bobi 63-bandiga asosan**: Chorrahalarda, piyodalar o'tish joyida, tunnellarda va ko'priklarda (barcha sanab o'tilgan joylarda) orqaga harakatlanish taqiqlanadi.",
     "category": "34-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "D"
   },
   {
     "id": 340,
@@ -9191,10 +9224,11 @@
         "text": "Tirkamalar (yarim tirkamalar ham)"
       }
     ],
-    "correct": "B",
-    "explanation": "**YHQ 3 ilova 7.22 band:** M toifasi — kamida to'rt g'ildirakka ega bo'lgan va yo'lovchilarni tashish uchun foydalaniladigan mexanik transport vositalari, shu jumladan: M1 toifasi — yo'lovchilarni tashish uchun foydalaniladigan va haydovchining o'rindig'idan tashqari o'rindiqlar soni 8 tadan oshmaydigan avtotransport vositalari.\nM2 toifasi — yo'lovchilarni tashish uchun foydalaniladigan, haydovchining o'rindig'idan tashqari o'rindiqlar soni 8 tadan ortiq va eng katta vazni 5 t gacha bo'lgan avto",
+    "correct": "A",
+    "explanation": "**YHQ 3-ilovasi 7.22-bandiga asosan**: 'M toifasi' — kamida to'rt g'ildirakka ega bo'lgan va yo'lovchilarni tashish uchun foydalaniladigan mexanik transport vositalaridir.",
     "category": "35-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "A"
   },
   {
     "id": 342,
@@ -9325,10 +9359,11 @@
         "text": "Barcha ko'rsatilgan javoblar to'g'ri"
       }
     ],
-    "correct": "B",
-    "explanation": "**YHQ 5-bobi 24-bandi:** Yo'lovchilarga quyidagilar taqiqlanadi: transport vositasi harakatlanayotgan vaqtda haydovchini boshqarishdan chalg'itish (unga xalaqit berish);\nharakatlanayotgan bortli yuk avtomobillarida tik turish, bortlarda yoki undan yuqoridagi yuk ustida o'tirish;\ntransport vositasi harakatlanayotgan vaqtda uning eshiklarini ochish;\ntransport vositasi harakatlanayotgan vaqtda salondan tana qismlarini (qo'ldan tashqari) chiqarish taqiqlanadi.\nBu talablarning bajarilishini haydovchi",
+    "correct": "D",
+    "explanation": "**YHQ 5-bobi 24-bandiga asosan**: Yo'lovchilarga haydovchini chalg'itish, harakat vaqtida eshikni ochish va bortda tik turish — barcha ko'rsatilganlar taqiqlanadi.",
     "category": "35-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "D"
   },
   {
     "id": 347,
@@ -9967,10 +10002,11 @@
         "text": "Barcha sanab o'tilgan javoblar"
       }
     ],
-    "correct": "C",
-    "explanation": "**YHQ 28-bobi 165-bandi:** Yo'lda velosiped, individual harakatlanish vositalarini va aravani boshqarish, miniladigan yoki yuk ortiladigan hayvonlarni haydab o'tish 14 yoshdan kichik bo'lmagan, moped va skuterni boshqarish esa **16 yoshdan** kichik bo'lmagan shaxslarga ruxsat etiladi.\n\nMoped haydovchisi majbur:\n- **16 yoshga** to'lgan bo'lishi\n- **Motoshlem** kiyishi va uni qadab olishi\n- Kunduzgi vaqtda ham **yaqinni yorituvchi chiroqlarni** yoqib yurishi",
+    "correct": "D",
+    "explanation": "**YHQ 28-bobi 165-bandiga asosan**: Moped haydovchisi 16 yoshga to'lgan, motoshlem kiygan va faralarni yoqqan bo'lishi shart (barcha talablar majburiy).",
     "category": "37-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "D"
   },
   {
     "id": 370,
@@ -11105,10 +11141,11 @@
         "text": "Tartibga solingan chorraha"
       }
     ],
-    "correct": "B",
-    "explanation": "YHQ 98 bandi: Harakatlanish navbati svetofor yoki tartibga soluvchining ishoralari orqali aniqlanib boshqarilayotgan chorraha — tartibga solingan chorraha hisoblanadi. Miltillovchi sariq ishora yonib-o'chayotgan, svetoforlar ishlamayotgan yoki tartibga soluvchi bo'lmagan chorraha — tartibga solinmagan chorraha hisoblanadi. Haydovchilar tartibga solinmagan chorrahalardan o'tish qoidalariga hamda chorrahada o'rnatilgan imtiyoz belgilariga amal qilishlari shart.",
+    "correct": "C",
+    "explanation": "**YHQ 14-bobi 98-bandiga asosan**: Harakatlanish navbati svetofor ishoralari orqali boshqarilayotgan chorraha — 'Tartibga solingan chorraha' hisoblanadi.",
     "category": "42-Bilet",
-    "difficulty": "o'rta"
+    "difficulty": "o'rta",
+    "correct_option": "C"
   },
   {
     "id": 413,

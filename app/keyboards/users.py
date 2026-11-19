@@ -31,20 +31,21 @@ def user_main_menu_kb() -> ReplyKeyboardMarkup:
     )
 
 
-def user_quiz_options_kb(question_id: int) -> InlineKeyboardMarkup:
-    return InlineKeyboardMarkup(
-        inline_keyboard=[
-            [
-                InlineKeyboardButton(text="🅰️ A", callback_data=f"uquiz:ans:{question_id}:A"),
-                InlineKeyboardButton(text="🅱️ B", callback_data=f"uquiz:ans:{question_id}:B"),
-            ],
-            [
-                InlineKeyboardButton(text="🇨 C", callback_data=f"uquiz:ans:{question_id}:C"),
-                InlineKeyboardButton(text="🇩 D", callback_data=f"uquiz:ans:{question_id}:D"),
-            ],
-            [InlineKeyboardButton(text="⏹ Testni yakunlash", callback_data="uquiz:stop")],
-        ]
-    )
+def user_quiz_options_kb(question_id: int, options_count: int = 4) -> InlineKeyboardMarkup:
+    buttons = [
+        InlineKeyboardButton(text="🅰️ A", callback_data=f"uquiz:ans:{question_id}:A"),
+        InlineKeyboardButton(text="🅱️ B", callback_data=f"uquiz:ans:{question_id}:B"),
+    ]
+    rows: list[list[InlineKeyboardButton]] = [buttons]
+    second_row: list[InlineKeyboardButton] = []
+    if options_count >= 3:
+        second_row.append(InlineKeyboardButton(text="🇨 C", callback_data=f"uquiz:ans:{question_id}:C"))
+    if options_count >= 4:
+        second_row.append(InlineKeyboardButton(text="🇩 D", callback_data=f"uquiz:ans:{question_id}:D"))
+    if second_row:
+        rows.append(second_row)
+    rows.append([InlineKeyboardButton(text="⏹ Testni yakunlash", callback_data="uquiz:stop")])
+    return InlineKeyboardMarkup(inline_keyboard=rows)
 
 
 def user_topics_kb(topics: list[tuple[str, int]]) -> InlineKeyboardMarkup:

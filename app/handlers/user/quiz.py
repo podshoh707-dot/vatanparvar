@@ -53,8 +53,14 @@ async def _send_quiz_question(
         await _send_quiz_question(target, session, state)
         return
 
+    options_count = 2
+    if q.option_c and q.option_c.strip() not in ("", "-"):
+        options_count = 3
+        if q.option_d and q.option_d.strip() not in ("", "-"):
+            options_count = 4
+
     caption = format_user_practice_question(q, index=idx + 1, total=len(q_ids))
-    kb = user_quiz_options_kb(q.id)
+    kb = user_quiz_options_kb(q.id, options_count=options_count)
 
     if q.image_file_id:
         await target.answer_photo(

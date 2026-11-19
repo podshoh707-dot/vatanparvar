@@ -33,20 +33,21 @@ logger = logging.getLogger(__name__)
 OPTION_INDEX_MAP = {"A": 0, "B": 1, "C": 2, "D": 3}
 
 
-def build_channel_inline_test_keyboard(published_test_id: int) -> InlineKeyboardMarkup:
-    """Kanaldagi inline test uchun A/B/C/D tugmalari."""
-    return InlineKeyboardMarkup(
-        inline_keyboard=[
-            [
-                InlineKeyboardButton(text="🅰️ A", callback_data=f"chtest:{published_test_id}:A"),
-                InlineKeyboardButton(text="🅱️ B", callback_data=f"chtest:{published_test_id}:B"),
-            ],
-            [
-                InlineKeyboardButton(text="🇨 C", callback_data=f"chtest:{published_test_id}:C"),
-                InlineKeyboardButton(text="🇩 D", callback_data=f"chtest:{published_test_id}:D"),
-            ],
-        ]
-    )
+def build_channel_inline_test_keyboard(published_test_id: int, options_count: int = 4) -> InlineKeyboardMarkup:
+    """Kanaldagi inline test uchun dinamik variant tugmalari."""
+    buttons = [
+        InlineKeyboardButton(text="🅰️ A", callback_data=f"chtest:{published_test_id}:A"),
+        InlineKeyboardButton(text="🅱️ B", callback_data=f"chtest:{published_test_id}:B"),
+    ]
+    rows: list[list[InlineKeyboardButton]] = [buttons]
+    second_row: list[InlineKeyboardButton] = []
+    if options_count >= 3:
+        second_row.append(InlineKeyboardButton(text="🇨 C", callback_data=f"chtest:{published_test_id}:C"))
+    if options_count >= 4:
+        second_row.append(InlineKeyboardButton(text="🇩 D", callback_data=f"chtest:{published_test_id}:D"))
+    if second_row:
+        rows.append(second_row)
+    return InlineKeyboardMarkup(inline_keyboard=rows)
 
 
 class TestService:
@@ -162,16 +163,24 @@ class TestService:
                 options = [
                     f"A) {question.option_a}"[:100],
                     f"B) {question.option_b}"[:100],
-                    f"C) {question.option_c}"[:100],
-                    f"D) {question.option_d}"[:100],
                 ]
+                if question.option_c and question.option_c.strip() not in ("", "-"):
+                    options.append(f"C) {question.option_c}"[:100])
+                if question.option_d and question.option_d.strip() not in ("", "-"):
+                    options.append(f"D) {question.option_d}"[:100])
+
+                correct_letter = question.correct_option.upper()
+                correct_idx = OPTION_INDEX_MAP.get(correct_letter, 0)
+                if correct_idx >= len(options):
+                    correct_idx = 0
+
                 explanation = (question.explanation or "")[:200] or None
                 sent = await self.bot.send_poll(
                     chat_id=target,
                     question=poll_question,
                     options=options,
                     type="quiz",
-                    correct_option_id=OPTION_INDEX_MAP[question.correct_option.upper()],
+                    correct_option_id=correct_idx,
                     explanation=explanation,
                     is_anonymous=True,
                 )
@@ -213,11 +222,17 @@ class TestService:
                     reveal_at=reveal_at,
                 )
 
+                options_count = 2
+                if question.option_c and question.option_c.strip() not in ("", "-"):
+                    options_count = 3
+                    if question.option_d and question.option_d.strip() not in ("", "-"):
+                        options_count = 4
+
                 # Inline tugmalarni real pub.id bilan biriktiramiz
                 await self.bot.edit_message_reply_markup(
                     chat_id=target,
                     message_id=sent.message_id,
-                    reply_markup=build_channel_inline_test_keyboard(pub.id),
+                    reply_markup=build_channel_inline_test_keyboard(pub.id, options_count=options_count),
                 )
 
                 if reveal_at is not None:

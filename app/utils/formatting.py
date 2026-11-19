@@ -36,13 +36,19 @@ ROLE_LABELS = {
 
 def format_channel_inline_test(question: Any) -> str:
     """Kanal uchun inline test matni (Master Prompt standarti bo'yicha)."""
+    options_lines = [
+        f"A) {escape_html(question.option_a)}",
+        f"B) {escape_html(question.option_b)}",
+    ]
+    if question.option_c and question.option_c.strip() not in ("", "-"):
+        options_lines.append(f"C) {escape_html(question.option_c)}")
+    if question.option_d and question.option_d.strip() not in ("", "-"):
+        options_lines.append(f"D) {escape_html(question.option_d)}")
+    opts_str = "\n".join(options_lines)
     return (
         "🚦 <b>AVTOVATANPARVAR TESTLARI</b>\n\n"
         f"❓ <b>{escape_html(question.question_text)}</b>\n\n"
-        f"A) {escape_html(question.option_a)}\n"
-        f"B) {escape_html(question.option_b)}\n"
-        f"C) {escape_html(question.option_c)}\n"
-        f"D) {escape_html(question.option_d)}\n\n"
+        f"{opts_str}\n\n"
         f"📚 Mavzu: <i>{escape_html(question.topic)}</i>\n"
         "👇 <b>Javobingizni tanlang!</b>"
     )
@@ -91,15 +97,21 @@ def format_test_card_admin(question: Any) -> str:
     diff = DIFFICULTY_LABELS.get(question.difficulty, question.difficulty)
     status = STATUS_LABELS.get(question.status, question.status)
     has_img = "Ha 🖼" if question.image_file_id else "Yo'q"
+    options_lines = [
+        f"A) {escape_html(question.option_a)}",
+        f"B) {escape_html(question.option_b)}",
+    ]
+    if question.option_c and question.option_c.strip() not in ("", "-"):
+        options_lines.append(f"C) {escape_html(question.option_c)}")
+    if question.option_d and question.option_d.strip() not in ("", "-"):
+        options_lines.append(f"D) {escape_html(question.option_d)}")
+    opts_str = "\n".join(options_lines)
     return (
         f"🚦 <b>Test #{question.id}</b> | {status}\n"
         f"📚 Mavzu: <b>{escape_html(question.topic)}</b> | {diff}\n"
         f"🖼 Rasm: {has_img} | 📢 Chiqarilgan: {question.times_published} marta\n\n"
         f"❓ <b>{escape_html(question.question_text)}</b>\n\n"
-        f"A) {escape_html(question.option_a)}\n"
-        f"B) {escape_html(question.option_b)}\n"
-        f"C) {escape_html(question.option_c)}\n"
-        f"D) {escape_html(question.option_d)}\n\n"
+        f"{opts_str}\n\n"
         f"✅ To'g'ri javob: <b>{question.correct_option}</b>\n"
         f"💡 Izoh: {escape_html(question.explanation or 'Kiritilmagan')}"
     )
@@ -107,13 +119,19 @@ def format_test_card_admin(question: Any) -> str:
 
 def format_user_practice_question(question: Any, index: int, total: int) -> str:
     """Oddiy foydalanuvchi uchun test savoli ko'rinishi."""
+    options_lines = [
+        f"A) {escape_html(question.option_a)}",
+        f"B) {escape_html(question.option_b)}",
+    ]
+    if question.option_c and question.option_c.strip() not in ("", "-"):
+        options_lines.append(f"C) {escape_html(question.option_c)}")
+    if question.option_d and question.option_d.strip() not in ("", "-"):
+        options_lines.append(f"D) {escape_html(question.option_d)}")
+    opts_str = "\n".join(options_lines)
     return (
         f"🚦 <b>Test {index}/{total}</b> — <i>{escape_html(question.topic)}</i>\n\n"
         f"❓ <b>{escape_html(question.question_text)}</b>\n\n"
-        f"A) {escape_html(question.option_a)}\n"
-        f"B) {escape_html(question.option_b)}\n"
-        f"C) {escape_html(question.option_c)}\n"
-        f"D) {escape_html(question.option_d)}\n\n"
+        f"{opts_str}\n\n"
         "Javob variantini tanlang:"
     )
 

@@ -19,7 +19,7 @@ async def get_pro_admin_keyboard(user_id: int):
     # 2. Savollar va Belgilar
     row2 = []
     if await check_permission(user_id, "can_manage_content"):
-        row2.append(InlineKeyboardButton(text="📝 Savollar (805 ta)", callback_data="admin_tests"))
+        row2.append(InlineKeyboardButton(text="📝 Savollar (500 ta)", callback_data="admin_tests"))
         row2.append(InlineKeyboardButton(text="🚦 Yo'l Belgilari", callback_data="admin_signs"))
     if row2: keyboard.append(row2)
     
@@ -67,7 +67,7 @@ def get_admin_reply_keyboard() -> ReplyKeyboardMarkup:
     return ReplyKeyboardMarkup(
         keyboard=[
             [KeyboardButton(text="📊 Statistika & Excel"), KeyboardButton(text="📢 Xabar Tarqatish")],
-            [KeyboardButton(text="📝 Savollar (805 ta)"), KeyboardButton(text="🚦 Yo'l Belgilari (279)")],
+            [KeyboardButton(text="📝 Savollar (500 ta)"), KeyboardButton(text="🚦 Yo'l Belgilari (279)")],
             [KeyboardButton(text="📚 YHQ Qoidalari"), KeyboardButton(text="🎥 Video Darslar")],
             [KeyboardButton(text="🏢 Tashkilot & O'qish"), KeyboardButton(text="👥 Guruhlar & Kanallar")],
             [KeyboardButton(text="💳 VIP & Promokodlar"), KeyboardButton(text="⚙️ Tizim Sozlamalari")],
@@ -95,7 +95,7 @@ async def admin_panel(message: types.Message):
         "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
         f"👤 <b>Administrator:</b> {message.from_user.full_name}\n"
         f"🎖 <b>Mansab:</b> <i>{status_role}</i>\n"
-        "🟢 <b>Tizim holati:</b> Faol (805 ta rasmiy test • 279 ta belgi • 133 ta video)\n"
+        "🟢 <b>Tizim holati:</b> Faol (500 ta rasmiy test • 279 ta belgi • 133 ta video)\n"
         "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
         "👇 <b>Barcha amallarni ekranning pastidagi tugmalar orqali to'g'ridan-to'g'ri bajarishingiz mumkin:</b>"
     )
@@ -125,7 +125,7 @@ async def admin_back_main(callback: types.CallbackQuery):
         "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
         f"👤 <b>Administrator:</b> {callback.from_user.full_name}\n"
         f"🎖 <b>Mansab:</b> <i>{status_role}</i>\n"
-        "🟢 <b>Tizim holati:</b> Faol (805 ta rasmiy test • 279 ta belgi • 133 ta video)\n"
+        "🟢 <b>Tizim holati:</b> Faol (500 ta rasmiy test • 279 ta belgi • 133 ta video)\n"
         "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
         "👇 <i>Pastki paneldan kerakli bo'limni tanlang:</i>"
     )

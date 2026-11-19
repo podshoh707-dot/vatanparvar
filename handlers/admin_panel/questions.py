@@ -45,7 +45,7 @@ async def auto_sync_questions():
 # ══════════════════════════════════════════════════════════════════════════════
 # 1. SAVOLLAR RO'YXATI (PAGINATION)
 # ══════════════════════════════════════════════════════════════════════════════
-@questions_router.message(F.text.in_(["📝 Savollar (805 ta)", "📝 Savollar", "📝 Savollar bazasi"]))
+@questions_router.message(F.text.in_(["📝 Savollar (500 ta)", "📝 Savollar (805 ta)", "📝 Savollar", "📝 Savollar bazasi"]))
 async def msg_questions_list(message: types.Message, state: FSMContext = None):
     if not await check_permission(message.from_user.id, "can_manage_content"):
         await message.answer("Sizda bu bo'limga ruxsat yo'q!")

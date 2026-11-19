@@ -48,6 +48,9 @@ lock_file_handle = None
 
 def acquire_lock():
     global lock_file_handle
+    # Render, Docker va barcha bulutli container muhitlarida PID lock kerak emas
+    if os.getenv("RENDER") or os.getenv("PORT"):
+        return
     if os.path.exists(LOCK_FILE):
         try:
             with open(LOCK_FILE, "r") as f:
@@ -86,6 +89,8 @@ def acquire_lock():
 
 def release_lock():
     global lock_file_handle
+    if os.getenv("RENDER") or os.getenv("PORT"):
+        return
     if lock_file_handle:
         try:
             if os.name == "nt":

@@ -9,13 +9,13 @@ services:
     healthCheckPath: /health
     envVars:
       - key: BOT_TOKEN
-        sync: false
+        value: 8888231466:AAEN44GXnW-V-0uiWQxbFpUKfv6wf6barzs
       - key: SUPERADMIN_ID
-        sync: false
+        value: "8781024332"
       - key: ADMIN_IDS
-        sync: false
+        value: "8781024332,8528538777"
       - key: DATABASE_URL
-        sync: false
+        value: "sqlite+aiosqlite:///./local_dev.db"
       - key: CHANNEL_ID
         value: "@AvtoVatanparvar_testlari"
       - key: CHANNEL_USERNAME

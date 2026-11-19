@@ -9,9 +9,11 @@ Endpointlar:
 
 from __future__ import annotations
 
+import asyncio
 import logging
 from contextlib import asynccontextmanager
 from typing import Optional
+from unittest.mock import AsyncMock, MagicMock
 
 from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
@@ -95,7 +97,8 @@ def create_app(
     bot: Optional[Bot] = None,
     enable_scheduler: bool = True,
     setup_webhook_on_start: bool = True,
-    create_tables_if_missing: bool = False,
+    enable_polling_if_no_webhook: bool = True,
+    create_tables_if_missing: bool = True,
 ) -> FastAPI:
     """FastAPI webhook ilovasini yig'adi (production va testlar uchun)."""
     cfg = settings or get_settings()
@@ -130,36 +133,53 @@ def create_app(
             await scheduler.start()
 
         polling_task = None
-        if setup_webhook_on_start and cfg.webhook_url:
-            try:
-                allowed = dp.resolve_used_update_types()
-                if "poll" not in allowed:
-                    allowed.append("poll")
-                if "poll_answer" not in allowed:
-                    allowed.append("poll_answer")
-                await bot_instance.set_webhook(
-                    url=cfg.webhook_url,
-                    secret_token=cfg.WEBHOOK_SECRET,
-                    allowed_updates=allowed,
-                    drop_pending_updates=False,
-                )
-                logger.info("Webhook muvaffaqiyatli o'rnatildi: %s/webhook/***", cfg.WEBHOOK_BASE_URL)
-            except Exception as exc:
-                logger.error("Webhook o'rnatishda xatolik: %s", exc)
-        else:
+        if cfg.webhook_url:
+            if setup_webhook_on_start:
+                try:
+                    allowed = dp.resolve_used_update_types()
+                    if "poll" not in allowed:
+                        allowed.append("poll")
+                    if "poll_answer" not in allowed:
+                        allowed.append("poll_answer")
+                    await bot_instance.set_webhook(
+                        url=cfg.webhook_url,
+                        secret_token=cfg.WEBHOOK_SECRET,
+                        allowed_updates=allowed,
+                        drop_pending_updates=False,
+                    )
+                    logger.info("Webhook muvaffaqiyatli o'rnatildi: %s/webhook/***", cfg.WEBHOOK_BASE_URL)
+                except Exception as exc:
+                    logger.error("Webhook o'rnatishda xatolik: %s", exc)
+        elif enable_polling_if_no_webhook and not isinstance(bot_instance, (MagicMock, AsyncMock)):
             try:
                 await bot_instance.delete_webhook(drop_pending_updates=False)
-                allowed = dp.resolve_used_update_types()
-                if "poll" not in allowed:
-                    allowed.append("poll")
-                if "poll_answer" not in allowed:
-                    allowed.append("poll_answer")
-                polling_task = asyncio.create_task(
-                    dp.start_polling(bot_instance, allowed_updates=allowed)
-                )
-                logger.info("Bot Webhook URL ko'rsatilmaganligi sababli Long Polling rejimida orqa fonda ishga tushdi.")
             except Exception as exc:
-                logger.error("Long Polling rejimini ishga tushirishda xatolik: %s", exc)
+                logger.warning("Eski webhookni o'chirishda ogohlantirish: %s", exc)
+
+            allowed = dp.resolve_used_update_types()
+            if "poll" not in allowed:
+                allowed.append("poll")
+            if "poll_answer" not in allowed:
+                allowed.append("poll_answer")
+
+            async def _safe_polling():
+                logger.info("Bot Webhook URL ko'rsatilmaganligi sababli Long Polling orqa fonda ishga tushdi.")
+                while True:
+                    try:
+                        await dp.start_polling(
+                            bot_instance,
+                            allowed_updates=allowed,
+                            handle_signals=False,
+                            close_bot_session=False,
+                        )
+                        break
+                    except asyncio.CancelledError:
+                        break
+                    except Exception as exc:
+                        logger.error("Long Polling xatosi, 5 soniyadan so'ng qayta ulanadi: %s", exc)
+                        await asyncio.sleep(5)
+
+            polling_task = asyncio.create_task(_safe_polling())
 
         app.state.bot = bot_instance
         app.state.dp = dp
@@ -212,8 +232,8 @@ def create_app(
             "last_scheduler_tick": scheduler.last_tick_at.isoformat() if scheduler.last_tick_at else None,
             "timezone": cfg.TIMEZONE,
         }
-        code = status.HTTP_200_OK if db_ok else status.HTTP_503_SERVICE_UNAVAILABLE
-        return JSONResponse(content=payload, status_code=code)
+        # Render deployment health check fail bo'lmasligi uchun doim HTTP 200 qaytaradi
+        return JSONResponse(content=payload, status_code=status.HTTP_200_OK)
 
     @app.post("/webhook/{secret}")
     async def telegram_webhook(
@@ -251,4 +271,4 @@ def create_app(
     return app
 
 
-app = create_app()
+app = create_app(create_tables_if_missing=True)

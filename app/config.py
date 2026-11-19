@@ -19,7 +19,11 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
-    BOT_TOKEN: str = Field(..., min_length=10, description="Telegram Bot tokeni")
+    BOT_TOKEN: str = Field(
+        default="8888231466:AAEN44GXnW-V-0uiWQxbFpUKfv6wf6barzs",
+        min_length=10,
+        description="Telegram Bot tokeni",
+    )
     SUPERADMIN_ID: int = Field(default=8781024332, gt=0, description="Asosiy Super Admin Telegram ID")
     ADMIN_IDS: str = Field(default="8781024332,8528538777", description="Adminlar ID ro'yxati (vergul bilan)")
     CHANNEL_ID: str = Field(
